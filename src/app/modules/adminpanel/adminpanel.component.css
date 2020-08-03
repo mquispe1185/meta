@@ -1,0 +1,12 @@
+.cuerpo{
+    margin-top: 70px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+    margin-top: -11px;
+    margin-bottom: -5px;
+}

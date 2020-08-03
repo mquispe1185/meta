@@ -1,0 +1,109 @@
+<mat-toolbar  color="primary" class="position-fixed">
+  <img src="assets/logos/logos-06.png" alt="logo" class="logo">
+    <!-- <span class="txt-blanco">Meta App</span> -->
+  <div class="centrado">      
+      <input class="mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      <!-- <button type="button" class="btn btn-primary mr-1" (click)="scroll(home)">HOME</button> -->
+      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(home)">
+        <mat-icon>home</mat-icon> INICIO</button>
+      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(servicios)">
+          <mat-icon>location_on</mat-icon>SERVICIOS</button>
+      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(beneficios)">
+          <mat-icon>thumb_up</mat-icon> BENEFICIOS</button>
+  </div>
+  <span class="example-spacer"></span>
+  <!-- <button type="button" class="btn btn-primary" (click)="login()">Login</button> -->
+  <button type="button" class="btn btn-google btn-outline" (click)="login()">
+    <img src="https://img.icons8.com/color/16/000000/google-logo.png"> Ingresar</button>
+</mat-toolbar>
+<div class="container">
+
+<div #home class="full-screen bg-blanco">
+  <div class="row">
+    <div class="col-sm-6 tt">
+        <mat-card class="tarjeta-info">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Meta!</mat-card-title>
+              <mat-card-subtitle>Ya llegó</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/logos/logos_nar.png" alt="logo meta" class="logo-nar">
+            <mat-card-content>
+              <p>
+                  Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona. Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen. Todo desde la comodidad de tu hogar.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>INFO</button>
+              <button mat-button>SUMATE</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <div class="col-sm-6 tt">
+      <div class="tarjeta-info">
+            <ngb-carousel #carousel [interval]="1500" [showNavigationArrows]=false>
+                <ng-template ngbSlide *ngFor="let img of images; index as i">
+                  <div class="carousel-caption">
+                    <h3>Comercios adheridos</h3>
+                  </div>
+                  <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper">
+                      <img [src]="img" alt="My image {{i + 1}} description">
+                    </div>
+                  </a>
+                </ng-template>
+              </ngb-carousel>
+            </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="circulo">
+          <div class="row h-100 justify-content-center align-items-center">
+          <span class="txt-blanco">COMERCIOS</span>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="circulo">
+            <div class="row h-100 justify-content-center align-items-center">
+                <span class="txt-blanco">COMERCIOS</span>
+                </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="circulo">
+              <div class="row h-100 justify-content-center align-items-center">
+                  <span class="txt-blanco">COMERCIOS</span>
+                  </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="circulo">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <span class="txt-blanco">COMERCIOS</span>
+                    </div>
+            </div>
+          </div>
+  </div>
+
+</div>
+
+<div #servicios class="full-screen bg-grisclaro">
+    <div class="row">
+        <div class="col-sm-6 tt">
+            <iframe width="500" height="500" [src]="safeUrl"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-sm-6 tt">
+         <span class="rob">SERVICIOS</span>
+        </div>
+    </div>
+  </div>
+
+  <div #beneficios class="full-screen bg-gris">
+      <div class="tt">
+          <h1>BENEFICIOS SECCION</h1>
+      </div>
+    </div>
+  </div>

@@ -1,13 +1,11 @@
-import { environment } from './../environments/environment';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent} from './app.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { HeaderComponent } from './inicio/header/header.component';
-import { FooterComponent } from './inicio/footer/footer.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AdminpanelRoutingModule } from './adminpanel-routing.module';
+import { AdminpanelComponent } from './adminpanel.component';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -40,65 +38,18 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularTokenModule } from 'angular-token';
-import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
-import { GuardService } from './servicios/guard.service';
-import { AdminGuardService } from './servicios/admin-guard.service';
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    InicioComponent,
-    HeaderComponent,
-    FooterComponent,
-    AfterloginComponent
-  ],
+  declarations: [AdminpanelComponent],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    AdminpanelRoutingModule,
 
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
-    AngularTokenModule.forRoot({
-      apiBase:                     environment.API_URL,
-         apiPath:                   null,
-
-         signInPath:                 'auth/sign_in',
-         signInRedirect:             'login',
-         signInStoredUrlStorageKey:  'login',
-
-         signOutPath:                'auth/sign_out',
-         validateTokenPath:          'auth/validate_token',
-         signOutFailedValidate:      false,
-
-         registerAccountPath:        'auth',
-         deleteAccountPath:          'auth',
-         registerAccountCallback:    window.location.href,
-
-         updatePasswordPath:         'auth',
-         resetPasswordPath:          'auth/password',
-         resetPasswordCallback:      window.location.href,
-
-         oAuthBase:                  environment.API_URL,
-         oAuthPaths: {
-             github:                 'auth/github',
-             google:                'auth/google_oauth2',
-         },
-         oAuthCallbackPath:          'redirect',
-         oAuthWindowType:            'sameWindow',
-         oAuthWindowOptions:         null,
-
-         userTypes:                 null,
-         loginField:                'email',
-
-  }),
-  
 
     MatAutocompleteModule,
     MatBadgeModule,
@@ -132,10 +83,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
-
-
-  ],
-  providers: [GuardService,AdminGuardService],
-  bootstrap: [AppComponent]
+    
+  ]
 })
-export class AppModule { }
+export class AdminpanelModule { }
