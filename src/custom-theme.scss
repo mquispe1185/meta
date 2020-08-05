@@ -4,9 +4,11 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
+
 $meta-app-primary: mat-palette($mat-naranja);
 $meta-app-accent: mat-palette($mat-gris);
 $meta-app-warn: mat-palette($mat-red);
+
 
 $meta-app-theme: mat-light-theme((
   color: (

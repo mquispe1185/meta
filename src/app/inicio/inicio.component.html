@@ -1,23 +1,26 @@
 <mat-toolbar  color="primary" class="position-fixed">
   <img src="assets/logos/logos-06.png" alt="logo" class="logo">
     <!-- <span class="txt-blanco">Meta App</span> -->
-  <div class="centrado">      
-      <input class="mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+  <div class="centrado">
+      <input class="input1 mr-sm-2" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
       <!-- <button type="button" class="btn btn-primary mr-1" (click)="scroll(home)">HOME</button> -->
       <button mat-raised-button color="primary" class="mr-1" (click)="scroll(home)">
         <mat-icon>home</mat-icon> INICIO</button>
+      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(productos)">
+          <mat-icon>store_front</mat-icon>PRODUCTOS</button>
       <button mat-raised-button color="primary" class="mr-1" (click)="scroll(servicios)">
-          <mat-icon>location_on</mat-icon>SERVICIOS</button>
+          <mat-icon>construction</mat-icon>SERVICIOS</button>
       <button mat-raised-button color="primary" class="mr-1" (click)="scroll(beneficios)">
           <mat-icon>thumb_up</mat-icon> BENEFICIOS</button>
   </div>
   <span class="example-spacer"></span>
   <!-- <button type="button" class="btn btn-primary" (click)="login()">Login</button> -->
-  <button type="button" class="btn btn-google btn-outline" (click)="login()">
+  <!-- <button type="button" class="btn btn-google btn-outline" (click)="login()"> -->
+      <button mat-raised-button color="accent"  (click)="login()">
     <img src="https://img.icons8.com/color/16/000000/google-logo.png"> Ingresar</button>
 </mat-toolbar>
-<div class="container">
 
+<div class="container">
 <div #home class="full-screen bg-blanco">
   <div class="row">
     <div class="col-sm-6 tt">
@@ -56,54 +59,257 @@
             </div>
       </div>
   </div>
-  <div class="row">
+
+
+<!--   <div class="row">
     <div class="col-sm-3">
       <div class="circulo">
           <div class="row h-100 justify-content-center align-items-center">
-          <span class="txt-blanco">COMERCIOS</span>
+          <span class="txt-blanco">Ofertas</span>
           </div>
       </div>
     </div>
     <div class="col-sm-3">
         <div class="circulo">
             <div class="row h-100 justify-content-center align-items-center">
-                <span class="txt-blanco">COMERCIOS</span>
+                <span class="txt-blanco">Cercano</span>
                 </div>
         </div>
       </div>
       <div class="col-sm-3">
           <div class="circulo">
               <div class="row h-100 justify-content-center align-items-center">
-                  <span class="txt-blanco">COMERCIOS</span>
+                  <span class="txt-blanco">Turnos</span>
                   </div>
           </div>
         </div>
         <div class="col-sm-3">
             <div class="circulo">
                 <div class="row h-100 justify-content-center align-items-center">
-                    <span class="txt-blanco">COMERCIOS</span>
+                    <span class="txt-blanco">Efectivo</span>
                     </div>
             </div>
           </div>
+  </div> -->
+
+  <div class="row">
+      <div class="col-sm-3">
+          <mat-card class="tarjeta-info">
+              <mat-card-header>
+                <mat-card-title>
+                  <mat-icon  [ngStyle]="{'color':'#cc5316'}">add_shopping_cart</mat-icon>
+                  Ofertas</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src="assets/comercio/meta_ofertas.png" alt="logo meta" class="logo-nar">
+              <mat-card-content>
+                <p>
+                    Encontra las ofertas y promociones que buscabas! lorem ipsum dolor sit amet,
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button class="palabracolor">Saber más...</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+      <div class="col-sm-3">
+          <mat-card class="tarjeta-info">
+              <mat-card-header>
+                <mat-card-title>
+                  <mat-icon  [ngStyle]="{'color':'#cc5316'}">gps_fixed</mat-icon>
+                  Cercano</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src="assets/comercio/meta_pagos.png" alt="logo meta" class="logo-nar">
+              <mat-card-content>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button class="palabracolor">Saber más...</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+      <div class="col-sm-3">
+          <mat-card class="tarjeta-info">
+              <mat-card-header>
+                <mat-card-title>
+                    <mat-icon  [ngStyle]="{'color':'#cc5316'}">star</mat-icon>
+                    Referencias</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src="assets/comercio/meta_ofertas.png" alt="logo meta" class="logo-nar">
+              <mat-card-content>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button class="palabracolor">Saber más...</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+      <div class="col-sm-3">
+          <mat-card class="tarjeta-info">
+              <mat-card-header>
+                <mat-card-title>
+                    <mat-icon  [ngStyle]="{'color':'#cc5316'}">local_atm</mat-icon>
+                  Efectivo</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image src="assets/comercio/meta_pagos.png" alt="logo meta" class="logo-nar">
+              <mat-card-content>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button class="palabracolor">Saber más...</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
   </div>
+
+
+
+
 
 </div>
 
-<div #servicios class="full-screen bg-grisclaro">
+<div #productos class="full-screen bg-naranja">
     <div class="row">
-        <div class="col-sm-6 tt">
-            <iframe width="500" height="500" [src]="safeUrl"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="col-sm-6 Titulo2" >
+            <span>PRODUCTOS</span>
+            <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
+              voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
+              omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
+              unde.</p>
+              <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
+                  voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
+                  omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
+                  unde.</p>
         </div>
         <div class="col-sm-6 tt">
-         <span class="rob">SERVICIOS</span>
+          <iframe width="400" height="400" [src]="safeUrl"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+          gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
   </div>
 
-  <div #beneficios class="full-screen bg-gris">
-      <div class="tt">
-          <h1>BENEFICIOS SECCION</h1>
+  <div #servicios class="full-screen bg-blanco">
+      <div class="row">
+          <div class="col-sm-6 tt">
+                <iframe width="400" height="400" [src]="safeUrl"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="col-sm-6 Titulo3">
+           <span >SERVICIOS</span>
+           <p class="parrafo2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
+              voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
+              omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
+              unde.</p>
+              <p class="parrafo2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
+                  voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
+                  omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
+                  unde.</p>
+          </div>
       </div>
     </div>
+
+  <div #beneficios class="full-screen bg-blanco">
+    <div class="tt">
+        <span class="Titulo3">BENEFICIOS</span>
+        <!-- Fila uno -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row div-promo">
+                  <div class="col-sm-6">
+                      <h5>Descuentos Imperdibles!</h5>
+                      <h6 style="color:chocolate" >Ferreteria Pepito</h6>
+                      <h6>Palas y Carretillas</h6>
+                      <button mat-raised-button color="primary">Ver más</button>
+                  </div>
+                  <div class="col-sm-6">
+                      <img class="resize_fit_center" src="assets/comercio/palas.png" alt="logo meta">
+                  </div>
+                </div>
+              </div>
+            <div class="col-sm-6">
+              <div class="row div-promo">
+                <div class="col-sm-6">
+                    <h5>Oferta de la Semana</h5>
+                    <h6 style="color:chocolate" >Z-Hard</h6>
+                    <h6>Impresoras Epson</h6>
+                    <button mat-raised-button color="primary">Ver más</button>
+                </div>
+                <div class="col-sm-6">
+                    <img class="resize_fit_center" src="assets/comercio/impresora.png" alt="logo meta">
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Fin Fila uno -->
+        <!-- Fila Dos -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row div-promo">
+                  <div class="col-sm-6">
+                      <h5>Oferta de la Semana</h5>
+                      <h6 style="color:chocolate" >Z-Hard</h6>
+                      <h6>Impresoras Epson</h6>
+                      <button mat-raised-button color="primary">Ver más</button>
+                  </div>
+                  <div class="col-sm-6">
+                      <img class="resize_fit_center" src="assets/comercio/impresora.png" alt="logo meta">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="row div-promo">
+                    <div class="col-sm-6">
+                        <h5>Descuentos Imperdibles!</h5>
+                        <h6 style="color:chocolate" >Ferreteria Pepito</h6>
+                        <h6>Palas y Carretillas</h6>
+                        <button mat-raised-button color="primary">Ver más</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="resize_fit_center" src="assets/comercio/palas.png" alt="logo meta">
+                    </div>
+                  </div>
+                </div>
+          </div>
+        <!-- Fin Fila Dos -->
+    </div>
+  </div><!-- Fin Seccion BENEFICIOS -->
+
+<!-- Seccion PIE DE PAGINA -->
+<div class="piedepagina">
+  <div class="row">
+      <div class="col-sm-3">
+          <br>
+          <h6>Meta S.A.S.</h6>
+          <h6> Salta - Argentina</h6>
+          <h6><a href="https://www.google.com/" class="btn-link"  target="_blank">Politicas de Privacidad</a></h6>
+          <h6><a href="https://www.google.com/"class="btn-link" target="_blank">Ayuda</a></h6>
+      </div>
+      <div class="col-sm-3">
+        <br>
+        <img src="assets/comercio/icons8-facebook-45.png"/>
+        <H4 class="mt-2">MetaSalta</H4>
+      </div>
+    <div class="col-sm-3">
+      <br>
+      <img src="assets/comercio/icons8-instagram-48.png"/>
+        <H4>MetaSalta</H4>
+    </div>
+    <div class="col-sm-3">
+      <br>
+      <img src="assets/comercio/icons8-descargar-40.png"/>
+      <H4 class="mt-2">Muy Pronto</H4>
+      <h5>en tu Celular</h5>
+    </div>
   </div>
+</div>

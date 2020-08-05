@@ -35,4 +35,4 @@ export class InicioComponent implements OnInit {
       error => console.log('adios!!',error)
     );
   }
-} 
+}
