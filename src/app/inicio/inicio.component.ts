@@ -18,6 +18,8 @@ export class InicioComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
+    console.log('user data en inicio',this.tokenService.currentUserData);
     this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
   }
 

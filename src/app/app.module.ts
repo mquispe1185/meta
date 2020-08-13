@@ -48,6 +48,7 @@ import { AngularTokenModule } from 'angular-token';
 import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
 import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
     ReactiveFormsModule,
     HttpClientModule,
 
+    ToastrModule.forRoot(), 
     AngularTokenModule.forRoot({
       apiBase:                     environment.API_URL,
          apiPath:                   null,
