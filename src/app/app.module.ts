@@ -49,13 +49,15 @@ import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
 import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
 import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     HeaderComponent,
     FooterComponent,
-    AfterloginComponent
+    AfterloginComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +103,10 @@ import { ToastrModule } from 'ngx-toastr';
 
   }),
   
+  AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyAesg0LcvsEiCke9wvIissLRq6a25vsnaY',
+    libraries: ['places']
+  }),
 
     MatAutocompleteModule,
     MatBadgeModule,

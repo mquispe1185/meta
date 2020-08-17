@@ -10,6 +10,11 @@
     font-family: sans-serif;
     padding-left: 0.5rem;
   }
+
+  agm-map {
+    height: 300px;
+  }
+  
 /*   .input1:focus {
     border-color: yellow!important;
     lighting-color: aqua !important;

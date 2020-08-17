@@ -18,3 +18,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-raised-button{
     color: white !important;
   }
+
+  /* para google places */
+.pac-container {
+    z-index: 2000;
+  }

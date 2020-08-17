@@ -6,3 +6,18 @@
     min-height: 1px;
     padding: 0.25rem;
 }
+
+
+
+.pac-container {
+  
+    z-index: 99999 !important;
+
+}
+.modal{
+    z-index: 20;   
+}
+
+.modal-backdrop{
+    z-index: 10;
+} 

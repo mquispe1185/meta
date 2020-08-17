@@ -1,6 +1,7 @@
+import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
 import { Comercio } from './../../../modelos/comercio';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild } from '@angular/core';
 import { Provincia } from '../../../modelos/provincia';
 import { Departamento } from '../../../modelos/departamento';
 import { Localidad } from '../../../modelos/localidad';
@@ -10,6 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 import { UbicacionService } from '../../../servicios/ubicacion.service';
 import { RubroService } from '../../../servicios/rubro.service';
 import { Rubro } from '../../../modelos/rubro';
+import { MapsAPILoader, AgmMap } from '@agm/core';
+import { FormControl } from '@angular/forms';
+import { ModalGooglePlacesComponent } from '../modal-google-places/modal-google-places.component';
+import { Horario } from '../../../modelos/horario';
 
 @Component({
   selector: 'app-gestioncomercio',
@@ -27,6 +32,10 @@ export class GestioncomercioComponent implements OnInit {
   localidades:Localidad[]=[];
   rubros:Rubro[]=[];
   comercios:Comercio[]=[];
+  semana = Semana.semana;
+  horarios:Horario[]=[];
+  nuevos_horarios:Horario[]=[];
+  nuevo_horario:Horario;
   constructor( public tokenService: AngularTokenService,
     private modalService: NgbModal,
     private ubicacionService:UbicacionService,
@@ -35,6 +44,7 @@ export class GestioncomercioComponent implements OnInit {
     private toastr: ToastrService,) { }
 
   ngOnInit(): void {
+   
     this.getComercios();
     this.getProvincias();
     this.getRubros();
@@ -91,6 +101,45 @@ export class GestioncomercioComponent implements OnInit {
     )
   }
 
+  openFormAgregarUbicacion(element){
+      const modalRefCity = this.modalService.open(ModalGooglePlacesComponent);
+      modalRefCity.componentInstance.comercio = element;
+       modalRefCity.componentInstance.comercioevent.subscribe(($e) => {
+        this.actualizarUbicacion($e);
+        this.modalService.dismissAll();
+       
+      })
+    }
+  
+    actualizarUbicacion(comercio){
+      //console.log('comercioooo',comercio); 
+      this.comercioService.updateComercio(comercio).subscribe(
+        cms =>{this.comercios = cms;
+          //this.modalService.dismissAll();
+        this.toastr.success('bien hecho!', 'Nuevo comercio creado!');}
+    )
+      
+    }
+    openFormHorario(modal){
+     // this.comercio = new Comercio();
+    this.nuevo_horario = new Horario();
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+    setDia(event, dia){
+      console.log('evento check', event);
+    }
+    addHorario(){
+      console.log('dias selec',this.semana)
+      // this.semana.forEach(
+      //   d =>{
+      //     if (d.check)
+      //   }
+      // )
+    }
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

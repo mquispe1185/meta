@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularTokenService } from 'angular-token';
+import { MapsAPILoader} from '@agm/core';
+
 
 @Component({
   selector: 'app-inicio',
@@ -12,9 +14,9 @@ export class InicioComponent implements OnInit {
 
   images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
   safeUrl;
-  constructor(public tokenService: AngularTokenService,
-    private _sanitizer: DomSanitizer,
 
+  constructor(public tokenService: AngularTokenService,
+    private _sanitizer: DomSanitizer
     ) { }
 
   ngOnInit(): void {
@@ -37,4 +39,5 @@ export class InicioComponent implements OnInit {
       error => console.log('adios!!',error)
     );
   }
+
 }

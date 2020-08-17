@@ -38,10 +38,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GestioncomercioComponent } from './gestioncomercio/gestioncomercio.component';
-
+import { AgmCoreModule } from '@agm/core';
+import { ModalGooglePlacesComponent } from './modal-google-places/modal-google-places.component';
+import { GooglePlacesDirectiveDirective } from '../../directives/google-places-directive.directive';
 
 @NgModule({
-  declarations: [ComerciopanelComponent, GestioncomercioComponent],
+  declarations: [ComerciopanelComponent, GestioncomercioComponent, ModalGooglePlacesComponent, GooglePlacesDirectiveDirective],
+  entryComponents: [ModalGooglePlacesComponent],
+
   imports: [
     CommonModule,
     ComerciopanelRoutingModule,
@@ -49,6 +53,8 @@ import { GestioncomercioComponent } from './gestioncomercio/gestioncomercio.comp
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+    AgmCoreModule,
 
     MatAutocompleteModule,
     MatBadgeModule,
