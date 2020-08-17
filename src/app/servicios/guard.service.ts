@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
-import { CanLoad, Router } from '@angular/router';
+import { CanLoad, Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +12,36 @@ export class GuardService implements CanLoad {
   constructor(private tokenService: AngularTokenService, 
               private router: Router) {
   }
-  canLoad( ): boolean {
-    console.log('user log???',this.tokenService.userSignedIn());
-    if (this.tokenService.userSignedIn() && this.tokenService.currentUserData){
-      if(this.tokenService.currentUserData.rol_id === 2){
-        return true;
+  canLoad():  Observable<boolean> | Promise<boolean> | boolean {
+    console.log('user log en guard???',this.tokenService.userSignedIn());
+  
+    if (this.tokenService.userSignedIn() === true){
+      if(this.tokenService.currentUserData === null || this.tokenService.currentUserData === undefined){
+        console.log('entramos a undefined');
+        this.tokenService.validateToken().toPromise()
+        .then((res) => {
+          console.log('recibimos respuesta de tokenvalidate');
+                  if(this.tokenService.currentUserData.rol_id === 2){
+                    this.router.navigate(['comerciopanel']);
+                    return true;
+                  }else{
+                    this.router.navigate(['login']);
+                    return false;
+                  }
+        })
+        
       }else{
-        this.router.navigate(['login']);
-        return false;
+        console.log('si hay user dataaaa')
+        if(this.tokenService.currentUserData.rol_id === 2){
+          return true;
+        }else{
+          this.router.navigate(['login']);
+          return false;
+        }
       }
+        
     }else{
+      console.log('entramos a usuario loged false')
       this.router.navigate(['login']);
       return false;
     }

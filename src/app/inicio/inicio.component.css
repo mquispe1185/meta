@@ -127,8 +127,14 @@ margin-inline-start: 20px;
       font-weight:300;
     }
 
+<<<<<<< HEAD
     @font-face2 {
       font-family: 'Wavehaus2';
       src: url(/assets/Wavehaus/Wavehaus-128Bold.ttf) format("truetype");
       font-weight:300;
     }
+=======
+.screen-70 {
+  min-height: 70vh;
+}
+>>>>>>> ef672b68ebfbb7166d59e4790417a510946f1aec

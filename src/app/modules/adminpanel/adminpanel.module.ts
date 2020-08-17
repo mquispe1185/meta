@@ -1,3 +1,4 @@
+import { ConfirmationDialogComponent } from './../../inicio/confirmation-dialog/confirmation-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -84,6 +85,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTooltipModule,
     NgbModule,
     
-  ]
+  ],
+  entryComponents: [ConfirmationDialogComponent],
 })
 export class AdminpanelModule { }

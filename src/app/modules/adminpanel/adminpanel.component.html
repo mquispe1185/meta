@@ -12,6 +12,57 @@
                       </mat-card>
         </div>
     </div>
+    <div class="mt-3">
+       
+            <!-- Input Agregado para permitir la Busqueda -->
+            <mat-form-field>
+              <input matInput (keyup)="filtrarUsuarios($event.target.value)" placeholder="Buscar Usuario...">
+            </mat-form-field>
+  
+   
+            <mat-table #tablausuarios [dataSource]="lstUsuarios" class="mat-elevation-z8">
+              <!-- Nombre -->
+              <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Nombre:</span>{{element.nombre}}
+                </mat-cell>
+              </ng-container>
+          
+              <!-- Email -->
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                <mat-cell *matCellDef="let element" >
+                  <span class="mobile-label">Email:</span> {{element.email}}
+                </mat-cell>
+              </ng-container>
+              <!-- Rol -->
+               <ng-container matColumnDef="prov">
+                <mat-header-cell *matHeaderCellDef>Provincia</mat-header-cell>
+                <mat-cell *matCellDef="let element" >
+                  <span class="mobile-label">Provincia:</span> {{element.provincia.nombre}}
+                </mat-cell>
+              </ng-container>
+              <!-- Acciones Column -->
+              <ng-container matColumnDef="acciones">
+                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Acciones:</span>
+                  <button placement="right" ngbTooltip="Aprobar" class="mr-2"
+                    mat-icon-button style="background-color: transparent" (click)="dialogAprobarUsuario(element)">
+                                                          <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
+                  <button placement="right" ngbTooltip="Eliminar"
+                    mat-icon-button style="background-color: transparent" (click)="dialogEliminarUsuario(element)"><mat-icon>delete</mat-icon></button>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="dspColUsuarios"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: dspColUsuarios;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
+            </mat-table>
+    
+   
+            <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+
+
 
 </div> 
 

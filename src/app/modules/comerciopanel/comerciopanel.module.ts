@@ -37,10 +37,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GestioncomercioComponent } from './gestioncomercio/gestioncomercio.component';
 
 
 @NgModule({
-  declarations: [ComerciopanelComponent],
+  declarations: [ComerciopanelComponent, GestioncomercioComponent],
   imports: [
     CommonModule,
     ComerciopanelRoutingModule,
