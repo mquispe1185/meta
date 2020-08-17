@@ -1,182 +1,126 @@
-<mat-toolbar  color="primary" class="position-fixed">
-  <img src="assets/logos/logos-06.png" alt="logo" class="logo">
-    <!-- <span class="txt-blanco">Meta App</span> -->
-  <div class="centrado">
-      <input class="input1 mr-sm-2" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
-      <!-- <button type="button" class="btn btn-primary mr-1" (click)="scroll(home)">HOME</button> -->
-      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(home)">
-        <mat-icon>home</mat-icon> INICIO</button>
-      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(productos)">
-          <mat-icon>store_front</mat-icon>PRODUCTOS</button>
-      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(servicios)">
-          <mat-icon>construction</mat-icon>SERVICIOS</button>
-      <button mat-raised-button color="primary" class="mr-1" (click)="scroll(beneficios)">
-          <mat-icon>thumb_up</mat-icon> BENEFICIOS</button>
+<div Style="background-image:url(assets/barrio1920.png)">
+  <div class="rectangulo">
+
   </div>
-  <span class="example-spacer"></span>
-  <!-- <button type="button" class="btn btn-primary" (click)="login()">Login</button> -->
-  <!-- <button type="button" class="btn btn-google btn-outline" (click)="login()"> -->
-      <button mat-raised-button color="accent"  (click)="login()">
-    <img src="https://img.icons8.com/color/16/000000/google-logo.png"> Ingresar</button>
-</mat-toolbar>
-
-<div class="container">
-<div #home class="full-screen bg-blanco">
-  <div class="row">
-    <div class="col-sm-6 tt">
-        <mat-card class="tarjeta-info">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>Meta!</mat-card-title>
-              <mat-card-subtitle>Ya llegó</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="assets/logos/logos_nar.png" alt="logo meta" class="logo-nar">
-            <mat-card-content>
-              <p>
-                  Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona. Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen. Todo desde la comodidad de tu hogar.
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>INFO</button>
-              <button mat-button>SUMATE</button>
-            </mat-card-actions>
-          </mat-card>
-    </div>
-    <div class="col-sm-6 tt">
-      <div class="tarjeta-info">
-            <ngb-carousel #carousel [interval]="1500" [showNavigationArrows]=false>
-                <ng-template ngbSlide *ngFor="let img of images; index as i">
-                  <div class="carousel-caption">
-                    <h3>Comercios adheridos</h3>
-                  </div>
-                  <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-                    <div class="picsum-img-wrapper">
-                      <img [src]="img" alt="My image {{i + 1}} description">
-                    </div>
-                  </a>
-                </ng-template>
-              </ngb-carousel>
-            </div>
-      </div>
-  </div>
-
-
-<!--   <div class="row">
-    <div class="col-sm-3">
-      <div class="circulo">
-          <div class="row h-100 justify-content-center align-items-center">
-          <span class="txt-blanco">Ofertas</span>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="circulo">
-            <div class="row h-100 justify-content-center align-items-center">
-                <span class="txt-blanco">Cercano</span>
-                </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-          <div class="circulo">
-              <div class="row h-100 justify-content-center align-items-center">
-                  <span class="txt-blanco">Turnos</span>
-                  </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="circulo">
-                <div class="row h-100 justify-content-center align-items-center">
-                    <span class="txt-blanco">Efectivo</span>
-                    </div>
-            </div>
-          </div>
-  </div> -->
-
-  <div class="row">
-      <div class="col-sm-3">
-          <mat-card class="tarjeta-info">
-              <mat-card-header>
-                <mat-card-title>
-                  <mat-icon  [ngStyle]="{'color':'#cc5316'}">add_shopping_cart</mat-icon>
-                  Ofertas</mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image src="assets/comercio/meta_ofertas.png" alt="logo meta" class="logo-nar">
-              <mat-card-content>
-                <p>
-                    Encontra las ofertas y promociones que buscabas! lorem ipsum dolor sit amet,
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button class="palabracolor">Saber más...</button>
-              </mat-card-actions>
-            </mat-card>
-      </div>
-      <div class="col-sm-3">
-          <mat-card class="tarjeta-info">
-              <mat-card-header>
-                <mat-card-title>
-                  <mat-icon  [ngStyle]="{'color':'#cc5316'}">gps_fixed</mat-icon>
-                  Cercano</mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image src="assets/comercio/meta_pagos.png" alt="logo meta" class="logo-nar">
-              <mat-card-content>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button class="palabracolor">Saber más...</button>
-              </mat-card-actions>
-            </mat-card>
-      </div>
-      <div class="col-sm-3">
-          <mat-card class="tarjeta-info">
-              <mat-card-header>
-                <mat-card-title>
-                    <mat-icon  [ngStyle]="{'color':'#cc5316'}">star</mat-icon>
-                    Referencias</mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image src="assets/comercio/meta_ofertas.png" alt="logo meta" class="logo-nar">
-              <mat-card-content>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button class="palabracolor">Saber más...</button>
-              </mat-card-actions>
-            </mat-card>
-      </div>
-      <div class="col-sm-3">
-          <mat-card class="tarjeta-info">
-              <mat-card-header>
-                <mat-card-title>
-                    <mat-icon  [ngStyle]="{'color':'#cc5316'}">local_atm</mat-icon>
-                  Efectivo</mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image src="assets/comercio/meta_pagos.png" alt="logo meta" class="logo-nar">
-              <mat-card-content>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odio ipsum quisquam,
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button class="palabracolor">Saber más...</button>
-              </mat-card-actions>
-            </mat-card>
-      </div>
-  </div>
-
-
-
-
-
 </div>
 
+<div class="superficial">
+  <div class="menu">
+    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Inicio</a>
+    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Quiero Comprar</a>
+    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Servicios</a>
+    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Beneficios</a>
+    <a (click)="login()" class="btn-link menu-boton" target="_blank">Ingresar</a>
+  </div>
+
+  <div class="row contenedorbusqueda">
+    <div class="col-md-3 busqueda-izq">
+      <mat-icon [ngStyle]="{'color':'#EE7222'}">location_on</mat-icon>San Lorenzo
+    </div>
+    <div class="col-sm-8 busqueda">
+      <input class="input1" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
+    </div>
+    <div class="col-sm-1 busqueda-der">
+      <button mat-button btn-busqueda>
+        <mat-icon [ngStyle]="{'color':'#fff'}">search</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="fondototal">
+  <div class="fondoinicio offset-sm-1 col-sm-10">
+    <div class="offset-sm-1 col-sm-10">
+      Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona.<br />
+      <span>Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen.</span><br />
+      <span>Todo desde la comodidad de tu hogar.</span>
+    </div>
+    <div class="class">
+      <br />
+      <h5><strong>¿Qué estas Buscando?</strong></h5>
+    </div>
+    <div class="carrusel-iconos">
+
+    </div>
+
+
+    <div class="fondocomercios">
+      <strong>Cerca de Ti...</strong>
+      <div class="mat-body-2">
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Cafeteria Santa Maria</strong>
+            </div>
+            <div class="clas">
+              Cafeteria familiar en el centro
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Peluqueria Los Amigos</strong>
+            </div>
+            <div class="clas">
+              Centro de Estética
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/programador570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Programador Freelance</strong>
+            </div>
+            <div class="clas">
+              Servicio Profesional Independiente
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Cafeteria Santa Maria</strong>
+            </div>
+            <div class="clas">
+              Cafeteria familiar en el centro
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+
+<<<<<<< HEAD
 <div #productos class="full-screen bg-naranja">
     <div class="row">
         <div class="col-sm-6 Titulo2" >
@@ -195,122 +139,104 @@
           <iframe width="400" height="400" [src]="safeUrl"
           frameborder="0" allow="accelerometer; autoplay; encrypted-media;
           gyroscope; picture-in-picture" allowfullscreen></iframe>
+=======
+>>>>>>> 73aa98469c0c96490c446bc2f59a5887590019da
         </div>
-    </div>
-  </div>
+        <div class="col-sm-4">
 
-  <div #servicios class="full-screen bg-blanco">
-      <div class="row">
-          <div class="col-sm-6 tt">
-                <iframe width="400" height="400" [src]="safeUrl"
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-                gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="col-sm-6 Titulo3">
-           <span >SERVICIOS</span>
-           <p class="parrafo2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
-              voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
-              omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
-              unde.</p>
-              <p class="parrafo2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
-                  voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
-                  omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
-                  unde.</p>
-          </div>
-      </div>
-    </div>
-
-  <div #beneficios class="screen-70 bg-blanco">
-    <div class="tt">
-        <span class="Titulo3">BENEFICIOS</span>
-        <!-- Fila uno -->
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="row div-promo">
-                  <div class="col-sm-6">
-                      <h5>Descuentos Imperdibles!</h5>
-                      <h6 style="color:chocolate" >Ferreteria Pepito</h6>
-                      <h6>Palas y Carretillas</h6>
-                      <button mat-raised-button color="primary">Ver más</button>
-                  </div>
-                  <div class="col-sm-6">
-                      <img class="resize_fit_center" src="assets/comercio/palas.png" alt="logo meta">
-                  </div>
-                </div>
-              </div>
-            <div class="col-sm-6">
-              <div class="row div-promo">
-                <div class="col-sm-6">
-                    <h5>Oferta de la Semana</h5>
-                    <h6 style="color:chocolate" >Z-Hard</h6>
-                    <h6>Impresoras Epson</h6>
-                    <button mat-raised-button color="primary">Ver más</button>
-                </div>
-                <div class="col-sm-6">
-                    <img class="resize_fit_center" src="assets/comercio/impresora.png" alt="logo meta">
-                </div>
-              </div>
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Peluqueria Los Amigos</strong>
+            </div>
+            <div class="clas">
+              Centro de Estética
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
             </div>
           </div>
-        <!-- Fin Fila uno -->
-        <!-- Fila Dos -->
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="row div-promo">
-                  <div class="col-sm-6">
-                      <h5>Oferta de la Semana</h5>
-                      <h6 style="color:chocolate" >Z-Hard</h6>
-                      <h6>Impresoras Epson</h6>
-                      <button mat-raised-button color="primary">Ver más</button>
-                  </div>
-                  <div class="col-sm-6">
-                      <img class="resize_fit_center" src="assets/comercio/impresora.png" alt="logo meta">
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                  <div class="row div-promo">
-                    <div class="col-sm-6">
-                        <h5>Descuentos Imperdibles!</h5>
-                        <h6 style="color:chocolate" >Ferreteria Pepito</h6>
-                        <h6>Palas y Carretillas</h6>
-                        <button mat-raised-button color="primary">Ver más</button>
-                    </div>
-                    <div class="col-sm-6">
-                        <img class="resize_fit_center" src="assets/comercio/palas.png" alt="logo meta">
-                    </div>
-                  </div>
-                </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/programador570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Programador Freelance</strong>
+            </div>
+            <div class="clas">
+              Servicio Profesional Independiente
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
           </div>
-        <!-- Fin Fila Dos -->
-    </div>
-  </div><!-- Fin Seccion BENEFICIOS -->
 
-<!-- Seccion PIE DE PAGINA -->
-<div class="piedepagina">
-  <div class="row">
-      <div class="col-sm-3">
-          <br>
-          <h6>Meta S.A.S.</h6>
-          <h6> Salta - Argentina</h6>
-          <h6><a href="https://www.google.com/" class="btn-link"  target="_blank">Politicas de Privacidad</a></h6>
-          <h6><a href="https://www.google.com/"class="btn-link" target="_blank">Ayuda</a></h6>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <br>
-        <img src="assets/comercio/icons8-facebook-45.png"/>
-        <H4 class="mt-2">MetaSalta</H4>
+      <div class="row">
+        <div class="col-sm-4">
+
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Cafeteria Santa Maria</strong>
+            </div>
+            <div class="clas">
+              Cafeteria familiar en el centro
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-4">
+
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Peluqueria Los Amigos</strong>
+            </div>
+            <div class="clas">
+              Centro de Estética
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="div-promo">
+            <div class="class">
+              <img class="resize_fit_center" src="assets/programador570.png" alt="">
+            </div>
+            <div class="clas">
+              <strong>Programador Freelance</strong>
+            </div>
+            <div class="clas">
+              Servicio Profesional Independiente
+            </div>
+            <div class="clas">
+              a 1.2 km de distancia
+            </div>
+          </div>
+
+        </div>
       </div>
-    <div class="col-sm-3">
+
+      <div class="">
+        Cargar Más
+      </div>
       <br>
-      <img src="assets/comercio/icons8-instagram-48.png"/>
-        <H4>MetaSalta</H4>
     </div>
-    <div class="col-sm-3">
-      <br>
-      <img src="assets/comercio/icons8-descargar-40.png"/>
-      <H4 class="mt-2">Muy Pronto</H4>
-      <h5>en tu Celular</h5>
-    </div>
+
   </div>
 </div>

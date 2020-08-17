@@ -64,11 +64,12 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     BrowserAnimationsModule,
 
+
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
 
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     AngularTokenModule.forRoot({
       apiBase:                     environment.API_URL,
          apiPath:                   null,
@@ -102,11 +103,15 @@ import { AgmCoreModule } from '@agm/core';
          loginField:                'email',
 
   }),
+<<<<<<< HEAD
   
   AgmCoreModule.forRoot({
     apiKey: 'AIzaSyAesg0LcvsEiCke9wvIissLRq6a25vsnaY',
     libraries: ['places']
   }),
+=======
+
+>>>>>>> 73aa98469c0c96490c446bc2f59a5887590019da
 
     MatAutocompleteModule,
     MatBadgeModule,
