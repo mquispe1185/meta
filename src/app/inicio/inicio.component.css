@@ -1,222 +1,134 @@
-  .position-fixed{
-    position: fixed;
-    top: 0;
-    z-index: 9999;
-  }
-  .input1 {
-    background: white;
-    border-color: #cc5316 !important;
-    color: -internal-light-dark(yellow, white);
-    font-family: sans-serif;
-    padding-left: 0.5rem;
-  }
-/*   .input1:focus {
-    border-color: yellow!important;
-    lighting-color: aqua !important;
-    border-radius: 1rem;
-    font-family: sans-serif;
-    padding-left: 0.5rem;
-    box-lines: green;
-  } */
-
-  .mat-raised-button{
-    color: white !important;
-  }
-  .tt{
-    padding-top: 70px;
-    vertical-align: center;
-    width:100%;
-  }
-
-  .Titulo2{
-    padding-top: 70px;
-    color: white;
-    font-size: 50px;
-    text-align:center;
-  }
-  .Titulo3{
-    padding-top: 70px;
-    color: #cc5316;
-    font-size: 50px;
-    text-align: center;
-  }
-  .palabracolor{
-    color: #cc5316;
-  }
-  .palabrapie{
-    size: 12;
-  }
-  .parrafo{
-    color: white;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .parrafo2{
-    color: #cc5316;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  /* .embed-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    text-align: center;
-    width:100%;
+.rectangulo{
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  /* height: 564px; */
+  height: 395px;
+  background: #EE7222 0% 0% no-repeat padding-box;
+  opacity: 0.69;
+  z-index: -999;
 }
-.embed-container iframe {
-    position: absolute;
-    text-align: center;
-    display: block;
-} */
+.superficial{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 395px;
+}
 
+.menu{
+position: relative;
+top: 25px;
+text-align:right;
+height: 22px;
+margin-right: 25px;
+font-family: 'Wavehause2', sans-serif;
+}
+.menu-boton{
+text-align: center;
+font-family: 'Wavehause2', sans-serif;
+font-size: 22px;
+letter-spacing: 0px;
+color: #FFFFFF;
+margin-inline-start: 20px;
+}
 
-  .bg-blanco{
-    background-color: white;
-  }
-  .bg-grisclaro{
-    background-color: #e75514;
-  }
-  .bg-gris{
-    background-color: #ccc8c7;
-  }
-  .bg-naranja{
-    background-color: #f18743;
-    border: 20px solid rgba(0, 0, 0, 0.1);
-    -moz-background-clip: border;     /* Firefox 3.6 */
-    -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
-    background-clip: border-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
-  }
+.fondototal{
+  background: #EBEBEB;
+  text-align: center;
+}
+.fondoinicio{
+  background: #EBEBEB;
+  text-align: center;
+}
 
+.contenedorbusqueda{
+  position: relative;
+  /* top: 407px; */
+  top:270px;
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 5%;
+}
 
-  .circulo{
-    width: 180px;
-    height: 180px;
-    margin: 20px;
-    border-radius: 50%;
-    background-color: #cc5316;
-  }
-  .section {
-    padding: 100px 0;
-    background-color: grey;
-  }
+.busqueda-izq{
+  background: #E5E5E5;
+  border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+  padding: 8px;
+}
+.busqueda{
+  background: white;
+}
 
-  .logo{
-    max-width:150px;
-    max-height:150px;
-    width:100%;
-    height:100%;
-  }
+.busqueda-der{
+  background: #EE7222;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 10px;
+}
+.btn-busqueda{
+  width: 100%;
+  height: 100%;
+}
+.input1{
+  width: 100%;
+  height: 100%;
+  border: transparent;
+  background: transparent;
+}
+.input1:focus{
+  border: transparent;
+  background: transparent;
+}
 
-  .logo-nar{
-    max-width:400px;
-    width:100%;
-    height:100%;
-  }
-  .centrado{
-    flex: 1 1 auto;
-    text-align: center;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+.carrusel-iconos{
+  top: 933px;
+  left: 199px;
+  width: 1523px;
+  height: 120px;
+  opacity: 1;
+}
 
-  .tarjeta-info {
-    margin: 20px;
-    max-width: 100%;
-  }
-  .tarjeta-promo {
-    margin: 10px;
-    max-width: 100%;
-    height: 200px;
-  }
-  .div-promo {
-    background: white;
-    color: #545454;
-    margin: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 200px;
-    transition: box-shadow .3s;
-    border: 1px solid #ccc;
-    background: #fff;
-    float: left;
+.fondocomercios{
+  width: 100%;
+  text-align: center;
+  font-family: 'Wavehause', sans-serif;
+}
+
+.div-promo {
+  background: white;
+  color: #545454;
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
+  height: 280px;
+  transition: box-shadow .3s;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background: #fff;
+
   }
   .div-promo:hover {
-    box-shadow: 0 0 15px rgba(0,33,33,.2);
+  box-shadow: 0 0 15px rgba(0,33,33,.2);
   }
+
   .resize_fit_center {
-    max-width:100%;
-    max-height:100%;
+    max-width:95%;
+    max-height:80%;
     vertical-align: middle;
-}
-.piedepagina{
-  padding: 10px;
-  padding-bottom: 70px;
-  background: #cc5316;
-  color: white;
-  height: 180px;
-  text-align: center;
-  vertical-align: center;
-  width:100%;
-}
-
-.btn-link{
-  height: 15px;
-  color: white;
-}
-.btn-link:hover{
-  color: white;
-}
-
-  .btn-google {
-    color: #545454;
-    background-color: #ffffff;
-    box-shadow: 0 1px 2px 1px #ddd
-}
-
-  .example-header-image {
-    background-image: url('https://img.icons8.com/cute-clipart/64/000000/google-logo.png');
-    background-size: cover;
-  }
-
-  @media (max-width: 991px) {
-    .section {
-      padding-top: 70px;
-      padding-bottom: 70px;
-    }
-  }
-  @media (max-width: 767px) {
-    .section {
-      padding-top: 40px;
-      padding-bottom: 40px;
+    border-radius: 1em;
     }
 
-    .logo{
-      max-width:100px;
-      max-height:100px;
-      width:100%;
-      height:100%;
+    @font-face {
+      font-family: 'Wavehaus';
+      src: url(/assets/Wavehaus/Wavehaus-128Bold.ttf) format("truetype");
+      font-weight:300;
     }
-  }
 
-  /* ----------------------
-*	Height width
----------------------------*/
-.full-screen {
-  min-height: 100vh;
-}
-
-.screen-85 {
-  min-height: 85vh;
-}
-
-.screen-65 {
-  min-height: 65vh;
-}
-
-.screen-50 {
-  min-height: 50vh;
-}
+    @font-face2 {
+      font-family: 'Wavehaus2';
+      src: url(/assets/Wavehaus/Wavehaus-128Bold.ttf) format("truetype");
+      font-weight:300;
+    }

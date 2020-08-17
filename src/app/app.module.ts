@@ -48,6 +48,8 @@ import { AngularTokenModule } from 'angular-token';
 import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
 import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +62,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
 
     FormsModule,
     ReactiveFormsModule,
@@ -98,7 +101,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
          loginField:                'email',
 
   }),
-  
+
 
     MatAutocompleteModule,
     MatBadgeModule,
