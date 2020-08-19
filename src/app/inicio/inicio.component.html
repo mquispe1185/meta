@@ -6,16 +6,16 @@
 
 <div class="superficial">
   <div class="menu">
-    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Inicio</a>
-    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Quiero Comprar</a>
-    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Servicios</a>
-    <a href="https://www.google.com/" class="btn-link menu-boton" target="_blank">Beneficios</a>
-    <a (click)="login()" class="btn-link menu-boton" target="_blank">Ingresar</a>
+      <button type="button" (click)="login()" class="menu-boton btn btn-link">Inicio</button>
+    <button type="button" (click)="login()" class="menu-boton btn btn-link">Quiero Comprar</button>
+    <button type="button" (click)="login()" class="menu-boton btn btn-link">Servicios</button>
+    <button type="button" (click)="login()" class="menu-boton btn btn-link">Beneficios</button>
+    <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
   </div>
 
   <div class="row contenedorbusqueda">
     <div class="col-md-3 busqueda-izq">
-      <mat-icon [ngStyle]="{'color':'#EE7222'}">location_on</mat-icon>San Lorenzo
+     <mat-icon class="gps mx-2">location_on</mat-icon> <span class="ciudad">San Lorenzo</span> 
     </div>
     <div class="col-sm-8 busqueda">
       <input class="input1" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
@@ -29,214 +29,311 @@
 </div>
 
 <div class="fondototal">
-  <div class="fondoinicio offset-sm-1 col-sm-10">
-    <div class="offset-sm-1 col-sm-10">
+  <div class="fondoinicio offset-sm-1 col-sm-10 pt-4">
+    <div class="parrafoini pt-5">
       Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona.<br />
-      <span>Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen.</span><br />
-      <span>Todo desde la comodidad de tu hogar.</span>
+      Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen.<br />
+      Todo desde la comodidad de tu hogar.
     </div>
-    <div class="class">
-      <br />
-      <h5><strong>¿Qué estas Buscando?</strong></h5>
+    <div class="mt-5 pt-5">
+      <span class="subti">¿Qué estas buscando?</span>
     </div>
-    <div class="carrusel-iconos">
+    <div class="carrusel-iconos my-5">
+        <owl-carousel-o [options]="customOptions">
+         <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-prescription-bottle-alt fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                 Farmacias</span>
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-wine-bottle fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                    Vinerias</span>
+                  
+                 
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-handshake fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                 Servicios</span>
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-cut fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                    Peluquerias</span>
+                  
+                 
+            </div>
+          </ng-template>  
 
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-prescription-bottle-alt fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                 Farmacias</span>
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-wine-bottle fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                    Vinerias</span>
+                  
+                 
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-handshake fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                 Servicios</span>
+            </div>
+          </ng-template>  
+          <ng-template carouselSlide>
+              <div>
+                  <span style="color: #3C3C3C;opacity: 1;">        
+                      <i class="fas fa-cut fa-4x"></i>
+                    </span><br>
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                    Peluquerias</span>
+                  
+                 
+            </div>
+          </ng-template>  
+        </owl-carousel-o>
     </div>
 
 
     <div class="fondocomercios">
-      <strong>Cerca de Ti...</strong>
-      <div class="mat-body-2">
-      </div>
       <div class="row">
-        <div class="col-sm-4">
+        <span class="subti ml-3">Cerca de Ti...</span>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-4 margendiv">
 
           <div class="div-promo">
-            <div class="class">
+            <div class>
               <img class="resize_fit_center" src="assets/cafe570.png" alt="">
             </div>
-            <div class="clas">
-              <strong>Cafeteria Santa Maria</strong>
+            <div class="nombre-comer mt-4">
+              Cafeteria Santa Maria
             </div>
-            <div class="clas">
+            <div class="desc-comer mt-2">
               Cafeteria familiar en el centro
             </div>
-            <div class="clas">
+            <div class="dist-comer mt-2">
               a 1.2 km de distancia
             </div>
           </div>
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 margendiv">
 
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+            <div class="div-promo">
+              <div class>
+                <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+              </div>
+              <div class="nombre-comer mt-4">
+                  Peluqueria Los Amigos
+              </div>
+              <div class="desc-comer mt-2">
+                  Centro de Estética
+              </div>
+              <div class="dist-comer mt-2">
+                a 1.2 km de distancia
+              </div>
             </div>
-            <div class="clas">
-              <strong>Peluqueria Los Amigos</strong>
-            </div>
-            <div class="clas">
-              Centro de Estética
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
+  
           </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/programador570.png" alt="">
-            </div>
-            <div class="clas">
-              <strong>Programador Freelance</strong>
-            </div>
-            <div class="clas">
-              Servicio Profesional Independiente
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
+          <div class="col-sm-4 margendiv">
 
-        </div>
+              <div class="div-promo">
+                <div class>
+                  <img class="resize_fit_center" src="assets/programador570.png" alt="">
+                </div>
+                <div class="nombre-comer mt-4">
+                    Programador Freelance
+                </div>
+                <div class="desc-comer mt-2">
+                    Servicio Profesional Independiente 
+                </div>
+                <div class="dist-comer mt-2">
+                  a 1.2 km de distancia
+                </div>
+              </div>
+    
+            </div>
+
+       
       </div>
       <div class="row">
-        <div class="col-sm-4">
+          <div class="col-sm-4 margendiv">
 
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+              <div class="div-promo">
+                <div class>
+                  <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+                </div>
+                <div class="nombre-comer mt-4">
+                  Cafeteria Santa Maria
+                </div>
+                <div class="desc-comer mt-2">
+                  Cafeteria familiar en el centro
+                </div>
+                <div class="dist-comer mt-2">
+                  a 1.2 km de distancia
+                </div>
+              </div>
+    
             </div>
-            <div class="clas">
-              <strong>Cafeteria Santa Maria</strong>
-            </div>
-            <div class="clas">
-              Cafeteria familiar en el centro
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-
-<<<<<<< HEAD
-<div #productos class="full-screen bg-naranja">
-    <div class="row">
-        <div class="col-sm-6 Titulo2" >
-            <span>PRODUCTOS</span>
-            <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
-              voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
-              omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
-              unde.</p>
-              <p class="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quo
-                  voluptates aspernatur. Sed excepturi ipsum deleniti vero. Veniam incidunt
-                  omnis, id, magni amet placeat doloribus atque neque praesentium dignissimos
-                  unde.</p> 
-                 
-        </div>
-        <div class="col-sm-6 tt">
-          <iframe width="400" height="400" [src]="safeUrl"
-          frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-          gyroscope; picture-in-picture" allowfullscreen></iframe>
-=======
->>>>>>> 73aa98469c0c96490c446bc2f59a5887590019da
-        </div>
-        <div class="col-sm-4">
-
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
-            </div>
-            <div class="clas">
-              <strong>Peluqueria Los Amigos</strong>
-            </div>
-            <div class="clas">
-              Centro de Estética
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/programador570.png" alt="">
-            </div>
-            <div class="clas">
-              <strong>Programador Freelance</strong>
-            </div>
-            <div class="clas">
-              Servicio Profesional Independiente
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-
-        </div>
+            <div class="col-sm-4 margendiv">
+    
+                <div class="div-promo">
+                  <div class>
+                    <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+                  </div>
+                  <div class="nombre-comer mt-4">
+                      Peluqueria Los Amigos
+                  </div>
+                  <div class="desc-comer mt-2">
+                      Centro de Estética
+                  </div>
+                  <div class="dist-comer mt-2">
+                    a 1.2 km de distancia
+                  </div>
+                </div>
+      
+              </div>
+              <div class="col-sm-4 margendiv">
+    
+                  <div class="div-promo">
+                    <div class>
+                      <img class="resize_fit_center" src="assets/programador570.png" alt="">
+                    </div>
+                    <div class="nombre-comer mt-4">
+                        Programador Freelance
+                    </div>
+                    <div class="desc-comer mt-2">
+                        Servicio Profesional Independiente 
+                    </div>
+                    <div class="dist-comer mt-2">
+                      a 1.2 km de distancia
+                    </div>
+                  </div>
+        
+                </div>
+    
+           
       </div>
       <div class="row">
-        <div class="col-sm-4">
+          <div class="col-sm-4 margendiv">
 
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+              <div class="div-promo">
+                <div class>
+                  <img class="resize_fit_center" src="assets/cafe570.png" alt="">
+                </div>
+                <div class="nombre-comer mt-4">
+                  Cafeteria Santa Maria
+                </div>
+                <div class="desc-comer mt-2">
+                  Cafeteria familiar en el centro
+                </div>
+                <div class="dist-comer mt-2">
+                  a 1.2 km de distancia
+                </div>
+              </div>
+    
             </div>
-            <div class="clas">
-              <strong>Cafeteria Santa Maria</strong>
-            </div>
-            <div class="clas">
-              Cafeteria familiar en el centro
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-
-        </div>
-        <div class="col-sm-4">
-
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
-            </div>
-            <div class="clas">
-              <strong>Peluqueria Los Amigos</strong>
-            </div>
-            <div class="clas">
-              Centro de Estética
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="div-promo">
-            <div class="class">
-              <img class="resize_fit_center" src="assets/programador570.png" alt="">
-            </div>
-            <div class="clas">
-              <strong>Programador Freelance</strong>
-            </div>
-            <div class="clas">
-              Servicio Profesional Independiente
-            </div>
-            <div class="clas">
-              a 1.2 km de distancia
-            </div>
-          </div>
-
-        </div>
+            <div class="col-sm-4 margendiv">
+    
+                <div class="div-promo">
+                  <div class>
+                    <img class="resize_fit_center" src="assets/peluqueria570.png" alt="">
+                  </div>
+                  <div class="nombre-comer mt-4">
+                      Peluqueria Los Amigos
+                  </div>
+                  <div class="desc-comer mt-2">
+                      Centro de Estética
+                  </div>
+                  <div class="dist-comer mt-2">
+                    a 1.2 km de distancia
+                  </div>
+                </div>
+      
+              </div>
+              <div class="col-sm-4 margendiv">
+    
+                  <div class="div-promo">
+                    <div class>
+                      <img class="resize_fit_center" src="assets/programador570.png" alt="">
+                    </div>
+                    <div class="nombre-comer mt-4">
+                        Programador Freelance
+                    </div>
+                    <div class="desc-comer mt-2">
+                        Servicio Profesional Independiente 
+                    </div>
+                    <div class="dist-comer mt-2">
+                      a 1.2 km de distancia
+                    </div>
+                  </div>
+        
+                </div>
       </div>
 
-      <div class="">
-        Cargar Más
+      <div>
+        <span class="carga">Cargar más</span> 
       </div>
-      <br>
-    </div>
+      <div>
+        <i class="arrowgris"></i>
+      </div>
+    </div> <!-- FIN COMERCIOS -->
 
   </div>
-</div>
+</div><!-- FIN CUERPO -->
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="row cen">
+      <div class="col-sm-5 d-flex align-items-center justify-content-end">
+          @Copyrigth 2020 Meta @ de sus respectivos propietarios
+      </div>
+      <div class="col-sm-2 d-flex align-items-center justify-content-end">
+          Quienes Somos
+      </div>
+      <div class="col-sm-2 d-flex align-items-center justify-content-end">
+          Politicas de Privacidad
+        </div>
+        <div class="col-sm-2 d-flex align-items-center justify-content-end">
+            Politicas de Servicio
+          </div>
+        <div class="col-sm-1 d-flex align-items-center justify-content-center">
+  
+            <i class="fa fa-facebook-f mx-2"></i>
+            <i class="fa fa-instagram mx-2"></i>
+            <i class="fa fa-whatsapp ml-2"></i>
+            </div>
+    </div>
+  </footer>

@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+body { margin: 0; 
+  font-family: 'Wavehaus' !important; }
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
     z-index: 99999 !important;
  }
@@ -23,3 +24,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .pac-container {
     z-index: 2000;
   }
+
+  @font-face {
+    font-family: 'Wavehaus';
+    src: url('/assets/Wavehaus/Wavehaus-66Book.otf') format("opentype");
+  }
+  @font-face {
+    font-family: 'Wavehaus';
+    src: url('/assets/Wavehaus/Wavehaus-128Bold.otf') format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Century';
+  src: url('/assets/Century/07558_CenturyGothic.ttf') format("truetype");
+}
+/* @font-face {
+  font-family: 'Wavehaus';
+  src: url('/assets/Wavehaus/Wavehaus-95SemiBold.otf') format("opentype");
+  font-weight: bolder;
+} */
+  /* @font-face {
+    font-family: 'Wavehaus';
+    src: url(/assets/Wavehaus/Wavehaus-128Bold.ttf) format("truetype");
+    font-weight:300;
+  } */

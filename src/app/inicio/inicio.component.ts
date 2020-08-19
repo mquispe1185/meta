@@ -3,6 +3,7 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularTokenService } from 'angular-token';
 import { MapsAPILoader} from '@agm/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -12,9 +13,34 @@ import { MapsAPILoader} from '@agm/core';
 })
 export class InicioComponent implements OnInit {
 
-  images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  safeUrl;
+  // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  // safeUrl;
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 5
+      }
+    },
+    nav: true
+  }
+  
   constructor(public tokenService: AngularTokenService,
     private _sanitizer: DomSanitizer
     ) { }
@@ -22,7 +48,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
     console.log('user data en inicio',this.tokenService.currentUserData);
-    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
+   // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
   }
 
   scroll(el: HTMLElement) {

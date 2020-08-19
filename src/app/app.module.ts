@@ -50,6 +50,8 @@ import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 @NgModule({
   declarations: [
@@ -103,15 +105,11 @@ import { AgmCoreModule } from '@agm/core';
          loginField:                'email',
 
   }),
-<<<<<<< HEAD
   
   AgmCoreModule.forRoot({
     apiKey: 'AIzaSyAesg0LcvsEiCke9wvIissLRq6a25vsnaY',
     libraries: ['places']
   }),
-=======
-
->>>>>>> 73aa98469c0c96490c446bc2f59a5887590019da
 
     MatAutocompleteModule,
     MatBadgeModule,
@@ -146,6 +144,7 @@ import { AgmCoreModule } from '@agm/core';
     MatTooltipModule,
     NgbModule,
 
+    CarouselModule,
 
   ],
   providers: [GuardService,AdminGuardService],

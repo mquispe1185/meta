@@ -1,3 +1,4 @@
+import { HorarioService } from './../../../servicios/horario.service';
 import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
 import { Comercio } from './../../../modelos/comercio';
@@ -36,11 +37,13 @@ export class GestioncomercioComponent implements OnInit {
   horarios:Horario[]=[];
   nuevos_horarios:Horario[]=[];
   nuevo_horario:Horario;
+  horario_aux:Horario;
   constructor( public tokenService: AngularTokenService,
     private modalService: NgbModal,
     private ubicacionService:UbicacionService,
     private rubroService: RubroService,
     private comercioService:ComercioService,
+    private horarioService:HorarioService,
     private toastr: ToastrService,) { }
 
   ngOnInit(): void {
@@ -52,7 +55,7 @@ export class GestioncomercioComponent implements OnInit {
 
   getComercios(){
     this.comercioService.getComercios().subscribe(
-      cms =>{this.comercios = cms;}
+      cms =>{this.comercios = cms;console.log('mis comerc',cms)}
     )
   }
   openFormAgregar(modal){
@@ -120,8 +123,9 @@ export class GestioncomercioComponent implements OnInit {
     )
       
     }
-    openFormHorario(modal){
-     // this.comercio = new Comercio();
+    openFormHorario(modal,comercio){
+    this.comercio = comercio;
+    this.semana.forEach(d=>{d.check = false});
     this.nuevo_horario = new Horario();
       this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -133,12 +137,26 @@ export class GestioncomercioComponent implements OnInit {
       console.log('evento check', event);
     }
     addHorario(){
-      console.log('dias selec',this.semana)
-      // this.semana.forEach(
-      //   d =>{
-      //     if (d.check)
-      //   }
-      // )
+      this.nuevos_horarios = [];  
+      this.semana.forEach(
+        d =>{
+          this.horario_aux = new Horario();   
+          if (d.check){
+            this.horario_aux.dia = d.id;
+            this.horario_aux.desde = this.nuevo_horario.desde;
+            this.horario_aux.hasta = this.nuevo_horario.hasta;
+            console.log('comercio en hss',this.comercio)
+            this.horario_aux.comercio_id = this.comercio.id;
+            console.log('diaaa add',this.horario_aux);
+            this.nuevos_horarios.push(this.horario_aux);
+          }
+        }
+      );
+      console.log('nuevos hor',this.nuevos_horarios);
+      this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
+        hs => {this.comercio.horarios = hs;
+          this.toastr.success('bien hecho!', 'Horario/s agregados!');}
+      )
     }
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {

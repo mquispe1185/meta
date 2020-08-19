@@ -3,6 +3,7 @@ export class Horario {
     
     id: number;
     dia:number;
+    dia_nombre:string;
     desde: string;
     hasta: string;
     comercio_id:number;

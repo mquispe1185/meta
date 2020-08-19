@@ -13,10 +13,12 @@ import { AdminGuardService } from './servicios/admin-guard.service';
 const routes: Routes = [
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: FooterComponent,
+ /*  { path: 'login', component: FooterComponent,
   children: [
     { path: '', component: InicioComponent },
-  ] },
+  ] }, */
+  { path: 'login', component: InicioComponent,
+  },
   { path: 'redirect', component: AfterloginComponent},
   {
     path:'adminpanel',

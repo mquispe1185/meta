@@ -4,11 +4,11 @@
 @import '~@angular/material/theming';
 
 //agregado por DANI
-$custom-typography: mat-typography-config(
-  $font-family:"Lemonada"
-);
+// $custom-typography: mat-typography-config(
+//   $font-family:"Lemonada"
+// );
 //Parametro agregado por DANI
-@include mat-core($custom-typography);
+//@include mat-core($custom-typography);
 
 $meta-app-primary: mat-palette($mat-naranja);
 $meta-app-accent: mat-palette($mat-gris);

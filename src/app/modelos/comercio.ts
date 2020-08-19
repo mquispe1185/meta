@@ -14,10 +14,6 @@ export class Comercio {
     telefono:string;
     celular:string;
     web:string;
-    horario_desde:string;
-    horario_hasta:string;
-    horario_desde2:string;
-    horario_hasta2:string;
     facebook:string;
     instagram:string;
     twitter:string;
@@ -36,7 +32,7 @@ export class Comercio {
     entrega:boolean;
     rubro:Rubro;
     rubro_id:number;
-
+    horarios:any[];
     constructor(data?: any) {
       Object.assign(this, data);
     }

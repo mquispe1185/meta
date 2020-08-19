@@ -32,7 +32,7 @@
                 </div>
                 <div class="row">
                         <div class="col-2 col-md-2">
-                            <span class="titulo-item">Domicilio: </span>
+                            <span class="titulo-item">Dirección: </span>
                         </div>
                         <div class="col-4 col-md-4">
                                 <span class="font-weight-bold">{{comer.domicilio}}</span>
@@ -110,17 +110,31 @@
             
                 
                 <div class="row">
-                        <div class="col-2 col-md-3">
-                                <span class="titulo-item">Descripcion: </span>
+                        <div class="col-2 col-md-2">
+                                <span class="titulo-item">Descripción: </span>
                             </div>
-                        <div class="col-10 col-md-9">
+                        <div class="col-10 col-md-10">
                                     <span class="font-weight-bold">{{comer.descripcion}}</span>
                         </div>
                     
                 </div>
+                <div class="row">
+                  <div class="col-2 col-md-2">
+                          <span class="titulo-item">Horarios: </span>
+                      </div>
+                  <div class="col-10 col-md-10">
+                          <ng-container *ngFor="let hor of comer.horarios">
+                          <span>{{hor.dia_nombre}}: {{hor.desde}} a {{hor.hasta}}</span><br>
+                          </ng-container>
+                          
+                  </div>
+              
+                </div>
 
                         <div class="text-right mt-4">
-                            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormHorario(formhorario)">
+                            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormHorario(formhorario,comer)">
+                                <mat-icon>insert_photo</mat-icon>Foto</button>
+                            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormHorario(formhorario,comer)">
                                 <mat-icon>alarm</mat-icon>Horario</button>
                             <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormAgregarUbicacion(comer)">
                                 <mat-icon>room</mat-icon>Ubicación</button>
