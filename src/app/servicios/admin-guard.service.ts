@@ -15,11 +15,11 @@ if (this.tokenService.userSignedIn() && this.tokenService.currentUserData){
   if(this.tokenService.currentUserData.rol_id === 1){
     return true;
   }else{
-    this.router.navigate(['login']);
+    this.router.navigate(['inicio']);
     return false;
   }
 }else{
-this.router.navigate(['login']);
+this.router.navigate(['inicio']);
 return false;
 }
 

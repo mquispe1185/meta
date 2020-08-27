@@ -4,7 +4,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularTokenService } from 'angular-token';
 import { MapsAPILoader} from '@agm/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -26,10 +27,10 @@ export class InicioComponent implements OnInit {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 1
+        items: 2
       },
       400: {
-        items: 2
+        items: 3
       },
       740: {
         items: 3
@@ -42,15 +43,29 @@ export class InicioComponent implements OnInit {
   }
   
   constructor(public tokenService: AngularTokenService,
-    private _sanitizer: DomSanitizer
-    ) { }
+              public router: Router,
+              private _sanitizer: DomSanitizer
+              ) { }
 
   ngOnInit(): void {
     console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
     console.log('user data en inicio',this.tokenService.currentUserData);
    // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
+   this.tokenService.validateToken().subscribe(
+     res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
+   );
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e) {
+    let element = document.querySelector('.menub');
+    if (window.pageYOffset > 365) {
+      element.classList.add('menunar');
+      console.log('supera los 365');
+    } else {
+      element.classList.remove('menunar');
+    }
+  }
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
@@ -59,7 +74,15 @@ export class InicioComponent implements OnInit {
     this.tokenService.signInOAuth('google');
   }
 
+  irAComercio(){
+    console.log('redirect a comer panel');
+    this.router.navigate(['comerciopanel']);
+  }
+  verComercio(){
+    this.router.navigate(['comercio']);
+  }
   salir(){
+ 
     this.tokenService.signOut().subscribe(
       res => console.log('adios!!',res),
       error => console.log('adios!!',error)

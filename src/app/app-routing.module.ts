@@ -9,15 +9,16 @@ import { AdminpanelModule } from './modules/adminpanel/adminpanel.module';
 import { AngularTokenService } from 'angular-token';
 import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
+import { ComercioModule } from './modules/comercio/comercio.module';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
  /*  { path: 'login', component: FooterComponent,
   children: [
     { path: '', component: InicioComponent },
   ] }, */
-  { path: 'login', component: InicioComponent,
+  { path: 'inicio', component: InicioComponent,
   },
   { path: 'redirect', component: AfterloginComponent},
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
     path:'comerciopanel',
     component: HeaderComponent,
     loadChildren: () => ComerciopanelModule, canLoad: [GuardService]
+  },
+  {
+    path:'comercio',
+    component: HeaderComponent,
+    loadChildren: () => ComercioModule
   },
   /*{
     path:'estadisticas',

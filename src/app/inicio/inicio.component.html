@@ -1,29 +1,83 @@
 <div Style="background-image:url(/assets/barrio1920t-min.png)">
-  <div class="rectangulo">
+  <div #ini class="rectangulo">
  
   </div>
 </div>
 
 <div class="superficial">
-  <div class="menu">
-      <button type="button" (click)="login()" class="menu-boton btn btn-link">Inicio</button>
-    <button type="button" (click)="login()" class="menu-boton btn btn-link">Quiero Comprar</button>
-    <button type="button" (click)="login()" class="menu-boton btn btn-link">Servicios</button>
-    <button type="button" (click)="login()" class="menu-boton btn btn-link">Beneficios</button>
-    <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+  <div class="cont">
+      <div class="menub" (scroll)="onWindowScroll($event);">
+          <button type="button" (click)="scroll(ini)" class="menu-boton btn btn-link">Inicio</button>
+        <button type="button" (click)="scroll(busca)" class="menu-boton btn btn-link">Quiero Comprar</button>
+        <button type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
+        <button type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
+        <button type="button" (click)="irAComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+        
+        <button *ngIf="tokenService.currentUserData" type="button" class="menu-boton btn btn-link">
+          <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
+          <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+          <ng-template #salida>
+            <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+          </ng-template>
+          <ng-template #ingresar>
+              <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+          </ng-template>
+        
+      </div>
+  </div>
+  <div class="contcel text-right">
+    <!-- Menu CEL -->
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-light menudesplegado" id="dropdownBasic2" ngbDropdownToggle><mat-icon>menu</mat-icon></button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
+          <button ngbDropdownItem type="button" (click)="scroll(busca)" class="menu-boton btn btn-link">Quiero Comprar</button>
+          <button ngbDropdownItem type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
+          <button ngbDropdownItem type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
+          <button ngbDropdownItem type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+        </div>
+      </div>
+ 
+<!-- FIN Menu CEL -->
   </div>
 
+  <div class="row contenedorlogo">
+      <div class="col align-self-start">
+        
+        </div>
+        <div class="col d-flex align-items-center justify-content-center">
+       
+            <img class="logop" src="/assets/logos/logos-06.png" alt="">
+          
+          </div>
+        <div class="col align-self-end">
+        
+        </div>
+     
+  </div>
+  <div class="row contenedorsubtit">
+      <div class="col align-self-start">
+        
+        </div>
+        <div class="col d-flex align-items-center justify-content-center">
+       
+            <span #busca class="lqq">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
+          </div>
+        <div class="col align-self-end">
+        
+        </div>
+     
+  </div>
   <div class="row contenedorbusqueda">
-    <div class="col-md-3 busqueda-izq">
+    <div class="col-3 col-md-3 busqueda-izq">
      <mat-icon class="gps mx-2">location_on</mat-icon> <span class="ciudad">San Lorenzo</span> 
     </div>
-    <div class="col-sm-8 busqueda">
+    <div class="col-7 col-sm-8 busqueda">
       <input class="input1" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
     </div>
-    <div class="col-sm-1 busqueda-der">
-      <button mat-button btn-busqueda>
-        <mat-icon [ngStyle]="{'color':'#fff'}">search</mat-icon>
-      </button>
+    <div class="col-2 col-sm-1 mx-auto busqueda-der">
+     
+        <mat-icon class="btn-buscar">search</mat-icon>
+      
     </div>
   </div>
 </div>
@@ -36,9 +90,9 @@
       Todo desde la comodidad de tu hogar.
     </div>
     <div class="mt-5 pt-5">
-      <span class="subti">¿Qué estas buscando?</span>
+      <span  #serv class="subti">¿Qué estas buscando?</span>
     </div>
-    <div class="carrusel-iconos my-5">
+    <div class="my-5">
         <owl-carousel-o [options]="customOptions">
          <ng-template carouselSlide>
               <div>
@@ -125,7 +179,7 @@
     </div>
 
 
-    <div class="fondocomercios">
+    <div #ben class="fondocomercios">
       <div class="row">
         <span class="subti ml-3">Cerca de Ti...</span>
       </div>
@@ -134,7 +188,7 @@
         <div class="col-sm-4 margendiv">
 
           <div class="div-promo">
-            <div class>
+            <div (click)="verComercio()">
               <img class="resize_fit_center" src="https://i.ibb.co/BBr4Nzn/cafe570.png" alt="">
             </div>
             <div class="nombre-comer mt-4">
@@ -152,7 +206,7 @@
         <div class="col-sm-4 margendiv">
 
             <div class="div-promo">
-              <div class>
+              <div (click)="verComercio()">
                   
                 <img class="resize_fit_center" src="https://i.ibb.co/St0rSnt/peluqueria570.png" alt="">
               </div>
@@ -171,7 +225,7 @@
           <div class="col-sm-4 margendiv">
 
               <div class="div-promo">
-                <div class>
+                <div (click)="verComercio()">
                   <img class="resize_fit_center" src="https://i.ibb.co/28SRy7g/programador570.png" alt="">
                 </div>
                 <div class="nombre-comer mt-4">
@@ -313,7 +367,7 @@
     </div> <!-- FIN COMERCIOS -->
 
   </div>
-</div><!-- FIN CUERPO -->
+</div><!-- FIN CUERPO fondototal -->
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -332,9 +386,9 @@
           </div>
         <div class="col-sm-1 d-flex align-items-center justify-content-center">
   
-            <i class="fa fa-facebook-f mx-2"></i>
-            <i class="fa fa-instagram mx-2"></i>
-            <i class="fa fa-whatsapp ml-2"></i>
+            <i class="fa fa-facebook-f mx-2 redes"></i>
+            <i class="fa fa-instagram mx-2 redes"></i>
+            <i class="fa fa-whatsapp ml-2 redes"></i>
             </div>
     </div>
   </footer>

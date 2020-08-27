@@ -26,10 +26,10 @@ export class HeaderComponent implements OnInit {
       console.log('user log true? after logout::::',this.tokenService.userSignedIn());
       console.log('user data despues de logout',this.tokenService.currentUserData);
       //this.toastr.warning('Sesión finalizada', 'Adiós '+this.tokenService.currentUserData.nombre+'!');
-      this.router.navigate(['login']);
+      this.router.navigate(['inicio']);
     },error => {
       console.log('test error',error);
-      this.router.navigate(['login']);
+      this.router.navigate(['inicio']);
     });
   }
 }

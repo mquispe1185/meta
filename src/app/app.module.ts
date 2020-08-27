@@ -53,6 +53,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HeaderComponent,
     FooterComponent,
     AfterloginComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -77,8 +79,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
          apiPath:                   null,
 
          signInPath:                 'auth/sign_in',
-         signInRedirect:             'login',
-         signInStoredUrlStorageKey:  'login',
+         signInRedirect:             'inicio',
+         signInStoredUrlStorageKey:  'inicio',
 
          signOutPath:                'auth/sign_out',
          validateTokenPath:          'auth/validate_token',

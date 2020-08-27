@@ -22,10 +22,10 @@ export class AfterloginComponent implements OnInit {
                        this.router.navigate(['comerciopanel']);
                         break; 
                      } 
-                     default: { 
-                        //statements; 
-                        break; 
-                     } 
+                     case 3: { 
+                      this.router.navigate(['inicio']);
+                       break; 
+                    } 
                   } 
                   }
                 )
