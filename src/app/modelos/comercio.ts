@@ -33,6 +33,8 @@ export class Comercio {
     rubro:Rubro;
     rubro_id:number;
     horarios:any[];
+    url_foto:string;
+    fotolink:string;//solo usado en angular para refrescar la imagen
     constructor(data?: any) {
       Object.assign(this, data);
     }

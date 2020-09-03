@@ -40,4 +40,12 @@ export class ComercioService {
     const url = `${this.API_URL}/${comercio.id}`;
     return this.http.delete(url);
   }
+
+  uploadLogo(perfil:File,comercio_id:number):Observable<any> {
+    const formdata: FormData = new FormData();
+    const url = `${environment.API_URL}/set_foto`;
+    formdata.append('foto', perfil);
+    formdata.append('id', comercio_id.toString());
+    return this.http.put(url, formdata);
+  }
 }

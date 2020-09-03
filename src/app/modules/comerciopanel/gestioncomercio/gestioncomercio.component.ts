@@ -2,7 +2,7 @@ import { HorarioService } from './../../../servicios/horario.service';
 import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
 import { Comercio } from './../../../modelos/comercio';
-import { Component, OnInit, NgZone, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Provincia } from '../../../modelos/provincia';
 import { Departamento } from '../../../modelos/departamento';
 import { Localidad } from '../../../modelos/localidad';
@@ -16,6 +16,7 @@ import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { ModalGooglePlacesComponent } from '../modal-google-places/modal-google-places.component';
 import { Horario } from '../../../modelos/horario';
+import { ConfirmationDialogService } from '../../../servicios/confirmation-dialog.service';
 
 @Component({
   selector: 'app-gestioncomercio',
@@ -38,13 +39,20 @@ export class GestioncomercioComponent implements OnInit {
   nuevos_horarios:Horario[]=[];
   nuevo_horario:Horario;
   horario_aux:Horario;
-  constructor( public tokenService: AngularTokenService,
-    private modalService: NgbModal,
-    private ubicacionService:UbicacionService,
-    private rubroService: RubroService,
-    private comercioService:ComercioService,
-    private horarioService:HorarioService,
-    private toastr: ToastrService,) { }
+
+  nueva_foto:File;
+
+  timestamp:string;
+
+  constructor(  public tokenService: AngularTokenService,
+                private modalService: NgbModal,
+                private ubicacionService:UbicacionService,
+                private rubroService: RubroService,
+                private comercioService:ComercioService,
+                private horarioService:HorarioService,
+                private cdRef: ChangeDetectorRef,
+                private confirmationDialogService: ConfirmationDialogService,
+                private toastr: ToastrService,) { }
 
   ngOnInit(): void {
    
@@ -55,11 +63,29 @@ export class GestioncomercioComponent implements OnInit {
 
   getComercios(){
     this.comercioService.getComercios().subscribe(
-      cms =>{this.comercios = cms;console.log('mis comerc',cms)}
+      cms =>{this.comercios = cms;
+              console.log('mis comerc',cms);
+             }
     )
   }
+
+  getLinkPicture(comer) {
+   if (comer){}
+    return comer.url_foto + '?' + (new Date()).getTime();
+}
+
   openFormAgregar(modal){
     this.comercio = new Comercio();
+    
+    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  openFormEditarComercio(modal,comer){
+    this.comercio = comer;
     
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -104,6 +130,15 @@ export class GestioncomercioComponent implements OnInit {
     )
   }
 
+  updateComercio(){
+    this.comercioService.updateComercio(this.comercio).subscribe(
+      cms =>{this.comercios = cms;
+          this.modalService.dismissAll();
+        this.toastr.success('bien hecho!', 'Datos actualizados!');}
+    )
+  }
+
+
   openFormAgregarUbicacion(element){
       const modalRefCity = this.modalService.open(ModalGooglePlacesComponent);
       modalRefCity.componentInstance.comercio = element;
@@ -145,9 +180,9 @@ export class GestioncomercioComponent implements OnInit {
             this.horario_aux.dia = d.id;
             this.horario_aux.desde = this.nuevo_horario.desde;
             this.horario_aux.hasta = this.nuevo_horario.hasta;
-            console.log('comercio en hss',this.comercio)
+           
             this.horario_aux.comercio_id = this.comercio.id;
-            console.log('diaaa add',this.horario_aux);
+  
             this.nuevos_horarios.push(this.horario_aux);
           }
         }
@@ -155,9 +190,52 @@ export class GestioncomercioComponent implements OnInit {
       console.log('nuevos hor',this.nuevos_horarios);
       this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
         hs => {this.comercio.horarios = hs;
+          this.modalService.dismissAll();
           this.toastr.success('bien hecho!', 'Horario/s agregados!');}
       )
     }
+
+    dialogEliminarHorario(element,comer){
+      this.comercio = comer;
+      this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
+        .then(
+          (confirm) => {(confirm) ? this.eliminarHorario(element) : console.log("cancelado");
+                        }
+        ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    }
+
+    eliminarHorario(horario){
+      
+      this.horarioService.deleteHorario(horario).subscribe(
+        hs => {this.comercio.horarios = hs;
+          this.modalService.dismissAll();
+          this.toastr.error('bien hecho!', 'Horario/s eliminado!');}
+      )
+    }
+
+    openFormFoto(modal,comer){
+      this.comercio = comer;
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+
+    selectFile(event){
+      this.nueva_foto = event.target.files.item(0);
+    }
+    guardarLogo(){
+      this.comercioService.uploadLogo(this.nueva_foto,this.comercio.id).subscribe(
+        cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
+                this.modalService.dismissAll();
+                this.comercios = cms;
+                this.cdRef.detectChanges();
+                console.log("enviadooo nueva url: ", this.comercio);
+                }
+      )
+    }
+
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

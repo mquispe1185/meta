@@ -68,7 +68,7 @@ export class AdminpanelComponent implements OnInit {
 
   aprobarUsuario(element){
     element.habilitado = !element.habilitado;
-    this.usuarioService.updateUsuario(element).subscribe(
+    this.usuarioService.habilitarUsuario(element).subscribe(
       usr =>{this.lstUsuarios = new MatTableDataSource(usr);
                 this.lstUsuarios.paginator = this.paginatorUsuarios;
                 this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }

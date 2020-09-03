@@ -1,7 +1,7 @@
 <mat-toolbar  color="primary" class="position-fixed">
         <img src="assets/logos/logos-06.png" alt="logo" class="logo">
           <!-- <span class="txt-blanco">Meta App</span> -->
-        <div class="centrado">      
+        <div *ngIf="tokenService.currentUserData?.rol_id ===1" class="centrado">      
             <!-- <input class="mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"> -->
             <!-- <button type="button" class="btn btn-primary mr-1" (click)="scroll(home)">HOME</button> -->
             <button mat-raised-button color="primary" class="mr-1">

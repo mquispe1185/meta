@@ -15,7 +15,7 @@
 </div> 
        <div *ngIf="tokenService.currentUserData?.habilitado === false;then formalta else panel"></div>
         <ng-template #formalta>
-            <div *ngIf="en_espera === false;then form else esperar"></div>
+            <div *ngIf="tokenService.currentUserData?.en_espera === false;then form else esperar"></div>
             <ng-template #form>
             <div class="container mt-3">
                  

@@ -36,6 +36,12 @@ export class UsuariosService {
     return this.http.put(url, usuario);
   }
 
+  habilitarUsuario(usuario: Usuario): Observable<any>{
+   
+    const url = `${environment.API_URL}/habilitar_usuario?usuario_id=${usuario.id}`;
+    return this.http.put(url, usuario);
+  }
+
   deleteUsuario(usuario: Usuario): Observable<any>{
     const url = `${this.API_URL}/${usuario.id}`;
     return this.http.delete(url);

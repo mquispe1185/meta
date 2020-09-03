@@ -78,6 +78,21 @@ export class InicioComponent implements OnInit {
     console.log('redirect a comer panel');
     this.router.navigate(['comerciopanel']);
   }
+
+  irAPanel(){
+    switch(this.tokenService.currentUserData.rol_id) { 
+      case 1: { 
+        this.router.navigate(['adminpanel']);
+         break; 
+      } 
+      case 2: case 3: { 
+        this.router.navigate(['comerciopanel']);
+         break; 
+      } 
+    
+   } 
+  }
+
   verComercio(){
     this.router.navigate(['comercio']);
   }

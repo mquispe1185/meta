@@ -41,7 +41,8 @@ export class ComerciopanelComponent implements OnInit {
   }
   altaUsuario(){
     this.usuarioService.updateUsuario(this.usuario).subscribe(
-      res => { this.en_espera = true;}
+      usr => { this.usuario = usr;
+              }
     )
   }
 

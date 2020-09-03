@@ -55,3 +55,14 @@ opacity: 1;
 .recuadroimagen{
     border-radius: 43px;
 }
+
+i{
+    color: #EE7222;
+}
+
+.info{
+font: normal normal normal 21px/27px Wavehaus;
+letter-spacing: 0px;
+color: #3C3C3C;
+opacity: 1;
+}

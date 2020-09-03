@@ -13,7 +13,7 @@
         <button type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
         <button type="button" (click)="irAComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
         
-        <button *ngIf="tokenService.currentUserData" type="button" class="menu-boton btn btn-link">
+        <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
           <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
           <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
           <ng-template #salida>

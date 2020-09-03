@@ -25,6 +25,7 @@ export class Usuario {
   localidad:Localidad;
 
   habilitado:boolean;
+  en_espera:boolean;
   constructor(data?:any){
     Object.assign(this, data);
   }
