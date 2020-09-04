@@ -11,7 +11,7 @@
         <button type="button" (click)="scroll(busca)" class="menu-boton btn btn-link">Quiero Comprar</button>
         <button type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
         <button type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
-        <button type="button" (click)="irAComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+        <button type="button" (click)="irAMiComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
         
         <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
           <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
@@ -68,17 +68,25 @@
      
   </div>
   <div class="row contenedorbusqueda">
-    <div class="col-3 col-md-3 busqueda-izq">
-     <mat-icon class="gps mx-2">location_on</mat-icon> <span class="ciudad">San Lorenzo</span> 
-    </div>
-    <div class="col-7 col-sm-8 busqueda">
-      <input class="input1" type="search" placeholder="¿Qué Buscas?" aria-label="Search">
-    </div>
-    <div class="col-2 col-sm-1 mx-auto busqueda-der">
-     
-        <mat-icon class="btn-buscar">search</mat-icon>
-      
-    </div>
+        <form class="busqueda form-inline">
+            
+            <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text d-flex justify-content-center">
+                    <i class="fas fa-map-marker-alt mr-2 colorprimario"></i>  <span class="ciudad">San Lorenzo</span> 
+                </div>
+              </div>
+              <input type="text" class="form-control"  [(ngModel)]="buscado" name="buscar" #buscar="ngModel"  
+              id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
+                      <i class="fa fa-search"></i>
+                  </button>
+                </span>
+            </div>
+           
+            
+          </form>
   </div>
 </div>
 
@@ -178,184 +186,85 @@
         </owl-carousel-o>
     </div>
 
-
     <div #ben class="fondocomercios">
       <div class="row">
         <span class="subti ml-3">Cerca de Ti...</span>
       </div>
       
       <div class="row">
+          <ng-container *ngFor="let comer of comercios">
         <div class="col-sm-4 margendiv">
-
           <div class="div-promo">
-            <div (click)="verComercio()">
-              <img class="resize_fit_center" src="https://i.ibb.co/BBr4Nzn/cafe570.png" alt="">
+            <div (click)="verComercio(comer)">
+              <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio">
             </div>
             <div class="nombre-comer mt-4">
-              Cafeteria Santa Maria
+              {{comer.nombre}}
             </div>
             <div class="desc-comer mt-2">
-              Cafeteria familiar en el centro
+              {{comer.descripcion}}
             </div>
             <div class="dist-comer mt-2">
-              a 1.2 km de distancia
+              {{comer.domicilio}}
             </div>
           </div>
 
         </div>
-        <div class="col-sm-4 margendiv">
 
+        <div class="col-sm-4 margendiv">
             <div class="div-promo">
-              <div (click)="verComercio()">
-                  
-                <img class="resize_fit_center" src="https://i.ibb.co/St0rSnt/peluqueria570.png" alt="">
+              <div (click)="verComercio(comer)">
+                <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio">
               </div>
               <div class="nombre-comer mt-4">
-                  Peluqueria Los Amigos
+                {{comer.nombre}}
               </div>
               <div class="desc-comer mt-2">
-                  Centro de Estética
+                {{comer.descripcion}}
               </div>
               <div class="dist-comer mt-2">
-                a 1.2 km de distancia
+                {{comer.domicilio}}
               </div>
             </div>
   
           </div>
-          <div class="col-sm-4 margendiv">
 
+          <div class="col-sm-4 margendiv">
               <div class="div-promo">
-                <div (click)="verComercio()">
-                  <img class="resize_fit_center" src="https://i.ibb.co/28SRy7g/programador570.png" alt="">
+                <div (click)="verComercio(comer)">
+                  <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio">
                 </div>
                 <div class="nombre-comer mt-4">
-                    Programador Freelance
+                  {{comer.nombre}}
                 </div>
                 <div class="desc-comer mt-2">
-                    Servicio Profesional Independiente 
+                  {{comer.descripcion}}
                 </div>
                 <div class="dist-comer mt-2">
-                  a 1.2 km de distancia
+                  {{comer.domicilio}}
                 </div>
               </div>
     
             </div>
 
-       
-      </div>
-      <div class="row">
-          <div class="col-sm-4 margendiv">
-
-              <div class="div-promo">
-                <div class>
-                  <img class="resize_fit_center" src="https://i.ibb.co/BBr4Nzn/cafe570.png" alt="">
-                </div>
-                <div class="nombre-comer mt-4">
-                  Cafeteria Santa Maria
-                </div>
-                <div class="desc-comer mt-2">
-                  Cafeteria familiar en el centro
-                </div>
-                <div class="dist-comer mt-2">
-                  a 1.2 km de distancia
-                </div>
-              </div>
-    
-            </div>
             <div class="col-sm-4 margendiv">
-    
                 <div class="div-promo">
-                  <div class>
-                    <img class="resize_fit_center" src="https://i.ibb.co/St0rSnt/peluqueria570.png" alt="">
+                  <div (click)="verComercio(comer)">
+                    <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio">
                   </div>
                   <div class="nombre-comer mt-4">
-                      Peluqueria Los Amigos
+                    {{comer.nombre}}
                   </div>
                   <div class="desc-comer mt-2">
-                      Centro de Estética
+                    {{comer.descripcion}}
                   </div>
                   <div class="dist-comer mt-2">
-                    a 1.2 km de distancia
+                    {{comer.domicilio}}
                   </div>
                 </div>
       
               </div>
-              <div class="col-sm-4 margendiv">
-    
-                  <div class="div-promo">
-                    <div class>
-                      <img class="resize_fit_center" src="https://i.ibb.co/28SRy7g/programador570.png" alt="">
-                    </div>
-                    <div class="nombre-comer mt-4">
-                        Programador Freelance
-                    </div>
-                    <div class="desc-comer mt-2">
-                        Servicio Profesional Independiente 
-                    </div>
-                    <div class="dist-comer mt-2">
-                      a 1.2 km de distancia
-                    </div>
-                  </div>
-        
-                </div>
-    
-           
-      </div>
-      <div class="row">
-          <div class="col-sm-4 margendiv">
-
-              <div class="div-promo">
-                <div class>
-                  <img class="resize_fit_center" src="https://i.ibb.co/BBr4Nzn/cafe570.png" alt="">
-                </div>
-                <div class="nombre-comer mt-4">
-                  Cafeteria Santa Maria
-                </div>
-                <div class="desc-comer mt-2">
-                  Cafeteria familiar en el centro
-                </div>
-                <div class="dist-comer mt-2">
-                  a 1.2 km de distancia
-                </div>
-              </div>
-    
-            </div>
-            <div class="col-sm-4 margendiv">
-    
-                <div class="div-promo">
-                  <div class>
-                    <img class="resize_fit_center" src="https://i.ibb.co/St0rSnt/peluqueria570.png" alt="">
-                  </div>
-                  <div class="nombre-comer mt-4">
-                      Peluqueria Los Amigos
-                  </div>
-                  <div class="desc-comer mt-2">
-                      Centro de Estética
-                  </div>
-                  <div class="dist-comer mt-2">
-                    a 1.2 km de distancia
-                  </div>
-                </div>
-      
-              </div>
-              <div class="col-sm-4 margendiv">
-    
-                  <div class="div-promo">
-                    <div class>
-                      <img class="resize_fit_center" src="https://i.ibb.co/28SRy7g/programador570.png" alt="">
-                    </div>
-                    <div class="nombre-comer mt-4">
-                        Programador Freelance
-                    </div>
-                    <div class="desc-comer mt-2">
-                        Servicio Profesional Independiente 
-                    </div>
-                    <div class="dist-comer mt-2">
-                      a 1.2 km de distancia
-                    </div>
-                  </div>
-        
-                </div>
+          </ng-container>
       </div>
 
       <div>

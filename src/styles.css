@@ -17,6 +17,10 @@ body { margin: 0;
         color: #cc5316;
 }
 
+.colorprimario{
+  color: #EE7222
+}
+
 .mat-raised-button{
     color: white !important;
   }

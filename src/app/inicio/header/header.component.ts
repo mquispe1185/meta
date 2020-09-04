@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
+  irInicio(){
+    this.router.navigate(['inicio']);
+  }
   salir():void{
     this.tokenService.signOut().subscribe(res => {
       localStorage.clear();

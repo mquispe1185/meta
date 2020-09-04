@@ -41,6 +41,7 @@ import { GestioncomercioComponent } from './gestioncomercio/gestioncomercio.comp
 import { AgmCoreModule } from '@agm/core';
 import { ModalGooglePlacesComponent } from './modal-google-places/modal-google-places.component';
 import { GooglePlacesDirectiveDirective } from '../../directives/google-places-directive.directive';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [ComerciopanelComponent, GestioncomercioComponent, ModalGooglePlacesComponent, GooglePlacesDirectiveDirective],
@@ -88,6 +89,8 @@ import { GooglePlacesDirectiveDirective } from '../../directives/google-places-d
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
+
+    ImageCropperModule
   ]
 })
 export class ComerciopanelModule { }

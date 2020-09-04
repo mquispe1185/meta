@@ -6,6 +6,9 @@ import { MapsAPILoader} from '@agm/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Comercio } from '../modelos/comercio';
+import { ComercioService } from '../servicios/comercio.service';
 
 @Component({
   selector: 'app-inicio',
@@ -14,8 +17,8 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent implements OnInit {
 
-  // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  // safeUrl;
+ comercios:Comercio[]=[];
+  buscado:string='';
 
   customOptions: OwlOptions = {
     loop: true,
@@ -44,7 +47,8 @@ export class InicioComponent implements OnInit {
   
   constructor(public tokenService: AngularTokenService,
               public router: Router,
-              private _sanitizer: DomSanitizer
+              private comercioService:ComercioService,
+              private toastr: ToastrService,
               ) { }
 
   ngOnInit(): void {
@@ -54,6 +58,7 @@ export class InicioComponent implements OnInit {
    this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
    );
+   this.getComercios();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -74,9 +79,11 @@ export class InicioComponent implements OnInit {
     this.tokenService.signInOAuth('google');
   }
 
-  irAComercio(){
-    console.log('redirect a comer panel');
-    this.router.navigate(['comerciopanel']);
+  irAMiComercio(){
+    this.tokenService.validateToken().subscribe(
+      res =>{ this.router.navigate(['comerciopanel']);},
+      err =>{this.toastr.error('primero debe loquearse!', 'Ingrese al sistema con Gmail!');}
+    );
   }
 
   irAPanel(){
@@ -93,7 +100,7 @@ export class InicioComponent implements OnInit {
    } 
   }
 
-  verComercio(){
+  verComercio(comer){
     this.router.navigate(['comercio']);
   }
   salir(){
@@ -104,4 +111,16 @@ export class InicioComponent implements OnInit {
     );
   }
 
+
+  getComercios(){
+    this.comercioService.getComercios().subscribe(
+      cms =>{this.comercios = cms;
+              console.log('mis comerc',cms);
+             }
+    )
+  }
+
+  buscarComercios(){
+    console.log('buscandoooo', this.buscado);
+  }
 }

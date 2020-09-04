@@ -1,16 +1,20 @@
 <mat-toolbar  color="primary" class="position-fixed">
         <img src="assets/logos/logos-06.png" alt="logo" class="logo">
           <!-- <span class="txt-blanco">Meta App</span> -->
-        <div *ngIf="tokenService.currentUserData?.rol_id ===1" class="centrado">      
-            <!-- <input class="mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"> -->
-            <!-- <button type="button" class="btn btn-primary mr-1" (click)="scroll(home)">HOME</button> -->
-            <button mat-raised-button color="primary" class="mr-1">
-              <mat-icon>admin_panel_settings</mat-icon> ADMINISTRACION</button>
-            <button mat-raised-button color="primary" class="mr-1">
-                <mat-icon>location_on</mat-icon>COMERCIOS</button>
-            <button mat-raised-button color="primary" class="mr-1">
-                <mat-icon>settings</mat-icon> CONFIGURACION</button>
-        </div>
+          <div class="centrado">
+              <button mat-raised-button color="primary" (click)="irInicio()" class="mr-1">
+                  <mat-icon>home</mat-icon>Inicio</button>
+                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
+                      <button mat-raised-button color="primary" class="mr-1">
+                          <mat-icon>admin_panel_settings</mat-icon> ADMINISTRACION</button>
+                        <button mat-raised-button color="primary" class="mr-1">
+                            <mat-icon>location_on</mat-icon>COMERCIOS</button>
+                        <button mat-raised-button color="primary" class="mr-1">
+                            <mat-icon>settings</mat-icon> CONFIGURACION</button>
+                  </ng-container>
+                  
+          </div>
+        
         <span class="example-spacer"></span>
         <mat-icon class="example-icon mr-2" aria-hidden="false">verified_user</mat-icon>
              <span class="nick mr-2"> {{tokenService.currentUserData?.name}}</span>

@@ -119,6 +119,15 @@
                     
                 </div>
                 <div class="row">
+                    <div class="col-2 col-md-2">
+                            <span class="titulo-item">Palabras clave: </span>
+                        </div>
+                    <div class="col-10 col-md-10">
+                                <span class="font-weight-bold">{{comer.tags}}</span>
+                    </div>
+                
+            </div>
+                <div class="row">
                   <div class="col-2 col-md-2">
                           <span class="titulo-item">Horarios: </span>
                       </div>
@@ -139,11 +148,14 @@
                           
                   </div>
               <div class="col-6">
-                  <img class="foto" src={{comer.url_foto}} alt="">
+                 <img class="foto" src={{comer.url_foto}} alt=""> 
+            
               </div>
                 </div>
 
                         <div class="text-right mt-4">
+                            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormTags(modaltags,comer)">
+                                <mat-icon>spellcheck</mat-icon>Tags</button>
                             <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormFoto(modalfoto,comer)">
                                 <mat-icon>insert_photo</mat-icon>Foto</button>
                             <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormHorario(formhorario,comer)">
@@ -403,22 +415,75 @@
             <div class="card-body">
                     <div class="modal-header modal-encabezado">
                             <h5 class="modal-title titulo" id="modal-basic-title">
-                                    <strong>Horarios</strong>
+                                    <strong>Foto o logo</strong>
                                 </h5>
                             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                               <span aria-hidden="true">&times;</span>
                             </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
+                     <!--    <div class="form-group">
                             <div class="input-group">
                             <input type="file" (change)="selectFile($event)">       
                             </div>
-                        </div>
+                        </div> -->
+
+                        <input type="file" (change)="fileChangeEvent($event)" />
+  
+                        <!-- <button (click)="save()">Guardar cambios</button> -->
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+                            [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
+                            (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                        </image-cropper>
+                    
+                    
+                        <!-- <img [src]="croppedImage" /> -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-principal-dark" 
+                        <button mat-raised-button type="submit" class="mr-3" color="primary"
                         (click)="guardarLogo()">Subir foto</button>
+                      </div>
+            </div>
+          </mat-card>
+        </div>
+        </div>
+
+      </ng-template>
+
+        <!-- FORM PALABRAS CLAVES / TAGS /> -->
+      <ng-template #modaltags let-modal>
+        <div class="container mt-5">
+            <div>
+          <mat-card class="tarjeta-info">
+            <div class="card-body">
+                    <div class="modal-header modal-encabezado">
+                            <h5 class="modal-title titulo" id="modal-basic-title">
+                                    <strong>Tags</strong>
+                                </h5>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Las palabras claves son útiles para que los usuarios o clientes puedan buscarlo rápidamente</p>
+                      <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList aria-label="Palabras claves">
+                          <mat-chip *ngFor="let clave of palabras" [selectable]="selectable"
+                                   [removable]="removable" (removed)="remove(clave)">
+                            {{clave.clave}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input placeholder="Nueva palabra clave..."
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                      </mat-form-field>
+                    </div>
+                    <div class="modal-footer">
+                        <button mat-raised-button type="submit" class="mr-3" color="primary"
+                        (click)="guardarTags()">Guardar</button>
                       </div>
             </div>
           </mat-card>

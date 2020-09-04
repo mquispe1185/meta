@@ -17,6 +17,13 @@ import { FormControl } from '@angular/forms';
 import { ModalGooglePlacesComponent } from '../modal-google-places/modal-google-places.component';
 import { Horario } from '../../../modelos/horario';
 import { ConfirmationDialogService } from '../../../servicios/confirmation-dialog.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+export interface Palabras {
+  //utilizado para las palabras claves
+  clave: string;
+}
 
 @Component({
   selector: 'app-gestioncomercio',
@@ -43,6 +50,18 @@ export class GestioncomercioComponent implements OnInit {
   nueva_foto:File;
 
   timestamp:string;
+
+  file;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  //variables para el manejo de palabras claves
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  palabras: Palabras[] =[];
 
   constructor(  public tokenService: AngularTokenService,
                 private modalService: NgbModal,
@@ -234,6 +253,106 @@ export class GestioncomercioComponent implements OnInit {
                 console.log("enviadooo nueva url: ", this.comercio);
                 }
       )
+    }
+
+    onFileChange(event) {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.file = file;
+      }
+    }
+  
+    fileChangeEvent(event: any): void {
+      console.log(event);
+      this.imageChangedEvent = event;
+    }
+    imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+  
+      //Usage example:
+      var file = this.dataURLtoFile(this.croppedImage,'image.png');
+      console.log(file);
+      this.nueva_foto = file;
+    }
+  
+    dataURLtoFile(dataurl, filename) {
+   
+        let arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), 
+            n = bstr.length, 
+            u8arr = new Uint8Array(n);
+            
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        
+        return new File([u8arr], filename, {type:mime});
+    }
+      
+      
+    imageLoaded() {
+      // show cropper
+    }
+    cropperReady() {
+      // cropper ready
+    }
+    loadImageFailed() {
+      // show message
+    }
+
+    //funciones de PALABRA CLAVE
+
+    openFormTags(modal,comer){
+      this.comercio = comer;
+      this.palabras = [];
+      if (this.comercio.tags != null){
+      let ps = this.comercio.tags.split(' ');
+      ps.forEach( c=>{ this.palabras.push({clave: c})})
+      }
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+
+    add(event: MatChipInputEvent): void {
+      const input = event.input;
+      const value = event.value;
+  
+      // Add our fruit
+      if ((value || '').trim()) {
+        this.palabras.push({clave: value.trim()});
+      }
+  
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+      console.log('agregadoss',this.palabras);
+    }
+  
+    remove(clave: Palabras): void {
+      const index = this.palabras.indexOf(clave);
+  
+      if (index >= 0) {
+        this.palabras.splice(index, 1);
+      }
+    }
+
+    guardarTags(){
+      var palabrasclaves = '';
+      this.palabras.forEach( p =>{
+        if (palabrasclaves.length > 0){
+        palabrasclaves = palabrasclaves+' '+p.clave;
+        }else{
+          palabrasclaves = p.clave;
+        }
+      })
+      this.comercio.tags = palabrasclaves;
+     this.updateComercio();
+      console.log('mis tags',palabrasclaves);
     }
 
    //Método para cerrar Modal con Tecla Escape.

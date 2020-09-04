@@ -51,7 +51,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -147,6 +147,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgbModule,
 
     CarouselModule,
+    ImageCropperModule
 
   ],
   providers: [GuardService,AdminGuardService],
