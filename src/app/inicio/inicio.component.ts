@@ -101,6 +101,7 @@ export class InicioComponent implements OnInit {
   }
 
   verComercio(comer){
+    localStorage.setItem('comercio',JSON.stringify(comer));
     this.router.navigate(['comercio']);
   }
   salir(){
