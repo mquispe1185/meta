@@ -31,7 +31,7 @@
 .menub{
 position: fixed;
 width:100%;
-top: 25px;
+top: 0px;
 text-align:right;
 height: 22px;
 margin-right: 25px;
@@ -85,7 +85,7 @@ writing-mode: horizontal-tb;
 }
 
 .logop{
-  width: 181px; 
+  width: 181px;
   height: 113px;
 }
 
@@ -177,7 +177,7 @@ width: 100%;
 
 .parrafoini{
   text-align: center;
-  font: normal normal normal 30px/37px Century;
+  font: normal normal normal 20px/27px Century;
   letter-spacing: 0px;
   color: #3C3C3C;
   opacity: 1;
@@ -185,7 +185,7 @@ width: 100%;
 
 .subti{
   text-align: center;
-  font: normal normal bold 37px/45px Wavehaus;
+  font: normal normal bold 27px/35px Wavehaus;
   letter-spacing: 0px;
   color: #3C3C3C;
   opacity: 1;
@@ -277,27 +277,27 @@ width: 100%;
 
 .carga{
   text-align: center;
-font: normal normal bold 27px/32px Wavehaus;
+font: normal normal bold 17px/22px Wavehaus;
 letter-spacing: 0px;
 color: #7B7B7B;
 opacity: 1;
 }
 
 .footer{
- 
-  height: 120px;
+
+  height: 60px;
   background: #EE7222;
   color: white;
   text-align: center;
-  
+
 }
 
 /* texto de footer */
 .cen{
   width: 100%;
-  height: 120px;
+  height: 60px;
   text-align: center;
-  font: normal normal 500 23px/27px Wavehaus;
+  font: normal normal 500 15px/18px Wavehaus;
   letter-spacing: 0px;
   color: #FFFFFF;
   opacity: 1;
