@@ -1,6 +1,6 @@
 <div Style="background-image:url(/assets/barrio1920t-min.png)">
   <div #ini class="rectangulo">
- 
+
   </div>
 </div>
 
@@ -12,7 +12,7 @@
         <button type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
         <button type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
         <button type="button" (click)="irAMiComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
-        
+
         <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
           <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
           <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
@@ -22,7 +22,7 @@
           <ng-template #ingresar>
               <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
           </ng-template>
-        
+
       </div>
   </div>
   <div class="contcel text-right">
@@ -36,47 +36,47 @@
           <button ngbDropdownItem type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
         </div>
       </div>
- 
+
 <!-- FIN Menu CEL -->
   </div>
 
   <div class="row contenedorlogo">
       <div class="col align-self-start">
-        
+
         </div>
         <div class="col d-flex align-items-center justify-content-center">
-       
+
             <img class="logop" src="/assets/logos/logos-06.png" alt="">
-          
+
           </div>
         <div class="col align-self-end">
-        
+
         </div>
-     
+
   </div>
   <div class="row contenedorsubtit">
       <div class="col align-self-start">
-        
+
         </div>
         <div class="col d-flex align-items-center justify-content-center">
-       
+
             <span #busca class="lqq">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
           </div>
         <div class="col align-self-end">
-        
+
         </div>
-     
+
   </div>
   <div class="row contenedorbusqueda">
         <form class="busqueda form-inline">
-            
+
             <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
               <div class="input-group-prepend">
                 <div class="input-group-text d-flex justify-content-center">
-                    <i class="fas fa-map-marker-alt mr-2 colorprimario"></i>  <span class="ciudad">San Lorenzo</span> 
+                    <i class="fas fa-map-marker-alt mr-2 colorprimario"></i>  <span class="ciudad">San Lorenzo</span>
                 </div>
               </div>
-              <input type="text" class="form-control"  [(ngModel)]="buscado" name="buscar" #buscar="ngModel"  
+              <input type="text" class="form-control"  [(ngModel)]="buscado" name="buscar" #buscar="ngModel"
               id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
               <span class="input-group-append">
                   <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
@@ -84,8 +84,8 @@
                   </button>
                 </span>
             </div>
-           
-            
+
+
           </form>
   </div>
 </div>
@@ -104,85 +104,85 @@
         <owl-carousel-o [options]="customOptions">
          <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-prescription-bottle-alt fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                  Farmacias</span>
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-wine-bottle fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                     Vinerias</span>
-                  
-                 
+
+
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-handshake fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                  Servicios</span>
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-cut fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                     Peluquerias</span>
-                  
-                 
+
+
             </div>
-          </ng-template>  
+          </ng-template>
 
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-prescription-bottle-alt fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                  Farmacias</span>
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-wine-bottle fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                     Vinerias</span>
-                  
-                 
+
+
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-handshake fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                  Servicios</span>
             </div>
-          </ng-template>  
+          </ng-template>
           <ng-template carouselSlide>
               <div>
-                  <span style="color: #3C3C3C;opacity: 1;">        
+                  <span style="color: #3C3C3C;opacity: 1;">
                       <i class="fas fa-cut fa-4x"></i>
                     </span><br>
-                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">  
+                  <span style="text-align: center;font: normal normal normal 28px/34px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
                     Peluquerias</span>
-                  
-                 
+
+
             </div>
-          </ng-template>  
+          </ng-template>
         </owl-carousel-o>
     </div>
 
@@ -190,7 +190,7 @@
       <div class="row">
         <span class="subti ml-3">Cerca de Ti...</span>
       </div>
-      
+
       <div class="row">
           <ng-container *ngFor="let comer of comercios">
         <div class="col-sm-4 margendiv">
@@ -226,7 +226,7 @@
                 {{comer.domicilio}}
               </div>
             </div>
-  
+
           </div>
 
           <div class="col-sm-4 margendiv">
@@ -244,7 +244,7 @@
                   {{comer.domicilio}}
                 </div>
               </div>
-    
+
             </div>
 
             <div class="col-sm-4 margendiv">
@@ -262,16 +262,16 @@
                     {{comer.domicilio}}
                   </div>
                 </div>
-      
+
               </div>
           </ng-container>
       </div>
 
       <div>
-        <span class="carga">Cargar más</span> 
+        <span class="carga">Cargar más</span>
       </div>
       <div>
-        <i class="arrowgris"></i>
+        <!-- <i class="arrowgris"></i> -->
       </div>
     </div> <!-- FIN COMERCIOS -->
 
@@ -294,7 +294,7 @@
             Politicas de Servicio
           </div>
         <div class="col-sm-1 d-flex align-items-center justify-content-center">
-  
+
             <i class="fa fa-facebook-f mx-2 redes"></i>
             <i class="fa fa-instagram mx-2 redes"></i>
             <i class="fa fa-whatsapp ml-2 redes"></i>
