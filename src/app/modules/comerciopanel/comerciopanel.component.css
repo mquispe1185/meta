@@ -2,6 +2,9 @@
     margin-top: 70px;
 }
 
+.contenedor{
+  margin-bottom: 50px;
+}
 .img-circle {
     border-radius: 50%;
 }
@@ -20,7 +23,7 @@ input {
     max-width: 500px;
     width: 100%;
   }
-  
+
   .example-full-width {
     width: 100%;
   }

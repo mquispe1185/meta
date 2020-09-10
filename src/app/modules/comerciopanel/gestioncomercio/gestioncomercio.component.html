@@ -2,7 +2,7 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-6">
-                <h6 class="titulo">Mis comercios</h6>
+                <h6 class="titulo">MIS COMERCIOS</h6>
         </div>
         <div class="col-6 d-flex justify-content-end">
                 <button mat-raised-button placement="right" ngbTooltip="Nuevo" color="primary" (click)="openFormAgregar(crearform)">
@@ -10,7 +10,7 @@
                   </button>
         </div>
     </div>
-       
+
 
 
     <div *ngFor="let comer of comercios">
@@ -43,7 +43,7 @@
                         <div class="col-4 col-md-4">
                                 <span class="font-weight-bold">{{comer.localidad?.nombre}}</span>
                         </div>
-                        
+
 
                   </div>
 
@@ -76,20 +76,20 @@
                                 <span class="font-weight-bold">{{comer.fechanac | date: 'dd/MM/yyyy'}}</span>
                         </div> -->
                 </div>
-               
-          
+
+
                 <div class="row">
                         <div class="col-2 col-md-2">
                                 <span class="titulo-item"> Email:  </span>
                             </div>
-            
+
                             <div class="col-4 col-md-4">
                                     <span class="font-weight-bold">{{comer.email}}</span>
                         </div>
                         <div class="col-2 col-md-2">
                                 <span class="titulo-item"> Facebook:  </span>
                             </div>
-            
+
                             <div class="col-4 col-md-4">
                                     <span class="font-weight-bold">{{comer.facebook}}</span>
                         </div>
@@ -98,20 +98,20 @@
                         <div class="col-2 col-md-2">
                                 <span class="titulo-item"> Instagram:  </span>
                             </div>
-            
+
                             <div class="col-4 col-md-4">
                                     <span class="font-weight-bold">{{comer.instagram}}</span>
                         </div>
                         <div class="col-2 col-md-2">
                                 <span class="titulo-item"> Página Web:  </span>
                             </div>
-            
+
                             <div class="col-4 col-md-4">
                                     <span class="font-weight-bold">{{comer.web}}</span>
                         </div>
                 </div>
-            
-                
+
+
                 <div class="row">
                         <div class="col-2 col-md-2">
                                 <span class="titulo-item">Descripción: </span>
@@ -119,7 +119,7 @@
                         <div class="col-10 col-md-10">
                                     <span class="font-weight-bold">{{comer.descripcion}}</span>
                         </div>
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-2 col-md-2">
@@ -128,7 +128,7 @@
                     <div class="col-10 col-md-10">
                                 <span class="font-weight-bold">{{comer.tags}}</span>
                     </div>
-                
+
             </div>
                 <div class="row">
                   <div class="col-2 col-md-2">
@@ -148,11 +148,11 @@
                                 class="btn btn-outline-danger btn-sm rounded-circle">X</button></td>
                             </tr>
                         </table>
-                          
+
                   </div>
               <div class="col-6">
-                 <img class="foto" src={{comer.url_foto}} alt=""> 
-            
+                 <img class="foto" src={{comer.url_foto}} alt="">
+
               </div>
                 </div>
 
@@ -168,7 +168,7 @@
                                 <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
                                     <mat-icon>save</mat-icon>Actualizar datos</button>
                         </div>
-            
+
             </mat-card>
         </div>
     </div>
@@ -190,9 +190,9 @@
       <form name="form"
       (ngSubmit)="f.form.valid && (comercio.id ? updateComercio(): altaComercio())"
        #f="ngForm" novalidate>
-     
+
         <div class="row">
-   
+
           <div class="form-group col-6">
             <mat-form-field>
               <input matInput type="text" placeholder="nombre" required minlength="2"
@@ -223,7 +223,7 @@
               <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
               </mat-error>
             </mat-form-field>
-          </div> 
+          </div>
           <div class="form-group col-6">
             <mat-form-field>
               <input matInput type="text" placeholder="celular" minlength="1"
@@ -232,11 +232,11 @@
               <mat-error *ngIf="celular.invalid && celular.errors.minlength">Cel. debe tener al menos 2 caracteres
               </mat-error>
             </mat-form-field>
-          </div> 
+          </div>
         </div><!-- telefono, celular -->
 
         <div class="row">
-       
+
           <mat-form-field class="col">
             <input matInput type="text" placeholder="Domicilio" required minlength="2"
               [(ngModel)]="comercio.domicilio" name="dom" #dom="ngModel" />
@@ -244,7 +244,7 @@
             <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
             </mat-error>
           </mat-form-field>
-       
+
       </div><!-- Domicilio-->
 
         <div class="form-row">
@@ -331,7 +331,7 @@
           </div> -->
       </div><!-- instagram twitter-->
       <div class="row">
-          
+
             <mat-form-field class="col">
                 <textarea matInput type="text" placeholder="descripcion" maxlength="256"
                 [(ngModel)]="comercio.descripcion" name="desc" #desc="ngModel" >
@@ -367,11 +367,11 @@
           <form name="form"
           (ngSubmit)="f.form.valid && addHorario()"
            #f="ngForm" novalidate>
-         
+
             <div class="row">
               <div class="col-5">
                 <ng-container *ngFor="let dia of semana;let i =index;">
-                    <mat-checkbox [checked]="dia.check" (change)='setDia($event,dia)' [(ngModel)]="semana[i].check" name="fin-{{dia.id}}"></mat-checkbox> {{dia.nombre}}<br>    
+                    <mat-checkbox [checked]="dia.check" (change)='setDia($event,dia)' [(ngModel)]="semana[i].check" name="fin-{{dia.id}}"></mat-checkbox> {{dia.nombre}}<br>
                   </ng-container>
                 </div>
               <div class="col-7">
@@ -380,7 +380,7 @@
                     <mat-form-field class="col">
                       <input matInput
                         type="time" [(ngModel)]="nuevo_horario.desde"
-                        name="desde" placeholder="Hora Inicio" 
+                        name="desde" placeholder="Hora Inicio"
                        />
                     </mat-form-field>
                   </div><!-- HoraInicio -->
@@ -388,28 +388,28 @@
                     <mat-form-field  class="col">
                       <input matInput
                         type="time" [(ngModel)]="nuevo_horario.hasta"
-                        name="hasta" placeholder="Hora Fin" 
+                        name="hasta" placeholder="Hora Fin"
                      />
                     </mat-form-field>
                   </div><!-- HoraFin -->
                 </div>
-               
+
               </div>
             </div>
-    
-           
+
+
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
                 <fa-icon icon="save"></fa-icon>Guardar</button>
             </div>
-    
+
           </form>
         </div>
       </mat-card>
     </div>
     </div>
     </ng-template>
-    
+
 
     <ng-template #modalfoto let-modal>
         <div class="container mt-5">
@@ -427,19 +427,19 @@
                     <div class="modal-body">
                      <!--    <div class="form-group">
                             <div class="input-group">
-                            <input type="file" (change)="selectFile($event)">       
+                            <input type="file" (change)="selectFile($event)">
                             </div>
                         </div> -->
 
                         <input type="file" (change)="fileChangeEvent($event)" />
-  
+
                         <!-- <button (click)="save()">Guardar cambios</button> -->
                         <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
                             [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
                             (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
                         </image-cropper>
-                    
-                    
+
+
                         <!-- <img [src]="croppedImage" /> -->
                     </div>
                     <div class="modal-footer">

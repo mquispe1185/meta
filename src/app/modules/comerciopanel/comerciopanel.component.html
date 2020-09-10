@@ -1,133 +1,139 @@
+<div class="contenedor">
 
-<div class="cuerpo container">
-        <h5 class="titulo">GESTIONE SU COMERCIO</h5>
+  <div class="cuerpo container">
+    <h5 class="titulo">GESTIONE SU COMERCIO</h5>
+    <div class="row">
+        <div class="col-sm-6">
+                <mat-card class="tarjeta-info">
+                        <mat-card-header>
+                          <div mat-card-avatar [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }"></div>
+                          <mat-card-title>Bienvenido a Meta {{tokenService.currentUserData?.name}}!</mat-card-title>
+                          <mat-card-subtitle>{{tokenService.currentUserData?.email}}</mat-card-subtitle>
+                        </mat-card-header>
+                      </mat-card>
+        </div>
+    </div>
+</div>
+   <div *ngIf="tokenService.currentUserData?.habilitado === false;then formalta else panel"></div>
+    <ng-template #formalta>
+        <div *ngIf="tokenService.currentUserData?.en_espera === false;then form else esperar"></div>
+        <ng-template #form>
+        <div class="container mt-3">
+
+            <div class="titulo">
+                 <h5 class="modal-title" ngbAutofocus>Solicitar Alta</h5>
+            </div>
+            <div class="example-container col-6">
+                <mat-card class="tarjeta-info">
+                <form name="form"
+                (ngSubmit)="f.form.valid && altaUsuario()"
+                #f="ngForm" novalidate>
+                <div class="form-row">
+
+                    <mat-form-field class="example-full-width">
+                      <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
+                      [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel" />
+                      <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
+                      <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
+                      </mat-error>
+                    </mat-form-field>
+
+                </div><!-- Apellido, Nombres-->
+                <div class="form-row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="telefono" minlength="1"
+                    [(ngModel)]="usuario.telefono" name="telefono" #telefono="ngModel" />
+                    <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
+                    </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="celular" minlength="1" required
+                    [(ngModel)]="usuario.celular" name="celular" #celular="ngModel" />
+                    <mat-error *ngIf="celular.invalid && celular.errors.required">Cel. es obligatorio</mat-error>
+                    <mat-error *ngIf="celular.invalid && celular.errors.minlength">Cel. debe tener al menos 2 caracteres
+                    </mat-error>
+                    </mat-form-field>
+                </div>
+                </div><!-- telefono, celular -->
+                <div class="form-row">
+
+                      <mat-form-field class="example-full-width">
+                      <input matInput type="text" placeholder="Domicilio" required minlength="2"
+                      [(ngModel)]="usuario.domicilio" name="dom" #dom="ngModel" />
+                      <mat-error *ngIf="dom.invalid && dom.errors.required">Domicilio es obligatorio</mat-error>
+                      <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
+                      </mat-error>
+                      </mat-form-field>
+
+                </div><!-- Domicilio-->
+
+              <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <mat-form-field class="example-full-width">
+                    <mat-label for="prov">Provincia</mat-label>
+                    <mat-select id="prov" name="prov" [(ngModel)]="usuario.provincia_id" (selectionChange)="buscarDtos($event)">
+                    <mat-option *ngFor="let pr of provincias" [value]="pr.id">{{ pr.nombre }}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4" *ngIf="departamentos.length > 0">
+                    <mat-form-field class="example-full-width">
+                    <mat-label for="dto">Departamento</mat-label>
+                    <mat-select id="dto" name="dto" [(ngModel)]="usuario.departamento_id" (selectionChange)="buscarLocs($event)">
+                    <mat-option *ngFor="let dto of departamentos" [value]="dto.id">{{ dto.nombre }}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4" *ngIf="localidades.length > 0">
+                    <mat-form-field class="example-full-width">
+                    <mat-label for="loc">Localidad</mat-label>
+                    <mat-select id="loc" name="loc" [(ngModel)]="usuario.localidad_id">
+                    <mat-option *ngFor="let loc of localidades" [value]="loc.id">{{ loc.nombre }}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+                <div class="text-right mt-4">
+                <button mat-raised-button type="submit" color="primary">
+                <fa-icon icon="save"></fa-icon>Enviar</button>
+                </div>
+                </form>
+            </mat-card>
+
+              </div>
+
+      </div>
+    </ng-template>
+    <ng-template #esperar>
+      <div class="container">
         <div class="row">
             <div class="col-sm-6">
                     <mat-card class="tarjeta-info">
                             <mat-card-header>
                               <div mat-card-avatar [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }"></div>
-                              <mat-card-title>Bienvenido a Meta {{tokenService.currentUserData?.name}}!</mat-card-title>
-                              <mat-card-subtitle>{{tokenService.currentUserData?.email}}</mat-card-subtitle>
+                              <mat-card-title>{{usuario.nombre}}, tu solicitud será respondida a la brevedad!</mat-card-title>
+                              <mat-card-subtitle>gracias por sumarte!</mat-card-subtitle>
                             </mat-card-header>
                           </mat-card>
             </div>
         </div>
-</div> 
-       <div *ngIf="tokenService.currentUserData?.habilitado === false;then formalta else panel"></div>
-        <ng-template #formalta>
-            <div *ngIf="tokenService.currentUserData?.en_espera === false;then form else esperar"></div>
-            <ng-template #form>
-            <div class="container mt-3">
-                 
-                <div class="titulo">
-                     <h5 class="modal-title" ngbAutofocus>Solicitar Alta</h5>
-                </div>
-                <div class="example-container col-6">
-                    <mat-card class="tarjeta-info"> 
-                    <form name="form"
-                    (ngSubmit)="f.form.valid && altaUsuario()"
-                    #f="ngForm" novalidate>
-                    <div class="form-row">
-                       
-                        <mat-form-field class="example-full-width">
-                          <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
-                          [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel" />
-                          <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
-                          <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
-                          </mat-error>
-                        </mat-form-field>
-                        
-                    </div><!-- Apellido, Nombres-->
-                    <div class="form-row">
-                    <div class="col-6">
-                        <mat-form-field class="example-full-width">
-                        <input matInput type="text" placeholder="telefono" minlength="1"
-                        [(ngModel)]="usuario.telefono" name="telefono" #telefono="ngModel" />
-                        <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
-                        </mat-error>
-                        </mat-form-field>
-                    </div> 
-                    <div class="col-6">
-                        <mat-form-field class="example-full-width">
-                        <input matInput type="text" placeholder="celular" minlength="1" required
-                        [(ngModel)]="usuario.celular" name="celular" #celular="ngModel" />
-                        <mat-error *ngIf="celular.invalid && celular.errors.required">Cel. es obligatorio</mat-error>
-                        <mat-error *ngIf="celular.invalid && celular.errors.minlength">Cel. debe tener al menos 2 caracteres
-                        </mat-error>
-                        </mat-form-field>
-                    </div> 
-                    </div><!-- telefono, celular -->
-                    <div class="form-row">
-                   
-                          <mat-form-field class="example-full-width">
-                          <input matInput type="text" placeholder="Domicilio" required minlength="2"
-                          [(ngModel)]="usuario.domicilio" name="dom" #dom="ngModel" />
-                          <mat-error *ngIf="dom.invalid && dom.errors.required">Domicilio es obligatorio</mat-error>
-                          <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
-                          </mat-error>
-                          </mat-form-field>
-                    
-                    </div><!-- Domicilio-->
-                    
-                  <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <mat-form-field class="example-full-width">
-                        <mat-label for="prov">Provincia</mat-label>
-                        <mat-select id="prov" name="prov" [(ngModel)]="usuario.provincia_id" (selectionChange)="buscarDtos($event)">
-                        <mat-option *ngFor="let pr of provincias" [value]="pr.id">{{ pr.nombre }}
-                        </mat-option>
-                        </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="form-group col-md-4" *ngIf="departamentos.length > 0">
-                        <mat-form-field class="example-full-width">
-                        <mat-label for="dto">Departamento</mat-label>
-                        <mat-select id="dto" name="dto" [(ngModel)]="usuario.departamento_id" (selectionChange)="buscarLocs($event)">
-                        <mat-option *ngFor="let dto of departamentos" [value]="dto.id">{{ dto.nombre }}
-                        </mat-option>
-                        </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="form-group col-md-4" *ngIf="localidades.length > 0">
-                        <mat-form-field class="example-full-width">
-                        <mat-label for="loc">Localidad</mat-label>
-                        <mat-select id="loc" name="loc" [(ngModel)]="usuario.localidad_id">
-                        <mat-option *ngFor="let loc of localidades" [value]="loc.id">{{ loc.nombre }}
-                        </mat-option>
-                        </mat-select>
-                        </mat-form-field>
-                    </div>
-                </div>
-                    <div class="text-right mt-4">
-                    <button mat-raised-button type="submit" color="primary">
-                    <fa-icon icon="save"></fa-icon>Enviar</button>
-                    </div>
-                    </form>
-                </mat-card>
+      </div>
+    </ng-template>
 
-                  </div>
-                    
-          </div>
-        </ng-template>
-        <ng-template #esperar>
-          <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                        <mat-card class="tarjeta-info">
-                                <mat-card-header>
-                                  <div mat-card-avatar [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }"></div>
-                                  <mat-card-title>{{usuario.nombre}}, tu solicitud será respondida a la brevedad!</mat-card-title>
-                                  <mat-card-subtitle>gracias por sumarte!</mat-card-subtitle>
-                                </mat-card-header>
-                              </mat-card>
-                </div>
-            </div>
-          </div>
-        </ng-template>
-        
-        </ng-template>
-        <ng-template #panel>
-          <app-gestioncomercio></app-gestioncomercio>
-        </ng-template> 
-        
+    </ng-template>
+    <ng-template #panel>
+      <app-gestioncomercio></app-gestioncomercio>
+    </ng-template>
+
+
+
+</div>
+
+
 

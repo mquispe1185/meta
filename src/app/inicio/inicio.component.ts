@@ -30,13 +30,13 @@ export class InicioComponent implements OnInit {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 2
+        items: 3
       },
       400: {
         items: 3
       },
-      740: {
-        items: 3
+      520: {
+        items: 4
       },
       940: {
         items: 5
@@ -44,7 +44,7 @@ export class InicioComponent implements OnInit {
     },
     nav: true
   }
-  
+
   constructor(public tokenService: AngularTokenService,
               public router: Router,
               private comercioService:ComercioService,
@@ -87,17 +87,17 @@ export class InicioComponent implements OnInit {
   }
 
   irAPanel(){
-    switch(this.tokenService.currentUserData.rol_id) { 
-      case 1: { 
+    switch(this.tokenService.currentUserData.rol_id) {
+      case 1: {
         this.router.navigate(['adminpanel']);
-         break; 
-      } 
-      case 2: case 3: { 
+         break;
+      }
+      case 2: case 3: {
         this.router.navigate(['comerciopanel']);
-         break; 
-      } 
-    
-   } 
+         break;
+      }
+
+   }
   }
 
   verComercio(comer){
@@ -105,7 +105,7 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['comercio']);
   }
   salir(){
- 
+
     this.tokenService.signOut().subscribe(
       res => console.log('adios!!',res),
       error => console.log('adios!!',error)

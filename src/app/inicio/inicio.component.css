@@ -1,3 +1,6 @@
+.contenedor{
+  margin-bottom: 50px;
+}
 .rectangulo{
   top: 0px;
   left: 0px;
@@ -11,7 +14,7 @@
 .superficial{
   position: absolute;
   top: 0px;
-  left: 0px;
+  align-items: center;
   width: 100%;
   height: 395px;
 }
@@ -25,7 +28,6 @@
 .contcel{
   position:absolute;
   width:100%;
-  right:0;
   display: none;
 }
 .menub{
@@ -59,25 +61,27 @@ writing-mode: horizontal-tb;
 /* direction: rtl; */
 }
 
-.arrow {
+/* .arrow {
   border: solid #FFFFFF;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 2px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-}
+} */
 
 
 .fondototal{
   background: #EBEBEB;
   text-align: center;
+  scroll-margin-bottom: 20px;
 }
 .fondoinicio{
   background: #EBEBEB;
   text-align: center;
 }
-/*seccion logo y subtitulo*/
+
+/*Seccion logo y subtitulo*/
 .contenedorlogo{
   top:75px;
   position: absolute;
@@ -95,7 +99,7 @@ writing-mode: horizontal-tb;
   width: 100%;
 }
 
- .lqq{
+ .slogan{
   text-align: left;
   font: normal normal normal 37px/45px Wavehaus;
   letter-spacing: 0px;
@@ -109,7 +113,7 @@ writing-mode: horizontal-tb;
   color: #FFFFFF;
  }
 
- /*seccion barra de busqueda*/
+ /*Seccion barra de busqueda*/
 .contenedorbusqueda{
   top:270px;
   position: absolute;
@@ -131,14 +135,18 @@ writing-mode: horizontal-tb;
   color: white;
 }
 .input-group>.input-group-prepend {
-  flex: 0 0 25%;
+  flex: 0 0 15%;
 }
 .input-group .input-group-text {
   width: 100%;
 }
 
+input::placeholder{
+  font-size: 13px;
+}
 
- .gps{
+.gps{
+  display: inline;
   position: relative;
   color: #EE7222;
   font-size: 28px;
@@ -168,7 +176,6 @@ width: 100%;
   background: transparent;
   font: normal normal 400 20px/24px Wavehaus;
   letter-spacing: 0px;
-
 }
 .input1:focus{
   border: transparent;
@@ -284,12 +291,13 @@ opacity: 1;
 }
 
 .footer{
-
   height: 60px;
   background: #EE7222;
   color: white;
   text-align: center;
-
+}
+.footercel{
+  display: none;
 }
 
 /* texto de footer */
@@ -321,7 +329,9 @@ opacity: 1;
     width: 80%;
   }
 }
-@media(max-width: 600px) {
+
+/* CSS PARA MOBILE */
+@media(max-width: 900px) {
 .cont{
   display: none;
 }
@@ -330,86 +340,92 @@ opacity: 1;
   position: fixed;
   z-index: 9999;
 }
+.contenedor{
+  margin-bottom: 80px;
+}
+.rectangulo{
+  height: 210px;
+}
+.superficial{
+  height: 210px;
+}
+/*Seccion logo y subtitulo*/
+.contenedorlogo{
+  top:25px;
+  position: absolute;
+  width: 100%;
+}
+
+.logop{
+  width: 90px;
+  height: 66px;
+}
+
+.contenedorsubtit{
+  top:100px;
+}
+
+.slogan{
+  font: normal normal normal 17px/25px Wavehaus;
+ }
+ .txtcerca{
+  font: normal normal bold 17px/25px Wavehaus;
+ }
+
+ /*Seccion barra de busqueda*/
+.contenedorbusqueda{
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font: normal normal 600 12px Wavehaus;
+  width: 95%;
+  height: 5%;
+}
+
 
 .menudesplegado{
   background: #EE7222;
   opacity: 0.9;
 }
 
-
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: .25rem 1.5rem;
+
   clear: both;
   text-align: inherit;
-  white-space: nowrap;
+  white-space: normal;
   background-color: transparent;
-  border: 0;
-  margin-left: 25px;
-  margin-right: 10px;
-}
-/*seccion logo y subtitulo*/
-.contenedorlogo{
-  top:50px;
-}
-
-.contenedorsubtit{
-  top:180px;
-}
-
- .lqq{
-  font: normal normal normal 32px/45px Wavehaus;
-  white-space:nowrap;
- }
- .txtcerca{
-  font: normal normal bold 31px/45px Wavehaus;
- }
- /*seccion barra de busqueda*/
-
-.contenedorbusqueda{
-  position: relative;
-  /* top: 407px; */
-  top:270px;
-  float: none;
-  margin: 0 auto;
-  width: 100%;
-  height: 5%;
-}
-/*recuadro fondo blanco de comercios*/
-.div-promo {
-  height: 370px;
-  }
-
-  /* texto de footer */
-.cen{
-  width: 100%;
-  height: 80px;
-  text-align: center;
-  font: normal normal 500 14px/17px Wavehaus;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+  border: 3;
 }
 
 .gps{
   display: none;
  }
 .ciudad{
-  position: absolute;
-  margin-top: 12px;
-  text-align: center;
-  font: normal normal 600 14px/16px Wavehaus;
+  font: normal normal 600 12px Wavehaus;
   letter-spacing: 0px;
   color: #707070;
   opacity: 1;
 }
+.btn-buscar{
+  font-size: 20px;
+ }
+
+
+/*recuadro fondo blanco de comercios*/
+.div-promo {
+  height: 370px;
+  }
+
 
 .parrafoini{
+  font: normal normal normal 14px Century;
+}
 
-  font: normal normal normal 22px/26px Century;
-}
 .redes{
-  font-size: 3em;
+  font-size: 2em;
 }
 }
+/* Fin CSS PARA MOBILE */

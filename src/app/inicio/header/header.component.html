@@ -12,18 +12,18 @@
                         <button mat-raised-button color="primary" class="mr-1">
                             <mat-icon>settings</mat-icon> CONFIGURACION</button>
                   </ng-container>
-                  
+
           </div>
-        
+
         <span class="example-spacer"></span>
         <mat-icon class="example-icon mr-2" aria-hidden="false">verified_user</mat-icon>
              <span class="nick mr-2"> {{tokenService.currentUserData?.name}}</span>
-        
+
         <button class="btn btn-google btn-outline" (click)="salir()">
         <mat-icon color="primary">exit_to_app</mat-icon>Salir </button>
 </mat-toolbar>
 
 <div class="content" fxFlex>
-    
-    </div>
-    <app-footer></app-footer>
+
+</div>
+<app-footer></app-footer>
