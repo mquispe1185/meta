@@ -52,6 +52,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { HeaderVisitantesComponent } from './inicio/header-visitantes/header-visitantes.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     HeaderComponent,
     FooterComponent,
     AfterloginComponent,
+    HeaderVisitantesComponent,
  
   ],
   imports: [

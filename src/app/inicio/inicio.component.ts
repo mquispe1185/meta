@@ -5,7 +5,7 @@ import { AngularTokenService } from 'angular-token';
 import { MapsAPILoader} from '@agm/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comercio } from '../modelos/comercio';
 import { ComercioService } from '../servicios/comercio.service';
@@ -16,6 +16,8 @@ import { ComercioService } from '../servicios/comercio.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+
+  @ViewChild ('ben')ben;
 
  comercios:Comercio[]=[];
   buscado:string='';
@@ -54,6 +56,9 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
     console.log('user data en inicio',this.tokenService.currentUserData);
+    this.listen();
+
+
    // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
    this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
@@ -61,12 +66,27 @@ export class InicioComponent implements OnInit {
    this.getComercios();
   }
 
+
+  listen() {
+    this.router.events.subscribe(val => {
+      console.log('estamos en LISTE');
+      if (val instanceof NavigationEnd) {
+        let fragmentIdx = val.urlAfterRedirects.lastIndexOf('#');
+        if (fragmentIdx >= 0 && fragmentIdx < val.urlAfterRedirects.length - 1) {
+          let fragment = val.urlAfterRedirects.substring(fragmentIdx+1);
+          // console.log('fragment: ' + fragment);
+          document.getElementById(fragment).scrollIntoView();
+        }
+      }
+    })
+  }
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
     let element = document.querySelector('.menub');
-    if (window.pageYOffset > 365) {
+    if (window.pageYOffset > 65) {
       element.classList.add('menunar');
-      console.log('supera los 365');
+      console.log('Dani supera los 65');
     } else {
       element.classList.remove('menunar');
     }

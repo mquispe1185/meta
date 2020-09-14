@@ -1,6 +1,6 @@
-<div class="contenedor">
+<div id='ini' class="contenedor">
   <!-- Rectangulo de Imagen Principal Superior -->
-  <div Style="background-image:url(/assets/barrio1920t-min.png)">
+  <div Style="background-image:url(/assets/barrio1920t-min.png)" class="imagen">
     <div #ini class="rectangulo">
 
     </div>
@@ -9,53 +9,13 @@
 
   <!-- Menu, Logo, Barra de Busqueda -->
   <div class="superficial">
-    <!-- Menu DESKTOP -->
-    <div class="cont">
-        <div class="menub" (scroll)="onWindowScroll($event);">
-          <button type="button" (click)="scroll(ini)" class="menu-boton btn btn-link">Inicio</button>
-          <button type="button" (click)="scroll(busca)" class="menu-boton btn btn-link">Quiero Comprar</button>
-          <button type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
-          <button type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
-          <button type="button" (click)="irAMiComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
 
-          <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
-            <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
-            <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
-            <ng-template #salida>
-              <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
-            </ng-template>
-            <ng-template #ingresar>
-                <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
-            </ng-template>
-        </div>
-    </div>
 
-      <!-- Menu CEL -->
-    <div class="contcel text-right">
-      <div ngbDropdown class="d-inline-block" placement="bottom-right"
-          display="dynamic">
-          <button class="btn btn-outline-light menudesplegado" id="dropdownBasic2" ngbDropdownToggle><mat-icon>menu</mat-icon></button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
-            <button ngbDropdownItem type="button" (click)="scroll(busca)" class="menu-boton btn btn-link">Quiero Comprar</button>
-            <button ngbDropdownItem type="button" (click)="scroll(serv)" class="menu-boton btn btn-link">Servicios</button>
-            <button ngbDropdownItem type="button" (click)="scroll(ben)" class="menu-boton btn btn-link">Beneficios</button>
 
-            <button type="button" (click)="irAMiComercio()" class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
 
-            <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
-              <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>{{tokenService.currentUserData?.name}}</button>
-              <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
-              <ng-template #salida>
-                <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
-              </ng-template>
-              <ng-template #ingresar>
-                <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
-            </ng-template>
-          </div>
-        </div>
-    </div>
-      <!-- FIN Menu CEL -->
 
+
+<!-- Logo Meta -->
     <div class="row contenedorlogo">
         <div class="col align-self-start">
 
@@ -74,7 +34,7 @@
         <div class="col align-self-start">
           </div>
           <div class="col d-flex align-items-center justify-content-center">
-              <span #busca class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
+              <span #busca  id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
           </div>
           <div class="col align-self-end">
           </div>
@@ -112,7 +72,7 @@
         Todo desde la comodidad de tu hogar.
       </div>
       <div class="mt-2 pt-2">
-        <span  #serv class="subti">¿Qué estas buscando?</span>
+        <span  #serv  id='cerca' class="subti">¿Qué estas buscando?</span>
       </div>
       <div class="my-5">
           <owl-carousel-o [options]="customOptions">
@@ -194,9 +154,9 @@
           </owl-carousel-o>
       </div>
 
-      <div #ben class="fondocomercios">
+      <div #ben id='bene' class="fondocomercios">
         <div class="row">
-          <span class="subti ml-3">Cerca de Ti...</span>
+          <span class="subti ml-3">Conocelos...</span>
         </div>
 
         <div class="row">

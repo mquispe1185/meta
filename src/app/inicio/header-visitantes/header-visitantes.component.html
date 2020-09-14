@@ -1,0 +1,68 @@
+<!-- Rectangulo de Imagen Principal Superior -->
+<div class="background" Style="background-image:url(/assets/barrio1920t-min.png)">
+  <div #ini class="rectangulo">
+  </div>
+
+  <!-- Menu MOBILE -->..
+  <div class="contcel text-right">
+    <div ngbDropdown class="d-inline-block" placement="bottom-right" display="dynamic">
+      <button class="btn btn-outline-light menudesplegado" id="dropdownBasic2" ngbDropdownToggle>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
+        <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Lo Que
+          Quieras</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Cerca</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="bene" class="menu-boton btn btn-link">Beneficios</button>
+
+        <button type="button" (click)="irAMiComercio()"
+          class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+
+        <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
+          <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
+          {{tokenService.currentUserData?.name}}
+        </button>
+        <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+        <ng-template #salida>
+          <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+        </ng-template>
+        <ng-template #ingresar>
+          <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i
+              class="arrow"></i></button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <!-- FIN Menu MOBILE -->
+
+  <!-- Menu DESKTOP -->
+  <div class="cont">
+    <div class="menub" (scroll)="onWindowScroll($event);">
+      <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Inicio</button>
+      <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Lo Que
+        Quieras</button>
+      <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Cerca</button>
+      <button type="button" [routerLink]="['/inicio']" fragment="bene"
+        class="menu-boton btn btn-link">Beneficios</button>
+      <button type="button" (click)="irAMiComercio()"
+        class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+
+      <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
+        <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
+        {{tokenService.currentUserData?.name}}
+      </button>
+      <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+      <ng-template #salida>
+        <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+      </ng-template>
+      <ng-template #ingresar>
+        <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+      </ng-template>
+    </div>
+  </div>
+
+
+
+
+</div>
+<!-- Fin Rectangulo de Imagen Principal Superior -->

@@ -10,6 +10,7 @@ import { AngularTokenService } from 'angular-token';
 import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
 import { ComercioModule } from './modules/comercio/comercio.module';
+import { QuienesComponent } from './modules/comercio/quienes/quienes.component';
 
 const routes: Routes = [
 
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path:'comercio',
     component: HeaderComponent,
+    loadChildren: () => ComercioModule
+  },
+  {
+    path:'quienes-somos',
+    component: QuienesComponent,
     loadChildren: () => ComercioModule
   },
   /*{

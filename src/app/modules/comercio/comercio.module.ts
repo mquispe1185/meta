@@ -38,10 +38,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { QuienesComponent } from './quienes/quienes.component';
 
 
 @NgModule({
-  declarations: [ComercioComponent],
+  declarations: [ComercioComponent, QuienesComponent],
   imports: [
     CommonModule,
     ComercioRoutingModule,
