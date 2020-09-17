@@ -1,0 +1,19 @@
+.fondoinicio{
+  margin-bottom: 50px;
+  background: #EBEBEB;
+  text-align: center;
+}
+
+/* .icono{
+  border-color: #EBEBEB;
+  background-color: transparent;
+  shape-margin: none;
+} */
+span.credits1 {
+  background: url(/assets/quienes/shop.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 56px;
+  width: 65px;
+}

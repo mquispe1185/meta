@@ -326,6 +326,60 @@ opacity: 1;
   opacity: 1;
 }
 
+.icono{
+  border-color: #EBEBEB;
+  background-color: transparent;
+  border-color: transparent;
+}
+span.credits1 {
+  background: url(/assets/carrusel/SVG/Automotor.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits2 {
+  background: url(/assets/carrusel/SVG/Gastronomia.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits3 {
+  background: url(/assets/carrusel/SVG/Despensa.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits4 {
+  background: url(/assets/carrusel/SVG/Boutique.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits5 {
+  background: url(/assets/carrusel/SVG/Educacion.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits6 {
+  background: url(/assets/carrusel/SVG/Hospedaje.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+
 @media(max-width: 1024px) {
   .contenedorbusqueda{
     width: 80%;

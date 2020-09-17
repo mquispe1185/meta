@@ -108,5 +108,16 @@ line-height: 0%;
   opacity: 0.9;
   height: 45px;
 }
+.btn-outline-light{
+  padding: 0.3em 0.5em;
+  color: white;
+}
+.btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active {
+  color: #ee7222;
+  background-color: #fff;
+  border-color: #fff; /*set the color you want here*/
+  padding: 0.3em 0.5em;
+  text-decoration: none;
+}
 
 }

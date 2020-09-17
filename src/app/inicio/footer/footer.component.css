@@ -19,13 +19,15 @@
   text-align: left;
 }
 .btn-outline-light{
-  padding: 1px;
+  padding: 0.1em 0.3em;
   color: white;
 }
 .btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active {
-  color: #fff;
-  background-color: #00b3db;
-  border-color: #285e8e; /*set the color you want here*/
+  color: #ee7222;
+  background-color: #fff;
+  border-color: #fff; /*set the color you want here*/
+  padding: 0.1em 0.5em;
+  text-decoration: none;
 }
 
 /* CSS PARA DESKTOP */
