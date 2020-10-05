@@ -15,7 +15,7 @@
 
     <div *ngFor="let comer of comercios">
         <div>
-            <mat-card class="mat-elevation-z8">
+            <mat-card class="mat-elevation-z8 mb-5">
                 <div class="row">
                     <div class="col-2 col-md-2">
                         <span class="titulo-item">Nombre: </span>
@@ -69,12 +69,12 @@
                         <div class="col-4 col-md-4">
                                     <span class="font-weight-bold">{{comer.telefono}} / {{comer.celular}}</span>
                         </div>
-                        <!--   <div class="col-2 col-md-2">
-                                <span class="titulo-item"> Fechanac: </span>
+                         <div class="col-2 col-md-2">
+                                <span class="titulo-item"> Envios a domicilio: </span>
                             </div>
                         <div class="col-4 col-md-4">
-                                <span class="font-weight-bold">{{comer.fechanac | date: 'dd/MM/yyyy'}}</span>
-                        </div> -->
+                                <span class="font-weight-bold">{{comer.envio ? 'SI' : 'NO'}}</span>
+                        </div>
                 </div>
 
 
@@ -321,15 +321,17 @@
             </mat-error>
           </mat-form-field>
         </div>
-   <!--      <div class="form-group col-6">
-            <mat-form-field>
-              <input matInput type="text" placeholder="twitter" minlength="2"
-                [(ngModel)]="comercio.twitter" name="tw" #tw="ngModel" />
-              <mat-error *ngIf="tw.invalid && tw.errors.minlength">twitter debe tener al menos 2 letras
-              </mat-error>
-            </mat-form-field>
-          </div> -->
-      </div><!-- instagram twitter-->
+        <div class="form-group col-6">
+          <mat-slide-toggle
+          [(ngModel)]="comercio.envio" name="env" #env="ngModel"v
+          color="primary"
+          [checked]="comercio.envio"
+          (change)="cambiarTextoEnvio($event)"
+          [disabled]="disabled">
+         {{msjenvio}}
+      </mat-slide-toggle>
+          </div> 
+      </div>
       <div class="row">
 
             <mat-form-field class="col">

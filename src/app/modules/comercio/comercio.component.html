@@ -29,7 +29,13 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row mt-4">
+                 
+                    <agm-map [latitude]= "lat" [zoom]= "zoom" [longitude]= "lon">
+                        <agm-marker  [latitude]= "lat" [longitude]= "lon"></agm-marker>
+                      </agm-map>
+                
+                </div>
                 <div class="row mt-4">
                         <div class="recuadroblanco">
                             <div class="row px-4 pt-2">
@@ -74,12 +80,13 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col px-0">
-                        <i class="fas fa-motorcycle fa-2x"></i><span class="info ml-3">calle Belgrano 340</span> 
+                        <i class="fas fa-motorcycle fa-2x"></i><span class="info ml-3">{{comercio.envio ? 'SI' : 'NO'}}</span> 
                         </div>
                         <div class="col d-flex justify-content-end">
-                                <i class="fab fa-facebook fa-2x mr-2"></i>
-                                <i class="fab fa-instagram fa-2x mr-2"></i>
-                                <i class="fab fa-twitter-square fa-2x"></i>
+                                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
+                                
+                                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
+                                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
                         </div>
                     </div>
 
@@ -89,5 +96,4 @@
         </div>
     </div>
 </div>
-
 

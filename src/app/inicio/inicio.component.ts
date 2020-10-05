@@ -69,7 +69,7 @@ export class InicioComponent implements OnInit {
 
   listen() {
     this.router.events.subscribe(val => {
-      console.log('estamos en LISTE');
+     // console.log('estamos en LISTE');
       if (val instanceof NavigationEnd) {
         let fragmentIdx = val.urlAfterRedirects.lastIndexOf('#');
         if (fragmentIdx >= 0 && fragmentIdx < val.urlAfterRedirects.length - 1) {
@@ -86,7 +86,7 @@ export class InicioComponent implements OnInit {
     let element = document.querySelector('.menub');
     if (window.pageYOffset > 65) {
       element.classList.add('menunar');
-      console.log('Dani supera los 65');
+    //  console.log('Dani supera los 65');
     } else {
       element.classList.remove('menunar');
     }
@@ -143,5 +143,17 @@ export class InicioComponent implements OnInit {
 
   buscarComercios(){
     console.log('buscandoooo', this.buscado);
+    this.comercioService.buscarComercios(this.buscado).subscribe(
+      cms =>{this.comercios = cms;
+       }
+    )
+  }
+
+  buscarPorRubro(){
+    console.log('filtrando por rubros')
+   /*  this.comercioService.buscarComerciosRubro(this.buscado).subscribe(
+      cms =>{this.comercios = cms;
+       }
+    ) */
   }
 }

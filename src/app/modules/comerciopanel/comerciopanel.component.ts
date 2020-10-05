@@ -41,6 +41,7 @@ export class ComerciopanelComponent implements OnInit {
   }
   altaUsuario(){
     this.usuario.en_espera = true;
+    this.usuario.habilitado = true;
     this.usuarioService.updateUsuario(this.usuario).subscribe(
       usr => {  this.tokenService.validateToken().subscribe(
                           res => {this.getUsuario();

@@ -1,6 +1,5 @@
-
 <div class="cuerpo container">
-    <h5 class="titulo">PANEL ADMINISTRACION</h5>
+    <h5 class="titulo">PANEL ADMINISTRACION COMERCIOS</h5>
     <div class="row">
         <div class="col-sm-6">
                 <mat-card class="tarjeta-info">
@@ -16,31 +15,38 @@
        
             <!-- Input Agregado para permitir la Busqueda -->
             <mat-form-field>
-              <input matInput (keyup)="filtrarUsuarios($event.target.value)" placeholder="Buscar Usuario...">
+              <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar Usuario...">
             </mat-form-field>
   
    
-            <mat-table #tablausuarios [dataSource]="lstUsuarios" class="mat-elevation-z8">
+            <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
               <!-- Nombre -->
               <ng-container matColumnDef="nombre">
-                <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
                 <mat-cell *matCellDef="let element">
                   <span class="mobile-label">Nombre:</span>{{element.nombre}}
                 </mat-cell>
               </ng-container>
           
+              <ng-container matColumnDef="rubro">
+                <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Rubro:</span>{{element.rubro.descripcion}}
+                </mat-cell>
+              </ng-container>
+
               <!-- Email -->
-              <ng-container matColumnDef="email">
-                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+              <ng-container matColumnDef="usuario">
+                <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Email:</span> {{element.email}}
+                  <span class="mobile-label">Usuario:</span> {{element.usuario.nombre}}
                 </mat-cell>
               </ng-container>
               <!-- Rol -->
-               <ng-container matColumnDef="prov">
-                <mat-header-cell *matHeaderCellDef>Provincia</mat-header-cell>
+               <ng-container matColumnDef="domicilio">
+                <mat-header-cell *matHeaderCellDef>Direccion</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Provincia:</span> {{element.provincia.nombre}}
+                  <span class="mobile-label">Direccion:</span> {{element.domicilio}}
                 </mat-cell>
               </ng-container>
               <!-- Acciones Column -->
@@ -49,14 +55,14 @@
                 <mat-cell *matCellDef="let element">
                   <span class="mobile-label">Acciones:</span>
                   <button placement="right" ngbTooltip="Aprobar" class="mr-2"
-                    mat-icon-button style="background-color: transparent" (click)="dialogAprobarUsuario(element)">
+                    mat-icon-button style="background-color: transparent" (click)="dialogAprobarComercio(element)">
                                                           <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
                   <button placement="right" ngbTooltip="Eliminar"
-                    mat-icon-button style="background-color: transparent" (click)="dialogEliminarUsuario(element)"><mat-icon>delete</mat-icon></button>
+                    mat-icon-button style="background-color: transparent" (click)="dialogEliminarComercio(element)"><mat-icon>delete</mat-icon></button>
                 </mat-cell>
               </ng-container>
-              <mat-header-row *matHeaderRowDef="dspColUsuarios"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspColUsuarios;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
+              <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: dspCol;" ></mat-row>
             </mat-table>
     
    
@@ -65,3 +71,4 @@
 
 
 </div> 
+

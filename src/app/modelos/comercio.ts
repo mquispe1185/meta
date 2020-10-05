@@ -35,7 +35,9 @@ export class Comercio {
     horarios:any[];
     url_foto:string;
     tags:string;
-  
+    habilitado:boolean;
+    envio:boolean;
+    
     constructor(data?: any) {
       Object.assign(this, data);
     }

@@ -37,7 +37,7 @@ export class HeaderVisitantesComponent implements OnInit {
     let element = document.querySelector('.menub');
     if (window.pageYOffset > 65) {
       element.classList.add('menunar');
-      console.log('supera los 365');
+     // console.log('supera los 365');
     } else {
       element.classList.remove('menunar');
     }

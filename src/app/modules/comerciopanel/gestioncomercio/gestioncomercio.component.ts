@@ -54,6 +54,7 @@ export class GestioncomercioComponent implements OnInit {
   file;
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  msjenvio;
 
   //variables para el manejo de palabras claves
   visible = true;
@@ -81,7 +82,7 @@ export class GestioncomercioComponent implements OnInit {
   }
 
   getComercios(){
-    this.comercioService.getComercios().subscribe(
+    this.comercioService.getMisComercios().subscribe(
       cms =>{this.comercios = cms;
               console.log('mis comerc',cms);
              }
@@ -95,7 +96,8 @@ export class GestioncomercioComponent implements OnInit {
 
   openFormAgregar(modal){
     this.comercio = new Comercio();
-    
+    this.comercio.envio = false;
+    this.msjenvio = 'NO realiza envios';
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -105,7 +107,11 @@ export class GestioncomercioComponent implements OnInit {
 
   openFormEditarComercio(modal,comer){
     this.comercio = comer;
-    
+    if(this.comercio.envio){
+      this.msjenvio = 'Si realiza envios';
+      }else{
+      this.msjenvio = 'NO realiza envios';
+      }
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -139,6 +145,14 @@ export class GestioncomercioComponent implements OnInit {
     this.ubicacionService.getLocalidad(this.depatramento_id).subscribe(
       locs => {this.localidades = locs}
     )
+  }
+
+  cambiarTextoEnvio(e){
+    if(e.checked){
+    this.msjenvio = 'Si realiza envios';
+    }else{
+    this.msjenvio = 'NO realiza envios';
+    }
   }
 
   altaComercio(){

@@ -40,10 +40,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListadocomerciosComponent } from './listadocomercios/listadocomercios.component';
 
 
 @NgModule({
-  declarations: [AdminpanelComponent],
+  declarations: [AdminpanelComponent, ListadocomerciosComponent],
   imports: [
     CommonModule,
     AdminpanelRoutingModule,

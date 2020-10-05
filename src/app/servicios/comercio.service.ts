@@ -1,5 +1,5 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comercio } from '../modelos/comercio';
@@ -18,6 +18,21 @@ export class ComercioService {
   }
 
   getComercios(): Observable<Comercio[]>{
+    return this.http.get<Comercio[]>(this.API_URL);
+  }
+
+  buscarComercios(term:string): Observable<Comercio[]>{
+    const url = `${environment.API_URL}/buscar?term=${term}`;
+    return this.http.get<Comercio[]>(url);
+  }
+
+  buscarComerciosRubro(term:string): Observable<Comercio[]>{
+    const url = `${environment.API_URL}/buscar_rubro?term=${term}`;
+    return this.http.get<Comercio[]>(url);
+  }
+
+  getMisComercios(): Observable<Comercio[]>{
+    const url = `${environment.API_URL}/miscomercios`;
     return this.http.get<Comercio[]>(this.API_URL);
   }
 

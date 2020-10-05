@@ -5,6 +5,14 @@ min-height: 100vh;
 padding-top: 70px;
 }
 
+agm-map {
+    width: 100%;
+    height: 250px;
+   
+ }
+ .mapa{
+    border-radius: 40px;
+ }
 .nombrecomercio{
 text-align: center;
 font: normal normal 800 54px/65px Wavehaus;
