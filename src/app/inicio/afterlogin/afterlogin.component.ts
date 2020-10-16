@@ -15,7 +15,8 @@ export class AfterloginComponent implements OnInit {
                   res =>{ console.log('nombre:::::::::::',this.tokenService.currentUserData.rol_id);
                    switch(this.tokenService.currentUserData.rol_id) { 
                      case 1: { 
-                       this.router.navigate(['adminpanel']);
+                       //this.router.navigate(['adminpanel']);
+                       this.router.navigate(['listacomercios']);
                         break; 
                      } 
                      case 2: { 

@@ -122,7 +122,10 @@ export class InicioComponent implements OnInit {
 
   verComercio(comer){
     localStorage.setItem('comercio',JSON.stringify(comer));
-    this.router.navigate(['comercio']);
+    this.comercioService.addVisitaComercio(comer).subscribe(
+      res=>{ this.router.navigate(['comercio']);}
+    )
+    
   }
   salir(){
 
@@ -134,9 +137,9 @@ export class InicioComponent implements OnInit {
 
 
   getComercios(){
-    this.comercioService.getComercios().subscribe(
+    this.comercioService.getComerciosInicio().subscribe(
       cms =>{this.comercios = cms;
-              console.log('mis comerc',cms);
+              console.log('todos comerc',cms);
              }
     )
   }

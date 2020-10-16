@@ -82,8 +82,10 @@ export class GestioncomercioComponent implements OnInit {
   }
 
   getComercios(){
+    this.comercios = []
     this.comercioService.getMisComercios().subscribe(
-      cms =>{this.comercios = cms;
+      cms =>{this.comercios = cms.map(c => new Comercio(c));
+
               console.log('mis comerc',cms);
              }
     )
@@ -157,7 +159,7 @@ export class GestioncomercioComponent implements OnInit {
 
   altaComercio(){
     this.comercioService.createComercio(this.comercio).subscribe(
-      cms =>{this.comercios = cms;
+      cms =>{this.comercios = cms.map(c => new Comercio(c));
           this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Nuevo comercio creado!');}
     )
@@ -165,7 +167,7 @@ export class GestioncomercioComponent implements OnInit {
 
   updateComercio(){
     this.comercioService.updateComercio(this.comercio).subscribe(
-      cms =>{this.comercios = cms;
+      cms =>{this.comercios = cms.map(c => new Comercio(c));
           this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Datos actualizados!');}
     )
@@ -185,7 +187,7 @@ export class GestioncomercioComponent implements OnInit {
     actualizarUbicacion(comercio){
       //console.log('comercioooo',comercio); 
       this.comercioService.updateComercio(comercio).subscribe(
-        cms =>{this.comercios = cms;
+        cms =>{this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Nuevo comercio creado!');}
     )
@@ -262,7 +264,7 @@ export class GestioncomercioComponent implements OnInit {
       this.comercioService.uploadLogo(this.nueva_foto,this.comercio.id).subscribe(
         cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
                 this.modalService.dismissAll();
-                this.comercios = cms;
+                this.comercios = cms.map(c => new Comercio(c));
                 this.cdRef.detectChanges();
                 console.log("enviadooo nueva url: ", this.comercio);
                 }

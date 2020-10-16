@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListadocomerciosComponent implements OnInit {
 
   lstComercios:any;
-  dspCol: string[] = ['nombre','email','prov', 'acciones'];
+  dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio', 'acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
  comercioSelected:Comercio = new Comercio();
 
@@ -38,14 +38,14 @@ export class ListadocomerciosComponent implements OnInit {
 
   getComercios(){
     this.comercioService.getComercios().subscribe(
-      cms =>{ this.lstComercios = new MatTableDataSource(cms);
+      cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
               this.lstComercios.paginator = this.paginatorCom;
              }
     )
   }
 
   filtrarComercios(term){
-
+    this.lstComercios.filter = term.trim().toLowerCase();
   }
 
   dialogAprobarComercio(element){
@@ -66,9 +66,10 @@ export class ListadocomerciosComponent implements OnInit {
   }
 
   aprobarComercio(element){
-    element.habilitado = !element.habilitado;
-    this.comercioService.updateComercio(element).subscribe(
-      cms =>{ this.lstComercios = new MatTableDataSource(cms);
+    //element.habilitado = !element.habilitado;
+    this.comercioService.habilitarComercio(element.id).subscribe(
+      cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+      
         this.lstComercios.paginator = this.paginatorCom;
                 this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }
     )
@@ -85,7 +86,7 @@ export class ListadocomerciosComponent implements OnInit {
   eliminarComercio(element){
     element.activo = false;
     this.comercioService.deleteComercio(element).subscribe(
-      usr =>{this.lstComercios = new MatTableDataSource(usr);
+      cms =>{this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
                 this.lstComercios.paginator = this.paginatorCom;
                 this.toastr.success('Aprobado!', 'Nuevo comercio aprobado!'); }
     )

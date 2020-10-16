@@ -1,3 +1,4 @@
+import { TipoServicio } from './tipo-servicio';
 import { Provincia } from "./provincia";
 
 import { Departamento } from "./departamento";
@@ -37,8 +38,30 @@ export class Comercio {
     tags:string;
     habilitado:boolean;
     envio:boolean;
+    tipo_servicio:number;
     
     constructor(data?: any) {
       Object.assign(this, data);
+    }
+
+    getTipoServicio(){
+      switch(this.tipo_servicio) { 
+        case 0: { 
+           return 'GRATUITO'; 
+          
+        } 
+        case 1: { 
+           return 'BASICO'; 
+          
+        } 
+        case 2: { 
+          return 'ESTANDAR'; 
+         
+       } 
+       case 3: { 
+          return 'PREMIUM'; 
+         
+       } 
+     } 
     }
   }

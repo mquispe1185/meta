@@ -21,6 +21,11 @@ export class ComercioService {
     return this.http.get<Comercio[]>(this.API_URL);
   }
 
+  getComerciosInicio(): Observable<Comercio[]>{
+    const url = `${environment.API_URL}/listacomercios`;
+    return this.http.get<Comercio[]>(url);
+  }
+
   buscarComercios(term:string): Observable<Comercio[]>{
     const url = `${environment.API_URL}/buscar?term=${term}`;
     return this.http.get<Comercio[]>(url);
@@ -33,7 +38,7 @@ export class ComercioService {
 
   getMisComercios(): Observable<Comercio[]>{
     const url = `${environment.API_URL}/miscomercios`;
-    return this.http.get<Comercio[]>(this.API_URL);
+    return this.http.get<Comercio[]>(url);
   }
 
   getComercioShort(): Observable<Comercio[]>{
@@ -41,15 +46,25 @@ export class ComercioService {
     return this.http.get<Comercio[]>(url);
   }
 
+  addVisitaComercio(comercio: Comercio): Observable<any>{
+    const url = `${environment.API_URL}/add_visita?comercio_id=${comercio.id}`;
+    return this.http.put(url, comercio.id);
+  }
+
   createComercio(comercio: Comercio): Observable<any>{
     return this.http.post<Comercio>(this.API_URL, comercio);
   }
 
-  updateComercio(comercio: Comercio): Observable<any>{
-   
+  updateComercio(comercio: Comercio): Observable<any>{ 
     const url = `${this.API_URL}/${comercio.id}`;
     return this.http.put(url, comercio);
   }
+
+  habilitarComercio(comercio_id: number): Observable<any>{ 
+    const url = `${environment.API_URL}/habilitar_comercio?comercio_id=${comercio_id}`;
+    return this.http.put(url, comercio_id);
+  }
+
 
   deleteComercio(comercio: Comercio): Observable<any>{
     const url = `${this.API_URL}/${comercio.id}`;

@@ -11,6 +11,7 @@ import { GuardService } from './servicios/guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
 import { ComercioModule } from './modules/comercio/comercio.module';
 import { QuienesComponent } from './modules/comercio/quienes/quienes.component';
+import { ListadocomerciosComponent } from './modules/adminpanel/listadocomercios/listadocomercios.component';
 
 const routes: Routes = [
 
@@ -41,6 +42,11 @@ const routes: Routes = [
     path:'quienes-somos',
     component: QuienesComponent,
     loadChildren: () => ComercioModule
+  },
+  {
+    path:'listacomercios',
+    component: ListadocomerciosComponent,
+    loadChildren: () => AdminpanelModule
   },
   /*{
     path:'estadisticas',

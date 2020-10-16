@@ -55,7 +55,7 @@
             <div class="col-sm">
                 <div class="row">
                       
-                     <img class="recuadroimagen px-4" src={{comercio.url_foto}} alt="">
+                     <img class="recuadroimagen px-4" [attr.src]="[comercio.url_foto != null ? comercio.url_foto : 'assets/logos/defaultlogo.jpeg']" alt="">
                        
                 </div>
 
@@ -84,9 +84,8 @@
                         </div>
                         <div class="col d-flex justify-content-end">
                                 <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-                                
                                 <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
-                                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
+                                <a href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
                         </div>
                     </div>
 

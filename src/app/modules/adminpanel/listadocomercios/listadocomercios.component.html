@@ -15,7 +15,7 @@
        
             <!-- Input Agregado para permitir la Busqueda -->
             <mat-form-field>
-              <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar Usuario...">
+              <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
             </mat-form-field>
   
    
@@ -49,6 +49,13 @@
                   <span class="mobile-label">Direccion:</span> {{element.domicilio}}
                 </mat-cell>
               </ng-container>
+
+              <ng-container matColumnDef="tiposervicio">
+                <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
+                <mat-cell *matCellDef="let element" >
+                  <span class="mobile-label">Servicio:</span> {{element.getTipoServicio()}}
+                </mat-cell>
+              </ng-container>
               <!-- Acciones Column -->
               <ng-container matColumnDef="acciones">
                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
@@ -62,7 +69,7 @@
                 </mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspCol;" ></mat-row>
+              <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
             </mat-table>
     
    

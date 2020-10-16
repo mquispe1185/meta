@@ -1,9 +1,10 @@
 import { Component, OnInit, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { ComercioService } from 'src/app/servicios/comercio.service';
+
 import { ToastrService } from 'ngx-toastr';
 import { InicioComponent } from '../inicio.component';
+import { ComercioService } from '../../servicios/comercio.service';
 
 @Component({
   selector: 'app-header-visitantes',
@@ -61,7 +62,7 @@ export class HeaderVisitantesComponent implements OnInit {
   irAPanel(){
     switch(this.tokenService.currentUserData.rol_id) {
       case 1: {
-        this.router.navigate(['adminpanel']);
+        this.router.navigate(['listacomercios']);
         break;
       }
       case 2: case 3: {
@@ -81,8 +82,9 @@ export class HeaderVisitantesComponent implements OnInit {
   salir(){
 
     this.tokenService.signOut().subscribe(
-      res => console.log('adios!!',res),
-      error => console.log('adios!!',error)
+      res => {  localStorage.clear();
+        this.router.navigate(['inicio']);},
+      error => {this.router.navigate(['inicio']);}
     );
   }
 
