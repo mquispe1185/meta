@@ -61,7 +61,7 @@
                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                   <span class="mobile-label">Acciones:</span>
-                  <button placement="right" ngbTooltip="Aprobar" class="mr-2"
+                <button placement="right" ngbTooltip="{{element.habilitado ? 'Deshabilitar':'Habilitar'}}" class="mr-2"
                     mat-icon-button style="background-color: transparent" (click)="dialogAprobarComercio(element)">
                                                           <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
                   <button placement="right" ngbTooltip="Eliminar"

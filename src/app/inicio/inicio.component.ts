@@ -1,3 +1,5 @@
+import { Promocion } from './../modelos/promocion';
+import { PromocionesService } from './../servicios/promociones.service';
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -19,8 +21,9 @@ export class InicioComponent implements OnInit {
 
   @ViewChild ('ben')ben;
 
- comercios:Comercio[]=[];
+  comercios:Comercio[]=[];
   buscado:string='';
+  promociones:Promocion[]=[];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -50,6 +53,7 @@ export class InicioComponent implements OnInit {
   constructor(public tokenService: AngularTokenService,
               public router: Router,
               private comercioService:ComercioService,
+              private promoService:PromocionesService,
               private toastr: ToastrService,
               ) { }
 
@@ -64,6 +68,7 @@ export class InicioComponent implements OnInit {
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
    );
    this.getComercios();
+   this.getPromos();
   }
 
 
@@ -158,5 +163,12 @@ export class InicioComponent implements OnInit {
       cms =>{this.comercios = cms;
        }
     ) */
+  }
+
+  /*trae las promociones*/
+  getPromos(){
+    this.promoService.getPromoShort().subscribe(
+      prs =>{this.promociones = prs;}
+    )
   }
 }

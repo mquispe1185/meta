@@ -186,21 +186,19 @@
         </div>
 
         <div class="row">
-            <ng-container *ngFor="let comer of comercios">
+            <ng-container *ngFor="let promo of promociones">
           <div class="col-sm-4 margendiv">
-            <div class="div-promo">
+            <div class="promociones">
               <div (click)="verComercio(comer)">
-                <img class="resize_fit_center" [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']" alt="foto comercio">
+                <div>
+                <h3>{{promo.titulo}}</h3>
+               <p class="parrafopromo">
+                {{promo.descripcion}}
+               </p>
+              <span>valido hasta: {{promo.hasta}}</span>
+                </div>
               </div>
-              <div class="nombre-comer mt-4">
-                {{comer.nombre}}
-              </div>
-              <div class="desc-comer mt-2">
-                {{comer.descripcion}}
-              </div>
-              <div class="dist-comer mt-2">
-                {{comer.domicilio}}
-              </div>
+             
             </div>
 
           </div>
