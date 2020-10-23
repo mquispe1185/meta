@@ -1,3 +1,6 @@
+.container {
+  margin-bottom: 70px;
+}
 .modal-dialog {
     margin: 4.75rem auto;
 }
@@ -8,17 +11,17 @@
 }
 
 .pac-container {
-  
+
     z-index: 99999 !important;
 
 }
 .modal{
-    z-index: 20;   
+    z-index: 20;
 }
 
 .modal-backdrop{
     z-index: 10;
-} 
+}
 
 .foto {
     max-width:95%;
