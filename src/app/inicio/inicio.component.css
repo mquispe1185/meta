@@ -289,15 +289,29 @@ input::placeholder {
 }
 
 .promociones {
-  border: 1px solid #ee7222;
-  border-radius: 1em;
+  background: #303030;
+  color: #ffffff;
   padding: 5px;
-
   height: 150px;
 }
 
 .parrafopromo {
   word-wrap: break-word;
+  font-weight: bold;
+}
+.promo-img {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  top: -50px;
+  right: -50px;
+  margin-top: -5px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.promo-imagen {
+  height: 350px;
+  margin-top: 60px;
 }
 
 .resize_fit_center {
@@ -316,6 +330,7 @@ input::placeholder {
 .margendiv {
   margin-right: -20px;
   margin-bottom: 5px;
+  margin-left: 50px;
 }
 
 .arrowgris {

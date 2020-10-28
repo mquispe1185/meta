@@ -189,31 +189,34 @@
       <div #ben id='promo' class="fondocomercios">
         <div class="row">
           <span class="subti ml-3">Promociones</span>
-        </div>
+        </div><br>
 
         <div class="row">
           <ng-container *ngFor="let promo of promociones">
             <div class="col-sm-4 margendiv">
               <div class="promociones">
-                <div (click)="verComercio(comer)">
-                  <div>
-                    <h3>{{promo.titulo}}</h3>
-                    <p class="parrafopromo">
-                      {{promo.descripcion}}
-                    </p>
-                    <span>valido hasta: {{promo.hasta}}</span>
+                <div class="row">
+                  <div class="col-7" (click)="verComercio(comer)">
+                    <div>
+                      <h5>{{promo.titulo}}</h5>
+                      <p class="parrafopromo">
+                        {{promo.descripcion}}
+                      </p>
+                      <span>valido hasta: {{promo.hasta}}</span>
+                    </div>
+                  </div>
+                  <div class="col-5 promo-img" (click)="verComercio(comer)">
+                    <div class="promo-imagen">
+                      <img class="logop" src="/assets/mujercompra.png" alt="">
+                    </div>
+
                   </div>
                 </div>
-
               </div>
 
             </div>
           </ng-container>
         </div>
-        <!--
-        <div>
-          <span class="carga">Cargar más</span>
-        </div> -->
         <div>
           <!-- <i class="arrowgris"></i> -->
         </div>
@@ -222,7 +225,7 @@
       <div #ben id='bene' class="fondocomercios">
         <div class="row">
           <span class="subti ml-3">Sugerencias para vos...</span>
-        </div>
+        </div><br>
 
         <div class="row">
           <ng-container *ngFor="let comer of comercios">
@@ -269,6 +272,7 @@
 </div>
 
 
+  <!-- FOOTER -->
 <div class="footerrectangulo">
   <div class="footertriangulo">
   </div> <br>
