@@ -1,3 +1,21 @@
-<app-header-visitantes></app-header-visitantes>
+<div *ngIf="esInicio; then inicial else trabajo"></div>
+<ng-template #inicial>
+        <app-header-visitantes></app-header-visitantes>
+</ng-template>
+
+<ng-template #trabajo>
+        <div *ngIf="tokenService.userSignedIn(); then menuwork else menuini"></div>
+        <ng-template #menuini>
+                <app-header-visitantes></app-header-visitantes>
+        </ng-template>
+        
+        <ng-template #menuwork>
+                <app-header></app-header>
+        </ng-template>
+        
+   
+</ng-template>
+
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

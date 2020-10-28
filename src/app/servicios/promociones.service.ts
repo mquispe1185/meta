@@ -17,10 +17,18 @@ export class PromocionesService {
     return this.http.get<Promocion>(url);
   }
 
+  //usado por admin
   getPromociones(): Observable<Promocion[]>{
     return this.http.get<Promocion[]>(this.API_URL);
   }
 
+  //usado para q un usuario pueda ver sus promos
+  getMisPromo(): Observable<Promocion[]>{
+      const url = `${environment.API_URL}/mis_promos`;
+      return this.http.get<Promocion[]>(url);
+  }
+
+  //usado para pagina de inicio
   getPromoShort(): Observable<Promocion[]>{
     const url = `${environment.API_URL}/promos`;
     return this.http.get<Promocion[]>(url);

@@ -1,3 +1,5 @@
+import { ComerciopanelComponent } from './modules/comerciopanel/comerciopanel.component';
+import { GestionPromosComponent } from './modules/comerciopanel/gestion-promos/gestion-promos.component';
 import { ComerciopanelModule } from './modules/comerciopanel/comerciopanel.module';
 import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
 import { NgModule } from '@angular/core';
@@ -30,7 +32,7 @@ const routes: Routes = [
   },
   {
     path:'comerciopanel',
-    component: HeaderComponent,
+    component: ComerciopanelComponent,
     loadChildren: () => ComerciopanelModule, canLoad: [GuardService]
   },
   {
@@ -47,6 +49,11 @@ const routes: Routes = [
     path:'listacomercios',
     component: ListadocomerciosComponent,
     loadChildren: () => AdminpanelModule
+  },
+  {
+    path:'mispromos',
+    component: GestionPromosComponent,
+    loadChildren: () => ComerciopanelModule
   },
   /*{
     path:'estadisticas',

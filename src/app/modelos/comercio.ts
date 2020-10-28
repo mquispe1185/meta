@@ -39,6 +39,7 @@ export class Comercio {
     habilitado:boolean;
     envio:boolean;
     tipo_servicio:number;
+    tipo_servicio_descripcion:string;
     
     constructor(data?: any) {
       Object.assign(this, data);

@@ -121,14 +121,23 @@
           </div>
 
         </div>
+
         <div class="row">
-          <div class="col-5 col-md-2">
-            <span class="titulo-item">Palabras Claves: </span>
+            <div class="col-5 col-md-2">
+              <span class="titulo-item"> Palabras clave: </span>
+            </div>
+  
+            <div class="col-7 col-md-4">
+              <span class="font-weight-bold">{{comer.tags}}</span>
+            </div>
+            <div class="col-5 col-md-2">
+              <span class="titulo-item"> Tipo servicio: </span>
+            </div>
+  
+            <div class="col-7 col-md-4">
+              <span class="font-weight-bold">{{comer.tipo_servicio_descripcion}}</span>
+            </div>
           </div>
-          <div class="col-7 col-md-10">
-            <span class="font-weight-bold">{{comer.tags}}</span>
-          </div>
-        </div>
         <br>
 
         <div class="row">
@@ -176,6 +185,9 @@
             <button mat-raised-button type="submit" class="mr-3" color="primary"
             (click)="openFormHorario(formhorario,comer)">
             <mat-icon>alarm</mat-icon>Horario
+          </button>
+          <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormFoto(modalplan,comer)">
+            <mat-icon>verified</mat-icon>Tipo Servicio
           </button>
           <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
             <mat-icon>save</mat-icon>Actualizar datos
@@ -503,3 +515,55 @@
   </div>
 
 </ng-template>
+
+
+<!-- MODAL cambiar plan -->
+<ng-template #modalplan let-modal>
+    <div class="container">
+        <div>
+          <mat-card class="tarjeta-info">
+            <div class="card-body">
+              <div class="modal-header modal-encabezado">
+                <h5 class="modal-title titulo" id="modal-basic-title">
+                  <strong>Tipo de Plan</strong>
+                </h5>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+                  <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
+  
+                      <div class="form-row">
+                        
+                            <mat-form-field class="col">
+                                <mat-label for="ts">Tipo de servicio</mat-label>
+                                <mat-select id="ts" name="ts" [(ngModel)]="comercio.tipo_servicio"
+                                  >
+                                  <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        
+                      </div>
+                
+                      <div class="form-row">
+                      
+                        <div class="col-6 text-right">
+                          <button mat-raised-button type="submit" color="primary"><fa-icon icon="save"></fa-icon>Cambiar plan</button>
+                        </div>
+                      </div>
+                
+                    </form>
+              </div>
+             
+            </div>
+          </mat-card>
+        </div>
+      </div>
+
+
+    </ng-template>
+
+   

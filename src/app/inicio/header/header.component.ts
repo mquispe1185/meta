@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ComercioService } from '../../servicios/comercio.service';
 
 @Component({
   selector: 'app-header',
@@ -9,17 +11,41 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  esInicio=false;
   constructor(public tokenService: AngularTokenService,
-    public router: Router,) { }
+              public router: Router,
+              private comercioService: ComercioService,
+              private toastr: ToastrService,) { }
 
-  ngOnInit(): void {
-    console.log('llegamos a panel admin');
-    this.tokenService.processOAuthCallback();
-  }
 
+
+    ngOnInit(): void {
+
+      console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
+      console.log('user data en inicio',this.tokenService.currentUserData);
+     // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
+      this.tokenService.validateToken().subscribe(
+       res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
+     );
+        console.log('urllll',this.router.url)
+    }
+  
+
+  
+    irAMiComercio(){
+      this.tokenService.validateToken().subscribe(
+        res =>{ this.router.navigate(['comerciopanel']);},
+        err =>{this.toastr.error('primero debe loquearse!', 'Ingrese al sistema con Gmail!');}
+      );
+    }
+  
 
   irInicio(){
     this.router.navigate(['inicio']);
+  }
+
+  irPromos(){
+    this.router.navigate(['mispromos']);
   }
   salir():void{
     this.tokenService.signOut().subscribe(res => {

@@ -1,3 +1,5 @@
+import { TipoServicio } from './../../../modelos/tipo-servicio';
+import { Promocion } from './../../../modelos/promocion';
 import { HorarioService } from './../../../servicios/horario.service';
 import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
@@ -63,6 +65,9 @@ export class GestioncomercioComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   palabras: Palabras[] =[];
+//actualizar tipo servicios
+servicios = TipoServicio.servicios;
+ 
 
   constructor(  public tokenService: AngularTokenService,
                 private modalService: NgbModal,
@@ -85,7 +90,7 @@ export class GestioncomercioComponent implements OnInit {
     this.comercios = []
     this.comercioService.getMisComercios().subscribe(
       cms =>{this.comercios = cms.map(c => new Comercio(c));
-
+              localStorage.setItem('miscomercios', JSON.stringify(this.comercios));
               console.log('mis comerc',cms);
              }
     )
@@ -332,7 +337,7 @@ export class GestioncomercioComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
-
+    //agregado o quita de tags
     add(event: MatChipInputEvent): void {
       const input = event.input;
       const value = event.value;
@@ -370,6 +375,11 @@ export class GestioncomercioComponent implements OnInit {
      this.updateComercio();
       console.log('mis tags',palabrasclaves);
     }
+
+// funciones para actualizar tipo de plan/servicio
+updateTipoPlan(){
+  this.updateComercio();
+}   
 
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
