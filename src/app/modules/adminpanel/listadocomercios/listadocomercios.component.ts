@@ -75,6 +75,24 @@ export class ListadocomerciosComponent implements OnInit {
     )
   }
 
+  openFormEditar(modal,comer){
+    this.comercioSelected = comer;
+    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  updateComercio(){
+    this.comercioService.updateComercio(this.comercioSelected).subscribe(
+      cms =>{this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+          this.modalService.dismissAll();
+        this.toastr.success('bien hecho!', 'Datos actualizados!');}
+    )
+  }
+
+
   dialogEliminarComercio(element){
     this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar al usuario ${element.nombre} ?`)
       .then(

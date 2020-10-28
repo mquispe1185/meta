@@ -1,0 +1,143 @@
+
+<div class="container mt-3">
+        <div class="row">
+          <div class="col-6">
+            <h6 class="titulo">MIS PROMOS</h6>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <button mat-raised-button placement="right" ngbTooltip="Nuevo" color="primary"
+              (click)="openFormPromo(promoform)">
+              <mat-icon>note_add</mat-icon> Nueva Promocion
+            </button>
+          </div>
+        </div>
+
+
+        <div class="mt-3">
+       
+                <!-- Input Agregado para permitir la Busqueda -->
+                <mat-form-field>
+                  <input matInput (keyup)="filtrarPromos($event.target.value)" placeholder="Buscar promo...">
+                </mat-form-field>
+      
+       
+                <mat-table #tablausuarios [dataSource]="lstPromos" class="mat-elevation-z8">
+                  <!-- titulo -->
+                  <ng-container matColumnDef="titulo">
+                    <mat-header-cell *matHeaderCellDef>Titulo</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <span class="mobile-label">Titulo:</span>{{element.titulo}}
+                    </mat-cell>
+                  </ng-container>
+              
+                  <!-- Descripcion -->
+                  <ng-container matColumnDef="descripcion">
+                    <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+                    <mat-cell *matCellDef="let element" >
+                      <span class="mobile-label">Descripcion:</span> {{element.descripcion}}
+                    </mat-cell>
+                  </ng-container>
+                
+                  <!-- Acciones Column -->
+                  <ng-container matColumnDef="acciones">
+                    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <span class="mobile-label">Acciones:</span>
+                   <!--    <button placement="right" ngbTooltip="Aprobar" class="mr-2"
+                        mat-icon-button style="background-color: transparent" (click)="dialogAprobarUsuario(element)">
+                                                              <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
+                      <button placement="right" ngbTooltip="Eliminar"
+                        mat-icon-button style="background-color: transparent" (click)="dialogEliminarUsuario(element)"><mat-icon>delete</mat-icon></button> -->
+                    </mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: dspColPromos;"></mat-row>
+                </mat-table>
+        
+       
+                <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+    
+    
+    
+    </div> 
+
+</div>
+
+<!-- Formulario PROMOCIONES-->
+<ng-template #promoform let-modal>
+        <div class="container">
+          <div>
+            <mat-card class="tarjeta-info">
+              <div class="card-body">
+                <div class="modal-header modal-encabezado">
+                  <h5 class="modal-title titulo" id="modal-basic-title">
+                    <strong>Crear promo</strong>
+                  </h5>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form name="form" (ngSubmit)="f.form.valid && (promocion.id ? updatePromo(): crearPromo())" #f="ngForm"
+                  novalidate>
+      
+                  
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <mat-form-field>
+                        <input matInput type="date" required placeholder="Desde" [(ngModel)]="promocion.desde"
+                          #desde="ngModel" min="2020-01-01" fechaValidator id="desde" name="desde" required
+                          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                        <mat-error *ngIf="desde.invalid && desde?.errors.fechanac">Fecha mayor a 1900 y menor a HOY
+                        </mat-error>
+                        <mat-error *ngIf="desde.invalid && desde?.errors.pattern">Fecha invalida</mat-error>
+                        <mat-error *ngIf="desde.invalid && desde?.errors.required">Fecha desde Obligatoria</mat-error>
+                      </mat-form-field>
+                    </div>
+      
+                    <div class="form-group col-md-6">
+                      <mat-form-field>
+                        <input matInput type="date" required placeholder="Hasta" [(ngModel)]="promocion.hasta"
+                          #hasta="ngModel" min="2020-01-01" fechaValidator id="hasta" name="hasta" required
+                          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                        <mat-error *ngIf="hasta.invalid && hasta?.errors.fechanac">Fecha mayor a 1900 y menor a HOY
+                        </mat-error>
+                        <mat-error *ngIf="hasta.invalid && hasta?.errors.pattern">Fecha invalida</mat-error>
+                        <mat-error *ngIf="hasta.invalid && hasta?.errors.required">Fecha hasta Obligatoria</mat-error>
+                      </mat-form-field>
+                    </div>
+      
+                  </div><!-- desde, hasta-->
+                  <div class="form-row">
+                   
+                      <mat-form-field class="col">
+                        <input matInput type="text" placeholder="Titulo" minlength="1" [(ngModel)]="promocion.titulo"
+                          name="titulo" #titulo="ngModel" />
+                        <mat-error *ngIf="titulo.invalid && titulo.errors.required">Titulo es obligatorio</mat-error>
+                        <mat-error *ngIf="titulo.invalid && titulo.errors.minlength">Titulo debe tener al menos 2 caracteres
+                        </mat-error>
+                      </mat-form-field>
+                   
+                    
+                  </div><!-- titulo promo -->
+                
+                  <div class="form-row">
+      
+                      <mat-form-field class="col">
+                        <textarea matInput type="text" placeholder="descripcion" maxlength="256"
+                          [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel">
+                        </textarea>
+                      </mat-form-field>
+                  </div>
+                  <div class="text-right mt-4">
+                    <button mat-raised-button type="submit" color="primary">
+                      <fa-icon icon="save"></fa-icon>Crear
+                    </button>
+                  </div>
+      
+                </form>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </ng-template>
+      

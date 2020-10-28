@@ -52,8 +52,129 @@
     /* padding: 0 14px; */
   }
 
-/* CSS PARA DESKTOP */
-@media (min-width: 600px) {
+/* AGREGADO DE HEADER VISITANTE */
 
-
-}
+.background{
+  line-height: 0%;
+  }
+  .rectangulo {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 45px;
+    /* background: #ee7222 0% 0% no-repeat padding-box; */
+    opacity: 0.69;
+    z-index: -999;
+  }
+  
+  .menub {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    text-align: right;
+    height: 45px;
+    margin-right: 25px;
+    z-index: 9999;
+    font: normal normal 600 19px/22px Wavehaus;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+  }
+  
+  /* Contenedor Menu Barra */
+  .cont {
+    position:
+    absolute;
+    width: 100%;
+    right: 0;
+    display: none;
+  }
+  /* Contenedor Menu Boton Cel */
+  .contcel {
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    opacity: 1;
+  }
+  .menu-boton {
+    text-align: center;
+    /* font-family: 'Wavehause2', sans-serif; */
+    font: normal normal 600 19px/22px Wavehaus;
+    letter-spacing: 0px;
+    color: #ffffff;
+    /* margin-inline-start: 40px; */
+    writing-mode: horizontal-tb;
+    z-index: 999;
+    /* direction: rtl; */
+  }
+  
+  .menudesplegado {
+    margin-top: -25px;
+    background: #ee7222;
+    opacity: 0.9;
+  }
+  
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    clear: both;
+    text-align: inherit;
+    white-space: normal;
+    background-color: transparent;
+    border: 3;
+  }
+  
+  /* CSS PARA DESKTOP */
+  @media (min-width: 600px) {
+  
+    .menub {
+      position: fixed;
+      width: 100%;
+      top: 0px;
+      bottom: 0px;
+      text-align: right;
+      height: 200px;
+      margin-right: 25px;
+      z-index: 9999;
+      font: normal normal 600 19px/22px Wavehaus;
+      letter-spacing: 0px;
+      color: #ffffff;
+      opacity: 1;
+    }
+    /* Contenedor Menu Boton Cel */
+    .contcel {
+      position: absolute;
+      width: 100%;
+      right: 0;
+      display: none;
+    }
+  
+    /* Contenedor Menu Barra */
+    .cont {
+      position: absolute;
+      width: 100%;
+      right: 0;
+      display: block;
+  
+    }
+  
+  /*menu cambia de color al superar los 365px*/
+  .menunar {
+    background: #ee7222;
+    opacity: 0.9;
+    height: 45px;
+  }
+  .btn-outline-light{
+    padding: 0.3em 0.5em;
+    color: white;
+  }
+  .btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active {
+    color: #ee7222;
+    background-color: #fff;
+    border-color: #fff; /*set the color you want here*/
+    padding: 0.3em 0.5em;
+    text-decoration: none;
+  }
+  
+  }
+  

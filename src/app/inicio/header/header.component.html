@@ -1,9 +1,11 @@
-<mat-toolbar  color="primary" class="position-fixed">
+
+<mat-toolbar  color="primary">
         <img src="assets/logos/logos-06.png" alt="logo" class="logo">
-          <!-- <span class="txt-blanco">Meta App</span> -->
+ 
           <div class="centrado">
-              <button mat-raised-button color="primary" (click)="irInicio()" class="mr-1">
-                  <mat-icon>home</mat-icon>Inicio</button>
+            <button mat-raised-button color="primary" (click)="irInicio()" class="mr-1">
+                <mat-icon>home</mat-icon>Inicio</button>
+           
                   <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
                       <button mat-raised-button color="primary" class="mr-1">
                           <mat-icon>admin_panel_settings</mat-icon> ADMINISTRACION</button>
@@ -11,6 +13,13 @@
                             <mat-icon>location_on</mat-icon>COMERCIOS</button>
                         <button mat-raised-button color="primary" class="mr-1">
                             <mat-icon>settings</mat-icon> CONFIGURACION</button>
+                  </ng-container>
+
+                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
+                      <button mat-raised-button color="primary" (click)="irAMiComercio()" class="mr-1">
+                          <mat-icon>store</mat-icon>Mis Comercios</button>
+                    <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">
+                      <mat-icon>store</mat-icon>Promociones</button>
                   </ng-container>
 
           </div>
@@ -21,9 +30,5 @@
 
         <button class="btn btn-google btn-outline" (click)="salir()">
         <mat-icon color="primary">exit_to_app</mat-icon>Salir </button>
-</mat-toolbar>
+</mat-toolbar> 
 
-<div class="content" fxFlex>
-
-</div>
-<app-footer></app-footer>
