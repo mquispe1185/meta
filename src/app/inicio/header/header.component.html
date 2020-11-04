@@ -6,16 +6,16 @@
             <button mat-raised-button color="primary" (click)="irInicio()" class="mr-1">
                 <mat-icon>home</mat-icon>Inicio</button>
            
-                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
+                <!--   <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
                       <button mat-raised-button color="primary" class="mr-1">
                           <mat-icon>admin_panel_settings</mat-icon> ADMINISTRACION</button>
                         <button mat-raised-button color="primary" class="mr-1">
                             <mat-icon>location_on</mat-icon>COMERCIOS</button>
                         <button mat-raised-button color="primary" class="mr-1">
                             <mat-icon>settings</mat-icon> CONFIGURACION</button>
-                  </ng-container>
+                  </ng-container> -->
 
-                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
+                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1 || tokenService.currentUserData?.rol_id ===2">
                       <button mat-raised-button color="primary" (click)="irAMiComercio()" class="mr-1">
                           <mat-icon>store</mat-icon>Mis Comercios</button>
                     <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">

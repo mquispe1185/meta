@@ -45,7 +45,17 @@ export class HeaderComponent implements OnInit {
   }
 
   irPromos(){
-    this.router.navigate(['mispromos']);
+    switch(this.tokenService.currentUserData.rol_id) { 
+      case 1: { 
+        this.router.navigate(['listapromos']);
+         break; 
+      } 
+      case 2: { 
+        this.router.navigate(['mispromos']);
+         break; 
+      } 
+   } 
+   
   }
   salir():void{
     this.tokenService.signOut().subscribe(res => {

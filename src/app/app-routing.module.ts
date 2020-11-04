@@ -14,6 +14,7 @@ import { AdminGuardService } from './servicios/admin-guard.service';
 import { ComercioModule } from './modules/comercio/comercio.module';
 import { QuienesComponent } from './modules/comercio/quienes/quienes.component';
 import { ListadocomerciosComponent } from './modules/adminpanel/listadocomercios/listadocomercios.component';
+import { ListadopromosComponent } from './modules/adminpanel/listadopromos/listadopromos.component';
 
 const routes: Routes = [
 
@@ -54,6 +55,11 @@ const routes: Routes = [
     path:'mispromos',
     component: GestionPromosComponent,
     loadChildren: () => ComerciopanelModule
+  },
+  {
+    path:'listapromos',
+    component: ListadopromosComponent,
+    loadChildren: () => AdminpanelModule
   },
   /*{
     path:'estadisticas',
