@@ -474,7 +474,9 @@ span.credits12 {
   width: 100%;
   height: 80px;
 }
-
+.logoandroid {
+display: none;
+}
 @media (max-width: 1024px) {
   .contenedorbusqueda {
     width: 80%;
