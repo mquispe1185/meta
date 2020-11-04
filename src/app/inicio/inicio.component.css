@@ -14,27 +14,6 @@
   z-index: -999;
 }
 
-.mitadovalo {
-  position: relative;
-  top: 550px;
-  left: -10%;
-  height: 120%;
-  width: 120%;
-  background-color: #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-}
-.boton-conoce {
-  background-color: #ee7222;
-  border: transparent;
-  color: #ffffff;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: bold;
-  width: 150px;
-  height: 30px;
-  margin-top: 20px;
-}
-
 .superficial {
   position: absolute;
   top: 0px;
@@ -42,85 +21,34 @@
   width: 100%;
   height: 500px;
 }
-/* contenedor de menu */
-/* .cont{
-  position:absolute;
-  width:100%;
-  right:0;
-  }
 
-  .contcel{
-  position:absolute;
-  width:100%;
-  display: none;
-  }
-  .menub{
-  position: fixed;
-  width:100%;
-  top: 0px;
-  text-align:right;
-  height: 220px;
-  margin-right: 25px;
-  z-index: 9999;
-  /* font-family: 'Wavehause2', sans-serif; */
-/* font: normal normal 600 19px/22px Wavehaus;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
-  } */
-*/
-  /*menu cambia de color al superar los 365px*/
-  .menunar {
+/*Menu cambia de color al superar los 365px*/
+.menunar {
   background: #ee7222;
   opacity: 0.9;
   height: 35px;
 }
-.menu-boton {
+/* .menu-boton {
   text-align: center;
-  /* font-family: 'Wavehause2', sans-serif; */
+  font-family: 'Wavehause2', sans-serif;
   font: normal normal 600 19px/22px Wavehaus;
   letter-spacing: 0px;
   color: #ffffff;
   margin-inline-start: 40px;
   writing-mode: horizontal-tb;
-  /* direction: rtl; */
-}
+  /* direction: rtl;
+} */
 
-/* .arrow {
-  border: solid #FFFFFF;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 2px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  } */
-
-.fondototal {
-  background: #ffffff;
-  text-align: center;
-  scroll-margin-bottom: 20px;
-}
-.fondoinicio {
-  background: #ffffff;
-  text-align: center;
-}
-
-/*Seccion logo y subtitulo*/
+/*Seccion Logo y Slogan*/
 .contenedorlogo {
   top: 75px;
   position: absolute;
   width: 100%;
 }
 
-.logop {
+.logoblanco {
   width: 181px;
   height: 113px;
-}
-
-.logo2 {
-  width: 200px;
-  height: 200px;
-  margin-top: -100px;
 }
 
 .contenedorsubtit {
@@ -136,6 +64,7 @@
   color: #ffffff;
   white-space: nowrap;
 }
+
 .txtcerca {
   text-align: left;
   font: normal normal bold 37px/45px Wavehaus;
@@ -195,8 +124,6 @@ input::placeholder {
   font-size: 36px;
   color: #fff;
   margin-top: 8px;
-  /* margin-top: -10px;
-  margin-left: -20px; */
 }
 .input1 {
   width: 100%;
@@ -210,6 +137,7 @@ input::placeholder {
   border: transparent;
   background: transparent;
 }
+/* Fin Seccion barra de busqueda*/
 
 .ParrafoConoce {
   text-align: center;
@@ -217,6 +145,32 @@ input::placeholder {
   font-weight: bold;
   color: #ffffff;
   opacity: 1;
+}
+
+.mitadovalo {
+  position: relative;
+  top: 550px;
+  left: -10%;
+  height: 120%;
+  width: 120%;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.fondototal {
+  background: #ffffff;
+  text-align: center;
+  scroll-margin-bottom: 20px;
+}
+.fondoinicio {
+  background: #ffffff;
+  text-align: center;
+}
+.logoNaranja {
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
 }
 
 .ParrafoMeta {
@@ -227,7 +181,18 @@ input::placeholder {
   opacity: 1;
 }
 
-.subti {
+.boton-conoce {
+  background-color: #ee7222;
+  border: transparent;
+  color: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  width: 150px;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.subtitulos {
   text-align: center;
   font: normal normal bold 27px/35px Wavehaus;
   letter-spacing: 0px;
@@ -241,6 +206,8 @@ input::placeholder {
   height: 120px;
   opacity: 1;
 }
+
+
 
 .fondocomercios {
   width: 100%;
@@ -507,7 +474,9 @@ span.credits12 {
   width: 100%;
   height: 80px;
 }
-
+.logoandroid {
+display: none;
+}
 @media (max-width: 1024px) {
   .contenedorbusqueda {
     width: 80%;
@@ -528,10 +497,10 @@ span.credits12 {
     margin-bottom: 80px;
   }
   .rectangulo {
-    height: 225px;
+    height: 500px;
   }
   .superficial {
-    height: 225px;
+    height: 500px;
   }
   /*Seccion logo y subtitulo*/
   .contenedorlogo {
@@ -540,7 +509,7 @@ span.credits12 {
     width: 100%;
   }
 
-  .logop {
+  .logoblanco {
     width: 90px;
     height: 66px;
   }
@@ -595,6 +564,30 @@ span.credits12 {
     font-size: 20px;
   }
 
+  .ParrafoConoce {
+    font: normal normal normal 15px Century;
+  }
+
+  .mitadovalo {
+    position: relative;
+    top: 400px;
+    left: -20%;
+    height: 130%;
+    width: 140%;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .logoNaranja {
+    width: 120px;
+    height: 120px;
+    margin-top: -80px;
+  }
+  .ParrafoMeta {
+    font: normal normal normal 15px Century;
+  }
+
   /*recuadro fondo blanco de comercios*/
   .div-promo {
     height: 370px;
@@ -606,6 +599,26 @@ span.credits12 {
 
   .redes {
     font-size: 2em;
+  }
+
+  .footerrectangulo {
+    width: 100%;
+    height: 350px;
+    background-color: #3c3c3c;
+  }
+
+  .footertriangulo {
+    display: none;
+  }
+  .android {
+    display: none;
+  }
+
+  .logoandroid {
+    background: #3c3c3c;
+    background-color: red;
+    width: 60px;
+    height: 60px;
   }
 }
 /* Fin CSS PARA MOBILE */
