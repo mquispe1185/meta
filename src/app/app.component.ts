@@ -16,7 +16,7 @@ export class AppComponent {
 console.log('situacion de logeo',this.tokenService.userSignedIn());
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
-        if (ev.url === '/' || ev.url === '/inicio' || ev.url === '/inicio#ini'){
+        if (ev.url === '/' || ev.url.includes('/inicio') || ev.url === '/quienes-somos'){
             this.esInicio = true;
             console.log('esInicio',this.esInicio);
         }else{

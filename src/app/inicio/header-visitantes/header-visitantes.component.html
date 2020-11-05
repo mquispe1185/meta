@@ -38,7 +38,10 @@
   <!-- Menu DESKTOP -->
   <div class="cont">
     <div class="menub" (scroll)="onWindowScroll($event);">
-      <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Nosotros</button>
+      <a [hidden]="!verLogo" [routerLink]="['/inicio']" fragment="ini">
+      <img src="assets/logos/logos-06.png" alt="logo" class="logo">
+      </a>
+      <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotros</button>
       <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Promos</button>
       <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Comercios</button>
       <button type="button" [routerLink]="['/inicio']" fragment="promo"

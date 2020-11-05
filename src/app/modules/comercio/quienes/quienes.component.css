@@ -1,5 +1,10 @@
+.contenedor {
+  margin-top: -45px;
+  margin-bottom: 50px;
+}
+
 .fondoinicio{
-  top: -60px;
+  top: -15px;
   margin-bottom: 50px;
   background: white;
   text-align: center;

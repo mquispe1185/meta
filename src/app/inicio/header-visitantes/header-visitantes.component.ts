@@ -13,7 +13,7 @@ import { ComercioService } from '../../servicios/comercio.service';
 })
 export class HeaderVisitantesComponent implements OnInit {
 
-
+verLogo = false;
 
   constructor(public tokenService: AngularTokenService,
               public router: Router,
@@ -38,9 +38,11 @@ export class HeaderVisitantesComponent implements OnInit {
     let element = document.querySelector('.menub');
     if (window.pageYOffset > 65) {
       element.classList.add('menunar');
+      this.verLogo = true;
      // console.log('supera los 365');
     } else {
       element.classList.remove('menunar');
+      this.verLogo = false;
     }
   }
   desplazar(seccion) {
