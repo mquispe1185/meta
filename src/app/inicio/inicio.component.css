@@ -1,6 +1,7 @@
 .contenedor {
   margin-top: -45px;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .rectangulo {
@@ -8,8 +9,8 @@
   left: 0px;
   width: 100%;
   /* height: 564px; */
-  height: 700px;
-  background: #ee7222 0% 0% no-repeat padding-box;
+  height: 1200px;
+  background: #f36904 0% 0% no-repeat padding-box;
   opacity: 0.69;
   z-index: -999;
 }
@@ -19,12 +20,12 @@
   top: 0px;
   align-items: center;
   width: 100%;
-  height: 500px;
+  height: 100%;
 }
 
 /*Menu cambia de color al superar los 365px*/
 .menunar {
-  background: #ee7222;
+  background: #f36904;
   opacity: 0.9;
   height: 35px;
 }
@@ -41,7 +42,7 @@
 
 /*Seccion Logo y Slogan*/
 .contenedorlogo {
-  top: 75px;
+  top: 275px;
   position: absolute;
   width: 100%;
 }
@@ -52,7 +53,7 @@
 }
 
 .contenedorsubtit {
-  top: 200px;
+  top: 400px;
   position: absolute;
   width: 100%;
 }
@@ -74,7 +75,7 @@
 
 /*Seccion barra de busqueda*/
 .contenedorbusqueda {
-  top: 270px;
+  top: 470px;
   position: absolute;
   left: 0;
   right: 0;
@@ -147,16 +148,39 @@ input::placeholder {
   opacity: 1;
 }
 
+/* OVALO OVALO*/
+
+
 .mitadovalo {
-  position: relative;
-  top: 550px;
-  left: -10%;
-  height: 120%;
-  width: 120%;
+
+
+/*   left: -20%;
+  height: 130%;
+  width: 140%;
   background-color: #ffffff;
   border-radius: 50%;
-  display: inline-block;
+  display: inline-block; */
+
+background: white;
+  content:'';
+  position:absolute;
+  top:950px;
+  width:100%;
+  height:100%;
+  border-radius:50%;
 }
+
+.mitadovalo2 {
+  position: relative;
+  top: 900px;
+  left: 0px;
+  background-color: #ffffff;
+  height: 1400px;
+  width: 1400px;
+    border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
+}
+
 
 .fondototal {
   background: #ffffff;
@@ -170,7 +194,7 @@ input::placeholder {
 .logoNaranja {
   width: 200px;
   height: 200px;
-  margin-top: -100px;
+  margin-top: -200px;
 }
 
 .ParrafoMeta {
@@ -181,20 +205,49 @@ input::placeholder {
   opacity: 1;
 }
 
-.boton-conoce {
+.boton-conoce2 {
   background-color: #ee7222;
   border: transparent;
   color: #ffffff;
-  font-family: "Times New Roman", Times, serif;
+  font: normal normal normal 16px/20px Century;
   font-weight: bold;
   width: 150px;
   height: 30px;
   margin-top: 20px;
 }
 
+.boton-conoce {
+  width: 140px;
+  height: 45px;
+  margin-top: 25px;
+  /* font-family: 'Roboto', sans-serif; */
+  font: normal normal normal 16px/20px Century;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f36904;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.boton-conoce:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 15px 20px rgba(233, 105, 32, 0.4);
+  color: #f36904;
+  transform: translateY(-3px);
+}
+
+
+
 .subtitulos {
   text-align: center;
-  font: normal normal bold 27px/35px Wavehaus;
+  font: normal normal bold 27px/35px roboto;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -254,11 +307,15 @@ input::placeholder {
 .div-promo:hover {
   box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
 }
+.margendiv {
+  margin-right: 0px;
+}
 
 .promociones {
   background: #303030;
   color: #ffffff;
   padding: 5px;
+
   height: 150px;
 }
 
@@ -268,18 +325,64 @@ input::placeholder {
 }
 .promo-img {
   display: inline-block;
-  width: 250px;
+  width: 200px;
   height: 250px;
   top: -50px;
   right: -50px;
   margin-top: -5px;
-  background: #ffffff;
+  background: orange;
   border-radius: 50%;
 }
 .promo-imagen {
-  height: 350px;
-  margin-top: 60px;
+  height: 150px;
+  border-bottom-left-radius: 40%;
+  border-top-left-radius: 40%;
+  vertical-align: center;
 }
+.boton-comercio {
+  width: 140px;
+  height: 25px;
+  margin: 5px;
+  /* font-family: 'Roboto', sans-serif; */
+  font: normal normal normal 10px Century;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f36904;
+  border: none;
+  border-radius: 45px;
+  /* box-shadow: 0px 1px 1px rgba(247, 241, 241, 0.815);
+  transition: all 0.1s ease 0s; */
+  outline: none;
+  }
+
+.logomanito {
+  top: 50px;
+  left: 70px;
+  width: 60px;
+  height: 50px;
+border-radius: 50%;
+z-index: 999;
+}
+
+
+.rectapromo {
+  margin-right: 50px;
+  margin-left: 20px;
+  width: 400px;
+  height: 150px;
+  background: #3c3c3c;
+  color: #ffffff;
+  font: normal normal normal 10px Century;
+  font-size: 13px;
+
+}
+
+
+
+
 
 .resize_fit_center {
   width: 350px; /* you can use % */
@@ -459,17 +562,19 @@ span.credits12 {
   width: 100%;
   height: 400px;
   background-color: #3c3c3c;
+
+
 }
 
 .footertriangulo {
-  position: initial;
-  margin-top: -25px;
-  width: 100%;
-  height: 0;
-  border-left: 800px solid transparent;
-  border-right: 800px solid transparent;
-  border-top: 150px solid white;
+  border-right: 42rem solid #3c3c3c;
+  border-left: 42rem solid #3c3c3c;
+  border-top: 200px solid white;
 }
+
+
+
+
 .android {
   width: 100%;
   height: 80px;
@@ -568,7 +673,7 @@ display: none;
     font: normal normal normal 15px Century;
   }
 
-  .mitadovalo {
+  .mitadovalo2 {
     position: relative;
     top: 400px;
     left: -20%;
@@ -578,6 +683,15 @@ display: none;
     border-radius: 50%;
     display: inline-block;
   }
+
+
+.mitadovalo {
+  height: 1000px;
+  width: 1000px * 1;
+    border-top-left-radius: 2100px;
+  border-top-right-radius: 2100px;
+}
+
 
   .logoNaranja {
     width: 120px;

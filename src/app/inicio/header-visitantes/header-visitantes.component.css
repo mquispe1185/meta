@@ -11,7 +11,7 @@ line-height: 0%;
   z-index: -999;
 }
 
-.menub {
+/* .menub {
   position: fixed;
   width: 100%;
   top: 0px;
@@ -23,18 +23,17 @@ line-height: 0%;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
-}
+} */
 /* logo de meta en navbar*/
 .logo{
-
- 
   width:50px;
-  height:45px;
+  height:40px;
+  margin-right: 300 px;
+  margin-block-start: 0%;
 }
 /* Contenedor Menu Barra */
 .cont {
-  position:
-  absolute;
+  position:absolute;
   width: 100%;
   right: 0;
   display: none;
@@ -77,20 +76,31 @@ line-height: 0%;
 /* CSS PARA DESKTOP */
 @media (min-width: 600px) {
 
+
   .menub {
     position: fixed;
     width: 100%;
     top: 0px;
-    bottom: 0px;
-    text-align: right;
-    height: 200px;
-    margin-right: 25px;
+    right: 0px;
+    height: 70px;
+
     z-index: 9999;
-    font: normal normal 600 19px/22px Wavehaus;
+    font: normal normal 600 19px/22px Century;
     letter-spacing: 0px;
+    text-align: right;
     color: #ffffff;
     opacity: 1;
   }
+
+  /* logo de meta en navbar*/
+.logo{
+  width:50px;
+  height:40px;
+  margin-top: 3px;
+  margin-left: 5px;
+  margin-right: 300px;
+}
+
   /* Contenedor Menu Boton Cel */
   .contcel {
     position: absolute;
@@ -113,9 +123,11 @@ line-height: 0%;
   background: #ee7222;
   opacity: 0.9;
   height: 45px;
+  width: 100%;
 }
 .btn-outline-light{
-  padding: 0.3em 0.5em;
+  margin-top: 3px;
+  padding: 0.1em 0.5em;
   color: white;
 }
 .btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active {

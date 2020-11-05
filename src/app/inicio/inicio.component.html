@@ -49,8 +49,10 @@
 
 
       <!-- OVALO Nuevo diseño -->
-    <div class="mitadovalo">
-    </div>
+
+  <div class="mitadovalo">
+
+  </div>
 
   </div>
   <!-- Fin Menu, Logo, Barra de Busqueda -->
@@ -186,8 +188,8 @@
 
         <div class="row">
           <ng-container *ngFor="let promo of promociones">
-            <div class="col-sm-4 margendiv">
-              <div class="promociones">
+<!--             <div class="margendiv ">
+              <div class="promociones ">
                 <div class="row">
                   <div class="col-7" (click)="verComercio(comer)">
                     <div>
@@ -195,6 +197,9 @@
                       <p class="parrafopromo">
                         {{promo.descripcion}}
                       </p>
+                      <button type="button" [routerLink]="['/quienes-somos']"
+                      class="boton-comercio" >Ver comercio
+                    </button> <br>
                       <span>valido hasta: {{promo.hasta}}</span>
                     </div>
                   </div>
@@ -207,22 +212,45 @@
                 </div>
               </div>
 
-            </div>
+            </div> -->
+
+              <div class="rectapromo">
+                <div class="row">
+                  <div class="col-7">
+                    <h5>{{promo.titulo}}</h5>
+
+                     <h6 class="parrafopromo">{{promo.descripcion}}</h6>
+
+                    <button type="button" [routerLink]="['/quienes-somos']"
+                    class="boton-comercio" >Ver comercio
+                  </button> <br> <br>
+                  <span>valido hasta: {{promo.hasta}}</span>
+                  </div>
+                  <div class="col-5 promo-imagen" style="background-color: white;">
+
+
+                    <img class="logomanito" src="/assets/logos/logo-07.png" alt="">
+                  </div>
+
+                </div>
+
+              </div>
+
           </ng-container>
         </div>
-        <div>
-          <!-- <i class="arrowgris"></i> -->
-        </div>
+
+
       </div> <br>
 
+      <!-- SUGERENCIAS PARA VOS -->
       <div #ben id='bene' class="fondocomercios">
         <div class="row">
-          <span class="subtitulos ml-3">Sugerencias para vos...</span>
+          <span class="subtitulos ml-3">Sugerencias para vos</span>
         </div><br>
 
         <div class="row">
           <ng-container *ngFor="let comer of comercios">
-            <div class="col-sm-4 margendiv">
+            <div class="col-sm-5 margendiv">
               <div class="div-promo">
                 <div (click)="verComercio(comer)">
                   <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
@@ -241,6 +269,9 @@
                 </div>
                 <div class="dist-comer mt-2">
                   {{comer.domicilio}}
+                  <button type="button" [routerLink]="['/quienes-somos']"
+                  class="boton-comercio" >Ver comercio
+                </button> <br>
                 </div>
               </div>
 
@@ -255,13 +286,11 @@
         <div>
           <!-- <i class="arrowgris"></i> -->
         </div>
-      </div> <!-- FIN COMERCIOS -->
+      </div> <!-- FIN SUGERENCIAS PARA VOS -->
 
     </div>
   </div>
   <!-- Parrafo Descripcion, Carrusel, Comercios -->
-
-
 </div>
 
 
@@ -282,31 +311,30 @@
     </div>
 
     <div class="col-6 col-md-2">
-      <br> SUMATE <br>
+      <br> <strong>SUMATE</strong>  <br>
       Se Parte <br>
       Acuerdos <br>
     </div>
     <div class="col-6 col-md-2">
-      <br> AYUDA <br>
+      <br> <strong>AYUDA</strong>  <br>
       Preguntas Frecuentes<br>
       Contactate <br>
     </div>
     <div class="col-6 col-md-2">
-      <br> LEGAL <br>
+      <br> <strong>LEGAL</strong>  <br>
       Politicas de Uso <br>
       Politicas de Privacidad
     </div>
     <div class="col-6 col-md-2">
-      <br> SEGUINOS <br>
+      <br> <strong>SEGUINOS</strong>  <br>
       Whatsapp <br>
       Facebook <br>
       Instagram
     </div>
-    <div class="col-6 col-md-2">
+    <!-- <div class="col-6 col-md-2">
       <div class="d-flex justify-content-center">
         <img class="android" src="/assets/logos/android2.png" alt="">
       </div>
-    </div>
+    </div> -->
   </div>
-
 </div>

@@ -38,28 +38,37 @@
   <!-- Menu DESKTOP -->
   <div class="cont">
     <div class="menub" (scroll)="onWindowScroll($event);">
-      <a [hidden]="!verLogo" [routerLink]="['/inicio']" fragment="ini">
-      <img src="assets/logos/logos-06.png" alt="logo" class="logo">
-      </a>
-      <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotros</button>
-      <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Promos</button>
-      <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Comercios</button>
-      <button type="button" [routerLink]="['/inicio']" fragment="promo"
-        class="menu-boton btn btn-link">Beneficios</button>
-      <button type="button" (click)="irAMiComercio()"
-        class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+      <div class="row">
+        <div class="col-sm-2">
+          <a [hidden]="!verLogo" [routerLink]="['/inicio']" fragment="ini">
+            <img src="assets/logos/logos-06.png" alt="logo" class="logo">
+            </a>
+        </div>
+        <div class="col-sm-10">
+          <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotros</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Promos</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Comercios</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="promo"
+            class="menu-boton btn btn-link">Beneficios</button>
+          <button type="button" (click)="irAMiComercio()"
+            class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
 
-      <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
-        <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
-        {{tokenService.currentUserData?.name}}
-      </button>
-      <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
-      <ng-template #salida>
-        <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
-      </ng-template>
-      <ng-template #ingresar>
-        <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
-      </ng-template>
+          <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
+            <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
+            {{tokenService.currentUserData?.name}}
+          </button>
+          <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+          <ng-template #salida>
+            <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+          </ng-template>
+          <ng-template #ingresar>
+            <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+          </ng-template>
+        </div>
+      </div>
+
+
+
     </div>
   </div>
 

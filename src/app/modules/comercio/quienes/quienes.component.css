@@ -91,7 +91,7 @@ span.credits1 {
   width: 65px;
 }
 
-.boton-conoce {
+.boton-conoce2 {
   background-color: #ee7222;
   border: transparent;
   color: #ffffff;
@@ -102,6 +102,34 @@ span.credits1 {
   margin-top: 20px;
 }
 
+.boton-conoce {
+  width: 330px;
+  height: 45px;
+  margin-top: 25px;
+  /* font-family: 'Roboto', sans-serif; */
+  font: normal normal normal 16px/20px Century;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f36904;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.boton-conoce:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 15px 20px rgba(233, 105, 32, 0.4);
+  color: #f36904;
+  transform: translateY(-3px);
+}
+
+
 
 .footerrectangulo {
   width: 100%;
@@ -109,7 +137,7 @@ span.credits1 {
   background-color: #3c3c3c;
 }
 
-.footertriangulo {
+.footertriangulo2 {
   position: initial;
   margin-top: -25px;
   width: 100%;
@@ -118,11 +146,17 @@ span.credits1 {
   border-right: 800px solid transparent;
   border-top: 150px solid white;
 }
+.footertriangulo {
+  border-right: 42rem solid #3c3c3c;
+  border-left: 42rem solid #3c3c3c;
+  border-top: 200px solid white;
+}
+
 .logop {
   width: 181px;
   height: 113px;
 }
-.android {
+/* .android {
   width: 100%;
   height: 80px;
-}
+} */
