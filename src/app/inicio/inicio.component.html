@@ -214,27 +214,28 @@
 
             </div> -->
 
-              <div class="rectapromo">
-                <div class="row">
-                  <div class="col-7">
-                    <h5>{{promo.titulo}}</h5>
+          <div class="rectapromo">
 
-                     <h6 class="parrafopromo">{{promo.descripcion}}</h6>
+            <div class="conten">
+              <div class="row">
+                  <div class="col-7" id="izq">
+                      <h5>{{promo.titulo}}</h5>
 
-                    <button type="button" [routerLink]="['/quienes-somos']"
-                    class="boton-comercio" >Ver comercio
-                  </button> <br> <br>
-                  <span>valido hasta: {{promo.hasta}}</span>
+                      <h6 class="parrafopromo">{{promo.descripcion}}</h6>
+ 
+                     <button type="button" [routerLink]="['/quienes-somos']"
+                     class="boton-comercio" >Ver comercio
+                   </button> <br> <br>
+                   <span>valido hasta: {{promo.hasta}}</span>
+                    </div>
+                  <div id="round-image">
+                      <img src="/assets/logos/logo-07.png" class="redimg">
+                    </div>
+                  <div id="der" class="col-5">
+                    </div>
                   </div>
-                  <div class="col-5 promo-imagen" style="background-color: white;">
-
-
-                    <img class="logomanito" src="/assets/logos/logo-07.png" alt="">
-                  </div>
-
                 </div>
-
-              </div>
+          </div>
 
           </ng-container>
         </div>

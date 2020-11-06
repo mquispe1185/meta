@@ -582,6 +582,55 @@ span.credits12 {
 .logoandroid {
 display: none;
 }
+
+/*banner de promo matias*/
+.conten{
+  position: relative;
+  height: 150px;
+  width: 100%;
+}
+
+#izq{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+ 
+}
+
+#der{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: peachpuff;
+}
+
+#round-image{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  width: 45px;
+  height: 45px;
+  margin-left: 9px;
+  margin-top: -15px;
+  border-radius: 50%;
+  background: pink;
+}
+.redimg{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 22;
+  width: 45px;
+  height: 45px;
+  margin-left: -22px;
+  margin-top: -23px;
+  border-radius: 50%;
+
+}
+
 @media (max-width: 1024px) {
   .contenedorbusqueda {
     width: 80%;
