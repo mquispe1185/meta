@@ -4,10 +4,12 @@
 }
 
 .fondoinicio{
-  top: -15px;
+  top: -70px;
   margin-bottom: 50px;
   background: white;
   text-align: center;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
 }
 
 
@@ -32,7 +34,7 @@
 }
 
 .contenedorlogo {
-  top: 75px;
+  top: 70px;
   position: absolute;
   width: 100%;
 }
@@ -57,26 +59,35 @@
 
 .mitadovalo {
   position: relative;
-  top: 350px;
-  left: -10%;
+  top: 300px;
+  left: 0;
   height: 120%;
-  width: 120%;
+  width: 100%;
   background-color: #ffffff;
   border-radius: 50%;
   display: inline-block;
 }
 
 
-
-
-
-
 .logo2 {
   width: 200px;
   height: 200px;
-  margin-top: 50px;
 }
 
+.subtitulos {
+  text-align: center;
+  font: normal normal bold 27px/35px roboto;
+  letter-spacing: 0px;
+  color: #3c3c3c;
+  opacity: 1;
+}
+.ParrafoMeta {
+  text-align: center;
+  font: normal normal normal 20px/27px Century;
+  letter-spacing: 0px;
+  color: #3c3c3c;
+  opacity: 1;
+}
 /* .icono{
   border-color: #EBEBEB;
   background-color: transparent;
