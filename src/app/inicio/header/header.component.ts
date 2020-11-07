@@ -44,6 +44,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['inicio']);
   }
 
+  irGestionComercios(){
+    this.router.navigate(['listacomercios']);
+  }
+
   irPromos(){
     switch(this.tokenService.currentUserData.rol_id) { 
       case 1: { 

@@ -15,7 +15,13 @@
                             <mat-icon>settings</mat-icon> CONFIGURACION</button>
                   </ng-container> -->
 
-                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1 || tokenService.currentUserData?.rol_id ===2">
+                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
+                      <button mat-raised-button color="primary" (click)="irGestionComercios()" class="mr-1">
+                          <mat-icon>store</mat-icon>Gestión Comercios</button>
+                    <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">
+                      <mat-icon>store</mat-icon>Promociones</button>
+                  </ng-container>
+                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
                       <button mat-raised-button color="primary" (click)="irAMiComercio()" class="mr-1">
                           <mat-icon>store</mat-icon>Mis Comercios</button>
                     <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">

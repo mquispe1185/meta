@@ -13,7 +13,7 @@ import { PromocionesService } from '../../../servicios/promociones.service';
 })
 export class ListadopromosComponent implements OnInit {
 
-  dspColPromos: string[] = ['titulo','descripcion','acciones'];
+  dspColPromos: string[] = ['comercio','titulo','descripcion','acciones'];
   promocion:Promocion = new Promocion();
   lstPromos:any;
   @ViewChild(MatPaginator) paginatorPromos: MatPaginator;

@@ -1,3 +1,4 @@
+import { ComercioComponent } from './modules/comercio/comercio.component';
 import { ComerciopanelComponent } from './modules/comerciopanel/comerciopanel.component';
 import { GestionPromosComponent } from './modules/comerciopanel/gestion-promos/gestion-promos.component';
 import { ComerciopanelModule } from './modules/comerciopanel/comerciopanel.module';
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path:'comercio',
-    component: HeaderComponent,
+    component: ComercioComponent,
     loadChildren: () => ComercioModule
   },
   {

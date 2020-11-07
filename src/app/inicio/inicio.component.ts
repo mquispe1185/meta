@@ -26,7 +26,7 @@ export class InicioComponent implements OnInit {
   promociones:Promocion[]=[];
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,

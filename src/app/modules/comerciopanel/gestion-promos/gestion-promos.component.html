@@ -79,7 +79,16 @@
                 </div>
                 <form name="form" (ngSubmit)="f.form.valid && (promocion.id ? updatePromo(): crearPromo())" #f="ngForm"
                   novalidate>
-      
+                  <div class="form-row">
+                      <mat-form-field class="col">
+                        <mat-label for="com">Comercio</mat-label>
+                        <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id"
+                          >
+                          <mat-option *ngFor="let com of comercios" [value]="com.id">{{ com.nombre }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
                   
                   <div class="form-row">
                     <div class="form-group col-md-6">

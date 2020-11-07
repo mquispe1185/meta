@@ -15,7 +15,16 @@
             </mat-form-field>
   
    
-            <mat-table #tablausuarios [dataSource]="lstPromos" class="mat-elevation-z8">
+            <mat-table #tablapromos [dataSource]="lstPromos" class="mat-elevation-z8">
+
+                <!-- Comercio -->
+                <ng-container matColumnDef="comercio">
+                    <mat-header-cell *matHeaderCellDef>Comercio</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <span class="mobile-label">Comercio:</span>{{element.comercio.nombre}}
+                    </mat-cell>
+                  </ng-container>
+
               <!-- titulo -->
               <ng-container matColumnDef="titulo">
                 <mat-header-cell *matHeaderCellDef>Titulo</mat-header-cell>
