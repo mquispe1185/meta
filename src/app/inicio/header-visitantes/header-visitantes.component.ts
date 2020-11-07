@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 import { InicioComponent } from '../inicio.component';
@@ -14,16 +14,34 @@ import { ComercioService } from '../../servicios/comercio.service';
 export class HeaderVisitantesComponent implements OnInit {
 
 verLogo = false;
+esInicio=false;
 
   constructor(public tokenService: AngularTokenService,
               public router: Router,
               private comercioService: ComercioService,
               private toastr: ToastrService,
-    ) { }
+    ) {
+      console.log('chequeando rutaaa',this.router.url);
+      
+    
+     }
 
 
   ngOnInit(): void {
-
+    let bb= document.getElementById('barr');
+      this.router.events.subscribe((ev) => {
+        if (ev instanceof NavigationEnd) {
+          if (ev.url === '/' || ev.url.includes('/inicio')){
+              this.esInicio = true;
+              bb.classList.add('fondotransparente');
+          }else{
+            this.esInicio = false;
+            bb.classList.remove('fondotransparente');
+          }
+          
+        }
+      });
+      
     console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
     console.log('user data en inicio',this.tokenService.currentUserData);
    // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
