@@ -268,15 +268,16 @@ background: white;
   /* font-family: 'Wavehause', sans-serif; */
 }
 
-.div-promo {
+.cuadrocomercio{
   background: white;
   color: #545454;
   margin-top: 5px;
+  margin-bottom: 10px;
   padding: 5px;
   width: 100%;
   height: 500px;
   transition: box-shadow 0.3s;
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
   border-radius: 1em;
   background: #fff;
 }
@@ -290,7 +291,8 @@ background: white;
 }
 
 .desc-comer {
-  text-align: center;
+  text-align: left;
+  margin-left: 5px;
   font: normal normal normal 20px/24px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
@@ -298,24 +300,22 @@ background: white;
 }
 
 .dist-comer {
-  text-align: center;
+  text-align: left;
+  margin-left: 5px;
   font: normal normal 600 20px/24px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
 }
-.div-promo:hover {
+.cuadrocomercio:hover {
   box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
 }
-.margendiv {
-  margin-right: 0px;
-}
+
 
 .promociones {
   background: #303030;
   color: #ffffff;
   padding: 5px;
-
   height: 150px;
 }
 
@@ -377,7 +377,13 @@ z-index: 999;
   color: #ffffff;
   font: normal normal normal 10px Century;
   font-size: 13px;
+  transition: box-shadow 0.3s;
+border-right: royalblue;
 
+}
+
+.rectapromo:hover {
+  box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
 }
 
 
@@ -397,11 +403,6 @@ z-index: 999;
   min-height: 70vh;
 }
 
-.margendiv {
-  margin-right: -20px;
-  margin-bottom: 5px;
-  margin-left: 50px;
-}
 
 .arrowgris {
   text-align: center;
@@ -595,7 +596,7 @@ display: none;
   top: 0;
   left: 0;
   height: 100%;
- 
+
 }
 
 #der{
@@ -604,6 +605,8 @@ display: none;
   right: 0;
   height: 100%;
   background: peachpuff;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
 }
 
 #round-image{
@@ -752,9 +755,7 @@ display: none;
   }
 
   /*recuadro fondo blanco de comercios*/
-  .div-promo {
-    height: 370px;
-  }
+
 
   .parrafoini {
     font: normal normal normal 14px Century;

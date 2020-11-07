@@ -222,17 +222,17 @@
                       <h5>{{promo.titulo}}</h5>
 
                       <h6 class="parrafopromo">{{promo.descripcion}}</h6>
- 
+
                      <button type="button" [routerLink]="['/quienes-somos']"
                      class="boton-comercio" >Ver comercio
                    </button> <br> <br>
                    <span>valido hasta: {{promo.hasta}}</span>
-                    </div>
+                  </div>
                   <div id="round-image">
                       <img src="/assets/logos/logo-07.png" class="redimg">
-                    </div>
+                  </div>
                   <div id="der" class="col-5">
-                    </div>
+                  </div>
                   </div>
                 </div>
           </div>
@@ -249,34 +249,43 @@
           <span class="subtitulos ml-3">Sugerencias para vos</span>
         </div><br>
 
-        <div class="row">
+        <div class="row mb-3">
           <ng-container *ngFor="let comer of comercios">
-            <div class="col-sm-5 margendiv">
-              <div class="div-promo">
-                <div (click)="verComercio(comer)">
-                  <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
+              <div class="col-6 ">
+                <div class="cuadrocomercio">
+                  <div (click)="verComercio(comer)">
+                    <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
 
-                  <img class="resize_fit_center"
-                    [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']"
-                    alt="foto comercio">
+                    <img class="resize_fit_center"
+                      [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']"
+                      alt="foto comercio">
+
+                  </div>
+                  <div class="nombre-comer mt-4">
+                    {{comer.nombre}}
+                  </div>
+                  <div class="desc-comer mt-2">
+                    {{comer.descripcion}}
+                  </div>
+                  <div class="dist-comer mt-2">
+                    <div class="row">
+                      <div class="col-8">
+                        {{comer.domicilio}}
+                      </div>
+                      <div class="col-4">
+                        <button type="button" [routerLink]="['/quienes-somos']"
+                        class="boton-comercio" >Ver comercio
+                      </button>
+                      </div>
+                    </div>
 
 
-                </div>
-                <div class="nombre-comer mt-4">
-                  {{comer.nombre}}
-                </div>
-                <div class="desc-comer mt-2">
-                  {{comer.descripcion}}
-                </div>
-                <div class="dist-comer mt-2">
-                  {{comer.domicilio}}
-                  <button type="button"
-                  class="boton-comercio" >Ver comercio
-                </button> <br>
+                  </div>
                 </div>
               </div>
 
-            </div>
+
+
 
           </ng-container>
         </div>
