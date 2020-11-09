@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -14,36 +14,19 @@ import { ComercioService } from '../../servicios/comercio.service';
 export class HeaderVisitantesComponent implements OnInit {
 
 verLogo = false;
-esInicio=false;
-
+@Input('esInicio') esInicio:boolean;
   constructor(public tokenService: AngularTokenService,
               public router: Router,
               private comercioService: ComercioService,
               private toastr: ToastrService,
     ) {
-      console.log('chequeando rutaaa',this.router.url);
-      
     
      }
 
 
   ngOnInit(): void {
-    let bb= document.getElementById('barr');
-      this.router.events.subscribe((ev) => {
-        if (ev instanceof NavigationEnd) {
-          if (ev.url === '/' || ev.url.includes('/inicio')){
-              this.esInicio = true;
-              bb.classList.add('fondotransparente');
-          }else{
-            this.esInicio = false;
-            bb.classList.remove('fondotransparente');
-          }
-          
-        }
-      });
-      
-    console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-    console.log('user data en inicio',this.tokenService.currentUserData);
+    //console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
+    //console.log('user data en inicio',this.tokenService.currentUserData);
    // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
     this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}

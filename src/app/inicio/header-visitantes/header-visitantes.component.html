@@ -8,6 +8,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
+          <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Inicio</button>
         <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Lo Que
           Quieras</button>
           <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Cerca</button>
@@ -35,15 +36,15 @@
 
   <!-- Menu DESKTOP -->
   <div class="cont">
-    <div id="barr" class="menub" (scroll)="onWindowScroll($event);">
+    <div id="barr" class="menub" [ngStyle]="{'background-color': esInicio && !verLogo ? 'transparent' : '#ee7222' }" (scroll)="onWindowScroll($event);">
       <div class="row">
         <div class="col-sm-2">
-          <a [hidden]="!verLogo" [routerLink]="['/inicio']" fragment="ini">
+          <a [routerLink]="['/inicio']" fragment="ini">
             <img src="assets/logos/logos-06.png" alt="logo" class="logo">
             </a>
         </div>
         <div class="col-sm-10">
-          <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotrostt</button>
+        <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotros</button>
           <button type="button" [routerLink]="['/inicio']" fragment="loque" class="menu-boton btn btn-link">Promos</button>
           <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Comercios</button>
           <button type="button" [routerLink]="['/inicio']" fragment="promo"

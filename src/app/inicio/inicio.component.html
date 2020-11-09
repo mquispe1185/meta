@@ -186,35 +186,9 @@
           <span class="subtitulos ml-3">Promociones</span>
         </div><br>
 
-        <div class="row">
+      <div class="row">
           <ng-container *ngFor="let promo of promociones">
-<!--             <div class="margendiv ">
-              <div class="promociones ">
-                <div class="row">
-                  <div class="col-7" (click)="verComercio(comer)">
-                    <div>
-                      <h5>{{promo.titulo}}</h5>
-                      <p class="parrafopromo">
-                        {{promo.descripcion}}
-                      </p>
-                      <button type="button" [routerLink]="['/quienes-somos']"
-                      class="boton-comercio" >Ver comercio
-                    </button> <br>
-                      <span>valido hasta: {{promo.hasta}}</span>
-                    </div>
-                  </div>
-                  <div class="col-5 promo-img" (click)="verComercio(comer)">
-                    <div class="promo-imagen">
-                      <img class="logoblanco" src="/assets/mujercompra.png" alt="">
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </div> -->
-
-          <div class="rectapromo">
+          <div class="rectapromo mt-2">
 
             <div class="conten">
               <div class="row">
@@ -238,7 +212,7 @@
           </div>
 
           </ng-container>
-        </div>
+        </div> 
 
 
       </div> <br>
@@ -251,7 +225,7 @@
 
         <div class="row mb-3">
           <ng-container *ngFor="let comer of comercios">
-              <div class="col-6 ">
+              <div class="col-12 col-md-6">
                 <div class="cuadrocomercio">
                   <div (click)="verComercio(comer)">
                     <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
@@ -269,11 +243,11 @@
                   </div>
                   <div class="dist-comer mt-2">
                     <div class="row">
-                      <div class="col-8">
+                      <div class="col-12 col-md-8">
                         {{comer.domicilio}}
                       </div>
-                      <div class="col-4">
-                        <button type="button" [routerLink]="['/quienes-somos']"
+                      <div class="col-12 col-md-4">
+                        <button type="button"
                         class="boton-comercio" >Ver comercio
                       </button>
                       </div>
@@ -283,9 +257,6 @@
                   </div>
                 </div>
               </div>
-
-
-
 
           </ng-container>
         </div>
@@ -308,17 +279,18 @@
 <div class="footerrectangulo">
   <div class="footertriangulo">
   </div> <br>
-  <div class="row" style="color: white; text-align: center;">
+
+  <div class="row" style="color: white; text-align: center;width: 100%;">
     <div class="footertitulo col-6 col-md-2">
       <div class="col d-flex justify-content-center">
         <img class="logoblanco" src="/assets/logos/logos-06.png" alt="">
       </div>
     </div>
-    <div class="logoandroid">
+ <!--    <div class="logoandroid">
       <div class="col-6 ">
         <img class="logoandroid" src="/assets/iconoandroid.png" alt="">
       </div> <br>
-    </div>
+    </div> -->
 
     <div class="col-6 col-md-2">
       <br> <strong>SUMATE</strong>  <br>
@@ -332,7 +304,8 @@
     </div>
     <div class="col-6 col-md-2">
       <br> <strong>LEGAL</strong>  <br>
-      Politicas de Uso <br>
+      <a [routerLink]="['/politica_uso']">Politicas de Uso</a>
+       <br>
       Politicas de Privacidad
     </div>
     <div class="col-6 col-md-2">
@@ -340,7 +313,7 @@
       Whatsapp <br>
       Facebook <br>
       Instagram
-    </div>
+    </div> 
     <!-- <div class="col-6 col-md-2">
       <div class="d-flex justify-content-center">
         <img class="android" src="/assets/logos/android2.png" alt="">

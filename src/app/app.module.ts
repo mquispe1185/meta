@@ -53,6 +53,11 @@ import { AgmCoreModule } from '@agm/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { HeaderVisitantesComponent } from './inicio/header-visitantes/header-visitantes.component';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.component';
+import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
+import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-visitantes.component';
 
 
 @NgModule({
@@ -63,6 +68,9 @@ import { HeaderVisitantesComponent } from './inicio/header-visitantes/header-vis
     FooterComponent,
     AfterloginComponent,
     HeaderVisitantesComponent,
+    PolServicioComponent,
+    PolPrivacidadComponent,
+    FooterVisitantesComponent,
  
   ],
   imports: [
@@ -148,11 +156,15 @@ import { HeaderVisitantesComponent } from './inicio/header-visitantes/header-vis
     MatTooltipModule,
     NgbModule,
 
+   
+    MatNativeDateModule, 
+    
     CarouselModule,
     ImageCropperModule
 
   ],
-  providers: [GuardService,AdminGuardService],
+  providers: [GuardService,AdminGuardService,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

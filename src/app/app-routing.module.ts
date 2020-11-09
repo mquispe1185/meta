@@ -1,3 +1,5 @@
+import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
+import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.component';
 import { ComercioComponent } from './modules/comercio/comercio.component';
 import { ComerciopanelComponent } from './modules/comerciopanel/comerciopanel.component';
 import { GestionPromosComponent } from './modules/comerciopanel/gestion-promos/gestion-promos.component';
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent,
   },
   { path: 'redirect', component: AfterloginComponent},
+  { path: 'politica_uso', component: PolServicioComponent},
+  { path: 'politica_privacidad', component: PolPrivacidadComponent},
   {
     path:'adminpanel',
     component: HeaderComponent,
@@ -75,7 +79,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'top'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

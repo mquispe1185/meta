@@ -12,21 +12,6 @@ position: relative;
   z-index: -999;
 }
 
-.menub {
-  position: fixed;
-  width: 100%;
-  top: 0px;
-  text-align: right;
-  height: 45px;
-  /* margin-right: 25px; */
-  z-index: 9999;
-  /* font: normal normal 600 19px/22px Wavehaus; */
-  letter-spacing: 0px;
-  /* color: #ffffff; */
-  /* background: #ee7222; */
-  opacity: 0.9;
-}
-
 /*hace el background transparente cuando esta en inicio*/
 .fondotransparente{
   background-color: transparent;
@@ -47,7 +32,8 @@ position: relative;
 }
 /* Contenedor Menu Boton Cel */
 .contcel {
-  position: absolute;
+  position: fixed;
+  top: 25px;
   width: 100%;
   z-index: 9999;
   opacity: 1;
@@ -81,7 +67,7 @@ position: relative;
 }
 
 /* CSS PARA DESKTOP */
-@media (min-width: 600px) {
+@media (min-width: 601px) {
 
 
   .menub {
@@ -109,7 +95,8 @@ position: relative;
 
   /* Contenedor Menu Boton Cel */
   .contcel {
-    position: absolute;
+    position: fixed;
+    top: 25px;
     width: 100%;
     right: 0;
     display: none;

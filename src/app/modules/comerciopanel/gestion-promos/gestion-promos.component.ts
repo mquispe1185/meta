@@ -6,6 +6,10 @@ import { AngularTokenService } from 'angular-token';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
+import { getMatFormFieldDuplicatedHintError } from '@angular/material/form-field';
+import { FormControl } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -15,7 +19,12 @@ import { MatTableDataSource } from '@angular/material/table';
 export class GestionPromosComponent implements OnInit {
 
   closeResult: string;
+  mensaje_error:string;
+  error:boolean = false;
   comercio:Comercio;
+  fecha = new Date('2020-11-01');
+  desde = new FormControl(new Date());
+  hasta = new FormControl(new Date());
   mis_comercios:Comercio[] = JSON.parse(localStorage.getItem('miscomercios'));
    //variables para promociones
    dspColPromos: string[] = ['titulo','descripcion','acciones'];
@@ -24,6 +33,7 @@ export class GestionPromosComponent implements OnInit {
    @ViewChild(MatPaginator) paginatorPromos: MatPaginator;
   constructor(  public tokenService: AngularTokenService,
                 private promoService: PromocionesService,
+                private datepipe: DatePipe,
                 private modalService: NgbModal,) { }
 
   ngOnInit(): void {
@@ -53,8 +63,27 @@ export class GestionPromosComponent implements OnInit {
     });
   }
 
+  calcularDias(event: MatDatepickerInputEvent<Date>){
+    let has:any = new Date(event.value);
+    let dife = Math.abs(has - this.desde.value);
+   if (this.hasta.value < this.desde.value){
+     this.error = true;
+     this.mensaje_error = 'fecha hasta debe ser mayor o igual a fecha desde';
+   }else{
+    this.error = false;
+   }
+    this.promocion.duracion = Math.ceil(dife / (1000 * 3600 * 24)); 
+    console.log('defeee',Math.ceil(dife / (1000 * 3600 * 24)));
+  }
   crearPromo(){
-    console.log('promocion nueva',this.promocion);
+    this.promocion.desde = this.datepipe.transform(new Date(this.desde.value),'yyyy-MM-dd');
+    this.promocion.hasta = this.datepipe.transform(new Date(this.hasta.value),'yyyy-MM-dd');
+    this.promoService.createPromocion(this.promocion).subscribe(
+      prs =>{ this.lstPromos = new MatTableDataSource(prs);
+                this.lstPromos.paginator = this.paginatorPromos;
+              this.modalService.dismissAll();}
+    )
+   
   }
 
   updatePromo(){

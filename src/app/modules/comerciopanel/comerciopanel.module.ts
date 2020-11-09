@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { ComerciopanelRoutingModule } from './comerciopanel-routing.module';
 import { ComerciopanelComponent } from './comerciopanel.component';
@@ -43,6 +43,8 @@ import { ModalGooglePlacesComponent } from './modal-google-places/modal-google-p
 import { GooglePlacesDirectiveDirective } from '../../directives/google-places-directive.directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { GestionPromosComponent } from './gestion-promos/gestion-promos.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [ComerciopanelComponent, GestioncomercioComponent, ModalGooglePlacesComponent, GooglePlacesDirectiveDirective, GestionPromosComponent],
@@ -89,9 +91,17 @@ import { GestionPromosComponent } from './gestion-promos/gestion-promos.componen
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+
+    MatDatepickerModule,
+    MatNativeDateModule, 
+  
     NgbModule,
 
     ImageCropperModule
-  ]
+  ],
+  providers: [  
+    MatDatepickerModule,
+    DatePipe  
+  ],
 })
 export class ComerciopanelModule { }

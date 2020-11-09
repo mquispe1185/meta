@@ -79,12 +79,15 @@
                 </div>
                 <form name="form" (ngSubmit)="f.form.valid && (promocion.id ? updatePromo(): crearPromo())" #f="ngForm"
                   novalidate>
-                  <div class="form-row">
+              
+                  <mat-error *ngIf="error">{{mensaje_error}}
+                    </mat-error>
+                  <div class="form-row mt-3">
                       <mat-form-field class="col">
                         <mat-label for="com">Comercio</mat-label>
                         <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id"
                           >
-                          <mat-option *ngFor="let com of comercios" [value]="com.id">{{ com.nombre }}
+                          <mat-option *ngFor="let com of mis_comercios" [value]="com.id">{{ com.nombre }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -92,7 +95,7 @@
                   
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <mat-form-field>
+                    <!--   <mat-form-field>
                         <input matInput type="date" required placeholder="Desde" [(ngModel)]="promocion.desde"
                           #desde="ngModel" min="2020-01-01" fechaValidator id="desde" name="desde" required
                           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
@@ -100,19 +103,26 @@
                         </mat-error>
                         <mat-error *ngIf="desde.invalid && desde?.errors.pattern">Fecha invalida</mat-error>
                         <mat-error *ngIf="desde.invalid && desde?.errors.required">Fecha desde Obligatoria</mat-error>
-                      </mat-form-field>
+                      </mat-form-field> -->
+                      <mat-form-field>
+                        <mat-label>Desde</mat-label>
+                          <input matInput [matDatepicker]="picker" [formControl]="desde"
+                          (dateChange)="calcularDias($event)" readonly
+                          required>
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker disabled="false"></mat-datepicker>
+                        </mat-form-field>
                     </div>
       
                     <div class="form-group col-md-6">
-                      <mat-form-field>
-                        <input matInput type="date" required placeholder="Hasta" [(ngModel)]="promocion.hasta"
-                          #hasta="ngModel" min="2020-01-01" fechaValidator id="hasta" name="hasta" required
-                          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-                        <mat-error *ngIf="hasta.invalid && hasta?.errors.fechanac">Fecha mayor a 1900 y menor a HOY
-                        </mat-error>
-                        <mat-error *ngIf="hasta.invalid && hasta?.errors.pattern">Fecha invalida</mat-error>
-                        <mat-error *ngIf="hasta.invalid && hasta?.errors.required">Fecha hasta Obligatoria</mat-error>
-                      </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Hasta</mat-label>
+                              <input matInput [matDatepicker]="pickerh" [formControl]="hasta"
+                              (dateChange)="calcularDias($event)" readonly
+                              required>
+                              <mat-datepicker-toggle matSuffix [for]="pickerh"></mat-datepicker-toggle>
+                              <mat-datepicker #pickerh disabled="false"></mat-datepicker>
+                            </mat-form-field>
                     </div>
       
                   </div><!-- desde, hasta-->
