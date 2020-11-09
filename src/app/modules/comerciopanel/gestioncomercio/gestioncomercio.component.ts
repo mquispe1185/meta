@@ -271,7 +271,6 @@ servicios = TipoServicio.servicios;
                 this.modalService.dismissAll();
                 this.comercios = cms.map(c => new Comercio(c));
                 this.cdRef.detectChanges();
-                console.log("enviadooo nueva url: ", this.comercio);
                 }
       )
     }
@@ -351,7 +350,6 @@ servicios = TipoServicio.servicios;
       if (input) {
         input.value = '';
       }
-      console.log('agregadoss',this.palabras);
     }
   
     remove(clave: Palabras): void {
@@ -373,7 +371,6 @@ servicios = TipoServicio.servicios;
       })
       this.comercio.tags = palabrasclaves;
      this.updateComercio();
-      console.log('mis tags',palabrasclaves);
     }
 
 // funciones para actualizar tipo de plan/servicio

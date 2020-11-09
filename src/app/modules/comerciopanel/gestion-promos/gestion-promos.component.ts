@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { getMatFormFieldDuplicatedHintError } from '@angular/material/form-field';
 import { FormControl } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -34,16 +35,16 @@ export class GestionPromosComponent implements OnInit {
   constructor(  public tokenService: AngularTokenService,
                 private promoService: PromocionesService,
                 private datepipe: DatePipe,
+                private toastr: ToastrService,
                 private modalService: NgbModal,) { }
 
   ngOnInit(): void {
-    console.log('mis comercios desde storage',this.mis_comercios);
     this.getPromos();
   }
 
   getPromos(){
     this.promoService.getMisPromo().subscribe(
-      prs => {  console.log('promos',prs);
+      prs => { 
         this.lstPromos = new MatTableDataSource(prs);
         this.lstPromos.paginator = this.paginatorPromos;
       },
@@ -73,7 +74,7 @@ export class GestionPromosComponent implements OnInit {
     this.error = false;
    }
     this.promocion.duracion = Math.ceil(dife / (1000 * 3600 * 24)); 
-    console.log('defeee',Math.ceil(dife / (1000 * 3600 * 24)));
+   
   }
   crearPromo(){
     this.promocion.desde = this.datepipe.transform(new Date(this.desde.value),'yyyy-MM-dd');
@@ -81,6 +82,7 @@ export class GestionPromosComponent implements OnInit {
     this.promoService.createPromocion(this.promocion).subscribe(
       prs =>{ this.lstPromos = new MatTableDataSource(prs);
                 this.lstPromos.paginator = this.paginatorPromos;
+                this.toastr.warning('Promoción creada!', 'Pendiente de aprobación!');
               this.modalService.dismissAll();}
     )
    
