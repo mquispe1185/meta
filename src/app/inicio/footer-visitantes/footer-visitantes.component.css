@@ -1,0 +1,23 @@
+.footerrectangulo {
+  width: 100%;
+  height: 300px;
+  background-color: #3c3c3c;
+}
+
+.footertriangulo {
+  border-right: 39.5rem solid #3c3c3c;
+  border-left: 39.5rem solid #3c3c3c;
+  border-top: 120px solid white;
+}
+
+@media (max-width: 900px) {
+  .footerrectangulo {
+    width: 100%;
+    height: 350px;
+    background-color: #3c3c3c;
+  }
+
+  .footertriangulo {
+    display: none;
+  }
+}

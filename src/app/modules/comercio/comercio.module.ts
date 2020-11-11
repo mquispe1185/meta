@@ -39,13 +39,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuienesComponent } from './quienes/quienes.component';
+import { FooterVisitantesComponent } from 'src/app/inicio/footer-visitantes/footer-visitantes.component';
 
 
 @NgModule({
-  declarations: [ComercioComponent, QuienesComponent],
+  declarations: [ComercioComponent, QuienesComponent,FooterVisitantesComponent],
   imports: [
     CommonModule,
     ComercioRoutingModule,
+
 
     FormsModule,
     ReactiveFormsModule,

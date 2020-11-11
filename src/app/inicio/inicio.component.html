@@ -44,15 +44,12 @@
       <div class="ParrafoConoce mt-5">
         CONOCÉ LAS PROMOCIONES Y OFERTAS <br>
         DE LOS COMERCIOS CERCANOS A TU CASA.
-       </div>
+      </div>
     </div>
 
-
-      <!-- OVALO Nuevo diseño -->
-
-  <div class="mitadovalo">
-
-  </div>
+    <!-- OVALO Nuevo diseño -->
+    <div class="mitadovalo">
+    </div>
 
   </div>
   <!-- Fin Menu, Logo, Barra de Busqueda -->
@@ -69,8 +66,7 @@
         Todo desde la comodidad de tu hogar.
       </div>
 
-      <button type="button" [routerLink]="['/quienes-somos']"
-        class="boton-conoce" >CONOCÉ MÁS
+      <button type="button" [routerLink]="['/quienes-somos']" class="boton-conoce">CONOCÉ MÁS
       </button>
 
       <div class="mt-5">
@@ -186,33 +182,32 @@
           <span class="subtitulos ml-3">Promociones</span>
         </div><br>
 
-      <div class="row">
+        <div class="row">
           <ng-container *ngFor="let promo of promociones">
-          <div class="rectapromo mt-2">
+            <div class="rectapromo mt-2">
 
-            <div class="conten">
-              <div class="row">
+              <div class="conten">
+                <div class="row">
                   <div class="col-7" id="izq">
-                      <h5>{{promo.titulo}}</h5>
+                    <h5>{{promo.titulo}}</h5>
 
-                      <h6 class="parrafopromo">{{promo.descripcion}}</h6>
+                    <h6 class="parrafopromo">{{promo.descripcion}}</h6>
 
-                     <button type="button" [routerLink]="['/quienes-somos']"
-                     class="boton-comercio" >Ver comercio
-                   </button> <br> <br>
-                   <span>valido hasta: {{promo.hasta}}</span>
+                    <button type="button" [routerLink]="['/quienes-somos']" class="boton-comercio">Ver comercio
+                    </button> <br> <br>
+                    <span>valido hasta: {{promo.hasta}}</span>
                   </div>
                   <div id="round-image">
-                      <img src="/assets/logos/logo-07.png" class="redimg">
+                    <img src="/assets/logos/logo-07.png" class="redimg">
                   </div>
                   <div id="der" class="col-5">
                   </div>
-                  </div>
                 </div>
-          </div>
+              </div>
+            </div>
 
           </ng-container>
-        </div> 
+        </div>
 
 
       </div> <br>
@@ -225,39 +220,33 @@
 
         <div class="row mb-3">
           <ng-container *ngFor="let comer of comercios">
-              <div class="col-12 col-md-6">
-                <div class="cuadrocomercio">
-                  <div (click)="verComercio(comer)">
-                    <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
-
-                    <img class="resize_fit_center"
-                      [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']"
-                      alt="foto comercio">
-
-                  </div>
-                  <div class="nombre-comer mt-4">
-                    {{comer.nombre}}
-                  </div>
-                  <div class="desc-comer mt-2">
-                    {{comer.descripcion}}
-                  </div>
-                  <div class="dist-comer mt-2">
-                    <div class="row">
-                      <div class="col-12 col-md-8">
-                        {{comer.domicilio}}
-                      </div>
-                      <div class="col-12 col-md-4">
-                        <button type="button"
-                        class="boton-comercio" >Ver comercio
-                      </button>
-                      </div>
+            <div class="col-12 col-md-6">
+              <div class="cuadrocomercio">
+                <div (click)="verComercio(comer)">
+                  <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
+                  <img class="resize_fit_center"
+                    [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']"
+                    alt="foto comercio">
+                </div>
+                <div class="nombre-comer mt-4">
+                  {{comer.nombre}}
+                </div>
+                <div class="desc-comer mt-2">
+                  {{comer.descripcion}}
+                </div>
+                <div class="dist-comer mt-2">
+                  <div class="row">
+                    <div class="col-12 col-md-7">
+                      {{comer.domicilio}}
                     </div>
-
-
+                    <div class="col-12 col-md-5">
+                      <button type="button" class="boton-comercio">Ver comercio
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+            </div>
           </ng-container>
         </div>
 
@@ -275,45 +264,45 @@
 </div>
 
 
-  <!-- FOOTER -->
+<!-- FOOTER -->
 <div class="footerrectangulo">
   <div class="footertriangulo">
   </div> <br>
 
   <div class="row" style="color: white; text-align: center;width: 100%;">
-    <div class="footertitulo col-6 col-md-2">
+    <div class="footertitulo col-6 col-md-4">
       <div class="col d-flex justify-content-center">
         <img class="logoblanco" src="/assets/logos/logos-06.png" alt="">
       </div>
     </div>
- <!--    <div class="logoandroid">
+    <!--    <div class="logoandroid">
       <div class="col-6 ">
         <img class="logoandroid" src="/assets/iconoandroid.png" alt="">
       </div> <br>
     </div> -->
 
     <div class="col-6 col-md-2">
-      <br> <strong>SUMATE</strong>  <br>
+      <br> <strong>SUMATE</strong> <br>
       Se Parte <br>
       Acuerdos <br>
     </div>
     <div class="col-6 col-md-2">
-      <br> <strong>AYUDA</strong>  <br>
+      <br> <strong>AYUDA</strong> <br>
       Preguntas Frecuentes<br>
       Contactate <br>
     </div>
     <div class="col-6 col-md-2">
-      <br> <strong>LEGAL</strong>  <br>
+      <br> <strong>LEGAL</strong> <br>
       <a [routerLink]="['/politica_uso']">Politicas de Uso</a>
-       <br>
+      <br>
       Politicas de Privacidad
     </div>
     <div class="col-6 col-md-2">
-      <br> <strong>SEGUINOS</strong>  <br>
+      <br> <strong>SEGUINOS</strong> <br>
       Whatsapp <br>
       Facebook <br>
       Instagram
-    </div> 
+    </div>
     <!-- <div class="col-6 col-md-2">
       <div class="d-flex justify-content-center">
         <img class="android" src="/assets/logos/android2.png" alt="">

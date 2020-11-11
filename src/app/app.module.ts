@@ -71,7 +71,7 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
     PolServicioComponent,
     PolPrivacidadComponent,
     FooterVisitantesComponent,
- 
+
   ],
   imports: [
     BrowserModule,
@@ -117,7 +117,7 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
          loginField:                'email',
 
   }),
-  
+
   AgmCoreModule.forRoot({
     apiKey: 'AIzaSyAesg0LcvsEiCke9wvIissLRq6a25vsnaY',
     libraries: ['places']
@@ -156,13 +156,15 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
     MatTooltipModule,
     NgbModule,
 
-   
-    MatNativeDateModule, 
-    
+
+    MatNativeDateModule,
+
     CarouselModule,
     ImageCropperModule
 
   ],
+
+  exports: [FooterVisitantesComponent],//compila y fijate ahiok
   providers: [GuardService,AdminGuardService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },DatePipe ],
   bootstrap: [AppComponent]

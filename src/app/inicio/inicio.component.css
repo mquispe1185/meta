@@ -8,7 +8,6 @@
   top: 0px;
   left: 0px;
   width: 100%;
-  /* height: 564px; */
   height: 1200px;
   background: #f36904 0% 0% no-repeat padding-box;
   opacity: 0.69;
@@ -29,16 +28,6 @@
   opacity: 0.9;
   height: 35px;
 }
-/* .menu-boton {
-  text-align: center;
-  font-family: 'Wavehause2', sans-serif;
-  font: normal normal 600 19px/22px Wavehaus;
-  letter-spacing: 0px;
-  color: #ffffff;
-  margin-inline-start: 40px;
-  writing-mode: horizontal-tb;
-  /* direction: rtl;
-} */
 
 /*Seccion Logo y Slogan*/
 .contenedorlogo {
@@ -150,36 +139,25 @@ input::placeholder {
 
 /* OVALO OVALO*/
 
-
 .mitadovalo {
-
-
-/*   left: -20%;
-  height: 130%;
-  width: 140%;
-  background-color: #ffffff;
-  border-radius: 50%;
-  display: inline-block; */
-
-background: white;
-  content:'';
+  background: white;
   position:absolute;
-  top:950px;
+  top:960px;
   width:100%;
   height:100%;
-  border-radius:50%;
+  border-radius:45%;
 }
 
-.mitadovalo2 {
+/* .mitadovalo2 {
   position: relative;
   top: 900px;
   left: 0px;
   background-color: #ffffff;
   height: 1400px;
   width: 1400px;
-    border-top-left-radius: 1000px;
+  border-top-left-radius: 1000px;
   border-top-right-radius: 1000px;
-}
+} */
 
 
 .fondototal {
@@ -280,6 +258,8 @@ background: white;
   border: 3px solid #ccc;
   border-radius: 1em;
   background: #fff;
+
+  word-wrap: break-word;
 }
 
 .nombre-comer {
@@ -297,6 +277,7 @@ background: white;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
+
 }
 
 .dist-comer {
@@ -423,7 +404,7 @@ z-index: 999;
   opacity: 1;
 }
 
-.footer {
+/* .footer {
   height: 60px;
   background: #ee7222;
   color: white;
@@ -434,7 +415,7 @@ z-index: 999;
 }
 
 /* texto de footer */
-.cen {
+/* .cen {
   width: 100%;
   height: 60px;
   text-align: center;
@@ -442,7 +423,7 @@ z-index: 999;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
-}
+} */
 
 .rubros-icon {
   background: #3c3c3c 0% 0% no-repeat padding-box;
@@ -561,16 +542,16 @@ span.credits12 {
 
 .footerrectangulo {
   width: 100%;
-  height: 400px;
+  height: 300px;
   background-color: #3c3c3c;
 
 
 }
 
 .footertriangulo {
-  border-right: 42rem solid #3c3c3c;
-  border-left: 42rem solid #3c3c3c;
-  border-top: 200px solid white;
+  border-right: 39.5rem solid #3c3c3c;
+  border-left: 39.5rem solid #3c3c3c;
+  border-top: 120px solid white;
 }
 
 
@@ -637,6 +618,47 @@ display: none;
 @media (max-width: 1024px) {
   .contenedorbusqueda {
     width: 80%;
+  }
+  .rectangulo {
+    height: 950px;
+  }
+
+  .contenedorlogo {
+    top: 150px;
+  }
+
+  .contenedorsubtit {
+    top: 270px;
+  }
+
+  .contenedorbusqueda {
+    top: 370px;
+  }
+
+  .mitadovalo {
+    background: white;
+    position:absolute;
+    top:750px;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+  }
+  .logoNaranja {
+    margin-top: -80px;
+  }
+
+  .boton-comercio {
+    width: 90px;
+    height: 25px;
+    margin: 5px;
+    font-size: 9px;
+    border-radius: 45px;
+    }
+
+  .footertriangulo {
+    border-right: 32rem solid #3c3c3c;
+    border-left: 32rem solid #3c3c3c;
+    border-top: 100px solid white;
   }
 }
 
@@ -740,7 +762,7 @@ display: none;
 .mitadovalo {
   height: 1000px;
   width: 1000px * 1;
-    border-top-left-radius: 2100px;
+  border-top-left-radius: 2100px;
   border-top-right-radius: 2100px;
 }
 
