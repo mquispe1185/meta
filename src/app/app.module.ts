@@ -1,3 +1,4 @@
+import { SharedModule } from './modules/shared/shared.module';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent} from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './inicio/header/header.component';
-import { FooterComponent } from './inicio/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -57,7 +57,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.component';
 import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
-import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-visitantes.component';
+
 
 
 @NgModule({
@@ -65,13 +65,10 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
     AppComponent,
     InicioComponent,
     HeaderComponent,
-    FooterComponent,
     AfterloginComponent,
     HeaderVisitantesComponent,
     PolServicioComponent,
     PolPrivacidadComponent,
-    FooterVisitantesComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -83,6 +80,7 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
     ReactiveFormsModule,
     HttpClientModule,
 
+    SharedModule,
     ToastrModule.forRoot(),
     AngularTokenModule.forRoot({
       apiBase:                     environment.API_URL,
@@ -164,7 +162,6 @@ import { FooterVisitantesComponent } from './inicio/footer-visitantes/footer-vis
 
   ],
 
-  exports: [FooterVisitantesComponent],//compila y fijate ahiok
   providers: [GuardService,AdminGuardService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },DatePipe ],
   bootstrap: [AppComponent]

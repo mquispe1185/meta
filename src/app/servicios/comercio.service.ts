@@ -78,4 +78,11 @@ export class ComercioService {
     formdata.append('id', comercio_id.toString());
     return this.http.put(url, formdata);
   }
+
+  //***COMERCIOPLAN GET Y UPDATE */
+  updateComercioPlan(comercio:Comercio): Observable<any>{ 
+    const url = `${environment.API_URL}/comercioplanes`;
+    return this.http.post<Comercio>(this.API_URL, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
+    //return this.http.put(url, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
+  }
 }

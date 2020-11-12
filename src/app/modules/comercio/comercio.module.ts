@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -39,16 +40,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuienesComponent } from './quienes/quienes.component';
-import { FooterVisitantesComponent } from 'src/app/inicio/footer-visitantes/footer-visitantes.component';
+
 
 
 @NgModule({
-  declarations: [ComercioComponent, QuienesComponent,FooterVisitantesComponent],
+  declarations: [ComercioComponent, QuienesComponent],
   imports: [
     CommonModule,
     ComercioRoutingModule,
-
-
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

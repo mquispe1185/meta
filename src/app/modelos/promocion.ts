@@ -1,5 +1,6 @@
 import { Usuario } from './usuario';
 import { Comercio } from './comercio';
+import { Formapago } from './formapago';
 export class Promocion {
     
     id: number;
@@ -15,7 +16,8 @@ export class Promocion {
     vencido:boolean;
     prioridad:number;
     estado:number;
-
+    formapago_id:number;
+    formapago:Formapago;
     constructor(data?: any) {
       Object.assign(this, data);
     }

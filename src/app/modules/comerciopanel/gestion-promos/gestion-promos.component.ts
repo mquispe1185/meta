@@ -11,6 +11,7 @@ import { getMatFormFieldDuplicatedHintError } from '@angular/material/form-field
 import { FormControl } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ToastrService } from 'ngx-toastr';
+import { TipoServicio } from '../../../modelos/tipo-servicio';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -22,13 +23,14 @@ export class GestionPromosComponent implements OnInit {
   closeResult: string;
   mensaje_error:string;
   error:boolean = false;
+  formapagos = TipoServicio.formapagos;
   comercio:Comercio;
   fecha = new Date('2020-11-01');
   desde = new FormControl(new Date());
   hasta = new FormControl(new Date());
   mis_comercios:Comercio[] = JSON.parse(localStorage.getItem('miscomercios'));
    //variables para promociones
-   dspColPromos: string[] = ['titulo','descripcion','acciones'];
+   dspColPromos: string[] = ['titulo','descripcion','formapago','acciones'];
    promocion:Promocion = new Promocion();
    lstPromos:any;
    @ViewChild(MatPaginator) paginatorPromos: MatPaginator;

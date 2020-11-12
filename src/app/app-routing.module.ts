@@ -1,3 +1,4 @@
+import { GestionPlanesComponent } from './modules/adminpanel/gestion-planes/gestion-planes.component';
 import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
 import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.component';
 import { ComercioComponent } from './modules/comercio/comercio.component';
@@ -7,7 +8,6 @@ import { ComerciopanelModule } from './modules/comerciopanel/comerciopanel.modul
 import { AfterloginComponent } from './inicio/afterlogin/afterlogin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FooterComponent } from './inicio/footer/footer.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './inicio/header/header.component';
 import { AdminpanelModule } from './modules/adminpanel/adminpanel.module';
@@ -64,6 +64,11 @@ const routes: Routes = [
   {
     path:'listapromos',
     component: ListadopromosComponent,
+    loadChildren: () => AdminpanelModule
+  },
+  {
+    path:'gestion-planes',
+    component: GestionPlanesComponent,
     loadChildren: () => AdminpanelModule
   },
   /*{

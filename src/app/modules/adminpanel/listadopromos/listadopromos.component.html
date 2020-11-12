@@ -40,6 +40,12 @@
                   <span class="mobile-label">Descripcion:</span> {{element.descripcion}}
                 </mat-cell>
               </ng-container>
+              <ng-container matColumnDef="formapago">
+                  <mat-header-cell *matHeaderCellDef>Pago</mat-header-cell>
+                  <mat-cell *matCellDef="let element" >
+                    <span class="mobile-label">Pago:</span> {{element.formapago.descripcion}}
+                  </mat-cell>
+                </ng-container>
             
               <!-- Acciones Column -->
               <ng-container matColumnDef="acciones">

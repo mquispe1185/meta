@@ -42,10 +42,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListadocomerciosComponent } from './listadocomercios/listadocomercios.component';
 import { ListadopromosComponent } from './listadopromos/listadopromos.component';
+import { GestionPlanesComponent } from './gestion-planes/gestion-planes.component';
 
 
 @NgModule({
-  declarations: [AdminpanelComponent, ListadocomerciosComponent, ListadopromosComponent],
+  declarations: [AdminpanelComponent, ListadocomerciosComponent, ListadopromosComponent, GestionPlanesComponent],
   imports: [
     CommonModule,
     AdminpanelRoutingModule,

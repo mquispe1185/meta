@@ -536,18 +536,30 @@
                   <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
   
                       <div class="form-row">
-                        
+                        <div class="col-md-9">
                             <mat-form-field class="col">
                                 <mat-label for="ts">Tipo de servicio</mat-label>
-                                <mat-select id="ts" name="ts" [(ngModel)]="comercio.tipo_servicio"
+                                <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio"
                                   >
                                   <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.descripcion }}
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
-                        
+                          </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="col">
+                              <mat-label for="ms">Cant. meses</mat-label>
+                              <mat-select id="ms" name="ts" [(ngModel)]="comercioplan.tipo_servicio"
+                                >
+                                <mat-option *ngFor="let cant of meses" [value]="cant">{{ cant }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
                       </div>
-                
+                <p>
+                  descripcion del plan contratado, precio y beneficios
+                </p>
                       <div class="form-row">
                       
                         <div class="col-6 text-right">

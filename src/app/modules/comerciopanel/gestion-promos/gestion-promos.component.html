@@ -1,6 +1,6 @@
 
-<div class="container mt-3">
-        <div class="row">
+<div class="container mt-5">
+        <div class="row mt-2">
           <div class="col-6">
             <h6 class="titulo">MIS PROMOS</h6>
           </div>
@@ -30,6 +30,13 @@
                     </mat-cell>
                   </ng-container>
               
+                  <ng-container matColumnDef="formapago">
+                      <mat-header-cell *matHeaderCellDef>Pago</mat-header-cell>
+                      <mat-cell *matCellDef="let element" >
+                        <span class="mobile-label">Pago:</span> {{element.formapago.descripcion}}
+                      </mat-cell>
+                    </ng-container>
+                    
                   <!-- Descripcion -->
                   <ng-container matColumnDef="descripcion">
                     <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
@@ -93,6 +100,18 @@
                       </mat-form-field>
                     </div>
                   
+                    <div class="form-row">
+                        
+                        <mat-form-field class="col">
+                            <mat-label for="ts">Formapago</mat-label>
+                            <mat-select id="ts" name="ts" [(ngModel)]="promocion.formapago_id"
+                              >
+                              <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    
+                  </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                     <!--   <mat-form-field>

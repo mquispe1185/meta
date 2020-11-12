@@ -1,40 +1,96 @@
+<div class="background">
 
-<mat-toolbar  color="primary">
-        <img src="assets/logos/logos-06.png" alt="logo" class="logo">
- 
-          <div class="centrado">
-            <button mat-raised-button color="primary" (click)="irInicio()" class="mr-1">
-                <mat-icon>home</mat-icon>Inicio</button>
-           
-                <!--   <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
-                      <button mat-raised-button color="primary" class="mr-1">
-                          <mat-icon>admin_panel_settings</mat-icon> ADMINISTRACION</button>
-                        <button mat-raised-button color="primary" class="mr-1">
-                            <mat-icon>location_on</mat-icon>COMERCIOS</button>
-                        <button mat-raised-button color="primary" class="mr-1">
-                            <mat-icon>settings</mat-icon> CONFIGURACION</button>
-                  </ng-container> -->
+  <!-- Menu MOBILE -->..
+  <div class="contcel text-right">
+    <div ngbDropdown class="d-inline-block" placement="bottom-right" display="dynamic">
+      <button class="btn btn-outline-light menudesplegado" id="dropdownBasic2" ngbDropdownToggle>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
+          <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Inicio</button>
+          <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
+                
+              <button type="button" class="menu-boton btn btn-link" 
+                (click)="irGestionComercios()">
+                    Gestión Comercios</button>
+              <button type="button" class="menu-boton btn btn-link" [routerLink]="['/gestion-planes']">
+                      Gestion Planes</button>
+                    <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+               Promociones</button>
+            </ng-container>
 
-                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
-                      <button mat-raised-button color="primary" (click)="irGestionComercios()" class="mr-1">
-                          <mat-icon>store</mat-icon>Gestión Comercios</button>
-                    <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">
-                      <mat-icon>store</mat-icon>Promociones</button>
-                  </ng-container>
-                  <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
-                      <button mat-raised-button color="primary" (click)="irAMiComercio()" class="mr-1">
-                          <mat-icon>store</mat-icon>Mis Comercios</button>
-                    <button mat-raised-button color="primary" (click)="irPromos()" class="mr-1">
-                      <mat-icon>store</mat-icon>Promociones</button>
-                  </ng-container>
+            <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
+                <button type="button" class="menu-boton btn btn-link" (click)="irAMiComercio()">
+               Mis Comercios</button>
+                    <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+               Promociones</button>
+            </ng-container>
 
-          </div>
+          <button *ngIf="tokenService.currentUserData" type="button" class="menu-boton btn btn-link">
+            <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
+            {{tokenService.currentUserData?.name}}
+          </button>
+          <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+          <ng-template #salida>
+            <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+          </ng-template>
+          <ng-template #ingresar>
+            <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+          </ng-template>
+      </div>
+    </div>
+  </div>
+  <!-- FIN Menu MOBILE -->
 
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon mr-2" aria-hidden="false">verified_user</mat-icon>
-             <span class="nick mr-2"> {{tokenService.currentUserData?.name}}</span>
+  <!-- Menu DESKTOP -->
+  <div class="cont">
+    <div id="barr" class="menub" [ngStyle]="{'background-color': esInicio ? 'transparent' : '#ee7222' }" (scroll)="onWindowScroll($event);">
+      <div class="row">
+        <div class="col-sm-2">
+          <a [routerLink]="['/inicio']" fragment="ini">
+            <img src="assets/logos/logos-06.png" alt="logo" class="logo">
+            </a>
+        </div>
+        <div class="col-sm-10">
 
-        <button class="btn btn-google btn-outline" (click)="salir()">
-        <mat-icon color="primary">exit_to_app</mat-icon>Salir </button>
-</mat-toolbar> 
+            <ng-container *ngIf="tokenService.currentUserData?.rol_id ===1">
+                
+              <button type="button" class="menu-boton btn btn-link" 
+                (click)="irGestionComercios()">
+                    Gestión Comercios</button>
+                    <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+               Promociones</button>
+            </ng-container>
+            <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
+                <button type="button" class="menu-boton btn btn-link" (click)="irAMiComercio()">
+               Mis Comercios</button>
+                    <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+               Promociones</button>
+            </ng-container>
+
+          <button *ngIf="tokenService.currentUserData" type="button" class="menu-boton btn btn-link">
+            <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>
+            {{tokenService.currentUserData?.name}}
+          </button>
+          <div *ngIf="tokenService.currentUserData; then salida else ingresar"></div>
+          <ng-template #salida>
+            <button type="button" (click)="salir()" class="menu-boton btn btn-link">Salir <i class="arrow"></i></button>
+          </ng-template>
+          <ng-template #ingresar>
+            <button type="button" (click)="login()" class="menu-boton btn btn-link">Ingresar <i class="arrow"></i></button>
+          </ng-template>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
 

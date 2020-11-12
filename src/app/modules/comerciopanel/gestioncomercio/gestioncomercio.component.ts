@@ -1,3 +1,4 @@
+import { Comercioplan } from './../../../modelos/comercioplan';
 import { TipoServicio } from './../../../modelos/tipo-servicio';
 import { Promocion } from './../../../modelos/promocion';
 import { HorarioService } from './../../../servicios/horario.service';
@@ -66,8 +67,9 @@ export class GestioncomercioComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   palabras: Palabras[] =[];
 //actualizar tipo servicios
+comercioplan:Comercioplan = new Comercioplan();
 servicios = TipoServicio.servicios;
- 
+ meses = TipoServicio.meses;
 
   constructor(  public tokenService: AngularTokenService,
                 private modalService: NgbModal,
@@ -373,10 +375,13 @@ servicios = TipoServicio.servicios;
      this.updateComercio();
     }
 
-// funciones para actualizar tipo de plan/servicio
-updateTipoPlan(){
-  this.updateComercio();
-}   
+    // funciones para actualizar tipo de plan/servicio
+    updateTipoPlan(){
+      this.comercioplan.comercio_id = this.comercio.id;
+      this.comercioService.updateComercioPlan(this.comercio).subscribe(
+
+      )
+    }   
 
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {

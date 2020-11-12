@@ -39,6 +39,18 @@ export class HeaderComponent implements OnInit {
       );
     }
   
+    @HostListener('window:scroll', ['$event'])
+    onWindowScroll(e) {
+      let element = document.querySelector('.menub');
+      if (window.pageYOffset > 65) {
+        element.classList.add('menunar');
+  
+       // console.log('supera los 365');
+      } else {
+        element.classList.remove('menunar');
+
+      }
+    }
 
   irInicio(){
     this.router.navigate(['inicio']);
@@ -74,4 +86,5 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['inicio']);
     });
   }
+  login(){}
 }
