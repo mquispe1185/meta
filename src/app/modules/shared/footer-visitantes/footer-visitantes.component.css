@@ -5,10 +5,37 @@
 }
 
 .footertriangulo {
-  border-right: 39.5rem solid #3c3c3c;
-  border-left: 39.5rem solid #3c3c3c;
-  border-top: 120px solid white;
+  border-right: 40rem solid #3c3c3c;
+  border-left: 39rem solid #3c3c3c;
+  border-top: 100px solid white;
 }
+.logoblanco {
+  width: 181px;
+  height: 113px;
+}
+.footer-link {
+  color: white;
+}
+
+.footer-link:hover {
+  text-decoration-line: underline;
+}
+@media (max-width: 1250px) {
+
+  .footerrectangulo {
+    width: 100%;
+    height: 250px;
+    background-color: #3c3c3c;
+  }
+
+  .footertriangulo {
+    border-right: 30rem solid #3c3c3c;
+    border-left: 30rem solid #3c3c3c;
+    border-top: 80px solid red;
+  }
+
+}
+
 
 @media (max-width: 900px) {
   .footerrectangulo {
@@ -19,5 +46,10 @@
 
   .footertriangulo {
     display: none;
+  }
+
+  .logoblanco {
+    width: 90px;
+    height: 66px;
   }
 }
