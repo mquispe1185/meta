@@ -103,10 +103,10 @@
                     <div class="form-row">
                         
                         <mat-form-field class="col">
-                            <mat-label for="ts">Formapago</mat-label>
-                            <mat-select id="ts" name="ts" [(ngModel)]="promocion.formapago_id"
+                            <mat-label for="fp">Forma de Pago</mat-label>
+                            <mat-select id="fp" name="fp" [(ngModel)]="promocion.formapago"
                               >
-                              <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
+                              <mat-option *ngFor="let fp of formapagos" [value]="fp">{{ fp.descripcion }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>

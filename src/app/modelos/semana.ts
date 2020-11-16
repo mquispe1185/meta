@@ -9,4 +9,7 @@ export class Semana {
         {id: 6, check : false,nombre: 'Sabado' },
         {id: 7,check : false, nombre: 'Domingo' },
       ]
+
+
+    static meses = [1,2,3,4,5,6,7,8,9,10,11,12];
   }

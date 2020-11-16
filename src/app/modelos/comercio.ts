@@ -38,15 +38,16 @@ export class Comercio {
     tags:string;
     habilitado:boolean;
     envio:boolean;
-    tipo_servicio:number;
-    tipo_servicio_descripcion:string;
+    tipo_servicio_id:number;
+    tipo_servicio:TipoServicio;
+    estado:number; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
     
     constructor(data?: any) {
       Object.assign(this, data);
     }
 
     getTipoServicio(){
-      switch(this.tipo_servicio) { 
+      switch(this.tipo_servicio_id) { 
         case 0: { 
            return 'GRATUITO'; 
           

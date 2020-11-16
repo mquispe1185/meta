@@ -1,21 +1,30 @@
+import { Formapago } from './formapago';
 import { Comercio } from './comercio';
+import { TipoServicio } from './tipo-servicio';
+import { Usuario } from './usuario';
 export class Comercioplan {
     
     id: number;
     comercio_id:number;
     comercio:Comercio;
-    tipo_servicio:number;
+    tipo_servicio_id:number;
+    tipo_servicio:TipoServicio;
     desde:string;
     hasta:string;
-    estado:number;// 0: pediente, 1:aprobado, 2: vencido
-
+    estado:number;// 0: pendiente, 1:aprobado, 2: vencido
+    formapago_id:number;
+    formapago:Formapago;
+    meses:number;
+    importe:number;
+    usuario_id:number;
+    usuario:Usuario;
     constructor(data?: any) {
       Object.assign(this, data);
     }
 
 
     getTipoServicio(){
-        switch(this.tipo_servicio) { 
+        switch(this.tipo_servicio_id) { 
           case 0: { 
              return 'GRATUITO'; 
             

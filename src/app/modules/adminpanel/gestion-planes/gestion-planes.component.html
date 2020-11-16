@@ -14,16 +14,16 @@
             </mat-form-field>
   
    
-            <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
+            <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
               <!-- Nombre -->
               <ng-container matColumnDef="nombre">
                 <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Nombre:</span>{{element.nombre}}
+                  <span class="mobile-label">Nombre:</span>{{element.comercio.nombre}}
                 </mat-cell>
               </ng-container>
 
-              <!-- Email -->
+              <!-- usuario -->
               <ng-container matColumnDef="usuario">
                 <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
@@ -34,15 +34,31 @@
               <ng-container matColumnDef="tiposervicio">
                 <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Servicio:</span> {{element.getTipoServicio()}}
+                  <span class="mobile-label">Servicio:</span> {{element.tipo_servicio.nombre}}
                 </mat-cell>
               </ng-container>
             <!-- validez -->
               <ng-container matColumnDef="validez">
                 <mat-header-cell *matHeaderCellDef>Validez</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Validez:</span> Desde: {{element.desde}}<br>
-                                                            Hasta: {{element.hasta}}
+                  <span class="mobile-label">Validez:</span> Desde: {{element.desde ? element.desde : 'pendiente'}}<br>
+                                                            Hasta: {{element.hasta ? element.hasta : 'pendiente'}}
+                </mat-cell>
+              </ng-container>
+
+               <!-- FORMAPAGO -->
+               <ng-container matColumnDef="formapago">
+                <mat-header-cell *matHeaderCellDef>Forma de pago</mat-header-cell>
+                <mat-cell *matCellDef="let element" >
+                  <span class="mobile-label">Forma de pago:</span> {{element.formapago.descripcion}}
+                </mat-cell>
+              </ng-container>
+
+               <!-- ESTADO -->
+               <ng-container matColumnDef="estado">
+                <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+                <mat-cell *matCellDef="let element" >
+                  <span class="mobile-label">Estado:</span> {{element.estado}}
                 </mat-cell>
               </ng-container>
 

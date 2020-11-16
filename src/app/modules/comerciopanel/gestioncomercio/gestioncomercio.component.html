@@ -135,7 +135,7 @@
             </div>
   
             <div class="col-7 col-md-4">
-              <span class="font-weight-bold">{{comer.tipo_servicio_descripcion}}</span>
+              <span class="font-weight-bold" [ngClass]="{'text-danger': comer.estado === 1}">{{comer.estado === 1 ? comer.tipo_servicio.nombre+' pendiente de actualizacion': comer.tipo_servicio.nombre}}</span>
             </div>
           </div>
         <br>
@@ -186,7 +186,7 @@
             (click)="openFormHorario(formhorario,comer)">
             <mat-icon>alarm</mat-icon>Horario
           </button>
-          <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormFoto(modalplan,comer)">
+          <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormPlan(modalplan,comer)">
             <mat-icon>verified</mat-icon>Tipo Servicio
           </button>
           <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
@@ -536,33 +536,54 @@
                   <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
   
                       <div class="form-row">
-                        <div class="col-md-9">
-                            <mat-form-field class="col">
+                       
+                            <mat-form-field class="col-md-9">
                                 <mat-label for="ts">Tipo de servicio</mat-label>
-                                <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio"
-                                  >
-                                  <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.descripcion }}
+                                <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id" (selectionChange)="calcularTotalServicio($event.value)"
+                                  #ts="ngModel">
+                                  <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
-                          </div>
-                          <div class="col-md-3">
-                            <mat-form-field class="col">
+                        
+                       
+                            <mat-form-field class="col-md-3">
                               <mat-label for="ms">Cant. meses</mat-label>
-                              <mat-select id="ms" name="ts" [(ngModel)]="comercioplan.tipo_servicio"
+                              <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses" (selectionChange)="calcularTotalMes($event.value)"
                                 >
                                 <mat-option *ngFor="let cant of meses" [value]="cant">{{ cant }}
                                 </mat-option>
                               </mat-select>
                             </mat-form-field>
-                          </div>
+                         
                       </div>
-                <p>
-                  descripcion del plan contratado, precio y beneficios
-                </p>
+
                       <div class="form-row">
                       
-                        <div class="col-6 text-right">
+                            <mat-form-field class="col">
+                                <mat-label for="fp">Formapago</mat-label>
+                                <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
+                                  >
+                                  <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                         
+                      </div>
+
+                <p>
+                 {{comercioplan.tipo_servicio.descripcion}}
+                  
+                </p>
+                <div class="form-row">
+                  <span class="col-4">{{comercioplan.tipo_servicio.importe}}</span>
+                  <span class="col-4">Cant. meses {{comercioplan.meses}}</span>
+                  <span class="col-4"><strong>Total: {{comercioplan.importe}}</strong> </span>
+                </div>
+              
+                      <div class="form-row mt-3">
+                      
+                        <div class="col-12 text-right">
                           <button mat-raised-button type="submit" color="primary"><fa-icon icon="save"></fa-icon>Cambiar plan</button>
                         </div>
                       </div>

@@ -16,8 +16,8 @@ import { Comercioplan } from '../../../modelos/comercioplan';
 })
 export class GestionPlanesComponent implements OnInit {
   
-  lstComercios:any;
-  dspCol: string[] = ['nombre','usuario','domicilio','tiposervicio','validez', 'acciones'];
+  lstComerciosplan:any;
+  dspCol: string[] = ['nombre','usuario','tiposervicio','validez','formapago','estado', 'acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
  comercioSelected:Comercioplan = new Comercioplan();
 
@@ -38,15 +38,15 @@ export class GestionPlanesComponent implements OnInit {
   }
 
   getComerciosplan(){
-    this.comercioService.getComercios().subscribe(
-      cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercioplan(c)));
-              this.lstComercios.paginator = this.paginatorCom;
+    this.comercioService.getComerciosPlanes().subscribe(
+      cms =>{ this.lstComerciosplan = new MatTableDataSource(cms.map(c => new Comercioplan(c)));
+              this.lstComerciosplan.paginator = this.paginatorCom;
              }
     )
   }
 
   filtrarComercios(term){
-    this.lstComercios.filter = term.trim().toLowerCase();
+    this.lstComerciosplan.filter = term.trim().toLowerCase();
   }
 
   dialogAprobarPlan(element){

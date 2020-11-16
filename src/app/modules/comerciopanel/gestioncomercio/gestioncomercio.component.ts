@@ -1,3 +1,5 @@
+
+import { Formapago } from './../../../modelos/formapago';
 import { Comercioplan } from './../../../modelos/comercioplan';
 import { TipoServicio } from './../../../modelos/tipo-servicio';
 import { Promocion } from './../../../modelos/promocion';
@@ -23,6 +25,8 @@ import { ConfirmationDialogService } from '../../../servicios/confirmation-dialo
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { DatosService } from '../../../servicios/datos.service';
+
 export interface Palabras {
   //utilizado para las palabras claves
   clave: string;
@@ -36,23 +40,23 @@ export interface Palabras {
 export class GestioncomercioComponent implements OnInit {
 
   closeResult: string;
-  comercio:Comercio;
-  provincias:Provincia[]=[];
-  departamentos:Departamento[]=[];
-  provincia_id:number;
-  depatramento_id:number;
-  localidades:Localidad[]=[];
-  rubros:Rubro[]=[];
-  comercios:Comercio[]=[];
+  comercio: Comercio;
+  provincias: Provincia[] = [];
+  departamentos: Departamento[] = [];
+  provincia_id: number;
+  depatramento_id: number;
+  localidades: Localidad[] = [];
+  rubros: Rubro[] = [];
+  comercios: Comercio[] = [];
   semana = Semana.semana;
-  horarios:Horario[]=[];
-  nuevos_horarios:Horario[]=[];
-  nuevo_horario:Horario;
-  horario_aux:Horario;
+  horarios: Horario[] = [];
+  nuevos_horarios: Horario[] = [];
+  nuevo_horario: Horario;
+  horario_aux: Horario;
 
-  nueva_foto:File;
+  nueva_foto: File;
 
-  timestamp:string;
+  timestamp: string;
 
   file;
   imageChangedEvent: any = '';
@@ -65,21 +69,23 @@ export class GestioncomercioComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  palabras: Palabras[] =[];
+  palabras: Palabras[] = [];
 //actualizar tipo servicios
-comercioplan:Comercioplan = new Comercioplan();
-servicios = TipoServicio.servicios;
- meses = TipoServicio.meses;
-
+comercioplan: Comercioplan = new Comercioplan();
+servicios: TipoServicio[];
+formapagos: Formapago[];
+ meses = Semana.meses;
+selected: TipoServicio;
   constructor(  public tokenService: AngularTokenService,
                 private modalService: NgbModal,
-                private ubicacionService:UbicacionService,
+                private ubicacionService: UbicacionService,
                 private rubroService: RubroService,
-                private comercioService:ComercioService,
-                private horarioService:HorarioService,
+                private comercioService: ComercioService,
+                private horarioService: HorarioService,
                 private cdRef: ChangeDetectorRef,
                 private confirmationDialogService: ConfirmationDialogService,
-                private toastr: ToastrService,) { }
+                private datosService: DatosService,
+                private toastr: ToastrService, ) { }
 
   ngOnInit(): void {
    
@@ -91,9 +97,9 @@ servicios = TipoServicio.servicios;
   getComercios(){
     this.comercios = []
     this.comercioService.getMisComercios().subscribe(
-      cms =>{this.comercios = cms.map(c => new Comercio(c));
+      cms => {this.comercios = cms.map(c => new Comercio(c));
               localStorage.setItem('miscomercios', JSON.stringify(this.comercios));
-              console.log('mis comerc',cms);
+              console.log('mis comerc', cms);
              }
     )
   }
@@ -114,9 +120,9 @@ servicios = TipoServicio.servicios;
     });
   }
 
-  openFormEditarComercio(modal,comer){
+  openFormEditarComercio(modal, comer){
     this.comercio = comer;
-    if(this.comercio.envio){
+    if (this.comercio.envio){
       this.msjenvio = 'Si realiza envios';
       }else{
       this.msjenvio = 'NO realiza envios';
@@ -130,8 +136,8 @@ servicios = TipoServicio.servicios;
 
   getRubros(){
     this.rubroService.getRubros().subscribe(
-      rs =>{ console.log('rubrooos',rs);
-            this.rubros = rs;}
+      rs => { console.log('rubrooos', rs);
+            this.rubros = rs; }
     );
   }
   getProvincias(){
@@ -145,7 +151,7 @@ servicios = TipoServicio.servicios;
   buscarDtos(event){
     this.provincia_id = event.value;
     this.ubicacionService.getDptos(this.provincia_id).subscribe(
-      dtos => { this.departamentos = dtos; console.log('deptos',dtos);}
+      dtos => { this.departamentos = dtos; console.log('deptos', dtos); }
     )
   }
 
@@ -157,7 +163,7 @@ servicios = TipoServicio.servicios;
   }
 
   cambiarTextoEnvio(e){
-    if(e.checked){
+    if (e.checked){
     this.msjenvio = 'Si realiza envios';
     }else{
     this.msjenvio = 'NO realiza envios';
@@ -166,17 +172,17 @@ servicios = TipoServicio.servicios;
 
   altaComercio(){
     this.comercioService.createComercio(this.comercio).subscribe(
-      cms =>{this.comercios = cms.map(c => new Comercio(c));
+      cms => {this.comercios = cms.map(c => new Comercio(c));
           this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Nuevo comercio creado!');}
+        this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
     )
   }
 
   updateComercio(){
     this.comercioService.updateComercio(this.comercio).subscribe(
-      cms =>{this.comercios = cms.map(c => new Comercio(c));
+      cms => {this.comercios = cms.map(c => new Comercio(c));
           this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Datos actualizados!');}
+        this.toastr.success('bien hecho!', 'Datos actualizados!'); }
     )
   }
 
@@ -194,15 +200,15 @@ servicios = TipoServicio.servicios;
     actualizarUbicacion(comercio){
       //console.log('comercioooo',comercio); 
       this.comercioService.updateComercio(comercio).subscribe(
-        cms =>{this.comercios = cms.map(c => new Comercio(c));
+        cms => {this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Nuevo comercio creado!');}
+        this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
     )
       
     }
-    openFormHorario(modal,comercio){
+    openFormHorario(modal, comercio){
     this.comercio = comercio;
-    this.semana.forEach(d=>{d.check = false});
+    this.semana.forEach(d => {d.check = false});
     this.nuevo_horario = new Horario();
       this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -216,7 +222,7 @@ servicios = TipoServicio.servicios;
     addHorario(){
       this.nuevos_horarios = [];  
       this.semana.forEach(
-        d =>{
+        d => {
           this.horario_aux = new Horario();   
           if (d.check){
             this.horario_aux.dia = d.id;
@@ -229,15 +235,15 @@ servicios = TipoServicio.servicios;
           }
         }
       );
-      console.log('nuevos hor',this.nuevos_horarios);
+      console.log('nuevos hor', this.nuevos_horarios);
       this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
         hs => {this.comercio.horarios = hs;
           this.modalService.dismissAll();
-          this.toastr.success('bien hecho!', 'Horario/s agregados!');}
+          this.toastr.success('bien hecho!', 'Horario/s agregados!'); }
       )
     }
 
-    dialogEliminarHorario(element,comer){
+    dialogEliminarHorario(element, comer){
       this.comercio = comer;
       this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
         .then(
@@ -251,11 +257,11 @@ servicios = TipoServicio.servicios;
       this.horarioService.deleteHorario(horario).subscribe(
         hs => {this.comercio.horarios = hs;
           this.modalService.dismissAll();
-          this.toastr.error('bien hecho!', 'Horario/s eliminado!');}
+          this.toastr.error('bien hecho!', 'Horario/s eliminado!'); }
       )
     }
 
-    openFormFoto(modal,comer){
+    openFormFoto(modal, comer){
       this.comercio = comer;
       this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -268,7 +274,7 @@ servicios = TipoServicio.servicios;
       this.nueva_foto = event.target.files.item(0);
     }
     guardarLogo(){
-      this.comercioService.uploadLogo(this.nueva_foto,this.comercio.id).subscribe(
+      this.comercioService.uploadLogo(this.nueva_foto, this.comercio.id).subscribe(
         cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
                 this.modalService.dismissAll();
                 this.comercios = cms.map(c => new Comercio(c));
@@ -292,7 +298,7 @@ servicios = TipoServicio.servicios;
       this.croppedImage = event.base64;
   
       //Usage example:
-      var file = this.dataURLtoFile(this.croppedImage,'image.png');
+      var file = this.dataURLtoFile(this.croppedImage, 'image.png');
       console.log(file);
       this.nueva_foto = file;
     }
@@ -305,11 +311,11 @@ servicios = TipoServicio.servicios;
             n = bstr.length, 
             u8arr = new Uint8Array(n);
             
-        while(n--){
+        while (n--){
             u8arr[n] = bstr.charCodeAt(n);
         }
         
-        return new File([u8arr], filename, {type:mime});
+        return new File([u8arr], filename, {type: mime});
     }
       
       
@@ -325,12 +331,12 @@ servicios = TipoServicio.servicios;
 
     //funciones de PALABRA CLAVE
 
-    openFormTags(modal,comer){
+    openFormTags(modal, comer){
       this.comercio = comer;
       this.palabras = [];
       if (this.comercio.tags != null){
       let ps = this.comercio.tags.split(' ');
-      ps.forEach( c=>{ this.palabras.push({clave: c})})
+      ps.forEach( c => { this.palabras.push({clave: c})})
       }
       this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -364,9 +370,9 @@ servicios = TipoServicio.servicios;
 
     guardarTags(){
       var palabrasclaves = '';
-      this.palabras.forEach( p =>{
+      this.palabras.forEach( p => {
         if (palabrasclaves.length > 0){
-        palabrasclaves = palabrasclaves+' '+p.clave;
+        palabrasclaves = palabrasclaves + ' ' + p.clave;
         }else{
           palabrasclaves = p.clave;
         }
@@ -376,12 +382,59 @@ servicios = TipoServicio.servicios;
     }
 
     // funciones para actualizar tipo de plan/servicio
-    updateTipoPlan(){
-      this.comercioplan.comercio_id = this.comercio.id;
-      this.comercioService.updateComercioPlan(this.comercio).subscribe(
 
+    openFormPlan(modal, comer){
+      this.comercio = comer;
+      console.log('comercio selec', this.comercio);
+      this.comercioplan.comercio_id = this.comercio.id;
+      this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
+      this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
+      this.comercioplan.meses = 1;
+      
+      this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
+      this.datosService.getTipoServicios().subscribe(
+        res => { this.getFormapagos();
+                this.servicios = res.map(s => new TipoServicio(s));
+        }
       )
-    }   
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    } 
+    updateTipoPlan(){
+      
+      this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
+      this.comercioService.updateComercioPlan(this.comercioplan).subscribe(
+        res =>{ console.log('comercio pendiente',res);
+          this.modalService.dismissAll();
+        let index = this.comercios.findIndex( c => c.id === this.comercio.id)
+        this.comercios[index] = new Comercio(res);
+        this.toastr.warning('bien hecho!', 'el cambio esta pendiente hasta que se confirme el pago!'); 
+        
+        }
+      )
+    }
+    
+    calcularTotalServicio(servicio){
+      console.log('servicio id',servicio);
+      this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
+      console.log('seleccionado ser', this.servicios.find(s => s.id === servicio));
+      this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
+      
+    }
+
+    calcularTotalMes(mes){
+      this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
+      console.log('seleccionado', mes);
+    }
+
+    getFormapagos(){
+      this.datosService.getFormapagos().subscribe(
+        fps => {this.formapagos = fps; }
+      )
+    }
 
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {

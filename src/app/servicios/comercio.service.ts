@@ -1,3 +1,4 @@
+import { Comercioplan } from './../modelos/comercioplan';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -80,9 +81,15 @@ export class ComercioService {
   }
 
   //***COMERCIOPLAN GET Y UPDATE */
-  updateComercioPlan(comercio:Comercio): Observable<any>{ 
+
+  getComerciosPlanes(): Observable<Comercioplan[]>{
     const url = `${environment.API_URL}/comercioplanes`;
-    return this.http.post<Comercio>(this.API_URL, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
+    return this.http.get<Comercioplan[]>(url);
+  }
+
+  updateComercioPlan(comercioplan:Comercioplan): Observable<any>{ 
+    const url = `${environment.API_URL}/comercioplanes`;
+    return this.http.post<Comercio>(url, comercioplan);
     //return this.http.put(url, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
   }
 }

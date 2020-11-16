@@ -1,3 +1,4 @@
+import { Formapago } from './../../../modelos/formapago';
 import { PromocionesService } from './../../../servicios/promociones.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Comercio } from '../../../modelos/comercio';
@@ -12,6 +13,7 @@ import { FormControl } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { TipoServicio } from '../../../modelos/tipo-servicio';
+import { DatosService } from '../../../servicios/datos.service';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -23,7 +25,6 @@ export class GestionPromosComponent implements OnInit {
   closeResult: string;
   mensaje_error:string;
   error:boolean = false;
-  formapagos = TipoServicio.formapagos;
   comercio:Comercio;
   fecha = new Date('2020-11-01');
   desde = new FormControl(new Date());
@@ -33,11 +34,13 @@ export class GestionPromosComponent implements OnInit {
    dspColPromos: string[] = ['titulo','descripcion','formapago','acciones'];
    promocion:Promocion = new Promocion();
    lstPromos:any;
+   formapagos:Formapago[];
    @ViewChild(MatPaginator) paginatorPromos: MatPaginator;
   constructor(  public tokenService: AngularTokenService,
                 private promoService: PromocionesService,
                 private datepipe: DatePipe,
                 private toastr: ToastrService,
+                private datosService:DatosService,
                 private modalService: NgbModal,) { }
 
   ngOnInit(): void {
@@ -59,6 +62,7 @@ export class GestionPromosComponent implements OnInit {
    openFormPromo(modal){
     //this.comercio = comer;
     this.promocion = new Promocion();
+    this.getFormapagos();
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -92,6 +96,12 @@ export class GestionPromosComponent implements OnInit {
 
   updatePromo(){
 
+  }
+
+  getFormapagos(){
+    this.datosService.getFormapagos().subscribe(
+      fps => {this.formapagos = fps;}
+    )
   }
 
   filtrarPromos(term){
