@@ -272,8 +272,13 @@ input::placeholder {
 
 .desc-comer {
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   margin-left: 5px;
-  font: normal normal normal 20px/24px Wavehaus;
+  font: normal normal normal 18px/24px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -303,6 +308,8 @@ input::placeholder {
 .parrafopromo {
   word-wrap: break-word;
   font-weight: bold;
+  font-size: 22px;
+
 }
 .promo-img {
   display: inline-block;
@@ -324,6 +331,7 @@ input::placeholder {
   width: 140px;
   height: 25px;
   margin: 5px;
+  align-items: center;
   /* font-family: 'Roboto', sans-serif; */
   font: normal normal normal 10px Century;
   font-size: 13px;
@@ -544,8 +552,6 @@ span.credits12 {
   width: 100%;
   height: 300px;
   background-color: #3c3c3c;
-
-
 }
 
 .footertriangulo {
@@ -554,7 +560,13 @@ span.credits12 {
   border-top: 120px solid white;
 }
 
+.footer-link {
+  color: white;
+}
 
+.footer-link:hover {
+  text-decoration-line: underline;
+}
 
 
 .android {
@@ -570,14 +582,33 @@ display: none;
   position: relative;
   height: 150px;
   width: 100%;
+  padding-left: 0px;
+}
+
+.titulopromo{
+  padding-top: 5px;
+  font-weight: bold;
+  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  animation-name: titulopromo;
+  animation-duration: 7s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes titulopromo{
+  0%{ transform: translateX(100px); }
+  50%{ transform: translateX(-30px); }
+  100%{ transform: translateX(0px); }
 }
 
 #izq{
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   height: 100%;
-
 }
 
 #der{

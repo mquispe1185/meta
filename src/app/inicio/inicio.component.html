@@ -189,7 +189,7 @@
               <div class="conten">
                 <div class="row">
                   <div class="col-7" id="izq">
-                    <h5>{{promo.titulo}}</h5>
+                    <h5 class="titulopromo">{{promo.titulo}}</h5>
 
                     <h6 class="parrafopromo">{{promo.descripcion}}</h6>
 
@@ -239,7 +239,7 @@
                     <div class="col-12 col-md-7">
                       {{comer.domicilio}}
                     </div>
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-5 ">
                       <button type="button" class="boton-comercio">Ver comercio
                       </button>
                     </div>
@@ -293,7 +293,7 @@
     </div>
     <div class="col-6 col-md-2">
       <br> <strong>LEGAL</strong> <br>
-      <a [routerLink]="['/politica_uso']">Politicas de Uso</a>
+      <a class="footer-link" [routerLink]="['/politica_uso']">Politicas de Uso</a>
       <br>
       Politicas de Privacidad
     </div>
