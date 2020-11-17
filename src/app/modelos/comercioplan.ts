@@ -9,9 +9,11 @@ export class Comercioplan {
     comercio:Comercio;
     tipo_servicio_id:number;
     tipo_servicio:TipoServicio;
+    servicio_anterior_id:number;
+    servicio_anterior:TipoServicio;
     desde:string;
     hasta:string;
-    estado:number;// 0: pendiente, 1:aprobado, 2: vencido
+    estado:number;// 0: pendiente, 1:aprobado, 2: vencido,3:rechazado
     formapago_id:number;
     formapago:Formapago;
     meses:number;

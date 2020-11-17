@@ -92,4 +92,9 @@ export class ComercioService {
     return this.http.post<Comercio>(url, comercioplan);
     //return this.http.put(url, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
   }
+
+  habilitarComercioplan(comercioplan: Comercioplan): Observable<any>{ 
+    const url = `${environment.API_URL}/comercioplanes/${comercioplan.id}`;
+    return this.http.put(url, comercioplan);
+  }
 }
