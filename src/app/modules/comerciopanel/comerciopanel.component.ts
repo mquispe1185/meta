@@ -27,11 +27,16 @@ export class ComerciopanelComponent implements OnInit {
               private usuarioService: UsuariosService,
               private ubicacionService:UbicacionService) { }
 
-  ngOnInit(): void {
+/*   ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
       res => {this.getUsuario();
               this.getProvincias();} 
     )
+  } */
+
+  ngOnInit(): void {
+    this.getUsuario();
+    this.getProvincias();
   }
 
   getUsuario(){

@@ -3,11 +3,16 @@
   margin-bottom: 50px;
 }
 
+.fondocontenido {
+  background: #ffffff;
+  text-align: center;
+}
 
 .rectangulo {
   top: 0px;
   left: 0px;
   width: 100%;
+  /* height: 564px; */
   height: 450px;
   background: #ee7222 0% 0% no-repeat padding-box;
   opacity: 0.69;
@@ -26,9 +31,12 @@
   top: 70px;
   position: absolute;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }
 
-.logop {
+.logoblanco {
   width: 181px;
   height: 113px;
 }
@@ -36,6 +44,7 @@
   top: 200px;
   position: absolute;
   width: 100%;
+  margin-left: 10px;
 }
 .slogan {
   text-align: left;
@@ -62,20 +71,13 @@
   display: inline-block;
 }
 
-.fondocontenido{
-  top: -70px;
-  margin-bottom: 50px;
-  background: white;
-  text-align: center;
-  border-top-left-radius: 30%;
-  border-top-right-radius: 30%;
-}
-
-.logo2 {
+.logoNaranja {
   width: 200px;
   height: 200px;
+  margin-top: -80px;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
 }
-
 
 .subtitulos {
   text-align: center;
@@ -85,9 +87,136 @@
   opacity: 1;
 }
 .ParrafoMeta {
-  text-align: justify;
+  text-align: center;
   font: normal normal normal 20px/27px Century;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
+}
+
+span.credits1 {
+  background: url(/assets/quienes/shop.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 56px;
+  width: 65px;
+}
+
+.boton-conoce2 {
+  background-color: #ee7222;
+  border: transparent;
+  color: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  width: 300px;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.boton-conoce {
+  width: 330px;
+  height: 45px;
+  margin-top: 25px;
+  /* font-family: 'Roboto', sans-serif; */
+  font: normal normal normal 16px/20px Century;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #f36904;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.boton-conoce:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 15px 20px rgba(233, 105, 32, 0.4);
+  color: #f36904;
+  transform: translateY(-3px);
+}
+
+/* CSS PARA MOBILE */
+@media (max-width: 900px) {
+  .contenedor {
+    margin-bottom: 80px;
+  }
+  .rectangulo {
+
+    height: 250px;
+  }
+  .superficial {
+    height: 250px;
+  }
+  /*Seccion logo y subtitulo*/
+  .contenedorlogo {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    margin-left: 7px;
+  }
+
+  .logoblanco {
+    width: 90px;
+    height: 66px;
+  }
+
+  .contenedorsubtit {
+    top: 100px;
+    margin-left: 7px;
+  }
+
+  .slogan {
+    font: normal normal normal 17px/25px Wavehaus;
+  }
+  .txtcerca {
+    font: normal normal bold 17px/25px Wavehaus;
+  }
+
+  .mitadovalo {
+    display: none;
+    }
+
+  .logoNaranja {
+    position: relative;
+    top: 0px;
+    width: 120px;
+    height: 120px;
+    margin-top: -50px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+
+/*   .menudesplegado {
+    background: #ee7222;
+    opacity: 0.9;
+  }
+
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    clear: both;
+    text-align: inherit;
+    white-space: normal;
+    background-color: transparent;
+    border: 3;
+  }
+ */
+  .subtitulos {
+
+    font: normal normal bold 20px roboto;
+  }
+  .ParrafoMeta {
+    text-align: justify;
+    font: normal normal normal 16px Century;
+    letter-spacing: 0px;
+    color: #3c3c3c;
+    opacity: 1;
+  }
+
 }

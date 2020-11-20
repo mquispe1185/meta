@@ -4,7 +4,7 @@
     <div #ini class="rectangulo">
     </div>
   </div>
-  <!-- Fin Fondo de Imagen y Rectangulo Naranja Transparente  -->
+  <!-- Fin Fondo de Imagen y Rectangulo Naranja Transparente -->
 
   <!-- Menu, Logo, Barra de Busqueda -->
   <div class="superficial">
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <!-- Slogan  Lo que quieras Cerca -->
+    <!-- Slogan Lo que quieras Cerca -->
     <div class="row contenedorsubtit">
       <div class="col d-flex align-items-center justify-content-center ">
         <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
@@ -209,7 +209,6 @@
           </ng-container>
         </div>
 
-
       </div> <br>
 
       <!-- SUGERENCIAS PARA VOS -->
@@ -228,20 +227,31 @@
                     [attr.src]="[comer.url_foto != null ? comer.url_foto : 'assets/logos/defaultlogo.jpeg']"
                     alt="foto comercio">
                 </div>
-                <div class="nombre-comer mt-4">
-                  {{comer.nombre}}
+                <div class="row">
+                  <div class="col-9 col-md-12">
+                      <div class="nombre-comer mt-4">
+                          {{comer.nombre}}
+                        </div>
+                  </div>
+                  <div class="col-3 colboton">
+                      <button type="button" class="botonredondo">+
+                        </button>
+                  </div>
                 </div>
+
                 <div class="desc-comer mt-2">
                   {{comer.descripcion}}
                 </div>
                 <div class="dist-comer mt-2">
                   <div class="row">
-                    <div class="col-12 col-md-7">
+                    <div class="col-8 col-md-7 coldomicilio">
                       {{comer.domicilio}}
                     </div>
-                    <div class="col-12 col-md-5 ">
+                    <div class="col-4 col-md-5 colboton">
+
                       <button type="button" class="boton-comercio">Ver comercio
                       </button>
+
                     </div>
                   </div>
                 </div>
@@ -262,51 +272,8 @@
   </div>
   <!-- Parrafo Descripcion, Carrusel, Comercios -->
 </div>
-
+<button type="button" class="botonredondo">+
+</button>
 
 <!-- FOOTER -->
-<div class="footerrectangulo">
-  <div class="footertriangulo">
-  </div> <br>
-
-  <div class="row" style="color: white; text-align: center;width: 100%;">
-    <div class="footertitulo col-6 col-md-4">
-      <div class="col d-flex justify-content-center">
-        <img class="logoblanco" src="/assets/logos/logos-06.png" alt="">
-      </div>
-    </div>
-    <!--    <div class="logoandroid">
-      <div class="col-6 ">
-        <img class="logoandroid" src="/assets/iconoandroid.png" alt="">
-      </div> <br>
-    </div> -->
-
-    <div class="col-6 col-md-2">
-      <br> <strong>SUMATE</strong> <br>
-      Se Parte <br>
-      Acuerdos <br>
-    </div>
-    <div class="col-6 col-md-2">
-      <br> <strong>AYUDA</strong> <br>
-      Preguntas Frecuentes<br>
-      Contactate <br>
-    </div>
-    <div class="col-6 col-md-2">
-      <br> <strong>LEGAL</strong> <br>
-      <a class="footer-link" [routerLink]="['/politica_uso']">Politicas de Uso</a>
-      <br>
-      Politicas de Privacidad
-    </div>
-    <div class="col-6 col-md-2">
-      <br> <strong>SEGUINOS</strong> <br>
-      Whatsapp <br>
-      Facebook <br>
-      Instagram
-    </div>
-    <!-- <div class="col-6 col-md-2">
-      <div class="d-flex justify-content-center">
-        <img class="android" src="/assets/logos/android2.png" alt="">
-      </div>
-    </div> -->
-  </div>
-</div>
+<app-footer-visitantes></app-footer-visitantes>
