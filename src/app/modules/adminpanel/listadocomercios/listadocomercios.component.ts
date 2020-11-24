@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListadocomerciosComponent implements OnInit {
 
   lstComercios:any;
-  dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio', 'acciones'];
+  dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio','acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
  comercioSelected:Comercio = new Comercio();
 
@@ -33,7 +33,7 @@ export class ListadocomerciosComponent implements OnInit {
     this.tokenService.validateToken().subscribe(
       res =>{ this.getComercios(); }
     );
-   
+
   }
 
   getComercios(){
@@ -69,14 +69,16 @@ export class ListadocomerciosComponent implements OnInit {
     //element.habilitado = !element.habilitado;
     this.comercioService.habilitarComercio(element.id).subscribe(
       cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
-      
+
         this.lstComercios.paginator = this.paginatorCom;
                 this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }
     )
   }
 
   openFormEditar(modal,comer){
-    this.comercioSelected = comer;
+    this.comercioSelected = new Comercio(comer);
+    console.log('comercio selec',comer);
+    console.log('tipo comer',this.comercioSelected.getTipoServicio());
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

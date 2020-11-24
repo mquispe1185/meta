@@ -27,24 +27,24 @@ export class HeaderComponent implements OnInit {
       this.tokenService.validateToken().subscribe(
        res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
      );
-        console.log('urllll',this.router.url)
+        console.log('es inicio',this.esInicio)
     }
-  
 
-  
+
+
     irAMiComercio(){
       this.tokenService.validateToken().subscribe(
         res =>{ this.router.navigate(['comerciopanel']);},
         err =>{this.toastr.error('primero debe loquearse!', 'Ingrese al sistema con Gmail!');}
       );
     }
-  
+
     @HostListener('window:scroll', ['$event'])
     onWindowScroll(e) {
       let element = document.querySelector('.menub');
       if (window.pageYOffset > 65) {
         element.classList.add('menunar');
-  
+
        // console.log('supera los 365');
       } else {
         element.classList.remove('menunar');
@@ -61,17 +61,17 @@ export class HeaderComponent implements OnInit {
   }
 
   irPromos(){
-    switch(this.tokenService.currentUserData.rol_id) { 
-      case 1: { 
+    switch(this.tokenService.currentUserData.rol_id) {
+      case 1: {
         this.router.navigate(['listapromos']);
-         break; 
-      } 
-      case 2: { 
+         break;
+      }
+      case 2: {
         this.router.navigate(['mispromos']);
-         break; 
-      } 
-   } 
-   
+         break;
+      }
+   }
+
   }
   salir():void{
     this.tokenService.signOut().subscribe(res => {

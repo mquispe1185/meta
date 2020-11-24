@@ -39,15 +39,15 @@ export class PromocionesService {
   }
 
   updatePromocion(promocion: Promocion): Observable<any>{
-   
+
     const url = `${this.API_URL}/${promocion.id}`;
     return this.http.put(url, promocion);
   }
 
   habilitarPromo(promocion:Promocion): Observable<any>{
-   
+
     const url = `${environment.API_URL}/habilitar_promo?promocion_id=${promocion.id}`;
-    return this.http.put(url, promocion);
+    return this.http.put(url, {id: promocion.id, estado: promocion.estado});
   }
 
   deletePromocion(promocion: Promocion): Observable<any>{

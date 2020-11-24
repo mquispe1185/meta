@@ -18,6 +18,7 @@ import { ComercioModule } from './modules/comercio/comercio.module';
 import { QuienesComponent } from './modules/comercio/quienes/quienes.component';
 import { ListadocomerciosComponent } from './modules/adminpanel/listadocomercios/listadocomercios.component';
 import { ListadopromosComponent } from './modules/adminpanel/listadopromos/listadopromos.component';
+import { AdminpanelComponent } from './modules/adminpanel/adminpanel.component';
 
 const routes: Routes = [
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'politica_privacidad', component: PolPrivacidadComponent},
   {
     path:'adminpanel',
-    component: HeaderComponent,
+    component: AdminpanelComponent,
     loadChildren: () => AdminpanelModule, canLoad: [AdminGuardService]
   },
   {

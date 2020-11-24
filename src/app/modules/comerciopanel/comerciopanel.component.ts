@@ -27,17 +27,17 @@ export class ComerciopanelComponent implements OnInit {
               private usuarioService: UsuariosService,
               private ubicacionService:UbicacionService) { }
 
-/*   ngOnInit(): void {
+ ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
       res => {this.getUsuario();
-              this.getProvincias();} 
+              this.getProvincias();}
     )
-  } */
+  }
 
-  ngOnInit(): void {
+ /*  ngOnInit(): void {
     this.getUsuario();
     this.getProvincias();
-  }
+  } */
 
   getUsuario(){
     this.usuarioService.getUsuario(this.tokenService.currentUserData.id).subscribe(
@@ -50,7 +50,7 @@ export class ComerciopanelComponent implements OnInit {
     this.usuarioService.updateUsuario(this.usuario).subscribe(
       usr => {  this.tokenService.validateToken().subscribe(
                           res => {this.getUsuario();
-                                  } 
+                                  }
                         )
               }
     )
@@ -72,7 +72,7 @@ export class ComerciopanelComponent implements OnInit {
   }
 
   buscarDtosEdit(provincia_id){
-   
+
     this.provincia_id = provincia_id;
     this.ubicacionService.getDptos(this.provincia_id).subscribe(
       dtos => { this.departamentos = dtos; this.buscarLocsEdit(this.usuario.departamento_id);}

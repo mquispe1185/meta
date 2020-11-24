@@ -14,13 +14,13 @@
 
 
         <div class="mt-3">
-       
+
                 <!-- Input Agregado para permitir la Busqueda -->
                 <mat-form-field>
                   <input matInput (keyup)="filtrarPromos($event.target.value)" placeholder="Buscar promo...">
                 </mat-form-field>
-      
-       
+
+
                 <mat-table #tablausuarios [dataSource]="lstPromos" class="mat-elevation-z8">
                   <!-- titulo -->
                   <ng-container matColumnDef="titulo">
@@ -29,14 +29,14 @@
                       <span class="mobile-label">Titulo:</span>{{element.titulo}}
                     </mat-cell>
                   </ng-container>
-              
+
                   <ng-container matColumnDef="formapago">
                       <mat-header-cell *matHeaderCellDef>Pago</mat-header-cell>
                       <mat-cell *matCellDef="let element" >
                         <span class="mobile-label">Pago:</span> {{element.formapago.descripcion}}
                       </mat-cell>
                     </ng-container>
-                    
+
                   <!-- Descripcion -->
                   <ng-container matColumnDef="descripcion">
                     <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
@@ -44,29 +44,44 @@
                       <span class="mobile-label">Descripcion:</span> {{element.descripcion}}
                     </mat-cell>
                   </ng-container>
-                
+
+                  <ng-container matColumnDef="estado">
+                    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+                    <mat-cell *matCellDef="let element" >
+                      <span class="mobile-label">Estado:</span>
+                      <ng-container [ngSwitch]="element.estado">
+                        <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
+                        <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span>
+
+                      </ng-container>
+                    </mat-cell>
+                  </ng-container>
+
                   <!-- Acciones Column -->
                   <ng-container matColumnDef="acciones">
                     <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                     <mat-cell *matCellDef="let element">
                       <span class="mobile-label">Acciones:</span>
-                   <!--    <button placement="right" ngbTooltip="Aprobar" class="mr-2"
-                        mat-icon-button style="background-color: transparent" (click)="dialogAprobarUsuario(element)">
-                                                              <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
-                      <button placement="right" ngbTooltip="Eliminar"
-                        mat-icon-button style="background-color: transparent" (click)="dialogEliminarUsuario(element)"><mat-icon>delete</mat-icon></button> -->
+                      <button placement="right" ngbTooltip="Ver info"
+                      mat-icon-button style="background-color: transparent" (click)="openFormInfo(info,element)">
+                      <mat-icon>visibility</mat-icon></button>
+                      <button placement="right" ngbTooltip="Editar" class="mr-2"
+                        mat-icon-button style="background-color: transparent" (click)="editarPromo(editform,element)">
+                                                              <mat-icon>editar</mat-icon></button>
+                      <button *ngIf="element.estado === 0" placement="right" ngbTooltip="Eliminar"
+                        mat-icon-button style="background-color: transparent" (click)="dialogEliminar(element)"><mat-icon>delete</mat-icon></button>
                     </mat-cell>
                   </ng-container>
                   <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
                   <mat-row *matRowDef="let row; columns: dspColPromos;"></mat-row>
                 </mat-table>
-        
-       
+
+
                 <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
-    
-    
-    
-    </div> 
+
+
+
+    </div>
 
 </div>
 
@@ -86,67 +101,62 @@
                 </div>
                 <form name="form" (ngSubmit)="f.form.valid && (promocion.id ? updatePromo(): crearPromo())" #f="ngForm"
                   novalidate>
-              
+
                   <mat-error *ngIf="error">{{mensaje_error}}
                     </mat-error>
                   <div class="form-row mt-3">
                       <mat-form-field class="col">
                         <mat-label for="com">Comercio</mat-label>
-                        <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id"
+                        <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id" required
                           >
                           <mat-option *ngFor="let com of mis_comercios" [value]="com.id">{{ com.nombre }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
                     </div>
-                  
+
                     <div class="form-row">
-                        
+
                         <mat-form-field class="col">
                             <mat-label for="fp">Forma de Pago</mat-label>
-                            <mat-select id="fp" name="fp" [(ngModel)]="promocion.formapago"
+                            <mat-select id="fp" name="fp" [(ngModel)]="promocion.formapago_id" required
                               >
-                              <mat-option *ngFor="let fp of formapagos" [value]="fp">{{ fp.descripcion }}
+                              <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
-                    
+
                   </div>
+
+
+
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                    <!--   <mat-form-field>
-                        <input matInput type="date" required placeholder="Desde" [(ngModel)]="promocion.desde"
-                          #desde="ngModel" min="2020-01-01" fechaValidator id="desde" name="desde" required
-                          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-                        <mat-error *ngIf="desde.invalid && desde?.errors.fechanac">Fecha mayor a 1900 y menor a HOY
-                        </mat-error>
-                        <mat-error *ngIf="desde.invalid && desde?.errors.pattern">Fecha invalida</mat-error>
-                        <mat-error *ngIf="desde.invalid && desde?.errors.required">Fecha desde Obligatoria</mat-error>
-                      </mat-form-field> -->
+
                       <mat-form-field>
                         <mat-label>Desde</mat-label>
                           <input matInput [matDatepicker]="picker" [formControl]="desde"
-                          (dateChange)="calcularDias($event)" readonly
+                          (dateChange)="calcularDias($event,1)" readonly
                           required>
                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                           <mat-datepicker #picker disabled="false"></mat-datepicker>
                         </mat-form-field>
                     </div>
-      
+
                     <div class="form-group col-md-6">
                         <mat-form-field>
                             <mat-label>Hasta</mat-label>
                               <input matInput [matDatepicker]="pickerh" [formControl]="hasta"
-                              (dateChange)="calcularDias($event)" readonly
+                              (dateChange)="calcularDias($event,2)" readonly
                               required>
                               <mat-datepicker-toggle matSuffix [for]="pickerh"></mat-datepicker-toggle>
                               <mat-datepicker #pickerh disabled="false"></mat-datepicker>
                             </mat-form-field>
                     </div>
-      
+
                   </div><!-- desde, hasta-->
                   <div class="form-row">
-                   
+
                       <mat-form-field class="col">
                         <input matInput type="text" placeholder="Titulo" minlength="1" [(ngModel)]="promocion.titulo"
                           name="titulo" #titulo="ngModel" />
@@ -154,28 +164,200 @@
                         <mat-error *ngIf="titulo.invalid && titulo.errors.minlength">Titulo debe tener al menos 2 caracteres
                         </mat-error>
                       </mat-form-field>
-                   
-                    
+
+
                   </div><!-- titulo promo -->
-                
+
                   <div class="form-row">
-      
+
                       <mat-form-field class="col">
-                        <textarea matInput type="text" placeholder="descripcion" maxlength="256"
-                          [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel">
+                        <textarea matInput type="text" placeholder="descripcion" maxlength="24"
+                          [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel" required>
                         </textarea>
+                        <mat-error *ngIf="desc.invalid && desc.errors.required">Descripcion es obligatorio</mat-error>
+                        <mat-error *ngIf="desc.invalid && desc.errors.minlength">Descripcion debe tener al menos 2 caracteres </mat-error>
+                        <mat-error *ngIf="desc.invalid && desc.errors.maxlength">Descripcion NO debe superar los 24 caracteres </mat-error>
                       </mat-form-field>
                   </div>
+                  <div class="form-row">
+                    <span class="col-4">Costo diario {{promocion.costo_diario}}</span>
+                    <span class="col-4">Duracion {{promocion.duracion}}</span>
+                    <span class="col-4"><strong>Total: {{promocion.importe}}</strong> </span>
+                  </div>
+
                   <div class="text-right mt-4">
-                    <button mat-raised-button type="submit" color="primary">
+                    <button mat-raised-button type="submit" color="primary" [disabled]="error">
                       <fa-icon icon="save"></fa-icon>Crear
                     </button>
                   </div>
-      
+
                 </form>
               </div>
             </mat-card>
           </div>
         </div>
-      </ng-template>
-      
+</ng-template>
+
+<!-- Formulario PROMOCIONES-->
+<ng-template #editform let-modal>
+  <div class="container">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Editar promo</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="form" (ngSubmit)="f.form.valid && updatePromo()" #f="ngForm"
+            novalidate>
+
+            <mat-error *ngIf="error">{{mensaje_error}}
+              </mat-error>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <mat-form-field>
+                  <mat-label>Desde</mat-label>
+                    <input matInput [matDatepicker]="picker" [formControl]="desde"
+                    (dateChange)="calcularDias($event,1)" readonly
+                    required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                  </mat-form-field>
+              </div>
+
+              <div class="form-group col-md-6">
+                  <mat-form-field>
+                      <mat-label>Hasta</mat-label>
+                        <input matInput [matDatepicker]="pickerh" [formControl]="hasta"
+                        (dateChange)="calcularDias($event,2)" readonly
+                        required>
+                        <mat-datepicker-toggle matSuffix [for]="pickerh"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerh disabled="false"></mat-datepicker>
+                      </mat-form-field>
+              </div>
+
+            </div><!-- desde, hasta-->
+            <div class="form-row">
+
+                <mat-form-field class="col">
+                  <input matInput type="text" placeholder="Titulo" minlength="1" [(ngModel)]="promocion.titulo"
+                    name="titulo" #titulo="ngModel" />
+                  <mat-error *ngIf="titulo.invalid && titulo.errors.required">Titulo es obligatorio</mat-error>
+                  <mat-error *ngIf="titulo.invalid && titulo.errors.minlength">Titulo debe tener al menos 2 caracteres
+                  </mat-error>
+                </mat-form-field>
+
+
+            </div><!-- titulo promo -->
+
+            <div class="form-row">
+
+                <mat-form-field class="col">
+                  <textarea matInput type="text" placeholder="descripcion" maxlength="256"
+                    [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel">
+                  </textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-row">
+              <span class="col-4">Costo diario {{promocion.costo_diario}}</span>
+              <span class="col-4">Duracion {{promocion.duracion}}</span>
+              <span class="col-4"><strong>Total: {{promocion.importe}}</strong> </span>
+            </div>
+
+            <div class="text-right mt-4">
+              <button mat-raised-button type="submit" color="primary" [disabled]="error">
+                <fa-icon icon="save"></fa-icon>Actualizar
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- Formulario ver info-->
+<ng-template #info let-modal>
+  <div class="container">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Info de Promo</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+              <div class="form-row">
+
+                  <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
+                  <mat-list-item class="col-8" role="listitem">{{promocion.comercio.nombre |titlecase}}</mat-list-item>
+              </div>
+
+              <div class="form-row">
+
+                <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
+                <mat-list-item class="col-8" role="listitem">{{promocion.usuario.nombre |titlecase}}</mat-list-item>
+            </div>
+
+            <div class="form-row">
+
+              <mat-list-item class="col-4" role="listitem">Titulo</mat-list-item>
+              <mat-list-item class="col-8" role="listitem">{{promocion.titulo}}</mat-list-item>
+          </div>
+          <div class="form-row">
+
+            <mat-list-item class="col-4" role="listitem">Descripción</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.descripcion}}</mat-list-item>
+        </div>
+
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.formapago.descripcion}}</mat-list-item>
+        </div>
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.desde| date: 'dd/MM/yyyy'}}</mat-list-item>
+        </div>
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.hasta | date: 'dd/MM/yyyy'}}</mat-list-item>
+        </div>
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Duracion</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.duracion }} días</mat-list-item>
+        </div>
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Costo diario</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.costo_diario | currency}}</mat-list-item>
+        </div>
+        <div class="form-row">
+
+          <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
+          <mat-list-item class="col-8" role="listitem">{{promocion.importe |currency }}</mat-list-item>
+        </div>
+            <div class="text-right mt-4">
+              <button mat-raised-button type="submit" color="primary">
+                <fa-icon icon="save"></fa-icon>Cerrar
+              </button>
+            </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>

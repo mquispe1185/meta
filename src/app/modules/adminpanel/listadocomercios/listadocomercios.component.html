@@ -12,13 +12,13 @@
         </div>
     </div>
     <div class="mt-3">
-       
+
             <!-- Input Agregado para permitir la Busqueda -->
             <mat-form-field>
               <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
             </mat-form-field>
-  
-   
+
+
             <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
               <!-- Nombre -->
               <ng-container matColumnDef="nombre">
@@ -27,7 +27,7 @@
                   <span class="mobile-label">Nombre:</span>{{element.nombre}}
                 </mat-cell>
               </ng-container>
-          
+
               <ng-container matColumnDef="rubro">
                 <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
                 <mat-cell *matCellDef="let element">
@@ -53,9 +53,10 @@
               <ng-container matColumnDef="tiposervicio">
                 <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
                 <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Servicio:</span> {{element.getTipoServicio()}}
+                  <span class="mobile-label">Servicio:</span> {{element.tipo_servicio.nombre}}
                 </mat-cell>
               </ng-container>
+
               <!-- Acciones Column -->
               <ng-container matColumnDef="acciones">
                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
@@ -73,14 +74,14 @@
               <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
               <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
             </mat-table>
-    
-   
+
+
             <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
 
 
 
-      </div> 
-</div> 
+      </div>
+</div>
 
 
 
@@ -99,9 +100,9 @@
             </div>
             <form name="form" (ngSubmit)="f.form.valid && updateComercio()" #f="ngForm"
               novalidate>
-  
+
               <div class="row mt-5">
-  
+
                 <div class="form-group col-6">
                   <mat-form-field>
                     <input matInput type="text" placeholder="nombre" required minlength="2" [(ngModel)]="comercioSelected.nombre"
@@ -111,7 +112,7 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-  
+
               <div class="form-group col-6">
                 <mat-form-field>
                   <textarea matInput type="text" placeholder="descripcion" maxlength="256"
@@ -125,7 +126,7 @@
                   <fa-icon icon="save"></fa-icon>Actualizar
                 </button>
               </div>
-  
+
             </form>
           </div>
         </mat-card>

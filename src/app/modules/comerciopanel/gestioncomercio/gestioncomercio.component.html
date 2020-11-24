@@ -126,14 +126,14 @@
             <div class="col-5 col-md-2">
               <span class="titulo-item"> Palabras clave: </span>
             </div>
-  
+
             <div class="col-7 col-md-4">
               <span class="font-weight-bold">{{comer.tags}}</span>
             </div>
             <div class="col-5 col-md-2">
               <span class="titulo-item"> Tipo servicio: </span>
             </div>
-  
+
             <div class="col-7 col-md-4">
               <span class="font-weight-bold" [ngClass]="{'text-danger': comer.estado === 1}">{{comer.estado === 1 ? comer.tipo_servicio.nombre+' pendiente de actualizacion': comer.tipo_servicio.nombre}}</span>
             </div>
@@ -166,34 +166,34 @@
           </div>
         </div>
 
-        <div class="text-center mt-1">
-
-          <div class="col-12 col-md-6">
+        <div class="row">
+          <div class="col-12 col-md-4 mt-2">
             <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormTags(modaltags,comer)">
               <mat-icon>spellcheck</mat-icon>Tags
             </button>
             <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormFoto(modalfoto,comer)">
               <mat-icon>insert_photo</mat-icon>Foto
             </button>
-            <button mat-raised-button type="submit" class="mr-3" color="primary"
+            <button mat-raised-button type="submit" color="primary"
             (click)="openFormAgregarUbicacion(comer)">
             <mat-icon>room</mat-icon>Ubicación
           </button>
           </div>
-          <br>
-          <div class="col-12 col-md-6">
-            <button mat-raised-button type="submit" class="mr-3" color="primary"
-            (click)="openFormHorario(formhorario,comer)">
-            <mat-icon>alarm</mat-icon>Horario
-          </button>
-          <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormPlan(modalplan,comer)">
-            <mat-icon>verified</mat-icon>Tipo Servicio
-          </button>
-          <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
-            <mat-icon>save</mat-icon>Actualizar datos
-          </button>
-          </div>
 
+            <div class="col-12 col-md-4 mt-2">
+              <button mat-raised-button type="submit" class="mr-3" color="primary"
+              (click)="openFormHorario(formhorario,comer)">
+              <mat-icon>alarm</mat-icon>Horario
+            </button>
+            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormPlan(modalplan,comer)">
+              <mat-icon>verified</mat-icon>Tipo Servicio
+            </button>
+            </div>
+            <div class="col-12 col-md-2 mt-2">
+            <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
+              <mat-icon>save</mat-icon>Actualizar datos
+            </button>
+            </div>
         </div>
 
       </mat-card>
@@ -532,11 +532,11 @@
                 </button>
               </div>
               <div class="modal-body">
-               
+
                   <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
-  
+
                       <div class="form-row">
-                       
+
                             <mat-form-field class="col-md-9">
                                 <mat-label for="ts">Tipo de servicio</mat-label>
                                 <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id" (selectionChange)="calcularTotalServicio($event.value)"
@@ -545,8 +545,8 @@
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
-                        
-                       
+
+
                             <mat-form-field class="col-md-3">
                               <mat-label for="ms">Cant. meses</mat-label>
                               <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses" (selectionChange)="calcularTotalMes($event.value)"
@@ -555,11 +555,11 @@
                                 </mat-option>
                               </mat-select>
                             </mat-form-field>
-                         
+
                       </div>
 
                       <div class="form-row">
-                      
+
                             <mat-form-field class="col">
                                 <mat-label for="fp">Formapago</mat-label>
                                 <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
@@ -568,29 +568,29 @@
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
-                         
+
                       </div>
 
                 <p>
                  {{comercioplan.tipo_servicio.descripcion}}
-                  
+
                 </p>
                 <div class="form-row">
                   <span class="col-4">{{comercioplan.tipo_servicio.importe}}</span>
                   <span class="col-4">Cant. meses {{comercioplan.meses}}</span>
                   <span class="col-4"><strong>Total: {{comercioplan.importe}}</strong> </span>
                 </div>
-              
+
                       <div class="form-row mt-3">
-                      
+
                         <div class="col-12 text-right">
                           <button mat-raised-button type="submit" color="primary"><fa-icon icon="save"></fa-icon>Cambiar plan</button>
                         </div>
                       </div>
-                
+
                     </form>
               </div>
-             
+
             </div>
           </mat-card>
         </div>
@@ -599,4 +599,4 @@
 
     </ng-template>
 
-   
+
