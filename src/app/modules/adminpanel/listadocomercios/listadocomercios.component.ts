@@ -56,7 +56,7 @@ export class ListadocomerciosComponent implements OnInit {
       msj = `Deshabilitar al comercio ${element.nombre} ?`;
     }else{
      tit = 'Habilitar';
-      msj = `Aprobar al comercio${element.nombre} ?`;
+      msj = `Aprobar al comercio ${element.nombre} ?`;
     }
     this.confirmationDialogService.confirm(tit, msj)
       .then(
@@ -96,7 +96,7 @@ export class ListadocomerciosComponent implements OnInit {
 
 
   dialogEliminarComercio(element){
-    this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar al usuario ${element.nombre} ?`)
+    this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar al comercio ${element.nombre} ?`)
       .then(
         (confirm) => {(confirm) ? this.eliminarComercio(element) : console.log("cancelado");
                       }

@@ -130,7 +130,7 @@ export class InicioComponent implements OnInit {
     this.comercioService.addVisitaComercio(comer).subscribe(
       res=>{ this.router.navigate(['comercio']);}
     )
-    
+
   }
   salir(){
 
@@ -150,9 +150,9 @@ export class InicioComponent implements OnInit {
   }
 
   buscarComercios(){
-    console.log('buscandoooo', this.buscado);
     this.comercioService.buscarComercios(this.buscado).subscribe(
       cms =>{this.comercios = cms;
+        document.getElementById("promo").scrollIntoView();
        }
     )
   }
