@@ -138,27 +138,14 @@ input::placeholder {
 }
 
 /* OVALO OVALO*/
-
 .mitadovalo {
   background: white;
   position:absolute;
-  top:960px;
+  top:970px;
   width:100%;
   height:100%;
-  border-radius:45%;
+  border-radius:50%;
 }
-
-/* .mitadovalo2 {
-  position: relative;
-  top: 900px;
-  left: 0px;
-  background-color: #ffffff;
-  height: 1400px;
-  width: 1400px;
-  border-top-left-radius: 1000px;
-  border-top-right-radius: 1000px;
-} */
-
 
 .fondototal {
   background: #ffffff;
@@ -172,7 +159,7 @@ input::placeholder {
 .logoNaranja {
   width: 200px;
   height: 200px;
-  margin-top: -200px;
+  margin-top: -180px;
 }
 
 .ParrafoMeta {
