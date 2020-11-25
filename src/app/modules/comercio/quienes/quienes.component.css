@@ -34,7 +34,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+ /*  margin-left: 10px; */
 }
 
 .logoblanco {
@@ -45,7 +45,7 @@
   top: 200px;
   position: absolute;
   width: 100%;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .slogan {
   text-align: left;

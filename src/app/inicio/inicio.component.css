@@ -91,7 +91,7 @@
 }
 
 input::placeholder {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .gps {
@@ -820,7 +820,7 @@ align-content: center;
   .boton-comercio {
     display: none;
     }
-  
+
   .botonredondo {
       display: initial;
       height: 40px;
