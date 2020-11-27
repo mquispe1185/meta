@@ -70,7 +70,7 @@
       </button>
 
       <div class="mt-5">
-        <span #serv id='cerca' class="subtitulos">¿Qué estas buscando?</span>
+        <span #serv id='cerca' class="subtitulos">¿Qué estás buscando?</span>
       </div>
 
       <!-- Carrusel de Iconos Rubros -->
@@ -191,16 +191,17 @@
                   <div class="col-7" id="izq">
                     <h5 class="titulopromo">{{promo.titulo}}</h5>
 
-                    <h6 class="parrafopromo">{{promo.descripcion}}</h6>
-
+                    <span class="parrafopromo">{{promo.descripcion}}</span>
+                    <br> <br>
                     <button type="button" [routerLink]="['/quienes-somos']" class="boton-comercio">Ver comercio
-                    </button> <br> <br>
-                    <span>valido hasta: {{promo.hasta}}</span>
+                    </button>
+                    <!-- <span>valido hasta: {{promo.hasta}}</span> -->
                   </div>
                   <div id="round-image">
                     <img src="/assets/logos/logo-07.png" class="redimg">
                   </div>
                   <div id="der" class="col-5">
+                     
                   </div>
                 </div>
               </div>

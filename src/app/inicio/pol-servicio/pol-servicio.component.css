@@ -87,7 +87,7 @@
   opacity: 1;
 }
 .ParrafoMeta {
-  text-align: center;
+  text-align: justify;
   font: normal normal normal 20px/27px Century;
   letter-spacing: 0px;
   color: #3c3c3c;
@@ -192,27 +192,11 @@ span.credits1 {
     border-top-right-radius: 50%;
   }
 
-/*   .menudesplegado {
-    background: #ee7222;
-    opacity: 0.9;
-  }
-
-  .dropdown-item {
-    display: block;
-    width: 100%;
-    clear: both;
-    text-align: inherit;
-    white-space: normal;
-    background-color: transparent;
-    border: 3;
-  }
- */
   .subtitulos {
 
     font: normal normal bold 20px roboto;
   }
   .ParrafoMeta {
-    text-align: justify;
     font: normal normal normal 16px Century;
     letter-spacing: 0px;
     color: #3c3c3c;

@@ -2,8 +2,6 @@
 .contenedor {
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
-
-
   margin-top: 50px;
   display: grid;
   grid-gap: 10px;
