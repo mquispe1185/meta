@@ -28,6 +28,7 @@ export class Promocion {
     costo_diario:number;
     descuento:number;
     codigo:string;
+    url:string;
     constructor(data?: any) {
       Object.assign(this, data);
     }

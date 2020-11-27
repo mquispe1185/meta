@@ -433,7 +433,7 @@
   </div>
 </ng-template>
 
-
+ <!-- CARGA DE FOTO -->
 <ng-template #modalfoto let-modal>
   <div class="container mt-5">
     <div>
@@ -457,7 +457,7 @@
             <input type="file" (change)="fileChangeEvent($event)" />
 
             <!-- <button (click)="save()">Guardar cambios</button> -->
-            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
               [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
               (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
             </image-cropper>

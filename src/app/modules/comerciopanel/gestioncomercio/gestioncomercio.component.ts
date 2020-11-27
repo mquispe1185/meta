@@ -56,8 +56,6 @@ export class GestioncomercioComponent implements OnInit {
 
   nueva_foto: File;
 
-  timestamp: string;
-
   file;
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -88,7 +86,7 @@ selected: TipoServicio;
                 private toastr: ToastrService, ) { }
 
   ngOnInit(): void {
-   
+
     this.getComercios();
     this.getProvincias();
     this.getRubros();
@@ -104,10 +102,10 @@ selected: TipoServicio;
     )
   }
 
-  getLinkPicture(comer) {
+/*   getLinkPicture(comer) {
    if (comer){}
     return comer.url_foto + '?' + (new Date()).getTime();
-}
+} */
 
   openFormAgregar(modal){
     this.comercio = new Comercio();
@@ -193,18 +191,18 @@ selected: TipoServicio;
        modalRefCity.componentInstance.comercioevent.subscribe(($e) => {
         this.actualizarUbicacion($e);
         this.modalService.dismissAll();
-       
+
       })
     }
-  
+
     actualizarUbicacion(comercio){
-      //console.log('comercioooo',comercio); 
+      //console.log('comercioooo',comercio);
       this.comercioService.updateComercio(comercio).subscribe(
         cms => {this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
     )
-      
+
     }
     openFormHorario(modal, comercio){
     this.comercio = comercio;
@@ -220,17 +218,17 @@ selected: TipoServicio;
       console.log('evento check', event);
     }
     addHorario(){
-      this.nuevos_horarios = [];  
+      this.nuevos_horarios = [];
       this.semana.forEach(
         d => {
-          this.horario_aux = new Horario();   
+          this.horario_aux = new Horario();
           if (d.check){
             this.horario_aux.dia = d.id;
             this.horario_aux.desde = this.nuevo_horario.desde;
             this.horario_aux.hasta = this.nuevo_horario.hasta;
-           
+
             this.horario_aux.comercio_id = this.comercio.id;
-  
+
             this.nuevos_horarios.push(this.horario_aux);
           }
         }
@@ -253,7 +251,7 @@ selected: TipoServicio;
     }
 
     eliminarHorario(horario){
-      
+
       this.horarioService.deleteHorario(horario).subscribe(
         hs => {this.comercio.horarios = hs;
           this.modalService.dismissAll();
@@ -289,36 +287,36 @@ selected: TipoServicio;
         this.file = file;
       }
     }
-  
+
     fileChangeEvent(event: any): void {
       console.log(event);
       this.imageChangedEvent = event;
     }
     imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
-  
+
       //Usage example:
       var file = this.dataURLtoFile(this.croppedImage, 'image.png');
       console.log(file);
       this.nueva_foto = file;
     }
-  
+
     dataURLtoFile(dataurl, filename) {
-   
+
         let arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), 
-            n = bstr.length, 
+            bstr = atob(arr[1]),
+            n = bstr.length,
             u8arr = new Uint8Array(n);
-            
+
         while (n--){
             u8arr[n] = bstr.charCodeAt(n);
         }
-        
+
         return new File([u8arr], filename, {type: mime});
     }
-      
-      
+
+
     imageLoaded() {
       // show cropper
     }
@@ -348,21 +346,21 @@ selected: TipoServicio;
     add(event: MatChipInputEvent): void {
       const input = event.input;
       const value = event.value;
-  
+
       // Add our fruit
       if ((value || '').trim()) {
         this.palabras.push({clave: value.trim()});
       }
-  
+
       // Reset the input value
       if (input) {
         input.value = '';
       }
     }
-  
+
     remove(clave: Palabras): void {
       const index = this.palabras.indexOf(clave);
-  
+
       if (index >= 0) {
         this.palabras.splice(index, 1);
       }
@@ -390,7 +388,7 @@ selected: TipoServicio;
       this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
       this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
       this.comercioplan.meses = 1;
-      
+
       this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
       this.datosService.getTipoServicios().subscribe(
         res => { this.getFormapagos();
@@ -402,27 +400,27 @@ selected: TipoServicio;
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
-    } 
+    }
     updateTipoPlan(){
-      
+
       this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
       this.comercioService.updateComercioPlan(this.comercioplan).subscribe(
         res =>{ console.log('comercio pendiente',res);
           this.modalService.dismissAll();
         let index = this.comercios.findIndex( c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
-        this.toastr.warning('bien hecho!', 'el cambio esta pendiente hasta que se confirme el pago!'); 
-        
+        this.toastr.warning('bien hecho!', 'el cambio esta pendiente hasta que se confirme el pago!');
+
         }
       )
     }
-    
+
     calcularTotalServicio(servicio){
       console.log('servicio id',servicio);
       this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
       console.log('seleccionado ser', this.servicios.find(s => s.id === servicio));
       this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
-      
+
     }
 
     calcularTotalMes(mes){

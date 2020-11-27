@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TipoServicio } from '../../../modelos/tipo-servicio';
 import { DatosService } from '../../../servicios/datos.service';
 import { ConfirmationDialogService } from 'src/app/servicios/confirmation-dialog.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -39,6 +40,11 @@ export class GestionPromosComponent implements OnInit {
    totalpromo = 0;
 
    mis_promociones:Promocion[];
+  //variables promo
+  nueva_foto: File;
+  file;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
 
    @ViewChild(MatPaginator) paginatorPromos: MatPaginator;
   constructor(  public tokenService: AngularTokenService,
@@ -119,8 +125,13 @@ export class GestionPromosComponent implements OnInit {
     this.promocion.hasta = this.datepipe.transform(new Date(this.hasta.value),'yyyy-MM-dd');
     console.log('promooo',this.promocion);
     this.promoService.createPromocion(this.promocion).subscribe(
-      prs =>{ this.lstPromos = new MatTableDataSource(prs);
-                this.lstPromos.paginator = this.paginatorPromos;
+      pr =>{  let index = this.mis_promociones.findIndex( p => p.id === pr.id);
+              this.promocion = new Promocion(pr);
+              this.mis_promociones[index] = this.promocion;
+              console.log('promocion guardada resp',this.promocion);
+              this.guardarLogo();
+              this.lstPromos = new MatTableDataSource(this.mis_promociones);
+              this.lstPromos.paginator = this.paginatorPromos;
                 this.toastr.warning('Promoción creada!', 'Pendiente de aprobación!');
               this.modalService.dismissAll();}
     )
@@ -134,9 +145,7 @@ export class GestionPromosComponent implements OnInit {
     d.setDate(d.getDate()+1);
     let h = new Date(this.promocion.hasta);
     h.setDate(h.getDate()+1);
-    console.log('dddddd',d);
-    console.log('hhhhh',h);
-    console.log('fecha act', new Date());
+
     this.desde = new FormControl(d);
     //this.hasta = new FormControl(new Date(this.promocion.hasta));
     this.hasta = new FormControl(h);
@@ -152,7 +161,7 @@ export class GestionPromosComponent implements OnInit {
     this.promocion.desde = this.datepipe.transform(new Date(this.desde.value),'yyyy-MM-dd');
     this.promocion.hasta = this.datepipe.transform(new Date(this.hasta.value),'yyyy-MM-dd');
     this.promoService.updatePromocion(this.promocion).subscribe(
-      pr =>{  console.log('promo enviada',this.promocion);
+      pr =>{
               let index = this.mis_promociones.findIndex( p => p.id === pr.id);
               this.mis_promociones[index] = new Promocion(pr);
               this.lstPromos = new MatTableDataSource(this.mis_promociones);
@@ -202,6 +211,65 @@ export class GestionPromosComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  //para manejo de imagen de promo
+  selectFile(event){
+    this.nueva_foto = event.target.files.item(0);
+  }
+  guardarLogo(){
+    this.promoService.uploadLogo(this.nueva_foto, this.promocion.id).subscribe(
+      cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
+              this.modalService.dismissAll();
+              this.toastr.warning('Imagen cargada!', 'imagen de promo cargada correctamente!');
+              }
+    )
+  }
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.file = file;
+    }
+  }
+
+  fileChangeEvent(event: any): void {
+    console.log(event);
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+
+    //Usage example:
+    var file = this.dataURLtoFile(this.croppedImage, 'image.png');
+    console.log(file);
+    this.nueva_foto = file;
+  }
+
+  dataURLtoFile(dataurl, filename) {
+
+      let arr = dataurl.split(','),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]),
+          n = bstr.length,
+          u8arr = new Uint8Array(n);
+
+      while (n--){
+          u8arr[n] = bstr.charCodeAt(n);
+      }
+
+      return new File([u8arr], filename, {type: mime});
+  }
+
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
+  }
+
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

@@ -85,7 +85,7 @@
 
 </div>
 
-<!-- Formulario PROMOCIONES-->
+<!-- Formulario CREAR PROMOCIONES-->
 <ng-template #promoform let-modal>
         <div class="container">
           <div>
@@ -178,6 +178,16 @@
                         <mat-error *ngIf="desc.invalid && desc.errors.minlength">Descripcion debe tener al menos 2 caracteres </mat-error>
                         <mat-error *ngIf="desc.invalid && desc.errors.maxlength">Descripcion NO debe superar los 24 caracteres </mat-error>
                       </mat-form-field>
+                  </div>
+
+                  <div class="form-row">
+                    <input type="file" (change)="fileChangeEvent($event)" />
+
+                    <!-- <button (click)="save()">Guardar cambios</button> -->
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="5 / 4"
+                      [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
+                      (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                    </image-cropper>
                   </div>
                   <div class="form-row">
                     <span class="col-4">Costo diario {{promocion.costo_diario}}</span>

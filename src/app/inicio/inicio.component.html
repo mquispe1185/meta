@@ -193,14 +193,18 @@
 
                     <h6 class="parrafopromo">{{promo.descripcion}}</h6>
 
-                    <button type="button" [routerLink]="['/quienes-somos']" class="boton-comercio">Ver comercio
+                    <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-comercio">Ver comercio
                     </button> <br> <br>
-                    <span>valido hasta: {{promo.hasta}}</span>
+                    <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span>
                   </div>
                   <div id="round-image">
                     <img src="/assets/logos/logo-07.png" class="redimg">
                   </div>
-                  <div id="der" class="col-5">
+                  <div class="col-5">
+                  <!-- <div id="der" class="col-5"> -->
+                    <img id="imgder"
+                    [attr.src]="[promo.url != null ? promo.url : 'assets/logos/defaultlogo.jpeg']"
+                    alt="foto promo">
                   </div>
                 </div>
               </div>

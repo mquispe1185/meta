@@ -44,30 +44,28 @@ export class ListadopromosComponent implements OnInit {
   }
 
   dialogAprobarPromo(element){
+    this.promocion = {...element};
     var msj = '';
     var tit = '';
-    if (element.habilitado){
+    if (this.promocion.estado === 1){
+      this.promocion.estado = 0;
       tit = 'Deshablitar';
-      msj = `Deshabilitar promoción ${element.titulo} ?`;
+      msj = `Deshabilitar promoción ${this.promocion.titulo} ?`;
     }else{
+      this.promocion.estado = 1;
      tit = 'Habilitar';
-      msj = `Aprobar promoción ${element.titulo} ?`;
+      msj = `Aprobar promoción ${this.promocion.titulo} ?`;
     }
 
-    if(element.estado === 0){
-      element.estado = 1;
-    }else{
-      element.estado = 0;
-    }
     this.confirmationDialogService.confirm(tit, msj)
       .then(
-        (confirm) => {(confirm) ? this.aprobarPromo(element) : console.log("cancelado");
+        (confirm) => {(confirm) ? this.aprobarPromo(this.promocion) : console.log("cancelado");
                       }
       ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-  aprobarPromo(element){
-    this.promoService.habilitarPromo(element).subscribe(
+  aprobarPromo(promo){
+    this.promoService.habilitarPromo(promo).subscribe(
       pr =>{
         this.modalService.dismissAll();
         let index = this.promociones.findIndex( p => p.id === pr.id);

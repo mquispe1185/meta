@@ -376,6 +376,11 @@ z-index: 999;
   border-radius: 1em;
 }
 
+.resize_promo {
+  max-width:100%;
+  max-height:100%;
+}
+
 .screen-70 {
   min-height: 70vh;
 }
@@ -607,6 +612,18 @@ display: none;
   background: peachpuff;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
+}
+
+#imgder{
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* height: 100%; */
+  background: peachpuff;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  width: 100%;
+  height: auto;
 }
 
 #round-image{

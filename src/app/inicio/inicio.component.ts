@@ -11,6 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comercio } from '../modelos/comercio';
 import { ComercioService } from '../servicios/comercio.service';
+import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-inicio',
@@ -126,12 +127,21 @@ export class InicioComponent implements OnInit {
   }
 
   verComercio(comer){
+    localStorage.removeItem('comercio_id');
+    localStorage.removeItem('comercio');
+    if(Number.isInteger(comer)){
+      localStorage.setItem('comercio_id',comer);
+      this.comercioService.addVisitaComercio(comer).subscribe(
+        res=>{ this.router.navigate(['comercio']);}
+      )
+    }else{
     localStorage.setItem('comercio',JSON.stringify(comer));
-    this.comercioService.addVisitaComercio(comer).subscribe(
+    this.comercioService.addVisitaComercio(comer.id).subscribe(
       res=>{ this.router.navigate(['comercio']);}
     )
-
+    }
   }
+
   salir(){
 
     this.tokenService.signOut().subscribe(

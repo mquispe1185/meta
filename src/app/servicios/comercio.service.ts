@@ -47,21 +47,21 @@ export class ComercioService {
     return this.http.get<Comercio[]>(url);
   }
 
-  addVisitaComercio(comercio: Comercio): Observable<any>{
-    const url = `${environment.API_URL}/add_visita?comercio_id=${comercio.id}`;
-    return this.http.put(url, comercio.id);
+  addVisitaComercio(comercio_id:number): Observable<any>{
+    const url = `${environment.API_URL}/add_visita?comercio_id=${comercio_id}`;
+    return this.http.put(url, comercio_id);
   }
 
   createComercio(comercio: Comercio): Observable<any>{
     return this.http.post<Comercio>(this.API_URL, comercio);
   }
 
-  updateComercio(comercio: Comercio): Observable<any>{ 
+  updateComercio(comercio: Comercio): Observable<any>{
     const url = `${this.API_URL}/${comercio.id}`;
     return this.http.put(url, comercio);
   }
 
-  habilitarComercio(comercio_id: number): Observable<any>{ 
+  habilitarComercio(comercio_id: number): Observable<any>{
     const url = `${environment.API_URL}/habilitar_comercio?comercio_id=${comercio_id}`;
     return this.http.put(url, comercio_id);
   }
@@ -87,13 +87,13 @@ export class ComercioService {
     return this.http.get<Comercioplan[]>(url);
   }
 
-  updateComercioPlan(comercioplan:Comercioplan): Observable<any>{ 
+  updateComercioPlan(comercioplan:Comercioplan): Observable<any>{
     const url = `${environment.API_URL}/comercioplanes`;
     return this.http.post<Comercio>(url, comercioplan);
     //return this.http.put(url, {comercio_id: comercio.id, tipo_servicio: comercio.tipo_servicio});
   }
 
-  habilitarComercioplan(comercioplan: Comercioplan): Observable<any>{ 
+  habilitarComercioplan(comercioplan: Comercioplan): Observable<any>{
     const url = `${environment.API_URL}/comercioplanes/${comercioplan.id}`;
     return this.http.put(url, comercioplan);
   }

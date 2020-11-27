@@ -54,4 +54,13 @@ export class PromocionesService {
     const url = `${this.API_URL}/${promocion.id}`;
     return this.http.delete(url);
   }
+
+  uploadLogo(perfil:File,promocion_id:number):Observable<any> {
+    const formdata: FormData = new FormData();
+    const url = `${environment.API_URL}/set_foto_promo`;
+    formdata.append('imagen', perfil);
+    formdata.append('id', promocion_id.toString());
+    return this.http.put(url, formdata);
+  }
+
 }

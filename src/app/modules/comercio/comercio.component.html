@@ -3,12 +3,12 @@
     <div class="titulo">
         <div class="row d-flex justify-content-center">
             <span class="nombrecomercio">
-                {{comercio.nombre}}
+                {{comercio?.nombre}}
             </span>
         </div>
         <div class="row d-flex justify-content-center mt-3">
             <span class="subtitulocomercio mr-2">
-                {{comercio.rubro.descripcion}}
+                {{comercio?.rubro?.descripcion}}
             </span>
             <span class="distanciacomercio">
                 a 1,2 km de distancia
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col d-flex justify-content-center"></div>
             <img class="recuadroimagen"
-                [attr.src]="[comercio.url_foto != null ? comercio.url_foto : 'assets/logos/defaultlogo.jpeg']" alt="">
+                [attr.src]="[comercio?.url_foto != null ? comercio.url_foto : 'assets/logos/defaultlogo.jpeg']" alt="">
         </div>
     </div>
 
@@ -33,7 +33,7 @@
         </div>
         <div class="row px-4 pt-2">
             <p class="descripcion">
-                {{comercio.descripcion}}
+                {{comercio?.descripcion}}
             </p>
         </div>
 
@@ -53,14 +53,14 @@
     <div class="contacto">
         <div class="in-flex offset-sm-2 col-sm-10 mt-3">
             <div class="row mt-3">
-                <i class="fas fa-map-marker-alt fa-2x"></i><span class="info ml-3">{{comercio.domicilio}}</span>
+                <i class="fas fa-map-marker-alt fa-2x"></i><span class="info ml-3">{{comercio?.domicilio}}</span>
             </div>
             <div class="row mt-3">
-                <i class="fab fa-chrome fa-2x"></i><span class="info ml-3">{{comercio.web}}</span>
+                <i class="fab fa-chrome fa-2x"></i><span class="info ml-3">{{comercio?.web}}</span>
             </div>
             <div class="row mt-3">
-                <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio.telefono}} /
-                    {{comercio.celular}}</span>
+                <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio?.telefono}} /
+                    {{comercio?.celular}}</span>
             </div>
             <div class="row mt-3">
                 <i class="far fa-clock fa-2x"></i>
@@ -77,8 +77,8 @@
                         class="info ml-3">{{comercio.envio ? 'SI' : 'NO'}}</span>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <a href="{{comercio.facebook ? 'https://www.facebook.com/' + comercio.facebook : 'https://www.facebook.com/'}}" target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-                    <a href="{{comercio.instagram ? 'https://www.instagram.com/' + comercio.instagram : 'https://www.instagram.com/'}}" target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
+                    <a href="{{comercio?.facebook ? 'https://www.facebook.com/' + comercio.facebook : 'https://www.facebook.com/'}}" target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
+                    <a href="{{comercio?.instagram ? 'https://www.instagram.com/' + comercio.instagram : 'https://www.instagram.com/'}}" target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
                     <a href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
                 </div>
             </div>
