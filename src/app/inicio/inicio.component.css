@@ -210,9 +210,9 @@ input::placeholder {
 
 .subtitulos {
   text-align: center;
-  font: normal normal bold 24px roboto;
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
-  color: #3c3c3c;
+  color: #000000;
   opacity: 1;
 }
 
@@ -236,9 +236,9 @@ input::placeholder {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
-  height: 500px;
+  height: 420px;
   transition: box-shadow 0.3s;
-  border: 3px solid #ccc;
+  /* border: 3px solid #ccc; */
   border-radius: 1em;
   background: #fff;
   word-wrap: break-word;
@@ -291,7 +291,7 @@ input::placeholder {
   padding-top: 5px;
   word-wrap: break-word;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
   text-overflow: clip;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -310,9 +310,9 @@ input::placeholder {
 
 .parrafopromo {
   word-wrap: break-word;
-  font-weight: bold;
-  font-size: 36px;
-  margin-bottom: 50px;
+  font-weight: bolder;
+  font-size: 32px;
+  margin-bottom: 15px;
 }
 
 .promo-img {
@@ -391,7 +391,7 @@ z-index: 999;
   max-width: 95%;
   max-height: 80%;
   vertical-align: middle;
-  border-radius: 1em;
+  /* border-radius: 1em; */
 }
 
 .resize_promo {
@@ -417,7 +417,7 @@ z-index: 999;
 
 .carga {
   text-align: center;
-  font: normal normal bold 17px/22px Wavehaus;
+  font: normal normal bold 18px sans-serif;
   letter-spacing: 0px;
   color: #7b7b7b;
   opacity: 1;
@@ -653,6 +653,15 @@ display: none;
 
 }
 
+@media(max-width: 1440px) {
+  .boton-comercio {
+    width: 75px;
+    height: 22px;
+    margin: 5px;
+    font-size: 9px;
+    border-radius: 45px;
+    }
+}
 
 @media (max-width: 1024px) {
   .contenedorbusqueda {

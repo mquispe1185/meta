@@ -195,7 +195,7 @@
 
                     <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-comercio">Ver comercio
                     </button> <br> <br>
-                    <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span>
+                    <!-- <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span> -->
                   </div>
                   <div id="round-image">
                     <img src="/assets/logos/logo-07.png" class="redimg">
@@ -223,7 +223,7 @@
 
         <div class="row mb-3">
           <ng-container *ngFor="let comer of comercios">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
               <div class="cuadrocomercio">
                 <div (click)="verComercio(comer)">
                   <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
@@ -239,7 +239,7 @@
                   </div>
                   <div class="col-3 colboton">
                       <button type="button" (click)="verComercio(comer)" class="botonredondo">+
-                        </button>
+                      </button>
                   </div>
                 </div>
 
@@ -252,10 +252,8 @@
                       {{comer.domicilio}}
                     </div>
                     <div class="col-4 col-md-5 colboton">
-
                       <button type="button" (click)="verComercio(comer)" class="boton-comercio">Ver comercio
                       </button>
-
                     </div>
                   </div>
                 </div>
@@ -265,7 +263,7 @@
         </div>
 
         <div>
-          <span class="carga">Cargar más</span>
+          <span class="carga">Más Comercios</span>
         </div>
         <div>
           <!-- <i class="arrowgris"></i> -->
