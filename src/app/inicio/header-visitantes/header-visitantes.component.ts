@@ -20,14 +20,12 @@ verLogo = false;
               private comercioService: ComercioService,
               private toastr: ToastrService,
     ) {
-    
+
      }
 
 
   ngOnInit(): void {
-    //console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-    //console.log('user data en inicio',this.tokenService.currentUserData);
-   // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
+
     this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
    );
@@ -76,6 +74,17 @@ verLogo = false;
    }
   }
 
+  irInicio(){
+    if(this.router.url.includes('/inicio')){
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }else{
+      this.router.navigate(['inicio']);
+    }
+  }
   // verComercio(comer){
   //   localStorage.setItem('comercio',JSON.stringify(comer));
   //   this.router.navigate(['comercio']);

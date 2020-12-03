@@ -11,7 +11,7 @@
     opacity: 0.69;
     z-index: -999;
   }
-  
+
   /*hace el background transparente cuando esta en inicio*/
   .fondotransparente{
     background-color: transparent;
@@ -19,7 +19,7 @@
   /* logo de meta en navbar*/
   .logo{
     width:50px;
-    height:40px;
+    height:30px;
     margin-right: 300 px;
     margin-block-start: 0%;
   }
@@ -49,13 +49,13 @@
     z-index: 999;
     /* direction: rtl; */
   }
-  
+
   .menudesplegado {
     margin-top: -25px;
     background: #ee7222;
     opacity: 0.9;
   }
-  
+
   .dropdown-item {
     display: block;
     width: 100%;
@@ -65,11 +65,11 @@
     background-color: transparent;
     border: 3;
   }
-  
+
   /* CSS PARA DESKTOP */
   @media (min-width: 601px) {
-  
-  
+
+
     .menub {
       position: fixed;
       width: 100%;
@@ -83,16 +83,16 @@
       color: #ffffff;
       opacity: 0.9;
     }
-  
+
     /* logo de meta en navbar*/
   .logo{
     width:55px;
-    height:40px;
+    height:34px;
     margin-top: 3px;
     margin-left: 5px;
     margin-right: 300px;
   }
-  
+
     /* Contenedor Menu Boton Cel */
     .contcel {
       position: fixed;
@@ -101,16 +101,16 @@
       right: 0;
       display: none;
     }
-  
+
     /* Contenedor Menu Barra */
     .cont {
       position: absolute;
       width: 100%;
       right: 0;
       display: block;
-  
+
     }
-  
+
   /*menu cambia de color al superar los 365px*/
   .menunar {
     background: #ee7222;
@@ -131,5 +131,5 @@
     padding: 0.3em 0.5em;
     text-decoration: none;
   }
-  
+
   }

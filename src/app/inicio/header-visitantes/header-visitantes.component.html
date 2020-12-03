@@ -39,7 +39,7 @@
     <div id="barr" class="menub" [ngStyle]="{'background-color': esInicio && !verLogo ? 'transparent' : '#ee7222' }" (scroll)="onWindowScroll($event);">
       <div class="row">
         <div class="col-sm-2">
-          <a [routerLink]="['/inicio']" fragment="ini">
+          <a (click)="irInicio()">
             <img src="assets/logos/logos-06.png" alt="logo" class="logo">
             </a>
         </div>
