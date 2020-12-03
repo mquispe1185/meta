@@ -76,9 +76,7 @@ export class HeaderComponent implements OnInit {
   salir():void{
     this.tokenService.signOut().subscribe(res => {
       localStorage.clear();
-      console.log('respuesta de logout',res);
-      console.log('user log true? after logout::::',this.tokenService.userSignedIn());
-      console.log('user data despues de logout',this.tokenService.currentUserData);
+
       //this.toastr.warning('Sesión finalizada', 'Adiós '+this.tokenService.currentUserData.nombre+'!');
       this.router.navigate(['inicio']);
     },error => {

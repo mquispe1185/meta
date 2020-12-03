@@ -8,9 +8,10 @@ import { Usuario } from "./usuario";
 import { Rubro } from "./rubro";
 
 export class Comercio {
-    
+
     id: number;
-    nombre: string;
+    nombre:string; //para comerciantes
+    name:string; //para usuarios que dejan opiniones
     domicilio:string;
     telefono:string;
     celular:string;
@@ -41,29 +42,29 @@ export class Comercio {
     tipo_servicio_id:number;
     tipo_servicio:TipoServicio;
     estado:number; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
-    
+
     constructor(data?: any) {
       Object.assign(this, data);
     }
 
     getTipoServicio(){
-      switch(this.tipo_servicio_id) { 
-        case 0: { 
-           return 'GRATUITO'; 
-          
-        } 
-        case 1: { 
-           return 'BASICO'; 
-          
-        } 
-        case 2: { 
-          return 'ESTANDAR'; 
-         
-       } 
-       case 3: { 
-          return 'PREMIUM'; 
-         
-       } 
-     } 
+      switch(this.tipo_servicio_id) {
+        case 0: {
+           return 'GRATUITO';
+
+        }
+        case 1: {
+           return 'BASICO';
+
+        }
+        case 2: {
+          return 'ESTANDAR';
+
+       }
+       case 3: {
+          return 'PREMIUM';
+
+       }
+     }
     }
   }

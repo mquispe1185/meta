@@ -13,31 +13,42 @@ export class AfterloginComponent implements OnInit {
               private router: Router,) {
                 this.tokenService.validateToken().subscribe(
                   res =>{ console.log('nombre:::::::::::',this.tokenService.currentUserData.rol_id);
-                   switch(this.tokenService.currentUserData.rol_id) { 
-                     case 1: { 
-                       //this.router.navigate(['adminpanel']);
-                       this.router.navigate(['listacomercios']);
-                        break; 
-                     } 
-                     case 2: { 
-                       this.router.navigate(['comerciopanel']);
-                        break; 
-                     } 
-                     case 3: { 
-                      this.router.navigate(['inicio']);
-                       break; 
-                    } 
-                  } 
+                   switch(this.tokenService.currentUserData.rol_id) {
+                     case 1: {
+                      let url = 'listacomercios';
+                       if (localStorage.hasOwnProperty("redirect")){
+                         url = localStorage.getItem('redirect');
+                       }
+                       console.log('url que vamos',url)
+                      this.router.navigate([url]);
+                        break;
+                     }
+                     case 2: {
+                      let url = 'comerciopanel';
+                      if (localStorage.hasOwnProperty("redirect")){
+                        url = localStorage.getItem('redirect');
+                      }
+                      console.log('url que vamos',url)
+                     this.router.navigate([url]);
+                        break;
+                     }
+                     case 3: {
+                       let url = 'inicio';
+                       if (localStorage.hasOwnProperty("redirect")){
+                         url = localStorage.getItem('redirect');
+                       }
+                       console.log('url que vamos',url)
+                      this.router.navigate([url]);
+                       break;
+                    }
+                  }
                   }
                 )
-                
+
                }
 
   ngOnInit(): void {
-   //this.tokenService.processOAuthCallback();
-  
-   
-    //console.log('nombre:::::::::::',this.tokenService.currentUserData.name);
+
   }
 
 }
