@@ -234,19 +234,20 @@ input::placeholder {
   color: #545454;
   margin-top: 5px;
   margin-bottom: 10px;
-  padding: 5px;
+  /* padding: 5px; */
   width: 100%;
-  height: 420px;
+  height: 430px;
   transition: box-shadow 0.3s;
-  /* border: 3px solid #ccc; */
-  border-radius: 1em;
+  border-bottom: 2px solid #ccc;
+  /* border-right: 1px solid #ccc; */
+  /* border-radius: 1em; */
   background: #fff;
   word-wrap: break-word;
 }
 
 .nombre-comer {
   text-align: center;
-  font: normal normal 800 28px/34px Wavehaus;
+  font: normal normal 800 22px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -267,17 +268,20 @@ input::placeholder {
 
 }
 
-.dist-comer {
+.direccion-comer {
   text-align: left;
   margin-left: 5px;
-  font: normal normal 600 20px/24px Wavehaus;
+  font: normal normal 800 18px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
 }
 .cuadrocomercio:hover {
+  transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
 }
+
+
 
 
 .promociones {
@@ -289,9 +293,11 @@ input::placeholder {
 
 .titulopromo{
   padding-top: 5px;
+  margin: 0px;
   word-wrap: break-word;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: bolder;
+  font-size: 21px;
+  font-style: italic;
   text-overflow: clip;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -310,9 +316,10 @@ input::placeholder {
 
 .parrafopromo {
   word-wrap: break-word;
-  font-weight: bolder;
-  font-size: 32px;
-  margin-bottom: 15px;
+  font: normal normal 800 65px Century;
+  font-style: italic;
+  margin: 0px;
+  padding: 0px;
 }
 
 .promo-img {
@@ -331,17 +338,31 @@ input::placeholder {
   border-top-left-radius: 40%;
   vertical-align: center;
 }
-.boton-comercio {
+.boton-promo {
   width: 140px;
   height: 25px;
-  margin: 5px;
+  bottom: 5px;
   align-items: center;
-  /* font-family: 'Roboto', sans-serif; */
-  font: normal normal normal 10px Century;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #ffffff;
+  background-color: #f36904;
+  border: none;
+  border-radius: 45px;
+  outline: none;
+  }
+
+.boton-comercio {
+  width: 100%;
+  height: 25px;
+  margin-top: -5px;
+  margin-right: 5px;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  /* font: normal normal normal 10px "Roboto"; */
+  font-size: 16px;
+  font-style: italic;
   color: #ffffff;
   background-color: #f36904;
   border: none;
@@ -350,69 +371,13 @@ input::placeholder {
   transition: all 0.1s ease 0s; */
   outline: none;
   }
-  .botonredondo {
-    display: none;
+
+.botonredondo {
+  display: none;
   }
-.logomanito {
-  top: 50px;
-  left: 70px;
-  width: 60px;
-  height: 50px;
-border-radius: 50%;
-z-index: 999;
-}
-
-
-.rectapromo {
-  margin-right: 50px;
-  margin-left: 20px;
-  width: 400px;
-  height: 150px;
-  background: #3c3c3c;
-  color: #ffffff;
-  font: normal normal normal 10px Century;
-  font-size: 13px;
-  transition: box-shadow 0.3s;
-  border-right: royalblue;
-
-}
-
-.rectapromo:hover {
-  box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
-}
-
-
-
-
-
-.resize_fit_center {
-  width: 350px; /* you can use % */
-  height: auto;
-  max-width: 95%;
-  max-height: 80%;
-  vertical-align: middle;
-  /* border-radius: 1em; */
-}
-
-.resize_promo {
-  max-width:100%;
-  max-height:100%;
-}
 
 .screen-70 {
   min-height: 70vh;
-}
-
-
-.arrowgris {
-  text-align: center;
-  border: solid #7b7b7b;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 8px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  opacity: 1;
 }
 
 .carga {
@@ -422,27 +387,6 @@ z-index: 999;
   color: #7b7b7b;
   opacity: 1;
 }
-
-/* .footer {
-  height: 60px;
-  background: #ee7222;
-  color: white;
-  text-align: center;
-}
-.footercel {
-  display: none;
-}
-
-/* texto de footer */
-/* .cen {
-  width: 100%;
-  height: 60px;
-  text-align: center;
-  font: normal normal 500 15px/18px Wavehaus;
-  letter-spacing: 0px;
-  color: #ffffff;
-  opacity: 1;
-} */
 
 .rubros-icon {
   background: #3c3c3c 0% 0% no-repeat padding-box;
@@ -579,7 +523,6 @@ span.credits12 {
   text-decoration-line: underline;
 }
 
-
 .android {
   width: 100%;
   height: 80px;
@@ -588,10 +531,54 @@ span.credits12 {
 display: none;
 }
 
+
+
+
+
+.logomanito {
+  top: 50px;
+  left: 70px;
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 999;
+  }
+
+.cuadropromo {
+  margin-right: 50px;
+  margin-left: 20px;
+  width: 400px;
+  height: 150px;
+  background: #3c3c3c;
+  color: #ffffff;
+  font: normal normal normal 10px Century;
+  font-size: 13px;
+  transition: box-shadow 0.3s;
+  border-right: royalblue;
+}
+
+.cuadropromo:hover {
+  box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
+}
+
+.resize_fit_center {
+  width: 99.5%; /* you can use % */
+  height: auto;
+  max-width: 100%;
+  max-height: 80%;
+  vertical-align: middle;
+  /* border-radius: 1em; */
+}
+
+.resize_promo {
+  max-width:100%;
+  max-height:100%;
+}
+
 /*banner de promo matias*/
 .conten{
   position: relative;
-  height: 150px;
+  height: 100%;
   width: 100%;
   padding-left: 0px;
 }
@@ -655,12 +642,16 @@ display: none;
 
 @media(max-width: 1440px) {
   .boton-comercio {
-    width: 75px;
+    width: 100%;
     height: 22px;
-    margin: 5px;
-    font-size: 9px;
+    margin-top: -5px;
+    font-size: 13px;
     border-radius: 45px;
     }
+
+  .cuadrocomercio {
+    height: 400px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -695,11 +686,29 @@ display: none;
     margin-top: -80px;
   }
 
+  .cuadropromo {
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 350px;
+    height: 125px;
+  }
+
+/*   .conten{
+    position: relative;
+    height: 100%;
+    width: 100%;
+  } */
+  .cuadrocomercio{
+    height: 320px;
+  }
+  .nombre-comer {
+    font: normal normal 800 18px Century;
+  }
+
   .boton-comercio {
-    width: 90px;
+    width: 100%;
     height: 25px;
-    margin: 5px;
-    font-size: 9px;
+    font-size: 12px;
     border-radius: 45px;
     }
 
@@ -721,10 +730,9 @@ display: none;
     z-index: 9999;
   }
   .contenedor {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
   }
   .rectangulo {
-
     height: 720px;
   }
   .superficial {
@@ -801,56 +809,66 @@ display: none;
     font: normal normal normal 15px Century;
   }
 
-
-
 .mitadovalo {
 display: none;
 }
 
+.logoNaranja {
+  top: 750px;
+  width: 120px;
+  height: 120px;
+  margin-top: -50px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
 
-  .logoNaranja {
-    top: 750px;
-    width: 120px;
-    height: 120px;
-    margin-top: -50px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-  }
-  .ParrafoMeta {
-    font: normal normal normal 15px Century;
-  }
+.ParrafoMeta {
+  font: normal normal normal 15px Century;
+}
 
-  .parrafoini {
-    font: normal normal normal 14px Century;
-  }
+.parrafoini {
+  font: normal normal normal 14px Century;
+}
 
-  .parrafopromo {
-position: relative;
-top: 25px;
-font-size: 14px;
-  }
+.cuadropromo {
+  width: 100%;
+  height: 122px;
+}
+.parrafopromo {
+  position: relative;
+  font-weight: bolder;
+  font-size: 36px;
+}
 
-  .cuadrocomercio{
-    width: 100%;
-    height: 450px;
-    border: 0px;
-    border-radius: 1em;
-    background: #fff;
-    word-wrap: break-word;
-  }
-  .coldomicilio{
-    vertical-align: center;
-  }
-.colboton{
-align-content: center;
+.conten {
+  height: 122px;
+}
+
+.cuadrocomercio{
+  width: 100%;
+  height: 365px;
+  margin-bottom: 7px;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  word-wrap: break-word;
+}
+
+.coldomicilio{
+  vertical-align: center;
+}
+
+/* .colboton{
+  align-content: center;
   text-align: center;
   margin-top: 25px;
-}
-  .boton-comercio {
-    display: none;
-    }
+} */
 
-  .botonredondo {
+.boton-comercio {
+  display: none;
+  }
+
+/*   .botonredondo {
       display: initial;
       height: 40px;
       width: 40px;
@@ -862,7 +880,7 @@ align-content: center;
       border: none;
       border-radius: 50%;
       text-align: center;
-    }
+    } */
 
   .logoandroid {
     background: #3c3c3c;

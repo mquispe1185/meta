@@ -40,8 +40,8 @@ const routes: Routes = [
   {
     path:'comerciopanel',
     component: ComerciopanelComponent,
-    loadChildren: () => ComerciopanelModule, canLoad: [GuardService]
-    //loadChildren: () => ComerciopanelModule
+    //loadChildren: () => ComerciopanelModule, canLoad: [GuardService]
+    loadChildren: () => ComerciopanelModule
   },
   {
     path:'comercio',
