@@ -184,24 +184,24 @@
 
         <div class="row">
           <ng-container *ngFor="let promo of promociones">
-            <div class="rectapromo mt-2">
+            <div class="cuadropromo mt-2">
 
               <div class="conten">
                 <div class="row">
                   <div class="col-7" id="izq">
                     <h5 class="titulopromo">{{promo.titulo}}</h5>
-
-                    <h6 class="parrafopromo">{{promo.descripcion}}</h6>
-
-                    <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-comercio">Ver comercio
+                    <span class="parrafopromo">{{promo.descripcion}}</span> <br>
+                                      
+                    <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
                     </button> <br> <br>
                     <!-- <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span> -->
                   </div>
+
                   <div id="round-image">
                     <img src="/assets/logos/logo-07.png" class="redimg">
                   </div>
+
                   <div class="col-5">
-                  <!-- <div id="der" class="col-5"> -->
                     <img id="imgder"
                     [attr.src]="[promo.url != null ? promo.url : 'assets/logos/defaultlogo.jpeg']"
                     alt="foto promo">
@@ -232,22 +232,22 @@
                     alt="foto comercio">
                 </div>
                 <div class="row">
-                  <div class="col-9 col-md-12">
+                  <div class="col-md-12">
                       <div class="nombre-comer mt-4">
                           {{comer.nombre}}
                         </div>
                   </div>
-                  <div class="col-3 colboton">
+                  <!-- <div class="col-3 colboton">
                       <button type="button" (click)="verComercio(comer)" class="botonredondo">+
                       </button>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div class="desc-comer mt-2">
                   {{comer.descripcion}}
                 </div>
-                <div class="dist-comer mt-2">
-                  <div class="row">
+                <div class="direccion-comer mt-2">
+                  <div class="row pr-1">
                     <div class="col-8 col-md-7 coldomicilio">
                       {{comer.domicilio}}
                     </div>
@@ -266,7 +266,6 @@
           <span class="carga">Más Comercios</span>
         </div>
         <div>
-          <!-- <i class="arrowgris"></i> -->
         </div>
       </div> <!-- FIN SUGERENCIAS PARA VOS -->
 

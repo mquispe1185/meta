@@ -8,9 +8,10 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menudesplegado">
-          <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Inicio</button>
-
-          <button type="button" [routerLink]="['/inicio']" fragment="cerca" class="menu-boton btn btn-link">Cerca</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="ini" class="menu-boton btn btn-link">Inicio</button> <br>
+          <button type="button" [routerLink]="['/quienes-somos']" class="menu-boton btn btn-link">Nosotros</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="promo" class="menu-boton btn btn-link">Promos</button>
+          <button type="button" [routerLink]="['/inicio']" fragment="seccioncomercio" class="menu-boton btn btn-link">Comercios</button>
 
 
         <button type="button" (click)="irAPanel()"
