@@ -1,16 +1,15 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-6">
-      <h6 class="titulo">MIS COMERCIOS</h6>
+      <span class="titulo">MIS COMERCIOS</span>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button mat-raised-button placement="right" ngbTooltip="Nuevo" color="primary"
+      <button class="boton-nuevo"
         (click)="openFormAgregar(crearform)">
-        <mat-icon>note_add</mat-icon> Nuevo comercio
+        <mat-icon>note_add</mat-icon> Nuevo Comercio
       </button>
     </div>
   </div> <br>
-
 
 
   <div *ngFor="let comer of comercios">
@@ -106,7 +105,7 @@
             <span class="titulo-item"> Página Web: </span>
           </div>
 
-          <div class="col-7 col-md-4">
+          <div class="col-6 col-md-4">
             <span class="font-weight-bold">{{comer.web}}</span>
           </div>
         </div>
@@ -116,28 +115,29 @@
           <div class="col-5 col-md-2">
             <span class="titulo-item">Descripción: </span>
           </div>
-          <div class="col-7 col-md-10">
+          <div class="col-7 col-md-4">
             <span class="font-weight-bold">{{comer.descripcion}}</span>
           </div>
 
         </div>
 
         <div class="row">
-            <div class="col-5 col-md-2">
-              <span class="titulo-item"> Palabras clave: </span>
-            </div>
-
-            <div class="col-7 col-md-4">
-              <span class="font-weight-bold">{{comer.tags}}</span>
-            </div>
-            <div class="col-5 col-md-2">
-              <span class="titulo-item"> Tipo servicio: </span>
-            </div>
-
-            <div class="col-7 col-md-4">
-              <span class="font-weight-bold" [ngClass]="{'text-danger': comer.estado === 1}">{{comer.estado === 1 ? comer.tipo_servicio.nombre+' pendiente de actualizacion': comer.tipo_servicio.nombre}}</span>
-            </div>
+          <div class="col-5 col-md-2">
+            <span class="titulo-item"> Palabras clave: </span>
           </div>
+
+          <div class="col-7 col-md-4">
+            <span class="font-weight-bold">{{comer.tags}}</span>
+          </div>
+          <div class="col-5 col-md-2">
+            <span class="titulo-item"> Tipo servicio: </span>
+          </div>
+
+          <div class="col-7 col-md-4">
+            <span class="font-weight-bold"
+              [ngClass]="{'text-danger': comer.estado === 1}">{{comer.estado === 1 ? comer.tipo_servicio.nombre+' pendiente de actualizacion': comer.tipo_servicio.nombre}}</span>
+          </div>
+        </div>
         <br>
 
         <div class="row">
@@ -155,45 +155,51 @@
                 <td>{{hor.dia_nombre}}</td>
                 <td>{{hor.desde}} a {{hor.hasta}}</td>
                 <td><button type="button" (click)="dialogEliminarHorario(hor,comer)"
-                    class="btn btn-outline-danger btn-sm rounded-circle">X</button></td>
+                    class="btn btn-outline-danger btn-sm">        <span class="material-icons">
+                      delete
+                      </span></button></td>
               </tr>
             </table>
 
           </div>
           <div class="text-center col-12 col-md-6">
-            <img class="foto" [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
+              <span class="titulo-item">Foto: </span> <br> <br>
+            <img class="foto"
+              [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
               alt="">
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-12 col-md-4 mt-2">
-            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormTags(modaltags,comer)">
+        <div class="row justify-content-center mt-3">
+          <!-- <div class="col-12 col-md-4 mt-2"> -->
+            <button mat-raised-button type="submit" class="boton-config" color="primary"
+              (click)="openFormTags(modaltags,comer)">
               <mat-icon>spellcheck</mat-icon>Tags
             </button>
-            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormFoto(modalfoto,comer)">
+            <button mat-raised-button type="submit" class="boton-config" color="primary"
+              (click)="openFormFoto(modalfoto,comer)">
               <mat-icon>insert_photo</mat-icon>Foto
             </button>
-            <button mat-raised-button type="submit" color="primary"
-            (click)="openFormAgregarUbicacion(comer)">
-            <mat-icon>room</mat-icon>Ubicación
-          </button>
-          </div>
+            <button mat-raised-button type="submit" color="primary" class="boton-config" (click)="openFormAgregarUbicacion(comer)">
+              <mat-icon>room</mat-icon>Ubicación
+            </button>
 
-            <div class="col-12 col-md-4 mt-2">
-              <button mat-raised-button type="submit" class="mr-3" color="primary"
+
+          <!-- <div class="col-12 col-md-4 mt-2"> -->
+            <button mat-raised-button type="submit" class="boton-config" color="primary"
               (click)="openFormHorario(formhorario,comer)">
               <mat-icon>alarm</mat-icon>Horario
             </button>
-            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="openFormPlan(modalplan,comer)">
+            <button mat-raised-button type="submit" class="boton-config" color="primary"
+              (click)="openFormPlan(modalplan,comer)">
               <mat-icon>verified</mat-icon>Tipo Servicio
             </button>
-            </div>
-            <div class="col-12 col-md-2 mt-2">
-            <button mat-raised-button type="submit" color="primary" (click)="openFormEditarComercio(crearform,comer)">
-              <mat-icon>save</mat-icon>Actualizar datos
+
+          <!-- <div class="col-12 col-md-2 mt-2"> -->
+            <button mat-raised-button type="submit" class="boton-config" (click)="openFormEditarComercio(crearform,comer)">
+              <mat-icon>save</mat-icon>Editar Datos
             </button>
-            </div>
+
         </div>
 
       </mat-card>
@@ -433,7 +439,7 @@
   </div>
 </ng-template>
 
- <!-- CARGA DE FOTO -->
+<!-- CARGA DE FOTO -->
 <ng-template #modalfoto let-modal>
   <div class="container mt-5">
     <div>
@@ -519,84 +525,83 @@
 
 <!-- MODAL cambiar plan -->
 <ng-template #modalplan let-modal>
-    <div class="container">
-        <div>
-          <mat-card class="tarjeta-info">
-            <div class="card-body">
-              <div class="modal-header modal-encabezado">
-                <h5 class="modal-title titulo" id="modal-basic-title">
-                  <strong>Tipo de Plan</strong>
-                </h5>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+  <div class="container">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Tipo de Plan</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
+
+              <div class="form-row">
+
+                <mat-form-field class="col-md-9">
+                  <mat-label for="ts">Tipo de servicio</mat-label>
+                  <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id"
+                    (selectionChange)="calcularTotalServicio($event.value)" #ts="ngModel">
+                    <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-3">
+                  <mat-label for="ms">Cant. meses</mat-label>
+                  <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses"
+                    (selectionChange)="calcularTotalMes($event.value)">
+                    <mat-option *ngFor="let cant of meses" [value]="cant">{{ cant }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
               </div>
-              <div class="modal-body">
 
-                  <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
+              <div class="form-row">
 
-                      <div class="form-row">
+                <mat-form-field class="col">
+                  <mat-label for="fp">Formapago</mat-label>
+                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id">
+                    <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-                            <mat-form-field class="col-md-9">
-                                <mat-label for="ts">Tipo de servicio</mat-label>
-                                <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id" (selectionChange)="calcularTotalServicio($event.value)"
-                                  #ts="ngModel">
-                                  <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}
-                                  </mat-option>
-                                </mat-select>
-                              </mat-form-field>
+              </div>
 
+              <p>
+                {{comercioplan.tipo_servicio.descripcion}}
 
-                            <mat-form-field class="col-md-3">
-                              <mat-label for="ms">Cant. meses</mat-label>
-                              <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses" (selectionChange)="calcularTotalMes($event.value)"
-                                >
-                                <mat-option *ngFor="let cant of meses" [value]="cant">{{ cant }}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
+              </p>
+              <div class="form-row">
+                <span class="col-4">{{comercioplan.tipo_servicio.importe}}</span>
+                <span class="col-4">Cant. meses {{comercioplan.meses}}</span>
+                <span class="col-4"><strong>Total: {{comercioplan.importe}}</strong> </span>
+              </div>
 
-                      </div>
+              <div class="form-row mt-3">
 
-                      <div class="form-row">
-
-                            <mat-form-field class="col">
-                                <mat-label for="fp">Formapago</mat-label>
-                                <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
-                                  >
-                                  <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
-                                  </mat-option>
-                                </mat-select>
-                              </mat-form-field>
-
-                      </div>
-
-                <p>
-                 {{comercioplan.tipo_servicio.descripcion}}
-
-                </p>
-                <div class="form-row">
-                  <span class="col-4">{{comercioplan.tipo_servicio.importe}}</span>
-                  <span class="col-4">Cant. meses {{comercioplan.meses}}</span>
-                  <span class="col-4"><strong>Total: {{comercioplan.importe}}</strong> </span>
+                <div class="col-12 text-right">
+                  <button mat-raised-button type="submit" color="primary">
+                    <fa-icon icon="save"></fa-icon>Cambiar plan
+                  </button>
                 </div>
-
-                      <div class="form-row mt-3">
-
-                        <div class="col-12 text-right">
-                          <button mat-raised-button type="submit" color="primary"><fa-icon icon="save"></fa-icon>Cambiar plan</button>
-                        </div>
-                      </div>
-
-                    </form>
               </div>
 
-            </div>
-          </mat-card>
+            </form>
+          </div>
+
         </div>
-      </div>
+      </mat-card>
+    </div>
+  </div>
 
 
-    </ng-template>
-
-
+</ng-template>
