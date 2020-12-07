@@ -6,39 +6,44 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(6, auto);
   grid-template-areas: "titulo imagen"
                         "descripcion imagen"
+                        "ubicacion imagen"
                         "ubicacion contacto"
-                        "referencias referencias"
+                        "referencias contacto";
+  align-items: start;
+
 }
 
 .contenedor .titulo {
-
   grid-area: titulo;
 }
 
 .contenedor .imagen {
-
   grid-area: imagen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor .descripcion {
   grid-area: descripcion;
+
 }
 
 .contenedor .ubicacion {
   grid-area: ubicacion;
+  justify-self: stretch;
 }
 
 .contenedor .contacto {
-
   grid-area: contacto;
 }
 
 .contenedor .referencias {
-
   grid-area: referencias;
+height: 400px;
   margin-bottom: 50px;
 }
 
@@ -118,8 +123,7 @@ agm-map {
 }
 
 .recuadroimagen {
-  width: 90%;
-  height: 400px;
+  height: 200%;
 }
 
 i {
