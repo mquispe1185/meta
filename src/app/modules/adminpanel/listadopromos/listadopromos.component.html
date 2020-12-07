@@ -1,7 +1,7 @@
-<div class="container mt-3">
+<div class="cuerpo container">
     <div class="row">
       <div class="col-6">
-        <h6 class="titulo">LISTADO DE PROMOCIONES</h6>
+        <h5 class="titulo">PANEL GESTIÓN DE PROMOS</h5>
       </div>
 
     </div>
@@ -64,7 +64,7 @@
                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                   <span class="mobile-label">Acciones:</span>
-                <button placement="right" ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2"
+                <button *ngIf="element.vencido === false" placement="right" ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2"
                     mat-icon-button style="background-color: transparent" (click)="dialogAprobarPromo(element)">
                 <mat-icon>{{element.estado === 1 ? 'clear' : 'done_outline'}}</mat-icon></button>
                 <button placement="right" ngbTooltip="Ver info"
@@ -73,7 +73,7 @@
                 </mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspColPromos;"></mat-row>
+              <mat-row *matRowDef="let row; columns: dspColPromos;" [ngClass]="{'vencido': row.vencido === true}"></mat-row>
             </mat-table>
 
 

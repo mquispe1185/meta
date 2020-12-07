@@ -8,7 +8,7 @@ export class Promocion {
   static ESTANDAR:number = 60;
   static PREMIUM:number = 50;
 
-  //estado: 0:default/pendiente, 1:habilitado, 2:nohabilitado
+  //estado: 0:default/pendiente, 1:habilitado, 2:nohabilitado, 3:procesada y terminada
     id: number;
     comercio_id:number;
     comercio:Comercio;

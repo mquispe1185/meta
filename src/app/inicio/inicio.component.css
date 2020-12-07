@@ -322,6 +322,16 @@ input::placeholder {
   padding: 0px;
 }
 
+.parrafopromo-md {
+  font: normal normal 800 54px Century;
+}
+
+
+.parrafopromo-sm {
+  font: normal normal 800 33px Century;
+}
+
+
 .promo-img {
   display: inline-block;
   width: 200px;

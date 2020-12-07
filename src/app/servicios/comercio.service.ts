@@ -27,6 +27,12 @@ export class ComercioService {
     return this.http.get<Comercio[]>(url);
   }
 
+  getVerMasComercios(cantidad:number): Observable<Comercio[]>{
+    const url = `${environment.API_URL}/ver_mas?n=${cantidad}`;
+    return this.http.get<Comercio[]>(url);
+  }
+
+
   buscarComercios(term:string): Observable<Comercio[]>{
     const url = `${environment.API_URL}/buscar?term=${term}`;
     return this.http.get<Comercio[]>(url);
