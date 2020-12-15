@@ -65,7 +65,7 @@
                       <button placement="right" ngbTooltip="Ver info"
                       mat-icon-button style="background-color: transparent" (click)="openFormInfo(info,element)">
                       <mat-icon>visibility</mat-icon></button>
-                      <button placement="right" ngbTooltip="Editar" class="mr-2"
+                      <button *ngIf="element.vencido === false" placement="right" ngbTooltip="Editar" class="mr-2"
                         mat-icon-button style="background-color: transparent" (click)="editarPromo(editform,element)">
                                                               <mat-icon>editar</mat-icon></button>
                       <button *ngIf="element.estado === 0" placement="right" ngbTooltip="Eliminar"
@@ -73,7 +73,7 @@
                     </mat-cell>
                   </ng-container>
                   <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: dspColPromos;"></mat-row>
+                  <mat-row *matRowDef="let row; columns: dspColPromos;" [ngClass]="{'vencido': row.vencido === true}"></mat-row>
                 </mat-table>
 
 
@@ -171,9 +171,9 @@
                   <div class="form-row">
 
                       <mat-form-field class="col">
-                        <textarea matInput type="text" placeholder="descripcion" maxlength="24"
-                          [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel" required>
-                        </textarea>
+                        <input matInput type="text" placeholder="descripcion" maxlength="24"
+                          [(ngModel)]="promocion.descripcion" name="desc" #desc="ngModel" required/>
+
                         <mat-error *ngIf="desc.invalid && desc.errors.required">Descripcion es obligatorio</mat-error>
                         <mat-error *ngIf="desc.invalid && desc.errors.minlength">Descripcion debe tener al menos 2 caracteres </mat-error>
                         <mat-error *ngIf="desc.invalid && desc.errors.maxlength">Descripcion NO debe superar los 24 caracteres </mat-error>

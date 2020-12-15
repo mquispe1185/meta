@@ -354,6 +354,16 @@ input::placeholder {
   padding: 0px;
 }
 
+.parrafopromo-md {
+  font: normal normal 800 54px Century;
+}
+
+
+.parrafopromo-sm {
+  font: normal normal 800 33px Century;
+}
+
+
 .promo-img {
   display: inline-block;
   width: 200px;
@@ -629,8 +639,8 @@ display: none;
   top: 0;
   right: 0;
   background: peachpuff;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
+  border-top-left-radius: 45%;
+  border-bottom-left-radius: 45%;
   width: 100%;
   height: 100%;
 }
@@ -677,6 +687,10 @@ display: none;
   .contenedorbusqueda {
     width: 80%;
   }
+  .cuadro {
+    height: 950px;
+  }
+
   .rectangulo {
     height: 950px;
   }
@@ -686,21 +700,13 @@ display: none;
   }
 
   .contenedorsubtit {
-    top: 270px;
+    top: 320px;
   }
 
   .contenedorbusqueda {
-    top: 370px;
+    top: 400px;
   }
 
-  .mitadovalo {
-    background: white;
-    position:absolute;
-    top:750px;
-    width:100%;
-    height:100%;
-    border-radius:50%;
-  }
   .logoNaranja {
     margin-top: -80px;
   }
@@ -711,11 +717,6 @@ display: none;
     width: 350px;
   }
 
-/*   .conten{
-    position: relative;
-    height: 100%;
-    width: 100%;
-  } */
   .cuadrocomercio{
     height: 320px;
   }

@@ -2,18 +2,21 @@
     display: none;
   }
 
+  .vencido{
+    background-color: pink;
+  }
   @media(max-width: 600px) {
     .mobile-label {
       width: 100px;
       display: inline-block;
       font-weight: bold;
     }
-  
+
     .mat-header-row {
       display: none;
     }
-  
-    .mat-row { 
+
+    .mat-row {
       flex-direction: column;
       align-items: start;
       padding: 8px 24px;

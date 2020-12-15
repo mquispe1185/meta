@@ -56,13 +56,12 @@ export class GestionPromosComponent implements OnInit {
                 private modalService: NgbModal,) { }
 
   ngOnInit(): void {
-    console.log('comercios',this.mis_comercios),
     this.getPromos();
   }
 
   getPromos(){
     this.promoService.getMisPromo().subscribe(
-      prs => { console.log('promos',prs);
+      prs => {
         this.mis_promociones = prs;
         this.lstPromos = new MatTableDataSource(prs);
         this.lstPromos.paginator = this.paginatorPromos;
@@ -79,6 +78,9 @@ export class GestionPromosComponent implements OnInit {
     this.promocion = new Promocion();
     this.desde = new FormControl(new Date());
     this.hasta = new FormControl(new Date());
+
+    this.imageChangedEvent = '';
+    this.nueva_foto = undefined;
     this.getFormapagos();
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -123,16 +125,18 @@ export class GestionPromosComponent implements OnInit {
   crearPromo(){
     this.promocion.desde = this.datepipe.transform(new Date(this.desde.value),'yyyy-MM-dd');
     this.promocion.hasta = this.datepipe.transform(new Date(this.hasta.value),'yyyy-MM-dd');
-    console.log('promooo',this.promocion);
     this.promoService.createPromocion(this.promocion).subscribe(
-      pr =>{  let index = this.mis_promociones.findIndex( p => p.id === pr.id);
+      pr =>{
               this.promocion = new Promocion(pr);
-              this.mis_promociones[index] = this.promocion;
-              console.log('promocion guardada resp',this.promocion);
-              this.guardarLogo();
+              this.mis_promociones.push(this.promocion);
+
+              if(this.nueva_foto){
+                this.guardarLogo();
+              }
+
               this.lstPromos = new MatTableDataSource(this.mis_promociones);
               this.lstPromos.paginator = this.paginatorPromos;
-                this.toastr.warning('Promoción creada!', 'Pendiente de aprobación!');
+              this.toastr.warning('Promoción creada!', 'Pendiente de aprobación!');
               this.modalService.dismissAll();}
     )
 

@@ -1,19 +1,19 @@
 <div class="cuerpo container">
     <div class="row">
         <div class="col-6">
-          <h6 class="titulo">GESTION DE PLANES</h6>
+          <h5 class="titulo">PANEL GESTIÓN DE PLANES</h5>
         </div>
-     
+
       </div>
-   
+
     <div class="mt-3">
-       
+
             <!-- Input Agregado para permitir la Busqueda -->
             <mat-form-field>
               <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
             </mat-form-field>
-  
-   
+
+
             <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
               <!-- Nombre -->
               <ng-container matColumnDef="nombre">
@@ -72,7 +72,7 @@
                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                   <span class="mobile-label">Acciones:</span>
-    
+
                 <button placement="right" ngbTooltip="Actualizar estado" class="mr-2"
                     mat-icon-button style="background-color: transparent" (click)="openFormActualizar(estadoform,element)">
                                                           <mat-icon>edit</mat-icon></button>
@@ -83,14 +83,14 @@
               <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
               <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
             </mat-table>
-    
-   
+
+
             <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
 
 
 
-      </div> 
-</div> 
+      </div>
+</div>
 
 
 <!-- Formulario actualizacion de estado-->
@@ -109,10 +109,10 @@
           </div>
           <form name="form" (ngSubmit)="f.form.valid && actualizarPlan()" #f="ngForm"
             novalidate>
-      
-            
+
+
               <div class="form-row">
-                  
+
                   <mat-form-field class="col">
                       <mat-label for="es">Nuevo estado</mat-label>
                       <mat-select id="es" name="es" [(ngModel)]="comercioplanSelected.estado"
@@ -121,9 +121,9 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-              
+
             </div>
- 
+
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
                 <fa-icon icon="save"></fa-icon>Actualizar
@@ -151,54 +151,54 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-            
+
               <div class="form-row">
-                  
+
                   <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
-                  <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.comercio.nombre}}</mat-list-item>    
+                  <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.comercio.nombre}}</mat-list-item>
               </div>
 
               <div class="form-row">
-                  
+
                 <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
-                <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.usuario.nombre}}</mat-list-item>    
+                <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.usuario.nombre}}</mat-list-item>
             </div>
 
             <div class="form-row">
-                  
+
               <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
-              <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior.nombre}}</mat-list-item>    
+              <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior.nombre}}</mat-list-item>
           </div>
           <div class="form-row">
-                  
+
             <mat-list-item class="col-4" role="listitem">Servicio objetivo</mat-list-item>
-            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.tipo_servicio.nombre}}</mat-list-item>    
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.tipo_servicio.nombre}}</mat-list-item>
         </div>
 
         <div class="form-row">
-                  
+
           <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.formapago.descripcion}}</mat-list-item>    
+          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.formapago.descripcion}}</mat-list-item>
         </div>
         <div class="form-row">
-                  
+
           <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.desde ? comercioplanSelected.desde : 'sin definir' }}</mat-list-item> 
+          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.desde ? comercioplanSelected.desde : 'sin definir' }}</mat-list-item>
         </div>
         <div class="form-row">
-                  
+
           <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.hasta ? comercioplanSelected.hasta : 'sin definir' }}</mat-list-item> 
+          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.hasta ? comercioplanSelected.hasta : 'sin definir' }}</mat-list-item>
         </div>
         <div class="form-row">
-                  
+
           <mat-list-item class="col-4" role="listitem">Duracion meses</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.meses }}</mat-list-item> 
+          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.meses }}</mat-list-item>
         </div>
         <div class="form-row">
-                  
+
           <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.importe }}</mat-list-item> 
+          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.importe }}</mat-list-item>
         </div>
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">

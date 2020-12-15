@@ -159,6 +159,11 @@ export class InicioComponent implements OnInit {
     )
   }
 
+  verMasComercios(){
+    this.comercioService.getVerMasComercios(this.comercios.length).subscribe(
+      cms =>{ this.comercios.concat(cms);}
+    )
+  }
   buscarComercios(){
     this.comercioService.buscarComercios(this.buscado).subscribe(
       cms =>{this.comercios = cms;
@@ -167,12 +172,13 @@ export class InicioComponent implements OnInit {
     )
   }
 
-  buscarPorRubro(){
-    console.log('filtrando por rubros')
-   /*  this.comercioService.buscarComerciosRubro(this.buscado).subscribe(
+  buscarPorRubro(buscado){
+    console.log('filtrando por rubros',buscado);
+   this.comercioService.buscarComerciosRubro(buscado).subscribe(
       cms =>{this.comercios = cms;
+        document.getElementById("promo").scrollIntoView();
        }
-    ) */
+    )
   }
 
   /*trae las promociones*/
