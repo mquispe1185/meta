@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router, NavigationEnd } from '@angular/router';
+import { Spinkit } from 'ng-http-loader';
+
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'meta-app';
   esInicio=false;
+  public spinkit = Spinkit;
   constructor(public tokenService: AngularTokenService,
     private router: Router
    ) {

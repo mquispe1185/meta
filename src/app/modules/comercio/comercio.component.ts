@@ -31,7 +31,7 @@ export class ComercioComponent implements OnInit {
               private toastr: ToastrService,) { }
 
   ngOnInit(): void {
-    console.log('comercio en ver',this.comercio);
+
     if(localStorage.hasOwnProperty("comercio_id")){
       let comercio_id = localStorage.getItem('comercio_id');
       this.comercioService.getComercio(+comercio_id).subscribe(
@@ -44,6 +44,7 @@ export class ComercioComponent implements OnInit {
     this.lat = +this.comercio.latitud;
     this.lon = +this.comercio.longitud;
     }
+    console.log('comercio en ver',this.comercio);
     this.zoom = 16;
     this.getReferencias();
   }

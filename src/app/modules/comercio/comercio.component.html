@@ -58,7 +58,8 @@
         <i class="fas fa-map-marker-alt fa-2x"></i><span class="info ml-3">{{comercio?.domicilio}}</span>
       </div>
       <div class="row mt-3">
-        <i class="fab fa-chrome fa-2x"></i><span class="info ml-3">{{comercio?.web}}</span>
+        <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a href="{{comercio?.web ? 'https://'+comercio.web : '#'}}"
+          target="_blank">{{comercio?.web ? comercio.web : 'sin pagina web'}}</a></span>
       </div>
       <div class="row mt-3">
         <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio?.telefono}} /
@@ -98,7 +99,7 @@
       </div>
 
       <div class="col d-flex justify-content-end">
-        <button mat-raised-button type="button" (click)="crearReferencia(modalref)" 
+        <button mat-raised-button type="button" (click)="crearReferencia(modalref)"
         color="primary">Comentar
         </button>
       </div>

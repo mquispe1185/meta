@@ -29,6 +29,7 @@
     "animate.css": "^4.1.0",
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "ng-http-loader": "^8.0.0",
     "ng2-carouselamos": "^4.1.0",
     "ngx-image-cropper": "^3.2.1",
     "ngx-owl-carousel-o": "^4.0.0",

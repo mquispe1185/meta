@@ -57,6 +57,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.component';
 import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 
 
@@ -74,11 +75,10 @@ import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.c
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
 
     SharedModule,
     ToastrModule.forRoot(),

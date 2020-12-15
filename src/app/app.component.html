@@ -8,15 +8,15 @@
         <ng-template #menuini>
                 <app-header-visitantes [esInicio]="esInicio"></app-header-visitantes>
         </ng-template>
-        
+
         <ng-template #menuwork>
                 <app-header></app-header>
         </ng-template>
-        
-   
+
+
 </ng-template>
-
-
+<ng-http-loader [spinner]="spinkit.skWave"
+[backgroundColor]="'#EE7222'"></ng-http-loader>
 <router-outlet></router-outlet>
 
 
