@@ -36,7 +36,7 @@
   }
 
   }
-  @media (max-width: 1368px) {
+  @media (max-width: 1366px) {
 
   .footerrectangulo {
   width: 100%;
@@ -46,9 +46,9 @@
 
   .footertriangulo {
 
-  border-right: 39.5rem solid #3c3c3c;
-  border-left: 39.5rem solid #3c3c3c;
-  border-top: 80px solid white;
+  border-right: 41.9rem solid #3c3c3c;
+  border-left: 41.9rem solid #3c3c3c;
+  border-top: 100px solid white;
   }
 
   }

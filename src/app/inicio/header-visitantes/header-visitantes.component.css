@@ -2,9 +2,9 @@
 line-height: 0%;
 position: relative;
 }
+
 .rectangulo {
-  top: 0px;
-  left: 0px;
+margin: 0px;
   width: 100%;
   height: 45px;
   /* background: #ee7222 0% 0% no-repeat padding-box; */
@@ -35,19 +35,17 @@ position: relative;
   position: fixed;
   top: 25px;
   width: 100%;
-  z-index: 9999;
+  z-index: 999;
   opacity: 1;
 }
 .menu-boton {
   text-align: center;
-  /* font-family: 'Wavehause2', sans-serif; */
   font: normal normal 600 19px/22px Wavehaus;
   letter-spacing: 0px;
   color: #ffffff;
-  /* margin-inline-start: 40px; */
   writing-mode: horizontal-tb;
-  z-index: 999;
-  /* direction: rtl; */
+  z-index: 1000;
+
 }
 
 .menudesplegado {

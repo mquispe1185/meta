@@ -154,7 +154,7 @@ export class InicioComponent implements OnInit {
   getComercios(){
     this.comercioService.getComerciosInicio().subscribe(
       cms =>{this.comercios = cms;
-              console.log('todos comerc',cms);
+
              }
     )
   }

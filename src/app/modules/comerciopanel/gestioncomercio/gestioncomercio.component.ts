@@ -170,7 +170,7 @@ selected: TipoServicio;
 
   altaComercio(){
     this.comercioService.createComercio(this.comercio).subscribe(
-      cms => {this.comercios = cms.map(c => new Comercio(c));
+      cms => {this.comercios.push(new Comercio(cms));
           this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
     )

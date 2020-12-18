@@ -1,80 +1,79 @@
 <div id='ini' class="contenedor">
-  <!-- Fondo de Imagen y Rectangulo Naranja Transparente -->
-  <div Style="background-image:url('https://i.ibb.co/tYz8M1M/barrio1.png')" class="imagen">
-    <div #ini class="rectangulo">
-    </div>
-  </div>
-  <!-- Fin Fondo de Imagen y Rectangulo Naranja Transparente -->
 
-  <!-- Menu, Logo, Barra de Busqueda -->
-  <div class="superficial">
-
-    <!-- Logo Meta Blanco -->
-    <div class="row contenedorlogo">
-      <div class="col d-flex justify-content-center">
-        <img class="logoblanco" src="/assets/logos/logos-06.png" alt="">
+    <div class="cuadro">
+      <div #ini class="rectangulo">
       </div>
     </div>
 
-    <!-- Slogan Lo que quieras Cerca -->
-    <div class="row contenedorsubtit">
-      <div class="col d-flex align-items-center justify-content-center ">
-        <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
-      </div>
-    </div>
+    <!-- Menu, Logo, Barra de Busqueda -->
+    <div class="superficial">
 
-    <!-- Barra Principal Busqueda-->
-    <div class="row contenedorbusqueda align-items-center justify-content-center">
-      <form class="busqueda form-inline">
-        <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
-          <div class="input-group-prepend">
-            <div class="input-group-text d-flex justify-content-center">
-              <i class="fas fa-map-marker-alt mr-2 colorprimario"></i> <span class="ciudad">San Lorenzo</span>
-            </div>
-          </div>
-          <input type="text" class="form-control" [(ngModel)]="buscado" name="buscar" #buscar="ngModel"
-            id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
-          <span class="input-group-append">
-            <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
+      <!-- Logo Meta Blanco -->
+      <div class="row contenedorlogo">
+        <div class="col d-flex justify-content-center">
+          <img class="logoblanco" src="/assets/logos/logos-06.png" alt="">
         </div>
-      </form>
-      <div class="ParrafoConoce mt-5">
-        CONOCÉ LAS PROMOCIONES Y OFERTAS <br>
-        DE LOS COMERCIOS CERCANOS A TU CASA.
+      </div>
+
+      <!-- Slogan Lo que quieras Cerca -->
+      <div class="row contenedorsubtit">
+        <div class="col d-flex align-items-center justify-content-center ">
+          <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
+        </div>
+      </div>
+
+      <!-- Barra Principal Busqueda-->
+      <div class="row contenedorbusqueda align-items-center justify-content-center">
+        <form class="busqueda form-inline">
+          <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text d-flex justify-content-center">
+                <i class="fas fa-map-marker-alt mr-2 colorprimario"></i> <span class="ciudad">San Lorenzo</span>
+              </div>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="buscado" name="buscar" #buscar="ngModel"
+              id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
+            <span class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+        <div class="ParrafoConoce mt-5">
+          CONOCÉ LAS PROMOCIONES Y OFERTAS <br>
+          DE LOS COMERCIOS CERCANOS A TU CASA.
+        </div>
       </div>
     </div>
+    <!-- Fin Menu, Logo, Barra de Busqueda -->
 
-    <!-- OVALO Nuevo diseño -->
-    <div class="mitadovalo">
+</div>
+<!-- Fin Menu, Logo, Barra de Busqueda -->
+
+
+
+<!-- Parrafo Descripcion, Carrusel, Comercios -->
+<div class="fondototal">
+  <div class="fondoinicio offset-sm-1 col-sm-10">
+    <div class="align-items-center justify-content-center">
+      <img class="logoNaranja" src="/assets/logos/logos-08.png" alt="">
+    </div>
+    <div class="ParrafoMeta">
+      Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona.<br />
+      Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen.<br />
+      Todo desde la comodidad de tu hogar.
     </div>
 
-  </div>
-  <!-- Fin Menu, Logo, Barra de Busqueda -->
+    <button type="button" [routerLink]="['/quienes-somos']" class="boton-conoce">CONOCÉ MÁS
+    </button>
 
-  <!-- Parrafo Descripcion, Carrusel, Comercios -->
-  <div class="fondototal">
-    <div class="fondoinicio offset-sm-1 col-sm-10">
-      <div class="align-items-center justify-content-center">
-        <img class="logoNaranja" src="/assets/logos/logos-05.png" alt="">
-      </div>
-      <div class="ParrafoMeta">
-        Meta! es una plataforma digital diseñada para acercarte todos los productos y servicios de tu zona.<br />
-        Podrás ver los comercios más cercanos, sus referencias y las promociones que más te convienen.<br />
-        Todo desde la comodidad de tu hogar.
-      </div>
+    <div class="mt-5">
+      <span #serv id='cerca' class="subtitulos">¿Qué estás buscando?</span>
+    </div>
 
-      <button type="button" [routerLink]="['/quienes-somos']" class="boton-conoce">CONOCÉ MÁS
-      </button>
-
-      <div class="mt-5">
-        <span #serv id='cerca' class="subtitulos">¿Qué estás buscando?</span>
-      </div>
-
-      <!-- Carrusel de Iconos Rubros -->
-      <div class="my-5">
+       <!-- Carrusel de Iconos Rubros -->
+       <div class="my-5">
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide>
             <div (click)="buscarPorRubro('Automotor')">
@@ -176,93 +175,92 @@
         </owl-carousel-o>
       </div>
 
-      <!-- PROMOCIONES -->
-      <div #ben id='promo' class="fondocomercios">
-        <div class="row">
-          <span class="subtitulos ml-3">Promociones</span>
-        </div><br>
+    <!-- PROMOCIONES -->
+    <div #ben id='promo' class="fondocomercios">
+      <div class="row">
+        <span class="subtitulos ml-3">Promociones</span>
+      </div><br>
 
-        <div class="row">
-          <ng-container *ngFor="let promo of promociones">
-            <div class="cuadropromo mt-2">
+      <div class="row">
+        <ng-container *ngFor="let promo of promociones">
+          <div class="cuadropromo mt-2">
 
-              <div class="conten">
-                <div class="row">
-                  <div class="col-7" id="izq">
-                    <h5 class="titulopromo">{{promo.titulo}}</h5>
-                    <span class="parrafopromo" [class.parrafopromo-md]="promo.descripcion.length > 5 && promo.descripcion.length < 7"
-                    [class.parrafopromo-sm]="promo.descripcion.length > 6">
-                      {{promo.descripcion}}</span> <br>
+            <div class="conten">
+              <div class="row">
+                <div class="col-7" id="izq">
+                  <h5 class="titulopromo">{{promo.titulo}}</h5>
+                  <span class="parrafopromo">{{promo.descripcion}}</span> <br>
 
-                    <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
-                    </button> <br> <br>
-                    <!-- <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span> -->
-                  </div>
+                  <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
+                  </button> <br> <br>
+                  <!-- <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span> -->
+                </div>
 
-                  <div id="round-image">
-                    <img src="/assets/logos/logo-07c.png" class="redimg">
-                  </div>
+                <div id="round-image">
+                  <img src="/assets/logos/logo-07c.png" class="redimg">
+                </div>
 
-                  <div class="col-5">
-                    <img id="imgder"
+                <div class="col-5">
+                  <img id="imgder"
                     [attr.src]="[promo.url != null ? promo.url : 'https://i.ibb.co/whcJdfh/defaultpromo.jpg']"
                     alt="foto promo">
-                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-          </ng-container>
-        </div>
+        </ng-container>
+      </div>
 
-      </div> <br>
+    </div> <br>
 
-      <!-- SUGERENCIAS PARA VOS -->
-      <div #ben id='seccioncomercio' class="fondocomercios">
-        <div class="row">
-          <span class="subtitulos ml-3">Sugerencias para vos</span>
-        </div><br>
+    <!-- SUGERENCIAS PARA VOS -->
+    <div #ben id='seccioncomercio' class="fondocomercios">
+      <div class="row">
+        <span class="subtitulos ml-3">Sugerencias para vos</span>
+        <span class="ml-2 text-info" (click)="getComercios()">ver todos</span>
+      </div><br>
 
-        <div class="row mb-3">
-          <ng-container *ngFor="let comer of comercios">
-            <div class="col-12 col-md-4">
-              <div class="cuadrocomercio">
-                <div (click)="verComercio(comer)">
-                  <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
-                  <img class="resize_fit_center"
-                    [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
-                    alt="foto comercio">
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                      <div class="nombre-comer mt-4">
-                          {{comer.nombre}}
-                        </div>
+      <div class="row mb-3">
+        <ng-container *ngFor="let comer of comercios">
+          <div class="col-12 col-md-4">
+            <div class="cuadrocomercio">
+              <div (click)="verComercio(comer)">
+                <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
+                <img class="resize_fit_center"
+                  [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
+                  alt="foto comercio">
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="nombre-comer mt-4">
+                    {{comer.nombre}}
                   </div>
-                  <!-- <div class="col-3 colboton">
+                </div>
+                <!-- <div class="col-3 colboton">
                       <button type="button" (click)="verComercio(comer)" class="botonredondo">+
                       </button>
                   </div> -->
-                </div>
+              </div>
 
-                <div class="desc-comer mt-2">
-                  {{comer.descripcion}}
-                </div>
-                <div class="direccion-comer mt-2">
-                  <div class="row pr-1">
-                    <div class="col-8 col-md-7 coldomicilio">
-                      {{comer.domicilio}}
-                    </div>
-                    <div class="col-4 col-md-5 colboton">
-                      <button type="button" (click)="verComercio(comer)" class="boton-comercio">Ver comercio
-                      </button>
-                    </div>
+              <div class="desc-comer mt-2">
+                {{comer.descripcion}}
+              </div>
+              <div class="direccion-comer mt-2">
+                <div class="row pr-1">
+                  <div class="col-8 col-md-7 coldomicilio">
+                    {{comer.domicilio}}
+                  </div>
+                  <div class="col-4 col-md-5 colboton">
+                    <button type="button" (click)="verComercio(comer)" class="boton-comercio">Ver comercio
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </ng-container>
-        </div>
+          </div>
+        </ng-container>
+      </div>
 
         <div>
           <span *ngIf="comercios.length > 8" class="carga" (click)="verMasComercios()">Más Comercios</span>
@@ -271,12 +269,16 @@
         </div>
       </div> <!-- FIN SUGERENCIAS PARA VOS -->
 
-    </div>
   </div>
-  <!-- Fin Parrafo Descripcion, Carrusel, Comercios -->
 </div>
+<!-- Fin Parrafo Descripcion, Carrusel, Comercios -->
+
+
+
+
+
+
 
 
 <!-- FOOTER -->
 <app-footer-visitantes></app-footer-visitantes>
-
