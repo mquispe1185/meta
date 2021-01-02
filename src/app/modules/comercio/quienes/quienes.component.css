@@ -104,7 +104,8 @@
 
 .subtitulos {
   text-align: center;
-  font: normal normal bold 27px/35px roboto;
+  /* font: normal normal bold 27px/35px roboto; */
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;

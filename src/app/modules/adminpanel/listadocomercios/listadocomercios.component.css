@@ -1,7 +1,22 @@
-
+.icono {
+  color: #f36904;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.titulo {
+  font: normal normal 24px sans-serif;
+  color: #f36904;
+}
 
 .img-circle {
     border-radius: 50%;
+}
+
+.tarjeta-info{
+
+  padding: 0px;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .mat-card-header .mat-card-subtitle:not(:first-child) {
@@ -13,16 +28,54 @@
     overflow: auto;
   }
 
-  .mobile-label {
-    display: none;
-  }
+.mobile-label {
+  display: none;
+}
 
-  .aprob{
-    background: #D5F5E3;
-  }
-   .pend{
-    background: #FAD7A0;
-   }
+.mat-column-nombre {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 22% !important;
+  width: 22% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-tiposervicio {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.detalle {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.aprob{
+ /*  background: #D5F5E3;  */
+  background: #49c24e;
+  color: #ffffff;
+}
+
+.pend{
+  /* background: #FAD7A0; */
+  background: #F7B843; 
+}
+
   @media(max-width: 600px) {
     .mobile-label {
       width: 80px;

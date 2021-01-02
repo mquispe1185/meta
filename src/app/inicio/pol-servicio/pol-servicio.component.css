@@ -8,15 +8,53 @@
   text-align: center;
 }
 
+.contenedorimagen {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: url('https://i.ibb.co/tYz8M1M/barrio1.png') no-repeat top left;
+  z-index: -9999;
+}
+
+.contenedorimagen:before {
+  box-shadow: 0 0 0 150px white;
+  border-radius: 100%;
+  position: absolute;
+  width: 100%;
+  height: 300px;  
+  content: '';
+  top: 100%;
+  z-index: -999;
+}
+
 .rectangulo {
   top: 0px;
   left: 0px;
   width: 100%;
-  /* height: 564px; */
-  height: 450px;
-  background: #ee7222 0% 0% no-repeat padding-box;
+  height: 500px;
+  background: #f36904 0% 0% no-repeat padding-box;
   opacity: 0.69;
-  z-index: -999;
+  z-index: -1000;
+}
+
+.rectangulo:before {
+  box-shadow: 0 0 0 150px white;
+  border-radius: 100%;
+  position: absolute;
+  width: 100%;
+  height: 300px;  
+  content: '';
+  top: 100%;
+  z-index: -1000;
+}
+
+.contenedorlogo {
+  top: 70px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .superficial {
@@ -27,24 +65,16 @@
   height: 500px;
 }
 
-.contenedorlogo {
-  top: 70px;
-  position: absolute;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
+.logoblanco {
+  width: 271px;
+
 }
 
-.logoblanco {
-  width: 181px;
-  height: 113px;
-}
 .contenedorsubtit {
-  top: 200px;
+  top: 240px;
   position: absolute;
   width: 100%;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .slogan {
   text-align: left;
@@ -81,7 +111,8 @@
 
 .subtitulos {
   text-align: center;
-  font: normal normal bold 27px/35px roboto;
+  /* font: normal normal bold 27px/35px roboto; */
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -146,30 +177,33 @@ span.credits1 {
   .contenedor {
     margin-bottom: 80px;
   }
+  .contenedorimagen {
+    height: 380px;
+  }
   .rectangulo {
-
-    height: 250px;
+    height: 380px;
   }
   .superficial {
-    height: 250px;
+    height: 280px;
   }
+
   /*Seccion logo y subtitulo*/
   .contenedorlogo {
     position: relative;
-    top: 20px;
+    top: 35px;
     width: 100%;
     margin-left: 7px;
   }
 
-  .logoblanco {
-    width: 90px;
-    height: 66px;
-  }
+.logoblanco {
+  width: 181px;
+  height: 113px;
+}
 
-  .contenedorsubtit {
-    top: 100px;
-    margin-left: 7px;
-  }
+.contenedorsubtit {
+  top: 140px;
+  margin-left: 7px;
+}
 
   .slogan {
     font: normal normal normal 17px/25px Wavehaus;
@@ -187,7 +221,7 @@ span.credits1 {
     top: 0px;
     width: 120px;
     height: 120px;
-    margin-top: -50px;
+    margin-top: -100px;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
   }

@@ -1,21 +1,51 @@
 .contenedor {
   margin-top: -45px;
   margin-bottom: 50px;
-}
-
+  }
+  
 .fondocontenido {
   background: #ffffff;
   text-align: center;
 }
 
+.contenedorimagen {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: url('https://i.ibb.co/tYz8M1M/barrio1.png') no-repeat top left;
+  z-index: -9999;
+}
+  
+.contenedorimagen:before {
+  box-shadow: 0 0 0 150px white;
+  border-radius: 100%;
+  position: absolute;
+  width: 100%;
+  height: 300px; 
+  content: '';
+  top: 100%;
+  z-index: -999;
+}
+  
 .rectangulo {
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 450px;
-  background: #ee7222 0% 0% no-repeat padding-box;
+  height: 500px;
+  background: #f36904 0% 0% no-repeat padding-box;
   opacity: 0.69;
-  z-index: -999;
+  z-index: -1000;
+}
+  
+.rectangulo:before {
+  box-shadow: 0 0 0 150px white;
+  border-radius: 100%;
+  position: absolute;
+  width: 100%;
+  height: 300px; 
+  content: '';
+  top: 100%;
+  z-index: -1000;
 }
 
 .superficial {
@@ -30,36 +60,37 @@
   top: 70px;
   position: absolute;
   width: 100%;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+}
+  
+.logoblanco {
+  width: 271px;
 }
 
-.logoblanco {
-  width: 181px;
-  height: 113px;
-}
 .contenedorsubtit {
-  top: 200px;
+  top: 240px;
   position: absolute;
   width: 100%;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
-.slogan {
+
+  .slogan {
   text-align: left;
   font: normal normal normal 37px/45px Wavehaus;
   letter-spacing: 0px;
   color: #ffffff;
   white-space: nowrap;
-}
-.txtcerca {
+  }
+  .txtcerca {
   text-align: left;
   font: normal normal bold 37px/45px Wavehaus;
   letter-spacing: 0px;
   color: #ffffff;
-}
-
-.mitadovalo {
+  }
+  
+  .mitadovalo {
   position: relative;
   top: 300px;
   left: 0;
@@ -68,41 +99,42 @@
   background-color: #ffffff;
   border-radius: 50%;
   display: inline-block;
-}
-
-.logoNaranja {
+  }
+  
+  .logoNaranja {
   width: 200px;
   height: 200px;
   margin-top: -80px;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
-}
-
-.subtitulos {
+  }
+  
+  .subtitulos {
   text-align: center;
-  font: normal normal bold 27px/35px roboto;
+  /* font: normal normal bold 27px/35px roboto; */
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
-}
-.ParrafoMeta {
+  }
+  .ParrafoMeta {
   text-align: justify;
   font: normal normal normal 20px/27px Century;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
-}
-
-span.credits1 {
+  }
+  
+  span.credits1 {
   background: url(/assets/quienes/shop.svg) no-repeat top left;
   background-size: contain;
   cursor: pointer;
   display: inline-block;
   height: 56px;
   width: 65px;
-}
-
-.boton-conoce2 {
+  }
+  
+  .boton-conoce2 {
   background-color: #ee7222;
   border: transparent;
   color: #ffffff;
@@ -111,9 +143,9 @@ span.credits1 {
   width: 300px;
   height: 30px;
   margin-top: 20px;
-}
-
-.boton-conoce {
+  }
+  
+  .boton-conoce {
   width: 330px;
   height: 45px;
   margin-top: 25px;
@@ -132,74 +164,79 @@ span.credits1 {
   cursor: pointer;
   outline: none;
   }
-
-.boton-conoce:hover {
+  
+  .boton-conoce:hover {
   background-color: #ffffff;
   box-shadow: 0px 15px 20px rgba(233, 105, 32, 0.4);
   color: #f36904;
   transform: translateY(-3px);
-}
-
-/* CSS PARA MOBILE */
-@media (max-width: 900px) {
+  }
+  
+  /* CSS PARA MOBILE */
+  @media (max-width: 900px) {
   .contenedor {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
+  }
+  .contenedorimagen {
+  height: 380px;
   }
   .rectangulo {
-
-    height: 250px;
+  height: 380px;
   }
   .superficial {
-    height: 250px;
+  height: 280px;
   }
+  
   /*Seccion logo y subtitulo*/
   .contenedorlogo {
-    position: relative;
-    top: 20px;
-    width: 100%;
-    margin-left: 7px;
+  position: relative;
+  top: 35px;
+  width: 100%;
+  margin-left: 7px;
   }
-
+  
   .logoblanco {
-    width: 90px;
-    height: 66px;
+  width: 181px;
+  height: 113px;
   }
-
+  
   .contenedorsubtit {
-    top: 100px;
-    margin-left: 7px;
+  top: 140px;
+  margin-left: 7px;
   }
-
+  
   .slogan {
-    font: normal normal normal 17px/25px Wavehaus;
+  font: normal normal normal 17px/25px Wavehaus;
   }
   .txtcerca {
-    font: normal normal bold 17px/25px Wavehaus;
+  font: normal normal bold 17px/25px Wavehaus;
   }
-
+  
   .mitadovalo {
-    display: none;
-    }
-
-  .logoNaranja {
-    position: relative;
-    top: 0px;
-    width: 120px;
-    height: 120px;
-    margin-top: -50px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
+  display: none;
   }
-
+  
+  .logoNaranja {
+  position: relative;
+  top: 0px;
+  width: 120px;
+  height: 120px;
+  margin-top: -100px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  }
+  
   .subtitulos {
-
-    font: normal normal bold 20px roboto;
+  
+  font: normal normal bold 20px roboto;
   }
   .ParrafoMeta {
-    font: normal normal normal 16px Century;
-    letter-spacing: 0px;
-    color: #3c3c3c;
-    opacity: 1;
+  font: normal normal normal 16px Century;
+  letter-spacing: 0px;
+  color: #3c3c3c;
+  opacity: 1;
+  }
+  
   }
 
-}
+

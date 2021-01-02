@@ -1,117 +1,135 @@
 <div class="cuerpo container">
-    <h5 class="titulo">PANEL ADMINISTRACION COMERCIOS</h5>
-    <div class="row">
-        <div class="col-sm-6">
-                <mat-card class="tarjeta-info">
-                        <mat-card-header>
-                          <div mat-card-avatar [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }"></div>
-                          <mat-card-title>Bienvenido a Meta {{tokenService.currentUserData?.name}}!</mat-card-title>
-                          <mat-card-subtitle>{{tokenService.currentUserData?.email}}</mat-card-subtitle>
-                        </mat-card-header>
-                      </mat-card>
-        </div>
-    </div>
-    <div class="mt-3">
-
-            <!-- Input Agregado para permitir la Busqueda -->
-            <mat-form-field>
-              <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
-            </mat-form-field>
-
-
-            <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
-              <!-- Nombre -->
-              <ng-container matColumnDef="nombre">
-                <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Nombre:</span>{{element.nombre}}
-                </mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="rubro">
-                <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Rubro:</span>{{element.rubro.descripcion}}
-                </mat-cell>
-              </ng-container>
-
-              <!-- Email -->
-              <ng-container matColumnDef="usuario">
-                <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Usuario:</span> {{element.usuario.nombre}}
-                </mat-cell>
-              </ng-container>
-              <!-- Rol -->
-               <ng-container matColumnDef="domicilio">
-                <mat-header-cell *matHeaderCellDef>Direccion</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Direccion:</span> {{element.domicilio}}
-                </mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="tiposervicio">
-                <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Servicio:</span> {{element.tipo_servicio.nombre}}
-                </mat-cell>
-              </ng-container>
-
-              <!-- Acciones Column -->
-              <ng-container matColumnDef="acciones">
-                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Acciones:</span>
-                  <button placement="right" ngbTooltip="Editar"
-                    mat-icon-button style="background-color: transparent" (click)="openFormEditar(editarcomercio,element)"><mat-icon>edit</mat-icon></button>
-                <button placement="right" ngbTooltip="{{element.habilitado ? 'Deshabilitar':'Habilitar'}}" class="mr-2"
-                    mat-icon-button style="background-color: transparent" (click)="dialogAprobarComercio(element)">
-                                                          <mat-icon>{{element.habilitado ? 'clear' : 'done_outline'}}</mat-icon></button>
-                  <button placement="right" ngbTooltip="Eliminar"
-                    mat-icon-button style="background-color: transparent" (click)="dialogEliminarComercio(element)"><mat-icon>delete</mat-icon></button>
-                </mat-cell>
-              </ng-container>
-              <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
-            </mat-table>
-
-
-            <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
-
-
-
+  <div class="row mb-2">
+    <div class="col-6">
+      <div class="row ">
+        <mat-icon class="icono">list</mat-icon>
+        <h5 class="titulo"> Administración de Comercios</h5>
       </div>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <mat-card class="tarjeta-info">
+        <mat-card-header>
+          <div mat-card-avatar
+            [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }">
+          </div>
+          <mat-card-title>Admin: {{tokenService.currentUserData?.name}}</mat-card-title>
+          <mat-card-subtitle>{{tokenService.currentUserData?.email}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="mt-3">
+
+    <!-- Input Agregado para permitir la Busqueda -->
+    <mat-form-field>
+      <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
+    </mat-form-field>
+
+
+    <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Nombre:</span>
+          <span class="detalle">{{element.nombre}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rubro">
+        <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Rubro:</span>
+          <span class="detalle">{{element.rubro.descripcion}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Email -->
+      <ng-container matColumnDef="usuario">
+        <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Usuario:</span>
+          <span class="detalle">{{element.usuario.nombre}}</span>
+        </mat-cell>
+      </ng-container>
+      <!-- Rol -->
+      <ng-container matColumnDef="domicilio">
+        <mat-header-cell *matHeaderCellDef>Direccion</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Direccion:</span>
+          <span class="detalle">{{element.domicilio}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tiposervicio">
+        <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Servicio:</span>
+          <span class="detalle">{{element.tipo_servicio.nombre}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Acciones:</span>
+          <button placement="right" ngbTooltip="Editar" mat-icon-button style="color: white"
+            (click)="openFormEditar(editarcomercio,element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button placement="right" ngbTooltip="{{element.habilitado ? 'Deshabilitar':'Habilitar'}}" class="mr-2"
+            mat-icon-button style="color: white" (click)="dialogAprobarComercio(element)">
+            <mat-icon>{{element.habilitado ? 'disabled_by_default' : 'fact_check'}}</mat-icon>
+          </button>
+          <button placement="right" ngbTooltip="Eliminar" mat-icon-button style="color: white"
+            (click)="dialogEliminarComercio(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
+    </mat-table>
+
+
+    <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+
+
+  </div>
 </div>
 
 
 
 <ng-template #editarcomercio let-modal>
-    <div class="container mt-5">
-      <div>
-        <mat-card class="tarjeta-info">
-          <div class="card-body">
-            <div class="modal-header modal-encabezado">
-              <h5 class="modal-title titulo" id="modal-basic-title">
+  <div class="container mt-5">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Editar Comercio {{comercioSelected.nombre}}</strong>
-              </h5>
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form name="form" (ngSubmit)="f.form.valid && updateComercio()" #f="ngForm"
-              novalidate>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="form" (ngSubmit)="f.form.valid && updateComercio()" #f="ngForm" novalidate>
 
-              <div class="row mt-5">
+            <div class="row mt-5">
 
-                <div class="form-group col-6">
-                  <mat-form-field>
-                    <input matInput type="text" placeholder="nombre" required minlength="2" [(ngModel)]="comercioSelected.nombre"
-                      name="nombre" #nombre="ngModel" />
-                    <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
-                    <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
-                    </mat-error>
-                  </mat-form-field>
-                </div>
+              <div class="form-group col-6">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="nombre" required minlength="2"
+                    [(ngModel)]="comercioSelected.nombre" name="nombre" #nombre="ngModel" />
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
 
               <div class="form-group col-6">
                 <mat-form-field>
@@ -120,16 +138,16 @@
                   </textarea>
                 </mat-form-field>
               </div>
-              </div>
-              <div class="text-right mt-4">
-                <button mat-raised-button type="submit" color="primary">
-                  <fa-icon icon="save"></fa-icon>Actualizar
-                </button>
-              </div>
+            </div>
+            <div class="text-right mt-4">
+              <button mat-raised-button type="submit" color="primary">
+                <fa-icon icon="save"></fa-icon>Actualizar
+              </button>
+            </div>
 
-            </form>
-          </div>
-        </mat-card>
-      </div>
+          </form>
+        </div>
+      </mat-card>
     </div>
-  </ng-template>
+  </div>
+</ng-template>
