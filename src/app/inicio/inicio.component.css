@@ -248,6 +248,7 @@ input::placeholder {
   height: 430px;
   transition: box-shadow 0.3s;
   border-bottom: 2px solid #ccc;
+  border-right: 1px solid #ccc;
   /* border-right: 1px solid #ccc; */
   /* border-radius: 1em; */
   background: #fff;

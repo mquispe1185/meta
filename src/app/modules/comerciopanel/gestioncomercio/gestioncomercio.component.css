@@ -1,6 +1,7 @@
 .container {
-  /* margin-bottom: 70px; */
+  padding-top: 20px;
 }
+
 .modal-dialog {
     margin: 4.75rem auto;
 }
@@ -10,14 +11,19 @@
     padding: 0.25rem;
 }
 
+.icono {
+    color: #f36904;
+    margin-left: 15px;
+    margin-right: 10px;
+    display: flex;
+    vertical-align: middle;
+  }
+
 .titulo {
-    text-align: center;
-    font-size: 24px;
+    font: normal normal 24px sans-serif;
     font-weight: bold;
-    letter-spacing: 0px;
-    color: #ee7222;
-    opacity: 1;
-}
+    color: #f36904;
+  }
 
 .pac-container {
     z-index: 99999 !important;

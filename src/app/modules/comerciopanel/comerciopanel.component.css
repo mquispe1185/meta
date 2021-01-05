@@ -1,9 +1,26 @@
-
-.contenedor{
-  margin-bottom: 50px;
+.container{
+  margin-top: 45px;
+  margin-bottom: 200px;
 }
+
+.icono {
+  color: #f36904;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.titulo {
+  font: normal normal 24px sans-serif;
+  color: #f36904;
+}
+
 .img-circle {
     border-radius: 50%;
+}
+
+.tarjeta-info{
+  padding: 0px;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .mat-card-header .mat-card-subtitle:not(:first-child) {

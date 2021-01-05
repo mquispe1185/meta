@@ -1,87 +1,96 @@
 <div class="cuerpo container">
-    <div class="row">
+  <!--     <div class="row">
       <div class="col-6">
         <h5 class="titulo">PANEL GESTIÓN DE PROMOS</h5>
       </div>
+    </div> -->
 
-    </div>
+  <div class="row ">
+    <mat-icon class="icono">list</mat-icon>
+    <h5 class="titulo">Gestión de Promociones</h5>
+  </div>
 
+  <div class="mt-3">
 
-    <div class="mt-3">
-
-            <!-- Input Agregado para permitir la Busqueda -->
-            <mat-form-field>
-              <input matInput (keyup)="filtrarPromos($event.target.value)" placeholder="Buscar promo...">
-            </mat-form-field>
-
-
-            <mat-table #tablapromos [dataSource]="lstPromos" class="mat-elevation-z8">
-
-                <!-- Comercio -->
-                <ng-container matColumnDef="comercio">
-                    <mat-header-cell *matHeaderCellDef>Comercio</mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                      <span class="mobile-label">Comercio:</span>{{element.comercio.nombre}}
-                    </mat-cell>
-                  </ng-container>
-
-              <!-- titulo -->
-              <ng-container matColumnDef="titulo">
-                <mat-header-cell *matHeaderCellDef>Titulo</mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Titulo:</span>{{element.titulo}}
-                </mat-cell>
-              </ng-container>
-
-              <!-- Descripcion -->
-              <ng-container matColumnDef="descripcion">
-                <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Descripcion:</span> {{element.descripcion}}
-                </mat-cell>
-              </ng-container>
-              <ng-container matColumnDef="formapago">
-                  <mat-header-cell *matHeaderCellDef>Pago</mat-header-cell>
-                  <mat-cell *matCellDef="let element" >
-                    <span class="mobile-label">Pago:</span> {{element.formapago.descripcion}}
-                  </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="estado">
-                  <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-                  <mat-cell *matCellDef="let element" >
-                    <span class="mobile-label">Estado:</span>
-                    <ng-container [ngSwitch]="element.estado">
-                      <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
-                      <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span>
-
-                    </ng-container>
-                  </mat-cell>
-                </ng-container>
-
-              <!-- Acciones Column -->
-              <ng-container matColumnDef="acciones">
-                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Acciones:</span>
-                <button *ngIf="element.vencido === false" placement="right" ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2"
-                    mat-icon-button style="background-color: transparent" (click)="dialogAprobarPromo(element)">
-                <mat-icon>{{element.estado === 1 ? 'clear' : 'done_outline'}}</mat-icon></button>
-                <button placement="right" ngbTooltip="Ver info"
-                mat-icon-button style="background-color: transparent" (click)="openFormInfo(info,element)">
-                <mat-icon>visibility</mat-icon></button>
-                </mat-cell>
-              </ng-container>
-              <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspColPromos;" [ngClass]="{'vencido': row.vencido === true}"></mat-row>
-            </mat-table>
+    <!-- Input Agregado para permitir la Busqueda -->
+    <mat-form-field>
+      <input matInput (keyup)="filtrarPromos($event.target.value)" placeholder="Buscar promo...">
+    </mat-form-field>
 
 
-            <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+    <mat-table #tablapromos [dataSource]="lstPromos" class="mat-elevation-z8">
+
+      <!-- Comercio -->
+      <ng-container matColumnDef="comercio">
+        <mat-header-cell *matHeaderCellDef>Comercio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Comercio:</span>{{element.comercio.nombre}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- titulo -->
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef>Titulo</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Titulo:</span>{{element.titulo}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Descripcion -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Descripcion:</span> {{element.descripcion}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="formapago">
+        <mat-header-cell *matHeaderCellDef>Pago</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Pago:</span> {{element.formapago.descripcion}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Estado:</span>
+          <ng-container [ngSwitch]="element.estado">
+<!--        <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
+            <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span> -->
+            
+            <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
+            <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Acciones:</span>
+          <button *ngIf="element.vencido === false" placement="right"
+            ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2" mat-icon-button
+            style="background-color: transparent" (click)="dialogAprobarPromo(element)">
+            <mat-icon>{{element.estado === 1 ? 'clear' : 'done_outline'}}</mat-icon>
+          </button>
+          <button placement="right" ngbTooltip="Ver info" mat-icon-button style="background-color: transparent"
+            (click)="openFormInfo(info,element)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="dspColPromos"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dspColPromos;" [ngClass]="{'vencido': row.vencido === true}"></mat-row>
+    </mat-table>
+
+
+    <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
 
 
 
-</div>
+  </div>
 
 </div>
 
@@ -101,64 +110,64 @@
             </button>
           </div>
 
-              <div class="form-row">
+          <div class="form-row">
 
-                  <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
-                  <mat-list-item class="col-8" role="listitem">{{promocion.comercio.nombre |titlecase}}</mat-list-item>
-              </div>
+            <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.comercio.nombre |titlecase}}</mat-list-item>
+          </div>
 
-              <div class="form-row">
+          <div class="form-row">
 
-                <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
-                <mat-list-item class="col-8" role="listitem">{{promocion.usuario.nombre |titlecase}}</mat-list-item>
-            </div>
+            <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.usuario.nombre |titlecase}}</mat-list-item>
+          </div>
 
-            <div class="form-row">
+          <div class="form-row">
 
-              <mat-list-item class="col-4" role="listitem">Titulo</mat-list-item>
-              <mat-list-item class="col-8" role="listitem">{{promocion.titulo}}</mat-list-item>
+            <mat-list-item class="col-4" role="listitem">Titulo</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.titulo}}</mat-list-item>
           </div>
           <div class="form-row">
 
             <mat-list-item class="col-4" role="listitem">Descripción</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{promocion.descripcion}}</mat-list-item>
-        </div>
+          </div>
 
-        <div class="form-row">
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.formapago.descripcion}}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.formapago.descripcion}}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.desde| date: 'dd/MM/yyyy'}}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.desde| date: 'dd/MM/yyyy'}}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.hasta | date: 'dd/MM/yyyy'}}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.hasta | date: 'dd/MM/yyyy'}}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Duracion</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.duracion }} días</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Duracion</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.duracion }} días</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Costo diario</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.costo_diario | currency}}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Costo diario</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.costo_diario | currency}}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{promocion.importe |currency }}</mat-list-item>
-        </div>
-            <div class="text-right mt-4">
-              <button mat-raised-button type="submit" color="primary">
-                <fa-icon icon="save"></fa-icon>Cerrar
-              </button>
-            </div>
+            <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{promocion.importe |currency }}</mat-list-item>
+          </div>
+          <div class="text-right mt-4">
+            <button mat-raised-button type="submit" color="primary">
+              <fa-icon icon="save"></fa-icon>Cerrar
+            </button>
+          </div>
         </div>
       </mat-card>
     </div>

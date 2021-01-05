@@ -1,6 +1,6 @@
 
 <div class="container mt-5">
-        <div class="row mt-2">
+<!--         <div class="row mt-2">
           <div class="col-6">
             <h6 class="titulo">MIS PROMOS</h6>
           </div>
@@ -10,10 +10,24 @@
               <mat-icon>note_add</mat-icon> Nueva Promocion
             </button>
           </div>
-        </div>
+        </div> -->
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <mat-icon class="icono">new_releases</mat-icon>
+              <span class="titulo">Mis Promociones</span>
+            </div>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <button class="boton-nuevo"
+              (click)="openFormPromo(promoform)">
+              <mat-icon>note_add</mat-icon> Nueva Promocion
+            </button>
+          </div>
+        </div> <br>
 
 
-        <div class="mt-3">
+        <div class="mb-1">
 
                 <!-- Input Agregado para permitir la Busqueda -->
                 <mat-form-field>
@@ -50,9 +64,8 @@
                     <mat-cell *matCellDef="let element" >
                       <span class="mobile-label">Estado:</span>
                       <ng-container [ngSwitch]="element.estado">
-                        <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
-                        <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span>
-
+                        <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
+                        <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
                       </ng-container>
                     </mat-cell>
                   </ng-container>
@@ -93,7 +106,7 @@
               <div class="card-body">
                 <div class="modal-header modal-encabezado">
                   <h5 class="modal-title titulo" id="modal-basic-title">
-                    <strong>Crear promo</strong>
+                    <strong>Crear Promo</strong>
                   </h5>
                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>

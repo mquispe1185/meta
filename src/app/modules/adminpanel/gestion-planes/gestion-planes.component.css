@@ -1,0 +1,64 @@
+.icono {
+    color: #f36904;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .titulo {
+    font: normal normal 24px sans-serif;
+    color: #f36904;
+  }
+
+  .boton-pendiente {
+    color: white;
+    background: rgb(120, 185, 201);
+    padding: 5px;
+    border-radius: 5%;
+    font-size:x-small;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    }
+
+.boton-aprobado {
+    color: white;
+    /* background: rgb(61, 167, 70); */
+    background: rgb(73, 194, 78);
+    padding: 5px;
+    border-radius: 5%;
+    font-size:x-small;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    }
+
+.boton-vencido {
+    color: white;
+    background: rgb(73, 194, 78);
+    padding: 5px;
+    border-radius: 5%;
+    font-size:x-small;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    }
+
+.boton-rechazado {
+    color: white;
+    background: rgb(255, 195, 69);
+    padding: 5px;
+    border-radius: 5%;
+    font-size:x-small;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    }
+
+.mat-column-estado {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}
+
+.mat-column-acciones {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+  }

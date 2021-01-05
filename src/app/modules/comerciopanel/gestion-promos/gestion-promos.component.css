@@ -1,10 +1,95 @@
+.container {
+  padding-top: 20px;
+}
+
 .mobile-label {
     display: none;
   }
 
-  .vencido{
-    background-color: pink;
+.icono {
+  color: #f36904;
+  margin-left: 15px;
+  margin-right: 10px;
+  display: flex;
+  vertical-align: middle;
   }
+
+.titulo {
+  font: normal normal 24px sans-serif;
+  font-weight: bold;
+  color: #f36904;
+  }
+
+.vencido{
+  background-color: pink;
+  }
+
+  .boton-nuevo {
+    width: 150px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    font-family: Century;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #f36904;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease 0s;
+    cursor: pointer;
+    outline: none;
+    }
+
+    .boton-nuevo:hover {
+        background-color: #ffffff;
+        box-shadow: 0px 15px 20px rgba(233, 105, 32, 0.4);
+        color: #f36904;
+        transform: translateY(-2px);
+      }
+
+      .boton-pendiente {
+        color: white;
+        background: rgb(120, 185, 201);
+        padding: 5px;
+        border-radius: 5%;
+        font-size:x-small;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        } 
+      
+      .boton-aprobado {
+        color: white;
+        background: rgb(73, 194, 78);
+        padding: 5px;
+        border-radius: 5%;
+        font-size:x-small;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        }
+
+      .mat-column-titulo {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        flex: 0 0 22% !important;
+        width: 22% !important;
+        }
+
+      .mat-column-estado {
+        word-wrap: break-word !important;
+        white-space: unset !important;
+        flex: 0 0 10% !important;
+        width: 10% !important;
+      }
+      
+      .mat-column-acciones {
+          word-wrap: break-word !important;
+          white-space: unset !important;
+          flex: 0 0 10% !important;
+          width: 10% !important;
+        }
+
   @media(max-width: 600px) {
     .mobile-label {
       width: 100px;

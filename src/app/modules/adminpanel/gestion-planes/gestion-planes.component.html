@@ -1,95 +1,104 @@
 <div class="cuerpo container">
-    <div class="row">
-        <div class="col-6">
-          <h5 class="titulo">PANEL GESTIÓN DE PLANES</h5>
-        </div>
+<!--   <div class="row">
+    <div class="col-6">
+      <h5 class="titulo">PANEL GESTIÓN DE PLANES</h5>
+    </div>
+  </div> -->
 
-      </div>
+    <div class="row ">
+      <mat-icon class="icono">list</mat-icon>
+      <h5 class="titulo">Gestión de Planes</h5>
+    </div>
 
-    <div class="mt-3">
+  <div class="mt-3">
 
-            <!-- Input Agregado para permitir la Busqueda -->
-            <mat-form-field>
-              <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
-            </mat-form-field>
-
-
-            <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
-              <!-- Nombre -->
-              <ng-container matColumnDef="nombre">
-                <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Nombre:</span>{{element.comercio.nombre}}
-                </mat-cell>
-              </ng-container>
-
-              <!-- usuario -->
-              <ng-container matColumnDef="usuario">
-                <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Usuario:</span> {{element.usuario.nombre}}
-                </mat-cell>
-              </ng-container>
-              <!-- tipo servicio -->
-              <ng-container matColumnDef="tiposervicio">
-                <mat-header-cell *matHeaderCellDef>Actualizacion Servicio</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior.nombre}} a {{element.tipo_servicio.nombre}}
-                </mat-cell>
-              </ng-container>
-            <!-- validez -->
-              <ng-container matColumnDef="validez">
-                <mat-header-cell *matHeaderCellDef>Validez</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Validez:</span> Desde: {{element.desde ? element.desde : 'sin definir'}}<br>
-                                                            Hasta: {{element.hasta ? element.hasta : 'sin definir'}}
-                </mat-cell>
-              </ng-container>
-
-               <!-- FORMAPAGO -->
-               <ng-container matColumnDef="formapago">
-                <mat-header-cell *matHeaderCellDef>Forma de pago</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <span class="mobile-label">Forma de pago:</span> {{element.formapago.descripcion}}
-                </mat-cell>
-              </ng-container>
-
-               <!-- ESTADO -->
-               <ng-container matColumnDef="estado">
-                <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-                <mat-cell *matCellDef="let element" >
-                  <ng-container [ngSwitch]="element.estado">
-                    <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
-                    <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span>
-                    <span class="bg-danger text-white p-1" *ngSwitchCase="2">VENCIDO</span>
-                    <span class="bg-warning text-white p-1" *ngSwitchCase="3">RECHAZADO</span>
-                  </ng-container>
-                </mat-cell>
-              </ng-container>
-
-              <!-- Acciones Column -->
-              <ng-container matColumnDef="acciones">
-                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <span class="mobile-label">Acciones:</span>
-
-                <button placement="right" ngbTooltip="Actualizar estado" class="mr-2"
-                    mat-icon-button style="background-color: transparent" (click)="openFormActualizar(estadoform,element)">
-                                                          <mat-icon>edit</mat-icon></button>
-                  <button placement="right" ngbTooltip="Ver info"
-                    mat-icon-button style="background-color: transparent" (click)="openFormActualizar(info,element)"><mat-icon>visibility</mat-icon></button>
-                </mat-cell>
-              </ng-container>
-              <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' " ></mat-row>
-            </mat-table>
+    <!-- Input Agregado para permitir la Busqueda -->
+    <mat-form-field>
+      <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
+    </mat-form-field>
 
 
-            <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+    <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Nombre:</span>{{element.comercio.nombre}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- usuario -->
+      <ng-container matColumnDef="usuario">
+        <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Usuario:</span> {{element.usuario.nombre}}
+        </mat-cell>
+      </ng-container>
+      <!-- tipo servicio -->
+      <ng-container matColumnDef="tiposervicio">
+        <mat-header-cell *matHeaderCellDef>Actualizacion Servicio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior.nombre}} a
+          {{element.tipo_servicio.nombre}}
+        </mat-cell>
+      </ng-container>
+      <!-- validez -->
+      <ng-container matColumnDef="validez">
+        <mat-header-cell *matHeaderCellDef>Validez</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Validez:</span> Desde: {{element.desde ? element.desde : 'sin definir'}}<br>
+          Hasta: {{element.hasta ? element.hasta : 'sin definir'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- FORMAPAGO -->
+      <ng-container matColumnDef="formapago">
+        <mat-header-cell *matHeaderCellDef>Forma de pago</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Forma de pago:</span> {{element.formapago.descripcion}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- ESTADO -->
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <ng-container [ngSwitch]="element.estado">
+            <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
+            <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
+            <span class="boton-vencido" *ngSwitchCase="2">VENCIDO</span>
+            <span class="boton-rechazado" *ngSwitchCase="3">RECHAZADO</span>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Acciones:</span>
+
+          <button placement="right" ngbTooltip="Actualizar estado" class="mr-2" mat-icon-button
+            style="background-color: transparent" (click)="openFormActualizar(estadoform,element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button placement="right" ngbTooltip="Ver info" mat-icon-button style="background-color: transparent"
+            (click)="openFormActualizar(info,element)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
+    </mat-table>
+
+
+    <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
 
 
 
-      </div>
+  </div>
 </div>
 
 
@@ -107,20 +116,18 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form name="form" (ngSubmit)="f.form.valid && actualizarPlan()" #f="ngForm"
-            novalidate>
+          <form name="form" (ngSubmit)="f.form.valid && actualizarPlan()" #f="ngForm" novalidate>
 
 
-              <div class="form-row">
+            <div class="form-row">
 
-                  <mat-form-field class="col">
-                      <mat-label for="es">Nuevo estado</mat-label>
-                      <mat-select id="es" name="es" [(ngModel)]="comercioplanSelected.estado"
-                        >
-                        <mat-option *ngFor="let es of estadosplan" [value]="es.id">{{ es.descripcion }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label for="es">Nuevo estado</mat-label>
+                <mat-select id="es" name="es" [(ngModel)]="comercioplanSelected.estado">
+                  <mat-option *ngFor="let es of estadosplan" [value]="es.id">{{ es.descripcion }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
 
             </div>
 
@@ -152,59 +159,62 @@
             </button>
           </div>
 
-              <div class="form-row">
+          <div class="form-row">
 
-                  <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
-                  <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.comercio.nombre}}</mat-list-item>
-              </div>
+            <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.comercio.nombre}}</mat-list-item>
+          </div>
 
-              <div class="form-row">
+          <div class="form-row">
 
-                <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
-                <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.usuario.nombre}}</mat-list-item>
-            </div>
+            <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.usuario.nombre}}</mat-list-item>
+          </div>
 
-            <div class="form-row">
+          <div class="form-row">
 
-              <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
-              <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior.nombre}}</mat-list-item>
+            <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior.nombre}}
+            </mat-list-item>
           </div>
           <div class="form-row">
 
             <mat-list-item class="col-4" role="listitem">Servicio objetivo</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.tipo_servicio.nombre}}</mat-list-item>
-        </div>
+          </div>
 
-        <div class="form-row">
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.formapago.descripcion}}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.formapago.descripcion}}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.desde ? comercioplanSelected.desde : 'sin definir' }}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.desde ? comercioplanSelected.desde :
+              'sin definir' }}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.hasta ? comercioplanSelected.hasta : 'sin definir' }}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.hasta ? comercioplanSelected.hasta :
+              'sin definir' }}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Duracion meses</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.meses }}</mat-list-item>
-        </div>
-        <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Duracion meses</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.meses }}</mat-list-item>
+          </div>
+          <div class="form-row">
 
-          <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
-          <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.importe }}</mat-list-item>
-        </div>
-            <div class="text-right mt-4">
-              <button mat-raised-button type="submit" color="primary">
-                <fa-icon icon="save"></fa-icon>Cerrar
-              </button>
-            </div>
+            <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.importe }}</mat-list-item>
+          </div>
+          <div class="text-right mt-4">
+            <button mat-raised-button type="submit" color="primary">
+              <fa-icon icon="save"></fa-icon>Cerrar
+            </button>
+          </div>
         </div>
       </mat-card>
     </div>

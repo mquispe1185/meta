@@ -1,5 +1,3 @@
-
-
 .img-circle {
     border-radius: 50%;
 }
@@ -17,12 +15,14 @@
     display: none;
   }
   
-  .aprob{
-    background: #D5F5E3;
+.aprob{
+  background: #D5F5E3;
   }
-   .pend{
-    background: #FAD7A0;
-   }
+
+.pend{
+  background: #FAD7A0;
+  }
+
   @media(max-width: 600px) {
     .mobile-label {
       width: 80px;

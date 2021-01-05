@@ -1,7 +1,10 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-6">
-      <span class="titulo">MIS COMERCIOS</span>
+      <div class="row"> 
+        <mat-icon class="icono">store</mat-icon>
+        <span class="titulo">Mis Comercios</span>
+      </div>
     </div>
     <div class="col-6 d-flex justify-content-end">
       <button class="boton-nuevo"
@@ -145,10 +148,6 @@
             <span class="titulo-item">Horarios: </span>
           </div>
           <div class="col-10 col-md-4">
-            <!--     <ng-container *ngFor="let hor of comer.horarios">
-                          <span>{{hor.dia_nombre}}: {{hor.desde}} a {{hor.hasta}}</span><br>
-                          </ng-container> -->
-
 
             <table width="100%" cellspacing="0" cellpadding="5">
               <tr *ngFor="let hor of comer.horarios">
@@ -202,7 +201,7 @@
 
         </div>
 
-      </mat-card>
+      </mat-card> <br>
     </div>
   </div>
 </div>
