@@ -83,3 +83,8 @@
     color: #000000;
     transform: translateY(-3px);
   }
+
+.cuadro {
+    border-left: 1px solid #ee7222;
+    border-bottom: 1px solid #ee7222;
+}

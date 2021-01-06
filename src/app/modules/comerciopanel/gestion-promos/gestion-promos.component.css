@@ -76,6 +76,13 @@
         width: 22% !important;
         }
 
+      .mat-column-formapago {
+          word-wrap: break-word !important;
+          white-space: unset !important;
+          flex: 0 0 15% !important;
+          width: 15% !important;
+        }
+
       .mat-column-estado {
         word-wrap: break-word !important;
         white-space: unset !important;
@@ -86,8 +93,8 @@
       .mat-column-acciones {
           word-wrap: break-word !important;
           white-space: unset !important;
-          flex: 0 0 10% !important;
-          width: 10% !important;
+          flex: 0 0 15% !important;
+          width: 15% !important;
         }
 
   @media(max-width: 600px) {
