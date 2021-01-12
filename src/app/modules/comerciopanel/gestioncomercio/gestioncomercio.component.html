@@ -1,20 +1,24 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-6">
+    <div class="col-8">
       <div class="row"> 
         <mat-icon class="icono">store</mat-icon>
         <span class="titulo">Mis Comercios</span>
       </div>
     </div>
-    <div class="col-6 d-flex justify-content-end">
+    <div class="col-4 d-flex justify-content-end">
       <button class="boton-nuevo"
         (click)="openFormAgregar(crearform)">
         <mat-icon>note_add</mat-icon> Nuevo Comercio
       </button>
+      <button class="boton-nuevo-m"
+      (click)="openFormAgregar(crearform)">
+      <mat-icon>add</mat-icon>
+    </button>
     </div>
   </div> <br>
 
-
+<!-- CUADRO INFORMACION DE COMERCIO -->
   <div *ngFor="let comer of comercios">
     <div>
       <mat-card class="cuadro mb-5">
@@ -45,8 +49,6 @@
           <div class="col-7 col-md-4">
             <span class="font-weight-bold">{{comer.localidad?.nombre}}</span>
           </div>
-
-
         </div>
 
         <div class="row">
@@ -93,7 +95,7 @@
           </div>
 
           <div class="col-7 col-md-4">
-            <span class="font-weight-bold">{{comer.facebook}}</span>
+            <span class="info-item">{{comer.facebook}}</span>
           </div>
         </div>
         <div class="row">
@@ -102,14 +104,14 @@
           </div>
 
           <div class="col-7 col-md-4">
-            <span class="font-weight-bold">{{comer.instagram}}</span>
+            <span class="info-item">{{comer.instagram}}</span>
           </div>
           <div class="col-5 col-md-2">
             <span class="titulo-item"> Página Web: </span>
           </div>
 
           <div class="col-6 col-md-4">
-            <span class="font-weight-bold">{{comer.web}}</span>
+            <span class="info-item">{{comer.web}}</span>
           </div>
         </div>
 
@@ -213,7 +215,7 @@
         <div class="card-body">
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
-              <strong>{{comercio.id ? 'Editar comercio' : 'Alta de comercio'}}</strong>
+              <strong>{{comercio.id ? 'Editar Comercio' : 'Alta de Comercio'}}</strong>
             </h5>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
@@ -371,7 +373,7 @@
             </div>
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
-                <fa-icon icon="save"></fa-icon>Enviar
+                <fa-icon icon="save"></fa-icon>Guardar
               </button>
             </div>
 
@@ -382,7 +384,7 @@
   </div>
 </ng-template>
 
-<!-- HORARIOs-->
+<!-- HORARIOS-->
 <ng-template #formhorario let-modal>
   <div class="container mt-5">
     <div>

@@ -49,6 +49,9 @@
         transform: translateY(-2px);
       }
 
+      .boton-nuevo-m {
+        display: none;
+    }
       .boton-pendiente {
         color: white;
         background: rgb(120, 185, 201);
@@ -97,7 +100,35 @@
           width: 15% !important;
         }
 
-  @media(max-width: 600px) {
+/* CSS PARA MOBILE */
+@media (max-width: 900px) {
+
+  .titulo {
+      font: normal normal 18px sans-serif;
+  }
+  .boton-nuevo {
+      display: none;
+  }
+  .boton-nuevo-m {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      font-family: Century;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #f36904;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.1s ease 0s;
+      cursor: pointer;
+      outline: none;
+      }
+  }
+
+@media(max-width: 600px) {
     .mobile-label {
       width: 100px;
       display: inline-block;
@@ -109,12 +140,25 @@
     }
 
     .mat-row {
-      flex-direction: column;
+      /* flex-direction: column; */
       align-items: start;
-      padding: 8px 24px;
+      padding: 8px 8px;
     }
 /*para que la primer fila se vea correctamente*/
-    mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
+     mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
         padding-left: 0px;
     }
-  }
+    .mat-column-titulo {
+      width: 100% !important;
+    }
+    .mat-column-formapago {
+      width: 100% !important;
+    }
+    .mat-column-estado {
+      width: 100% !important;
+    }
+    .mat-column-acciones {
+      width: 100% !important;
+    }
+
+  } 
