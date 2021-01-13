@@ -117,7 +117,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
   }),
 
   AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyAesg0LcvsEiCke9wvIissLRq6a25vsnaY',
+    apiKey: 'AIzaSyB9EFAVRvy4F7xaXn__GGXz80V8HQWo3c0',
     libraries: ['places']
   }),
 
