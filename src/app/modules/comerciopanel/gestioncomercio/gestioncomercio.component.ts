@@ -200,7 +200,7 @@ selected: TipoServicio;
       this.comercioService.updateComercio(comercio).subscribe(
         cms => {this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
+        this.toastr.success('bien hecho!', 'Ubicación actualizada!'); }
     )
 
     }
@@ -277,6 +277,7 @@ selected: TipoServicio;
                 this.modalService.dismissAll();
                 this.comercios = cms.map(c => new Comercio(c));
                 this.cdRef.detectChanges();
+                this.toastr.success('bien hecho!', 'Foto actualizada!');
                 }
       )
     }

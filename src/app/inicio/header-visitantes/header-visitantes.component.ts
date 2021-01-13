@@ -45,7 +45,7 @@ verLogo = false;
     }
   }
   desplazar(seccion) {
-    console.log('NAVEGANDO');
+
     this.router.navigate(['inicio'], {fragment: seccion});
   }
 
@@ -61,6 +61,9 @@ verLogo = false;
   }
 
   irAPanel(){
+    if (this.tokenService.currentUserData === null || this.tokenService.currentUserData === undefined){
+      this.login();
+    }else{
     switch(this.tokenService.currentUserData.rol_id) {
       case 1: {
         this.router.navigate(['listacomercios']);
@@ -72,6 +75,7 @@ verLogo = false;
       }
 
    }
+    }
   }
 
   irInicio(){

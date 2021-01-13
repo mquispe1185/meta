@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-8">
-      <div class="row"> 
+      <div class="row">
         <mat-icon class="icono">store</mat-icon>
         <span class="titulo">Mis Comercios</span>
       </div>
@@ -412,13 +412,15 @@
                   <div class="form-group col-md-6">
                     <mat-form-field class="col">
                       <input matInput type="time" [(ngModel)]="nuevo_horario.desde" name="desde"
-                        placeholder="Hora Inicio" />
+                        placeholder="Hora Inicio" required #desde="ngModel"/>
+                        <mat-error *ngIf="desde.invalid && desde.errors.required">falta hora</mat-error>
                     </mat-form-field>
                   </div><!-- HoraInicio -->
                   <div class="form-group col-md-6">
                     <mat-form-field class="col">
                       <input matInput type="time" [(ngModel)]="nuevo_horario.hasta" name="hasta"
-                        placeholder="Hora Fin" />
+                        placeholder="Hora Fin" required #hasta="ngModel"/>
+                        <mat-error *ngIf="hasta.invalid && hasta.errors.required">falta hora</mat-error>
                     </mat-form-field>
                   </div><!-- HoraFin -->
                 </div>
