@@ -34,7 +34,9 @@
 
 .contenedor .ubicacion {
   grid-area: ubicacion;
-  justify-self: stretch;
+  /* justify-self: stretch; */
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .contenedor .contacto {
@@ -43,13 +45,9 @@
 
 .contenedor .referencias {
   grid-area: referencias;
-height: 400px;
+  height: 400px;
   margin-bottom: 50px;
 }
-
-
-
-
 
 
 .principal {
@@ -67,7 +65,8 @@ agm-map {
 }
 .nombrecomercio {
   text-align: center;
-  font: normal normal 800 54px/65px Wavehaus;
+  /* font: normal normal 800 54px/65px Wavehaus; */
+  font: normal normal bold 36px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -87,17 +86,18 @@ agm-map {
   opacity: 1;
 }
 
-.recuadroblanco {
+.cuadrocomentarios {
   width: 90%;
-  height: 120px;
-/*   margin: 5px;
-  padding: 5px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029; */
+  height: 140px;
+  margin-bottom: 50px;
   border-radius: 43px;
   opacity: 1;
 }
 
+.comentario {
+  background: #deb0b0;
+  height: 90px;
+}
 .cuadromapa {
   position: relative;
   padding: 10px 20px 20px 20px;
@@ -106,17 +106,17 @@ agm-map {
   box-shadow: 0px 3px 6px #00000029;
 }
 
-.titulo {
+.subtitulo {
   text-align: left;
-  font: normal normal bold 22px Wavehaus;
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
 }
 
 .descripcion {
-  text-align: left;
-  font: normal normal normal 16px Wavehaus;
+  text-align: justify;
+  font: normal normal normal 18px century;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -138,11 +138,22 @@ i {
   opacity: 1;
 }
 
+.botoncomentar {
+  font-size: 12px;
+}
+
+.nick {
+  font: normal normal bold 14px century;
+  color: #ee7222;
+}
 .estrellas {
   float: right;
 
 }
 
+.textweb {
+  color: black;
+}
 /*contado de caracteres*/
 .textarea-wrapper {
   position:relative;
@@ -196,7 +207,7 @@ i {
     height: 200px;
   }
 
-  .recuadroblanco {
+  .recuadrocomentarios {
     width: 100%;
     height: 170px;
   }

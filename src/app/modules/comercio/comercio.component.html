@@ -2,9 +2,11 @@
 
   <div class="titulo">
     <div class="row d-flex justify-content-center">
-      <span class="nombrecomercio">
-        {{comercio?.nombre}}
-      </span>
+      <h1>
+        <span class="nombrecomercio">
+          {{comercio?.nombre}}
+        </span>
+      </h1>
     </div>
     <div class="row d-flex justify-content-center mt-3">
       <span class="subtitulocomercio mr-2">
@@ -25,10 +27,10 @@
     </div>
   </div>
 
-  <div class="descripcion">
+  <div class="">
     <div class="row px-4 pt-2">
-      <span class="titulo">
-        ¿Que ofrecemos?
+      <span class="subtitulo">
+        ¿Que ofrecemos? Zenón
       </span>
     </div>
     <div class="row px-4 pt-2">
@@ -38,18 +40,18 @@
     </div>
   </div>
 
+  <!-- Cuadro Ubicación -->
   <div class="ubicacion">
-
     <div class="titulo mb-2">
-      Ubicación
+      <span class="subtitulo">
+        Ubicación
+      </span>
     </div>
     <div>
       <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lon">
         <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
       </agm-map>
     </div>
-
-
   </div>
 
   <div class="contacto">
@@ -58,8 +60,9 @@
         <i class="fas fa-map-marker-alt fa-2x"></i><span class="info ml-3">{{comercio?.domicilio}}</span>
       </div>
       <div class="row mt-3">
-        <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a href="{{comercio?.web ? 'https://'+comercio.web : '#'}}"
-          target="_blank">{{comercio?.web ? comercio.web : 'sin pagina web'}}</a></span>
+        <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a class="textweb"
+            href="{{comercio?.web ? 'https://'+comercio.web : '#'}}" target="_blank">{{comercio?.web ? comercio.web :
+            'sin pagina web'}}</a></span>
       </div>
       <div class="row mt-3">
         <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio?.telefono}} /
@@ -93,32 +96,29 @@
 
     <div class="row px-4 pt-2 mb-2">
       <div>
-        <span class="titulo">
+        <span class="subtitulo">
           Referencias de nuestros clientes
         </span>
       </div>
-
       <div class="col d-flex justify-content-end">
-        <button mat-raised-button type="button" (click)="crearReferencia(modalref)"
-        color="primary">Comentar
+        <button mat-raised-button class="botoncomentar" type="button" (click)="crearReferencia(modalref)" color="primary">Comentar
         </button>
       </div>
-
     </div>
+
     <div class="row px-4 pt-2">
       <ng-container *ngFor="let ref of referencias">
-        <div class="col-12 col-md-4 recuadroblanco">
-          <span class="titulo">
+        <div class="col-12 col-md-6 cuadrocomentarios">
+          <span class="nick">
             {{ref.usuario.name | titlecase}}
           </span>
-          <p>{{ref.cuerpo}}</p>
+          <p class="comentario">{{ref.cuerpo}}</p>
           <div class="estrellas">
             <ng-container *ngFor="let i of [].constructor(ref.puntaje)">
               <i class="fas fa-star"></i>
             </ng-container>
-
           </div>
-        </div>
+        </div> <br> <br>
       </ng-container>
       <!--     <div class="col-12 col-md-4 recuadroblanco">
                 <span class="titulo">
