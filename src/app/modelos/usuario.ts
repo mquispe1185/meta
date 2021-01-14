@@ -23,7 +23,8 @@ export class Usuario {
   provincia:Provincia;
   departamento:Departamento;
   localidad:Localidad;
-
+  domicilio:string;
+  celular:string;
   habilitado:boolean;
   en_espera:boolean;
   constructor(data?:any){

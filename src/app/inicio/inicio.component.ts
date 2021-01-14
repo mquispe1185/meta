@@ -16,7 +16,8 @@ import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+
 })
 export class InicioComponent implements OnInit {
 
@@ -58,13 +59,11 @@ export class InicioComponent implements OnInit {
               private toastr: ToastrService,
               ) { }
 
+
   ngOnInit(): void {
     console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
     console.log('user data en inicio',this.tokenService.currentUserData);
     this.listen();
-
-
-   // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
    this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
    );
@@ -173,7 +172,7 @@ export class InicioComponent implements OnInit {
   }
 
   buscarPorRubro(buscado){
-    console.log('filtrando por rubros',buscado);
+
    this.comercioService.buscarComerciosRubro(buscado).subscribe(
       cms =>{this.comercios = cms;
         document.getElementById("promo").scrollIntoView();
@@ -187,4 +186,6 @@ export class InicioComponent implements OnInit {
       prs =>{this.promociones = prs;}
     )
   }
+
+
 }

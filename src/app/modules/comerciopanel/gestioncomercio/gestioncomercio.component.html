@@ -358,7 +358,7 @@
               </div>
               <div class="form-group col-6">
                 <mat-slide-toggle [(ngModel)]="comercio.envio" name="env" #env="ngModel" v color="primary"
-                  [checked]="comercio.envio" (change)="cambiarTextoEnvio($event)" [disabled]="disabled">
+                  [checked]="comercio.envio" (change)="cambiarTextoEnvio($event)" >
                   {{msjenvio}}
                 </mat-slide-toggle>
               </div>
@@ -373,7 +373,7 @@
             </div>
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
-                <fa-icon icon="save"></fa-icon>Guardar
+                <mat-icon>save</mat-icon>Guardar
               </button>
             </div>
 
@@ -431,7 +431,7 @@
 
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
-                <fa-icon icon="save"></fa-icon>Guardar
+                <mat-icon>save</mat-icon>Guardar
               </button>
             </div>
 
@@ -593,7 +593,7 @@
 
                 <div class="col-12 text-right">
                   <button mat-raised-button type="submit" color="primary">
-                    <fa-icon icon="save"></fa-icon>Cambiar plan
+                    <mat-icon>save</mat-icon>Cambiar plan
                   </button>
                 </div>
               </div>

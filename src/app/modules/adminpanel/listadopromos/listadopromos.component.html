@@ -57,7 +57,7 @@
           <ng-container [ngSwitch]="element.estado">
 <!--        <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
             <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span> -->
-            
+
             <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
             <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
           </ng-container>
@@ -165,7 +165,7 @@
           </div>
           <div class="text-right mt-4">
             <button mat-raised-button type="submit" color="primary">
-              <fa-icon icon="save"></fa-icon>Cerrar
+              <mat-icon>save</mat-icon>Cerrar
             </button>
           </div>
         </div>
