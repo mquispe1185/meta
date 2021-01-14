@@ -93,15 +93,17 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTooltipModule,
 
     MatDatepickerModule,
-    MatNativeDateModule, 
-  
+    MatNativeDateModule,
+
     NgbModule,
 
     ImageCropperModule
   ],
-  providers: [  
+  providers: [
     MatDatepickerModule,
-    DatePipe  
+    DatePipe
   ],
 })
-export class ComerciopanelModule { }
+export class ComerciopanelModule {
+
+ }

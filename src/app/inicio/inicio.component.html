@@ -174,7 +174,7 @@
           </ng-template>
         </owl-carousel-o>
       </div>
-      
+
     <!-- PROMOCIONES -->
     <div #ben id='promo' class="fondocomercios">
       <br> <br>
@@ -187,25 +187,24 @@
           <div class="cuadropromo mt-2">
 
             <div class="conten">
-              <div class="row">
-                <div class="col-7" id="izq">
-                  <h5 class="titulopromo">{{promo.titulo}}</h5>
-                  <span class="parrafopromo">{{promo.descripcion}}</span> <br>
+              <div id="li">
+                <h5 class="titulopromo">{{promo.titulo}}</h5>
+                <span class="parrafopromo"
+                [class.parrafopromo-bg]="(promo.descripcion.length > 6  && promo.descripcion.length < 9)"
+                [class.parrafopromo-md]="(promo.descripcion.length > 8  && promo.descripcion.length < 21)"
+                [class.parrafopromo-sm]="promo.descripcion.length > 20"
+                >{{promo.descripcion}}</span> <br>
 
-                  <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
-                  </button> <br> <br>
-                  <!-- <span>valido hasta: {{promo.hasta | date:'dd/MM/yyyy'}}</span> -->
+                <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
+                </button> <br> <br>
+              </div>
+              <div id="round-image">
+                <img src="/assets/logos/logo-07c.png" class="redimg">
                 </div>
-
-                <div id="round-image">
-                  <img src="/assets/logos/logo-07c.png" class="redimg">
-                </div>
-
-                <div class="col-5">
-                  <img id="imgder"
-                    [attr.src]="[promo.url != null ? promo.url : 'https://i.ibb.co/whcJdfh/defaultpromo.jpg']"
-                    alt="foto promo">
-                </div>
+              <div id="ld">
+                <img id="imgder"
+                  [attr.src]="[promo.url != null ? promo.url : 'https://i.ibb.co/whcJdfh/defaultpromo.jpg']"
+                  alt="foto promo">
               </div>
             </div>
           </div>
@@ -235,14 +234,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="nombre-comer mt-4">
-                    {{comer.nombre}}
-                  </div>
+                  <p class="nombre-comer mt-4"
+                  [class.marquee]="comer.nombre.length > 24">
+                      <span>{{comer.nombre}}</span>
+                  </p>
                 </div>
-                <!-- <div class="col-3 colboton">
-                      <button type="button" (click)="verComercio(comer)" class="botonredondo">+
-                      </button>
-                  </div> -->
+
               </div>
 
               <div class="desc-comer mt-2">

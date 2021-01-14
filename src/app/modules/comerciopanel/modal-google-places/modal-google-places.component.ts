@@ -11,15 +11,15 @@ export class ModalGooglePlacesComponent implements OnInit {
   @Input() comercio;
   @Output() comercioevent = new EventEmitter<string>();
 
-  latitude: number = -24.194098;
-  longitude: number = -65.3105818;
+  latitude: number;
+  longitude: number;
   zoom: number;
   address: string;
   private geoCoder;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
-  
+
   constructor(public activeModal: NgbActiveModal,
           private zone: NgZone,
           private mapsAPILoader: MapsAPILoader,
@@ -27,6 +27,7 @@ export class ModalGooglePlacesComponent implements OnInit {
 
   ngOnInit() {
        //load Places Autocomplete
+
    this.mapsAPILoader.load().then(() => {
     this.setCurrentLocation();
     this.geoCoder = new google.maps.Geocoder;
@@ -43,7 +44,7 @@ export class ModalGooglePlacesComponent implements OnInit {
     if (addrObj.getPlace().geometry === undefined || addrObj.getPlace().geometry === null) {
         return;
     }
-    
+
     this.zone.run(() => {
       this.comercio.domicilio = addrObj.getPlace().name;
       this.comercio.latitud = addrObj.getPlace().geometry.location.lat();
@@ -52,9 +53,16 @@ export class ModalGooglePlacesComponent implements OnInit {
       this.longitude = addrObj.getPlace().geometry.location.lng();
     });
   }
- 
+
     // Get Current Location Coordinates
     private setCurrentLocation() {
+
+      if (this.comercio.longitud && this.comercio.latitud){
+        this.latitude = +this.comercio.latitud;
+        this.longitude = +this.comercio.longitud;
+        this.zoom = 16;
+        this.getAddress(this.latitude, this.longitude);
+      }else{
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
           this.latitude = position.coords.latitude;
@@ -63,32 +71,33 @@ export class ModalGooglePlacesComponent implements OnInit {
           this.getAddress(this.latitude, this.longitude);
         });
       }
+      }
     }
-  
-  
+
+
     markerDragEnd($event) {
-      console.log('marker dragggg',$event);
+
       this.latitude = $event.coords.lat;
       this.longitude = $event.coords.lng;
       this.getAddress(this.latitude, this.longitude);
     }
-  
+
     getAddress(latitude, longitude) {
+      this.geoCoder = new google.maps.Geocoder;
       this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-        console.log(results);
-        console.log(status);
+
         if (status === 'OK') {
           if (results[0]) {
             this.zoom = 16;
             this.address = results[0].formatted_address;
-          
+
           } else {
             window.alert('No results found');
           }
         } else {
           window.alert('Geocoder failed due to: ' + status);
         }
-  
+
       });
     }
 }

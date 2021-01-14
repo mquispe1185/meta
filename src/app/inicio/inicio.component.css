@@ -24,7 +24,7 @@
   border-radius: 100%;
   position: absolute;
   width: 100%;
-  height: 300px;  
+  height: 300px;
   content: '';
   top: 100%;
   z-index: -999;
@@ -45,7 +45,7 @@
   border-radius: 100%;
   position: absolute;
   width: 100%;
-  height: 300px;  
+  height: 300px;
   content: '';
   top: 100%;
   z-index: -1000;
@@ -263,6 +263,28 @@ input::placeholder {
   opacity: 1;
 }
 
+/*animacion para nombre de comercio*/
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 90%;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+/*fin animacion nombre comercio*/
 .desc-comer {
   text-align: left;
   overflow: hidden;
@@ -330,13 +352,16 @@ input::placeholder {
   padding: 0px;
 }
 
-.parrafopromo-md {
-  font: normal normal 800 54px Century;
+.parrafopromo-bg {
+  font: normal normal 800 44px Century;
 }
 
+.parrafopromo-md {
+  font: normal normal 800 34px Century;
+}
 
 .parrafopromo-sm {
-  font: normal normal 800 33px Century;
+  font: normal normal 800 31px Century;
 }
 
 
@@ -534,6 +559,8 @@ span.credits12 {
   margin-right: 50px;
   margin-left: 20px;
   width: 400px;
+  max-width: 400px;
+  min-width: 400px;
   height: 150px;
   background: #3c3c3c;
   color: #ffffff;
@@ -566,7 +593,7 @@ span.credits12 {
   position: relative;
   height: 100%;
   width: 100%;
-  padding-left: 0px;
+  /* padding-left: 0px; */
 }
 
 #izq{
@@ -588,6 +615,7 @@ span.credits12 {
   border-bottom-left-radius: 50%;
 }
 
+
 #imgder{
   position: absolute;
   top: 0;
@@ -596,7 +624,7 @@ span.credits12 {
   border-top-left-radius: 45%;
   border-bottom-left-radius: 45%;
   width: 100%;
-  height: 100%;
+  height: inherit;
 }
 
 #round-image{
@@ -606,7 +634,7 @@ span.credits12 {
   z-index: 20;
   width: 45px;
   height: 45px;
-  margin-left: 9px;
+  /* margin-left: 9px; */
   margin-top: -15px;
   border-radius: 50%;
 }
@@ -621,6 +649,20 @@ span.credits12 {
   margin-left: -22px;
   margin-top: -23px;
   border-radius: 50%;
+}
+
+#li{
+  position: absolute;
+  width: 55%;
+  height: inherit;
+
+}
+
+#ld{
+  position: absolute;
+  width: 45%;
+  height: inherit;
+  right: 0;
 }
 .text-vertodos {
   color: #f36904;
@@ -674,11 +716,11 @@ span.credits12 {
     margin-top: -80px;
   }
 
-  .cuadropromo {
+ /*  .cuadropromo {
     margin-right: 20px;
     margin-left: 20px;
     width: 350px;
-  }
+  } */
 
   .cuadrocomercio{
     height: 320px;
@@ -809,13 +851,26 @@ span.credits12 {
 }
 
 .cuadropromo {
-  width: 100%;
-  height: 100%;
+  max-width: 330px;
+  min-width: 330px;
+  height: 120px;
 }
 .parrafopromo {
   position: relative;
   font-weight: bolder;
-  font-size: 36px;
+  font: normal normal 800 42px Century;
+}
+
+.parrafopromo-bg {
+  font: normal normal 800 42px Century;
+}
+
+.parrafopromo-md {
+  font: normal normal 800 24px Century;
+}
+
+.parrafopromo-sm {
+  font: normal normal 800 24px Century;
 }
 
 .cuadrocomercio{
@@ -842,5 +897,7 @@ span.credits12 {
     width: 60px;
     height: 60px;
   }
+
+
 }
 /* Fin CSS PARA MOBILE */

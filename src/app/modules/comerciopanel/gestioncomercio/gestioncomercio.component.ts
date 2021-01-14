@@ -97,7 +97,7 @@ selected: TipoServicio;
     this.comercioService.getMisComercios().subscribe(
       cms => {this.comercios = cms.map(c => new Comercio(c));
               localStorage.setItem('miscomercios', JSON.stringify(this.comercios));
-              console.log('mis comerc', cms);
+
              }
     )
   }
@@ -134,7 +134,7 @@ selected: TipoServicio;
 
   getRubros(){
     this.rubroService.getRubros().subscribe(
-      rs => { console.log('rubrooos', rs);
+      rs => {
             this.rubros = rs; }
     );
   }
@@ -196,7 +196,7 @@ selected: TipoServicio;
     }
 
     actualizarUbicacion(comercio){
-      //console.log('comercioooo',comercio);
+
       this.comercioService.updateComercio(comercio).subscribe(
         cms => {this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
@@ -215,7 +215,7 @@ selected: TipoServicio;
       });
     }
     setDia(event, dia){
-      console.log('evento check', event);
+
     }
     addHorario(){
       this.nuevos_horarios = [];
@@ -233,7 +233,7 @@ selected: TipoServicio;
           }
         }
       );
-      console.log('nuevos hor', this.nuevos_horarios);
+
       this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
         hs => {this.comercio.horarios = hs;
           this.modalService.dismissAll();
@@ -290,7 +290,7 @@ selected: TipoServicio;
     }
 
     fileChangeEvent(event: any): void {
-      console.log(event);
+
       this.imageChangedEvent = event;
     }
     imageCropped(event: ImageCroppedEvent) {
@@ -298,7 +298,7 @@ selected: TipoServicio;
 
       //Usage example:
       var file = this.dataURLtoFile(this.croppedImage, 'image.png');
-      console.log(file);
+
       this.nueva_foto = file;
     }
 
@@ -384,7 +384,7 @@ selected: TipoServicio;
 
     openFormPlan(modal, comer){
       this.comercio = comer;
-      console.log('comercio selec', this.comercio);
+
       this.comercioplan.comercio_id = this.comercio.id;
       this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
       this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
@@ -406,7 +406,7 @@ selected: TipoServicio;
 
       this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
       this.comercioService.updateComercioPlan(this.comercioplan).subscribe(
-        res =>{ console.log('comercio pendiente',res);
+        res =>{
           this.modalService.dismissAll();
         let index = this.comercios.findIndex( c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
@@ -417,16 +417,16 @@ selected: TipoServicio;
     }
 
     calcularTotalServicio(servicio){
-      console.log('servicio id',servicio);
+
       this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
-      console.log('seleccionado ser', this.servicios.find(s => s.id === servicio));
+
       this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
 
     }
 
     calcularTotalMes(mes){
       this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
-      console.log('seleccionado', mes);
+
     }
 
     getFormapagos(){
