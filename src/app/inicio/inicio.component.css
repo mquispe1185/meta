@@ -308,6 +308,16 @@ input::placeholder {
   color: #3c3c3c;
   opacity: 1;
 }
+
+.coldomicilio {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .cuadrocomercio:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
@@ -580,7 +590,6 @@ span.credits12 {
   max-width: 100%;
   max-height: 80%;
   vertical-align: middle;
-  /* border-radius: 1em; */
 }
 
 .resize_promo {
@@ -684,7 +693,7 @@ span.credits12 {
     }
 
   .cuadrocomercio {
-    height: 400px;
+    height: 415px;
   }
 }
 
@@ -723,7 +732,7 @@ span.credits12 {
   } */
 
   .cuadrocomercio{
-    height: 320px;
+    height: 340px;
   }
   .nombre-comer {
     font: normal normal 800 18px Century;
@@ -731,7 +740,7 @@ span.credits12 {
 
   .boton-comercio {
     width: 100%;
-    height: 25px;
+    height: 35px;
     font-size: 12px;
     border-radius: 45px;
     }
@@ -871,6 +880,10 @@ span.credits12 {
 
 .parrafopromo-sm {
   font: normal normal 800 24px Century;
+}
+ 
+.resize_fit_center {
+  height: 200px;
 }
 
 .cuadrocomercio{

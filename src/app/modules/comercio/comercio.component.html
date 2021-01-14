@@ -8,16 +8,15 @@
         </span>
       </h1>
     </div>
-    <div class="row d-flex justify-content-center mt-3">
+    <div class="row d-flex justify-content-center mt-1">
       <span class="subtitulocomercio mr-2">
         {{comercio?.rubro?.descripcion}}
       </span>
-      <span class="distanciacomercio">
-       {{comercio?.domicilio}} {{comercio?.localidad.nombre}}
-      </span>
+
     </div>
   </div>
 
+<!-- Seccion Imagen -->
   <div class="imagen">
     <div class="row">
       <!-- <div class="col d-flex justify-content-center"></div> -->
@@ -30,7 +29,7 @@
   <div class="">
     <div class="row px-4 pt-2">
       <span class="subtitulo">
-        ¿Que ofrecemos? Zenón
+        ¿Que ofrecemos?
       </span>
     </div>
     <div class="row px-4 pt-2">
@@ -40,12 +39,15 @@
     </div>
   </div>
 
-  <!-- Cuadro Ubicación -->
+  <!-- Sección Ubicación -->
   <div class="ubicacion">
     <div class="titulo mb-2">
       <span class="subtitulo">
         Ubicación
-      </span>
+      </span> <br>
+      <span class="descripcion">
+        {{comercio?.domicilio}} - {{comercio?.localidad.nombre | titlecase }}
+       </span>
     </div>
     <div>
       <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lon">
@@ -76,6 +78,7 @@
             <td>{{hor.desde}} a {{hor.hasta}}</td>
           </tr>
         </table>
+
       </div>
       <div class="row mt-3">
         <div class="col px-0">
@@ -95,12 +98,12 @@
   <div class="referencias">
 
     <div class="row px-4 pt-2 mb-2">
-      <div>
+      <div class="col-6 col-md-8">
         <span class="subtitulo">
-          Referencias de nuestros clientes
+          Referencias de clientes
         </span>
       </div>
-      <div class="col d-flex justify-content-end">
+      <div class="col-6 col-md-4 d-flex justify-content-end">
         <button mat-raised-button class="botoncomentar" type="button" (click)="crearReferencia(modalref)" color="primary">Comentar
         </button>
       </div>
@@ -108,7 +111,7 @@
 
     <div class="row px-4 pt-2">
       <ng-container *ngFor="let ref of referencias">
-        <div class="col-12 col-md-6 cuadrocomentarios">
+        <div class="col-12 cuadrocomentarios">
           <span class="nick">
             {{ref.usuario.name | titlecase}}
           </span>
@@ -118,33 +121,11 @@
               <i class="fas fa-star"></i>
             </ng-container>
           </div>
-        </div> <br> <br>
+        </div>
       </ng-container>
-      <!--     <div class="col-12 col-md-4 recuadroblanco">
-                <span class="titulo">
-                    Maria Rosa
-                </span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quae consequuntur et! Eos iste
-                    distinctio, quasi labore similique accusantium blanditiis?</p>
-                <div class="estrellas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 recuadroblanco">
-                <span class="titulo">
-                    Julieta Valdez
-                </span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quae consequuntur et! Eos iste
-                    distinctio, quasi labore similique accusantium blanditiis?</p>
-                <div class="estrellas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-            </div> -->
     </div>
 
   </div>
-
-
 
 </div>
 
