@@ -22,7 +22,7 @@
         <mat-icon>note_add</mat-icon> Nueva Promocion
       </button>
       <button class="boton-nuevo-m" (click)="openFormPromo(promoform)">
-        <mat-icon>add</mat-icon>
+        Sumar Promoción
       </button>
     </div>
   </div> <br>
@@ -135,13 +135,13 @@
 
             <div class="form-row">
 
-              <mat-form-field class="col">
+              <!-- <mat-form-field class="col">
                 <mat-label for="fp">Forma de Pago</mat-label>
                 <mat-select id="fp" name="fp" [(ngModel)]="promocion.formapago_id" required>
                   <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
 
             </div>
 

@@ -110,7 +110,7 @@ selected: TipoServicio;
   openFormAgregar(modal){
     this.comercio = new Comercio();
     this.comercio.envio = false;
-    this.msjenvio = 'NO realiza envios';
+    this.msjenvio = 'Delivery: NO';
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -121,9 +121,9 @@ selected: TipoServicio;
   openFormEditarComercio(modal, comer){
     this.comercio = comer;
     if (this.comercio.envio){
-      this.msjenvio = 'Si realiza envios';
+      this.msjenvio = 'Delivery: SI';
       }else{
-      this.msjenvio = 'NO realiza envios';
+      this.msjenvio = 'Delivery: NO';
       }
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -162,9 +162,9 @@ selected: TipoServicio;
 
   cambiarTextoEnvio(e){
     if (e.checked){
-    this.msjenvio = 'Si realiza envios';
+    this.msjenvio = 'Delivery SI';
     }else{
-    this.msjenvio = 'NO realiza envios';
+    this.msjenvio = 'Delivery NO';
     }
   }
 
