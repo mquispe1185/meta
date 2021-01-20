@@ -13,7 +13,7 @@
       </button>
       <button class="boton-nuevo-m"
       (click)="openFormAgregar(crearform)">
-      <mat-icon>add</mat-icon>
+      Sumar Comercio
     </button>
     </div>
   </div> <br>
@@ -348,7 +348,7 @@
               </div>
             </div><!-- instagram twitter-->
             <div class="row">
-              <div class="form-group col-6">
+              <div class="form-group col-5">
                 <mat-form-field>
                   <input matInput type="text" placeholder="email" minlength="2" [(ngModel)]="comercio.email" name="mail"
                     #mail="ngModel" />
@@ -356,7 +356,7 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6">
+              <div class="form-group col-7">
                 <mat-slide-toggle [(ngModel)]="comercio.envio" name="env" #env="ngModel" v color="primary"
                   [checked]="comercio.envio" (change)="cambiarTextoEnvio($event)" >
                   {{msjenvio}}

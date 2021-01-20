@@ -110,12 +110,12 @@
       display: none;
   }
   .boton-nuevo-m {
-      width: 35px;
+      width: 75px;
       height: 35px;
       display: flex;
       align-items: center;
       font-family: Century;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
       color: #ffffff;
       background-color: #f36904;
