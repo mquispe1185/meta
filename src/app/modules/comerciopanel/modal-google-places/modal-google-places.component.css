@@ -2,3 +2,19 @@ agm-map {
     height: 250px;
     
 }
+
+.textopaso {
+    font: normal normal 12px sans-serif;
+    font-weight: bold;
+    color: #f36904;
+    display: flex;
+    align-items: flex-end;
+    text-align: end;
+}
+
+.cruz {
+    background: transparent;
+    color: #f36904;
+    border: transparent;
+    font: normal normal 36px sans-serif;
+}

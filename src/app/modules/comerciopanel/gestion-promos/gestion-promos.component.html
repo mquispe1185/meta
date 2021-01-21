@@ -186,13 +186,13 @@
             <div class="form-row">
 
               <mat-form-field class="col">
-                <input matInput type="text" placeholder="descripcion" maxlength="24" [(ngModel)]="promocion.descripcion"
+                <input matInput type="text" placeholder="Descripción" maxlength="24" [(ngModel)]="promocion.descripcion"
                   name="desc" #desc="ngModel" required />
 
-                <mat-error *ngIf="desc.invalid && desc.errors.required">Descripcion es obligatorio</mat-error>
-                <mat-error *ngIf="desc.invalid && desc.errors.minlength">Descripcion debe tener al menos 2 caracteres
+                <mat-error *ngIf="desc.invalid && desc.errors.required">Descripción es obligatorio</mat-error>
+                <mat-error *ngIf="desc.invalid && desc.errors.minlength">Descripción debe tener al menos 2 caracteres
                 </mat-error>
-                <mat-error *ngIf="desc.invalid && desc.errors.maxlength">Descripcion NO debe superar los 24 caracteres
+                <mat-error *ngIf="desc.invalid && desc.errors.maxlength">Descripción NO debe superar los 24 caracteres
                 </mat-error>
               </mat-form-field>
             </div>
