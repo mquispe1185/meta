@@ -165,7 +165,7 @@
           </div>
           <div class="text-center col-12 col-md-6">
               <span class="titulo-item">Foto: </span> <br> <br>
-            <img class="foto"
+            <img class="foto" (click)="openFormFoto(modalfoto,comer)"
               [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
               alt="">
           </div>
@@ -216,7 +216,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>{{comercio.id ? 'Editar Comercio' : 'Alta de Comercio'}}</strong>
-            </h5>
+            </h5> <span *ngIf="creando_new" class="text-danger">(PASO 1 DE 4)</span>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -243,10 +243,11 @@
                     <mat-option *ngFor="let ru of rubros" [value]="ru.id">{{ ru.descripcion }}
                     </mat-option>
                   </mat-select>
+                  <mat-error *ngIf="rub.invalid && rub.errors.required">Rubro es obligatorio</mat-error>
                 </mat-form-field>
               </div>
 
-            </div><!-- Apellido, Nombres-->
+            </div><!--nombre de comercio y rubro-->
             <div class="row">
               <div class="form-group col-6">
                 <mat-form-field>
@@ -268,10 +269,10 @@
               </div>
             </div><!-- telefono, celular -->
 
-            <div class="row">
+            <div class="row" hidden>
 
               <mat-form-field class="col">
-                <input matInput type="text" placeholder="Domicilio" required minlength="2"
+                <input matInput type="text" placeholder="Domicilio" minlength="2"
                   [(ngModel)]="comercio.domicilio" name="dom" #dom="ngModel" />
                 <mat-error *ngIf="dom.invalid && dom.errors.required">Domicilio es obligatorio</mat-error>
                 <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
@@ -284,30 +285,33 @@
               <div class="form-group col-md-4">
                 <mat-form-field class="col">
                   <mat-label for="prov">Provincia</mat-label>
-                  <mat-select id="prov" name="prov" [(ngModel)]="comercio.provincia_id"
-                    (selectionChange)="buscarDtos($event)">
+                  <mat-select id="prov" name="prov" [(ngModel)]="comercio.provincia_id" required
+                    (selectionChange)="buscarDtos($event)" #prov="ngModel">
                     <mat-option *ngFor="let pr of provincias" [value]="pr.id">{{ pr.nombre }}
                     </mat-option>
                   </mat-select>
+                  <mat-error *ngIf="prov.invalid && prov.errors.required">Elija provincia</mat-error>
                 </mat-form-field>
               </div>
               <div class="form-group col-md-4" *ngIf="departamentos.length > 0">
                 <mat-form-field class="col">
                   <mat-label for="dto">Departamento</mat-label>
-                  <mat-select id="dto" name="dto" [(ngModel)]="comercio.departamento_id"
-                    (selectionChange)="buscarLocs($event)">
+                  <mat-select id="dto" name="dto" [(ngModel)]="comercio.departamento_id" required
+                    (selectionChange)="buscarLocs($event)" #dto="ngModel">
                     <mat-option *ngFor="let dto of departamentos" [value]="dto.id">{{ dto.nombre }}
                     </mat-option>
                   </mat-select>
+                  <mat-error *ngIf="dto.invalid && dto.errors.required">Elija departamento</mat-error>
                 </mat-form-field>
               </div>
               <div class="form-group col-md-4" *ngIf="localidades.length > 0">
                 <mat-form-field class="col">
                   <mat-label for="loc">Localidad</mat-label>
-                  <mat-select id="loc" name="loc" [(ngModel)]="comercio.localidad_id">
+                  <mat-select id="loc" name="loc" [(ngModel)]="comercio.localidad_id" #loc="ngModel" required>
                     <mat-option *ngFor="let loc of localidades" [value]="loc.id">{{ loc.nombre }}
                     </mat-option>
                   </mat-select>
+                  <mat-error *ngIf="loc.invalid && loc.errors.required">Elija localidad</mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -373,7 +377,7 @@
             </div>
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
-                <mat-icon>save</mat-icon>Guardar
+                <mat-icon>save</mat-icon>Crear
               </button>
             </div>
 
@@ -393,7 +397,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Horarios</strong>
-            </h5>
+            </h5> <span *ngIf="creando_new" class="text-danger">(PASO 3 DE 4)</span>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -494,7 +498,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Tags</strong>
-            </h5>
+            </h5><span *ngIf="creando_new" class="text-danger">(PASO 2 DE 4)</span>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>

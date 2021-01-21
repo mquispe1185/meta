@@ -9,6 +9,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class ModalGooglePlacesComponent implements OnInit {
   @Input() comercio;
+  @Input() creando_new;
   @Output() comercioevent = new EventEmitter<string>();
 
   latitude: number;

@@ -1,5 +1,5 @@
 <div class="modal-header mt-5">
-    <h6>Seleccion ubicación</h6>
+    <h6>Seleccion ubicación</h6> <span *ngIf="creando_new" class="text-danger">(PASO 4 DE 4)</span>
      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -14,7 +14,7 @@
         <!--    <input  google-place type="text" class="form-control" (onSelect)="setAddress($event)"
             placeholder="Buscar ubicacion" autocorrect="off" autocapitalize="off" spellcheck="off" #search> -->
 
-         <!--    <input placeholder="search for location" autocorrect="off" autocapitalize="off" 
+         <!--    <input placeholder="search for location" autocorrect="off" autocapitalize="off"
             spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"> -->
 
             <input type="text"
@@ -39,7 +39,7 @@
           <h5>Dirección: {{comercio.domicilio}}</h5>
           <div>Latitud: {{comercio.latitud}}</div>
           <div>Longitud: {{comercio.longitud}}</div>
-           
+
        </div>
-   </div>   
+   </div>
 </div>

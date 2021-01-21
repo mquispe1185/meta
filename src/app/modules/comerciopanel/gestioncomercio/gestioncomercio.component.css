@@ -53,8 +53,11 @@
     max-height:80%;
     vertical-align: middle;
     border-radius: 1em;
-    }
 
+  }
+.foto:hover {
+    cursor: pointer;
+}
     .boton-nuevo {
         width: 150px;
         height: 35px;
@@ -90,7 +93,7 @@
     padding: 2px;
     width: 120px;
 }
-  
+
 .boton-config:hover {
     background-color: #3c3c3c;
     box-shadow: 0px 15px 20px rgba(95, 87, 82, 0.4);

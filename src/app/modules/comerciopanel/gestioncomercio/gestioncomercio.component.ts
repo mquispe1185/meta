@@ -7,7 +7,7 @@ import { HorarioService } from './../../../servicios/horario.service';
 import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
 import { Comercio } from './../../../modelos/comercio';
-import { Component, OnInit, NgZone, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { Provincia } from '../../../modelos/provincia';
 import { Departamento } from '../../../modelos/departamento';
 import { Localidad } from '../../../modelos/localidad';
@@ -26,6 +26,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { DatosService } from '../../../servicios/datos.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface Palabras {
   //utilizado para las palabras claves
@@ -74,6 +75,10 @@ servicios: TipoServicio[];
 formapagos: Formapago[];
  meses = Semana.meses;
 selected: TipoServicio;
+
+creando_new =false;
+@ViewChild('modaltags') modaltags: TemplateRef<any>;
+@ViewChild('formhorario') formhorario: TemplateRef<any>;
   constructor(  public tokenService: AngularTokenService,
                 private modalService: NgbModal,
                 private ubicacionService: UbicacionService,
@@ -88,8 +93,7 @@ selected: TipoServicio;
   ngOnInit(): void {
 
     this.getComercios();
-    this.getProvincias();
-    this.getRubros();
+
   }
 
   getComercios(){
@@ -102,14 +106,18 @@ selected: TipoServicio;
     )
   }
 
-/*   getLinkPicture(comer) {
-   if (comer){}
-    return comer.url_foto + '?' + (new Date()).getTime();
-} */
 
   openFormAgregar(modal){
     this.comercio = new Comercio();
+    this.creando_new = true;
     this.comercio.envio = false;
+
+    if (this.provincias.length === 0){
+      this.getProvincias();
+    }
+    if (this.rubros.length === 0){
+      this.getRubros();
+    }
     this.msjenvio = 'Delivery: NO';
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -125,6 +133,13 @@ selected: TipoServicio;
       }else{
       this.msjenvio = 'Delivery: NO';
       }
+
+    if (this.provincias.length === 0){
+      this.getProvincias();
+    }
+    if (this.rubros.length === 0){
+      this.getRubros();
+    }
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -169,10 +184,13 @@ selected: TipoServicio;
   }
 
   altaComercio(){
+    this.creando_new = true;
     this.comercioService.createComercio(this.comercio).subscribe(
-      cms => {this.comercios.push(new Comercio(cms));
+      cms => { this.comercio = new Comercio(cms)
+        this.comercios.push(this.comercio);
           this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Nuevo comercio creado!'); }
+        this.toastr.success('bien hecho!', 'Nuevo comercio creado!');
+      this.openFormTags(this.modaltags, this.comercios[this.comercios.length-1]) }
     )
   }
 
@@ -180,7 +198,11 @@ selected: TipoServicio;
     this.comercioService.updateComercio(this.comercio).subscribe(
       cms => {this.comercios = cms.map(c => new Comercio(c));
           this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Datos actualizados!'); }
+        this.toastr.success('bien hecho!', 'Datos actualizados!');
+        console.log('crean new en update',this.creando_new);
+        if (this.creando_new){
+          this.openFormHorario(this.formhorario, this.comercio)
+        }}
     )
   }
 
@@ -188,6 +210,7 @@ selected: TipoServicio;
   openFormAgregarUbicacion(element){
       const modalRefCity = this.modalService.open(ModalGooglePlacesComponent);
       modalRefCity.componentInstance.comercio = element;
+      modalRefCity.componentInstance.creando_new = this.creando_new;
        modalRefCity.componentInstance.comercioevent.subscribe(($e) => {
         this.actualizarUbicacion($e);
         this.modalService.dismissAll();
@@ -200,6 +223,7 @@ selected: TipoServicio;
       this.comercioService.updateComercio(comercio).subscribe(
         cms => {this.comercios = cms.map(c => new Comercio(c));
           //this.modalService.dismissAll();
+          this.creando_new = false;
         this.toastr.success('bien hecho!', 'Ubicación actualizada!'); }
     )
 
@@ -237,7 +261,10 @@ selected: TipoServicio;
       this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
         hs => {this.comercio.horarios = hs;
           this.modalService.dismissAll();
-          this.toastr.success('bien hecho!', 'Horario/s agregados!'); }
+          this.toastr.success('bien hecho!', 'Horario/s agregados!');
+          if (this.creando_new){
+            this.openFormAgregarUbicacion(this.comercio)
+          } }
       )
     }
 
@@ -437,9 +464,12 @@ selected: TipoServicio;
 
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
+    //this.creando_new = false;
     if (reason === ModalDismissReasons.ESC) {
+      this.creando_new = false;
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      this.creando_new = false;
       return 'by clicking on a backdrop';
     } else {
       return  `with: ${reason}`;
