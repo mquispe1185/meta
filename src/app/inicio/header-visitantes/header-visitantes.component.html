@@ -49,8 +49,12 @@
           <button type="button" [routerLink]="['/inicio']" fragment="seccioncomercio" class="menu-boton btn btn-link">Comercios</button>
           <!-- <button type="button" [routerLink]="['/inicio']" fragment="promo"
             class="menu-boton btn btn-link">Beneficios</button> -->
-          <button type="button" (click)="irAPanel()"
-            class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+
+            <ng-container *ngIf="tokenService.currentUserData?.rol_id !==1">
+              <button type="button" (click)="irAPanel()"
+              class="menu-boton btn btn-link btn-outline-light">#SumaTuComercio</button>
+            </ng-container>
+
 
           <button *ngIf="tokenService.currentUserData" (click)="irAPanel()" type="button" class="menu-boton btn btn-link">
             <mat-icon class="example-icon mr-1" aria-hidden="false">verified_user</mat-icon>

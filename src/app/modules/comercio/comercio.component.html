@@ -23,6 +23,7 @@
       <img class="recuadroimagen"
         [attr.src]="[comercio?.url_foto != null ? comercio.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
         alt="">
+        
     </div>
   </div>
 
@@ -65,7 +66,7 @@
         <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a class="textweb"
             href="{{comercio?.web ? 'https://'+comercio.web : '#'}}" target="_blank">{{comercio?.web ? comercio.web :
             'sin pagina web'}}</a></span>
-      </div>
+      </div> 
       <div class="row mt-3">
         <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio?.telefono}} /
           {{comercio?.celular}}</span>

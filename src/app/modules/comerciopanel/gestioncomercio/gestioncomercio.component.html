@@ -325,14 +325,14 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6">
+              <div class="form-group col-6"> 
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercio.facebook"
                     name="face" #face="ngModel" />
                   <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
                   </mat-error>
-                </mat-form-field>
-              </div>
+                </mat-form-field> 
+              </div> 
             </div><!-- web y facebook-->
             <div class="row">
               <div class="form-group col-6">
@@ -353,7 +353,7 @@
               </div>
             </div><!-- instagram twitter-->
             <div class="row">
-              <div class="form-group col-6">
+              <div class="form-group col-5 col-md-7">
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Email" minlength="2" [(ngModel)]="comercio.email" name="mail"
                     #mail="ngModel" />
@@ -361,7 +361,7 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6">
+              <div class="form-group col-7 col-md-5 mt-3">
                 <mat-slide-toggle [(ngModel)]="comercio.envio" name="env" #env="ngModel" v color="primary"
                   [checked]="comercio.envio" labelPosition="before" (change)="cambiarTextoEnvio($event)">
                   {{msjenvio}}
