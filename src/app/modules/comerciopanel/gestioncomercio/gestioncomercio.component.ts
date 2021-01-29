@@ -462,6 +462,22 @@ creando_new =false;
       )
     }
 
+    //ayuda para face
+    helpFace(modal){
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+
+    helpIg(modal){
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     //this.creando_new = false;

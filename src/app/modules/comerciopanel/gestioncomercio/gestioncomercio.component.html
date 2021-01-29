@@ -208,6 +208,7 @@
   </div>
 </div>
 
+<!-- FORMULARIO PARA CREAR O EDITAR COMERCIO -->
 <ng-template #crearform let-modal>
   <div class="container mt-5">
     <div>
@@ -321,29 +322,38 @@
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Página web" minlength="2" [(ngModel)]="comercio.web"
                     name="web" #web="ngModel" />
+                    <button mat-icon-button matSuffix (click)="helpFace(helpweb)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
                   <mat-error *ngIf="web.invalid && web.errors.minlength">pagina web debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6"> 
+              <div class="form-group col-6">
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercio.facebook"
                     name="face" #face="ngModel" />
+                    <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
                   <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
                   </mat-error>
-                </mat-form-field> 
-              </div> 
+                </mat-form-field>
+              </div>
             </div><!-- web y facebook-->
             <div class="row">
               <div class="form-group col-6">
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Instagram" minlength="2" [(ngModel)]="comercio.instagram"
                     name="ins" #ins="ngModel" />
+                    <button mat-icon-button matSuffix (click)="helpIg(helpig)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
                   <mat-error *ngIf="ins.invalid && ins.errors.minlength">instagram debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6">
+              <div class="form-group col-6" hidden>
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Twitter" minlength="2" [(ngModel)]="comercio.twitter"
                     name="tw" #tw="ngModel" />
@@ -611,4 +621,53 @@
   </div>
 
 
+</ng-template>
+
+
+<ng-template #helpface let-modal>
+  <div class="container">
+
+      <mat-card class="tarjeta-info">
+        <div class="modal-header">
+          <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;cerrar</span>
+          </button>
+        </div>
+        <p>solo ingrese el nombre como aparece en la siguiente imagen</p>
+        <img class="foto" src="https://i.ibb.co/Z2c2rsm/ayudaface.jpg"
+        alt="">
+      </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #helpig let-modal>
+  <div class="container">
+
+      <mat-card class="tarjeta-info">
+        <div class="modal-header">
+          <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;cerrar</span>
+          </button>
+        </div>
+        <p>solo ingrese el nombre como aparece en la siguiente imagen</p>
+        <img class="foto" src="https://i.ibb.co/SdDv4Kp/ayuda-IGpsd.jpg"
+        alt="">
+      </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #helpweb let-modal>
+  <div class="container">
+
+      <mat-card class="tarjeta-info">
+        <div class="modal-header">
+          <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;cerrar</span>
+          </button>
+        </div>
+        <p>solo ingrese su direccion web como en la imagen, sin www ni https</p>
+        <img class="foto" src="https://i.ibb.co/gVjN3dZ/ayuda-web.jpg"
+        alt="">
+      </mat-card>
+  </div>
 </ng-template>

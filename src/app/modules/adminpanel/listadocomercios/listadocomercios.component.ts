@@ -38,7 +38,8 @@ export class ListadocomerciosComponent implements OnInit {
 
   getComercios(){
     this.comercioService.getComercios().subscribe(
-      cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+      cms =>{ console.log('comercioss',cms);
+              this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
               this.lstComercios.paginator = this.paginatorCom;
              }
     )
@@ -110,6 +111,16 @@ export class ListadocomerciosComponent implements OnInit {
                 this.lstComercios.paginator = this.paginatorCom;
                 this.toastr.success('Aprobado!', 'Nuevo comercio aprobado!'); }
     )
+  }
+
+
+  openFormInfo(modal,element){
+    this.comercioSelected = {...element};
+    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
    //Método para cerrar Modal con Tecla Escape.
