@@ -59,7 +59,7 @@ import { PolServicioComponent } from './inicio/pol-servicio/pol-servicio.compone
 import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 
-
+import {apikey} from '../app/modelos/apikey';
 
 @NgModule({
   declarations: [
@@ -117,7 +117,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
   }),
 
   AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyB9EFAVRvy4F7xaXn__GGXz80V8HQWo3c0',
+    apiKey: apikey.GAK,
     libraries: ['places']
   }),
 
