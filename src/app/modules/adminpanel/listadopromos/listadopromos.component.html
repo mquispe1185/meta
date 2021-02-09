@@ -72,7 +72,7 @@
           <button *ngIf="element.vencido === false" placement="right"
             ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2" mat-icon-button
             style="background-color: transparent" (click)="dialogAprobarPromo(element)">
-            <mat-icon>{{element.estado === 1 ? 'clear' : 'done_outline'}}</mat-icon>
+            <mat-icon>{{element.estado === 1 ? 'unpublished' : 'check_circle'}}</mat-icon>
           </button>
           <button placement="right" ngbTooltip="Ver info" mat-icon-button style="background-color: transparent"
             (click)="openFormInfo(info,element)">

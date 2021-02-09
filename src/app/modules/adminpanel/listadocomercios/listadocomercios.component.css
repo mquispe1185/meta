@@ -1,12 +1,15 @@
 .icono {
   color: #f36904;
-  margin-left: 10px;
+  margin-left: 15px;
   margin-right: 10px;
 }
 .titulo {
   font: normal normal 24px sans-serif;
+  font-weight: bold;
   color: #f36904;
 }
+
+
 
 .img-circle {
     border-radius: 50%;
@@ -31,18 +34,25 @@
   display: none;
 }
 
+.btn-habilitado {
+  background-color: #49c24e;
+  width: 20px;
+  height: 20px;
+  border-color: #49c24e;
+}
+.btn-deshabilitado {
+  background-color: #F7B843;
+  border-color: #F7B843;
+  width: 20px;
+  height: 20px;
+}
+
 .mat-column-nombre {
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 0 0 22% !important;
   width: 22% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+
 }
 
 .mat-column-tiposervicio {
@@ -50,13 +60,13 @@
   white-space: unset !important;
   flex: 0 0 10% !important;
   width: 10% !important;
-  overflow-wrap: break-word;
+  /* overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
-  hyphens: auto;
+  hyphens: auto; */
 }
 
 .detalle {
@@ -76,6 +86,10 @@
 }
 
 @media(max-width: 600px) {
+  .tarjeta-info{
+    display: none;
+  }
+
   .mobile-label {
     width: 80px;
     display: inline-block;
@@ -94,5 +108,11 @@
 /*para que la primer fila se vea correctamente*/
     mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type {
       padding-left: 0px;
+    }
+    .mat-column-nombre {
+      width: 100% !important;
+    }
+    .mat-column-tiposervicio {
+      width: 100% !important;
     }
   }
