@@ -264,6 +264,9 @@
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Celular" minlength="1" [(ngModel)]="comercio.celular"
                     name="celular" #celular="ngModel" />
+                    <button mat-icon-button matSuffix (click)="helpFace(helpcel)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
                   <mat-error *ngIf="celular.invalid && celular.errors.required">Cel. es obligatorio</mat-error>
                   <mat-error *ngIf="celular.invalid && celular.errors.minlength">Cel. debe tener al menos 2 caracteres
                   </mat-error>
@@ -668,6 +671,21 @@
         <p>solo ingrese su direccion web como en la imagen, sin www ni https</p>
         <img class="foto" src="https://i.ibb.co/gVjN3dZ/ayuda-web.jpg"
         alt="">
+      </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #helpcel let-modal>
+  <div class="container">
+
+      <mat-card class="tarjeta-info">
+        <div class="modal-header">
+          <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;cerrar</span>
+          </button>
+        </div>
+        <p>ingrese caracteristica y numero sin espacios y sin el 15, ejemplo:</p>
+      <h2>3874455660</h2>
       </mat-card>
   </div>
 </ng-template>

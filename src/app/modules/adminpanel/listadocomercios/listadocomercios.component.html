@@ -145,6 +145,77 @@
                 </mat-form-field>
               </div>
             </div>
+
+            <div class="row">
+              <div class="form-group col-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Teléfono" minlength="1" [(ngModel)]="comercioSelected.telefono"
+                    name="telefono" #telefono="ngModel" />
+                  <mat-error *ngIf="telefono.invalid && telefono.errors.required">Tel. es obligatorio</mat-error>
+                  <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Celular" minlength="1" [(ngModel)]="comercioSelected.celular"
+                    name="celular" #celular="ngModel" />
+                    <button mat-icon-button matSuffix type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
+                  <mat-error *ngIf="celular.invalid && celular.errors.required">Cel. es obligatorio</mat-error>
+                  <mat-error *ngIf="celular.invalid && celular.errors.minlength">Cel. debe tener al menos 2 caracteres
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- telefono, celular -->
+
+            <div class="row">
+              <div class="form-group col-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Página web" minlength="2" [(ngModel)]="comercioSelected.web"
+                    name="web" #web="ngModel" />
+                 <!--    <button mat-icon-button matSuffix (click)="helpFace(helpweb)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button> -->
+                  <mat-error *ngIf="web.invalid && web.errors.minlength">pagina web debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercioSelected.facebook"
+                    name="face" #face="ngModel" />
+                   <!--  <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button> -->
+                  <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- web y facebook-->
+            <div class="row">
+              <div class="form-group col-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Instagram" minlength="2" [(ngModel)]="comercioSelected.instagram"
+                    name="ins" #ins="ngModel" />
+                   <!--  <button mat-icon-button matSuffix (click)="helpIg(helpig)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button> -->
+                  <mat-error *ngIf="ins.invalid && ins.errors.minlength">instagram debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-6" hidden>
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Twitter" minlength="2" [(ngModel)]="comercioSelected.twitter"
+                    name="tw" #tw="ngModel" />
+                  <mat-error *ngIf="tw.invalid && tw.errors.minlength">twitter debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- instagram twitter-->
+
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
                 <mat-icon>save</mat-icon>Actualizar

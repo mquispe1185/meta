@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularTokenService } from 'angular-token';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { ToastrService } from 'ngx-toastr';
 import { ComercioService } from 'src/app/servicios/comercio.service';
 import { ReferenciaService } from 'src/app/servicios/referencia.service';
@@ -27,11 +28,12 @@ export class ComercioComponent implements OnInit {
               public tokenService: AngularTokenService,
               private refeService:ReferenciaService,
               private modalService: NgbModal,
+              public deviceService: DeviceDetectorService,
               private router: Router,
               private toastr: ToastrService,) { }
 
   ngOnInit(): void {
-
+    console.log('es mobilee??',this.deviceService.isMobile());
     if(localStorage.hasOwnProperty("comercio_id")){
       let comercio_id = localStorage.getItem('comercio_id');
       this.comercioService.getComercio(+comercio_id).subscribe(
@@ -89,6 +91,7 @@ export class ComercioComponent implements OnInit {
   contadorChar(event){
     this.restan = 240 - event.length ;
   }
+
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

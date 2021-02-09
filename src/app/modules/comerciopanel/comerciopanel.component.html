@@ -120,7 +120,26 @@
 
 <!--   VISTA PARA COMERCIOS EN ALTA -->
   <ng-template #panel>
-    <app-gestioncomercio></app-gestioncomercio>
+    <!-- <app-gestioncomercio></app-gestioncomercio> -->
+
+    <ul ngbNav #nav="ngbNav" [destroyOnHide]="false" class="nav-tabs mt-5">
+      <li [ngbNavItem]="1" [destroyOnHide]="false">
+        <a ngbNavLink>Mis comercios</a>
+        <ng-template ngbNavContent>
+          <app-gestioncomercio></app-gestioncomercio>
+        </ng-template>
+
+      </li>
+
+      <li [ngbNavItem]="2" [destroyOnHide]="true">
+        <a ngbNavLink>Mis Promos</a>
+        <ng-template ngbNavContent>
+          <app-gestion-promos></app-gestion-promos>
+        </ng-template>
+
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </ng-template>
 
 
