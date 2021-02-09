@@ -4,7 +4,7 @@ position: relative;
 }
 
 .rectangulo {
-margin: 0px;
+  margin: 0px;
   width: 100%;
   height: 45px;
   /* background: #ee7222 0% 0% no-repeat padding-box; */
@@ -30,6 +30,15 @@ margin: 0px;
   right: 0;
   display: none;
 }
+
+
+.btn-ancho {
+  display: inline;
+  width: 200px;
+}
+
+
+
 /* Contenedor Menu Boton Cel */
 .contcel {
   position: fixed;

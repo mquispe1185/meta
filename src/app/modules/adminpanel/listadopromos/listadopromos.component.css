@@ -4,11 +4,12 @@
 
 .icono {
   color: #f36904;
-  margin-left: 10px;
+  margin-left: 15px;
   margin-right: 10px;
 }
 .titulo {
   font: normal normal 24px sans-serif;
+  font-weight: bold;
   color: #f36904;
 }
 
