@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularTokenService } from 'angular-token';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -24,19 +25,26 @@ export class ComercioComponent implements OnInit {
   referencia:Referencia;
   referencias:Referencia[];
   restan= 240;
+  wsp:string;
+  public safeURL: SafeResourceUrl;
   constructor(private comercioService:ComercioService,
               public tokenService: AngularTokenService,
               private refeService:ReferenciaService,
               private modalService: NgbModal,
               public deviceService: DeviceDetectorService,
               private router: Router,
+              private route: ActivatedRoute,
+              private sanitizer:DomSanitizer,
               private toastr: ToastrService,) { }
 
   ngOnInit(): void {
-    console.log('es mobilee??',this.deviceService.isMobile());
-    if(localStorage.hasOwnProperty("comercio_id")){
-      let comercio_id = localStorage.getItem('comercio_id');
-      this.comercioService.getComercio(+comercio_id).subscribe(
+
+   let comerid = this.route.snapshot.paramMap.get('comercio');
+
+    //if(localStorage.hasOwnProperty("comercio_id")){
+    if(comerid != null){
+
+      this.comercioService.getComercio(+comerid).subscribe(
         cm =>{this.comercio= cm;
           this.lat = +this.comercio.latitud;
           this.lon = +this.comercio.longitud;}
@@ -46,14 +54,20 @@ export class ComercioComponent implements OnInit {
     this.lat = +this.comercio.latitud;
     this.lon = +this.comercio.longitud;
     }
-    console.log('comercio en ver',this.comercio);
+
     this.zoom = 16;
+    if (this.deviceService.isMobile()){
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+54'+this.comercio.celular);
+     // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
+    }else{
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=54'+this.comercio.celular);
+    }
     this.getReferencias();
   }
 
   getReferencias(){
     this.refeService.getReferencias(this.comercio.id).subscribe(
-      refs =>{ console.log('referenciasss',refs);
+      refs =>{
                 this.referencias = refs;
       }
     )
@@ -62,7 +76,7 @@ export class ComercioComponent implements OnInit {
   crearReferencia(modal){
 
     if (this.tokenService.currentUserData){
-      console.log('logeuado para comentar??',this.tokenService.currentUserData.rol_id);
+
     this.referencia = new Referencia();
     this.referencia.puntaje = 0;
     this.restan = 240;

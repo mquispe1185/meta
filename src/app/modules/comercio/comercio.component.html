@@ -47,7 +47,7 @@
         Ubicación
       </span> <br>
       <span class="descripcion">
-        {{comercio?.domicilio}} - {{comercio?.localidad.nombre | titlecase }}
+        {{comercio?.domicilio}} - {{comercio?.localidad?.nombre | titlecase }}
        </span>
     </div>
     <div *ngIf="comercio.latitud && comercio.longitud">
@@ -90,12 +90,16 @@
         <div class="col d-flex justify-content-end">
 
           <span class="nick mr-2">Contactar Local:</span>
-          <a href="{{comercio?.facebook ? comercio.facebook : 'https://www.facebook.com/'}}"
+          <a *ngIf="comercio.facebook" href="{{comercio.facebook}}"
             target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-          <a href="{{comercio?.instagram ? comercio.instagram : 'https://www.instagram.com/'}}"
+        <!--     <a href="{{comercio.facebook}}"
+            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
+       <!--     <a href="fb://100001040626741"
+            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
+          <a *ngIf="comercio.instagram" href="{{comercio.instagram}}"
             target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
-          <!-- <a href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a> -->
-          <a [href]="deviceService.isMobile() ? 'whatsapp://send?phone=54'+comercio.celular : 'https://web.whatsapp.com/'" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
+          <!-- <a *ngIf="!deviceService.isMobile()" href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a> -->
+          <a *ngIf="comercio.celular" [href]="safeURL" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
 
         </div>
       </div>

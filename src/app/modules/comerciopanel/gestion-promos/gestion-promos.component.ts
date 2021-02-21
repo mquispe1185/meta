@@ -76,12 +76,17 @@ export class GestionPromosComponent implements OnInit {
     //this.comercio = comer;
     this.error = false;
     this.promocion = new Promocion();
-    this.desde = new FormControl(new Date());
-    this.hasta = new FormControl(new Date());
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+
+    this.desde = new FormControl(today);
+    this.hasta = new FormControl(tomorrow);
 
     this.imageChangedEvent = '';
     this.nueva_foto = undefined;
     this.getFormapagos();
+
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -121,6 +126,29 @@ export class GestionPromosComponent implements OnInit {
     this.promocion.importe = this.promocion.totalCosto(comercio.tipo_servicio.id);
   }
 
+  calcuarPromoOnComercioChange(ev){
+
+    let dife;let des:any;let has:any;
+    if (this.hasta.value < this.desde.value){
+      this.error = true;
+      this.mensaje_error = 'fecha hasta debe ser mayor a fecha desde';
+    }else{
+     this.error = false;
+     has = new Date(this.hasta.value);
+     has.setHours(0,0,0,0);
+     des = new Date(this.desde.value);
+     des.setHours(0,0,0,0);
+     dife =  Math.floor(( has - des) / 86400000);
+    }
+     this.promocion.duracion = dife;
+     let comercio;
+     if (this.promocion.comercio_id){
+       comercio = this.mis_comercios.find(element => element.id === this.promocion.comercio_id);
+     }else{
+       comercio = this.mis_comercios.find(element => element.id === this.promocion.comercio.id);
+     }
+     this.promocion.importe = this.promocion.totalCosto(comercio.tipo_servicio.id);
+  }
 
   crearPromo(){
     this.promocion.desde = this.datepipe.transform(new Date(this.desde.value),'yyyy-MM-dd');

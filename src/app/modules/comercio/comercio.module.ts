@@ -43,6 +43,7 @@ import { QuienesComponent } from './quienes/quienes.component';
 
 
 
+
 @NgModule({
   declarations: [ComercioComponent, QuienesComponent],
   imports: [
@@ -87,6 +88,7 @@ import { QuienesComponent } from './quienes/quienes.component';
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
+
   ]
 })
 export class ComercioModule { }

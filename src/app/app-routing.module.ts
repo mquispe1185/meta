@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => ComerciopanelModule
   },
   {
-    path:'comercio',
+    path:'comercio/:comercio',
     component: ComercioComponent,
     loadChildren: () => ComercioModule
   },

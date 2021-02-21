@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, AfterViewInit, Input, ElementRef } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { ComercioService } from '../../servicios/comercio.service';
   styleUrls: ['./header-visitantes.component.css']
 })
 export class HeaderVisitantesComponent implements OnInit {
-
+  @ViewChild('message') message: ElementRef;
 verLogo = false;
 @Input('esInicio') esInicio:boolean;
   constructor(public tokenService: AngularTokenService,
@@ -103,18 +103,5 @@ verLogo = false;
       error => {this.router.navigate(['inicio']);}
     );
   }
-
-
-  // getComercios(){
-  //   this.comercioService.getComercios().subscribe(
-  //     cms =>{this.comercios = cms;
-  //             console.log('mis comerc',cms);
-  //            }
-  //   )
-  // }
-
-  // buscarComercios(){
-  //   console.log('buscandoooo', this.buscado);
-  // }
 
 }

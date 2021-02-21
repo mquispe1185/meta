@@ -201,6 +201,10 @@
             <mat-icon>save</mat-icon>Editar Datos
           </button>
 
+          <button mat-raised-button type="submit" class="boton-config"
+          (click)="dialogEliminarComercio(comer)">
+          <mat-icon>delete</mat-icon>Eliminar
+        </button>
         </div>
 
       </mat-card> <br>
@@ -358,13 +362,13 @@
               </div>
               <div class="form-group col-6" hidden>
                 <mat-form-field class="col-12">
-                  <input matInput type="text" placeholder="Twitter" minlength="2" [(ngModel)]="comercio.twitter"
+                  <input matInput type="text" placeholder="facebook id" minlength="2" [(ngModel)]="comercio.facebook_id"
                     name="tw" #tw="ngModel" />
-                  <mat-error *ngIf="tw.invalid && tw.errors.minlength">twitter debe tener al menos 2 letras
+                  <mat-error *ngIf="tw.invalid && tw.errors.minlength">facebook id debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div><!-- instagram twitter-->
+            </div><!-- instagram facebook id-->
             <div class="row">
               <div class="form-group col-5 col-md-7">
                 <mat-form-field class="col-12">

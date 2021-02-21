@@ -478,6 +478,25 @@ creando_new =false;
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
+
+    dialogEliminarComercio(element){
+      this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar al comercio ${element.nombre} ?`)
+        .then(
+          (confirm) => {(confirm) ? this.eliminarComercio(element) : console.log("cancelado");
+                        }
+        ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    }
+
+    eliminarComercio(element){
+      element.activo = false;
+
+      this.comercioService.deleteComercio(element).subscribe(
+        cms =>{    let index = this.comercios.findIndex( p => p.id === element.id);
+                    this.comercios.splice(index,1);
+                  this.toastr.error('Eiminado!', 'Comercio eliminado!'); }
+      )
+    }
+
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     //this.creando_new = false;

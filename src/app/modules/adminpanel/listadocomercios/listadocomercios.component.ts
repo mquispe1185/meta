@@ -16,6 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListadocomerciosComponent implements OnInit {
 
   lstComercios:any;
+  aux_comercios:Comercio[];
   dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio','acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
  comercioSelected:Comercio = new Comercio();
@@ -38,8 +39,8 @@ export class ListadocomerciosComponent implements OnInit {
 
   getComercios(){
     this.comercioService.getComercios().subscribe(
-      cms =>{ console.log('comercioss',cms);
-              this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+      cms =>{ this.aux_comercios = cms.map(c => new Comercio(c));
+              this.lstComercios = new MatTableDataSource(this.aux_comercios);
               this.lstComercios.paginator = this.paginatorCom;
              }
     )
@@ -78,8 +79,8 @@ export class ListadocomerciosComponent implements OnInit {
 
   openFormEditar(modal,comer){
     this.comercioSelected = new Comercio(comer);
-    console.log('comercio selec',comer);
-    console.log('tipo comer',this.comercioSelected.getTipoServicio());
+    console.log('comercio selec',this.comercioSelected);
+    console.log('tipo serv',this.comercioSelected.getTipoServicio());
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -106,10 +107,13 @@ export class ListadocomerciosComponent implements OnInit {
 
   eliminarComercio(element){
     element.activo = false;
+
     this.comercioService.deleteComercio(element).subscribe(
-      cms =>{this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+      cms =>{    let index = this.aux_comercios.findIndex( p => p.id === element.id);
+                  this.aux_comercios.splice(index,1);
+               this.lstComercios = new MatTableDataSource(this.aux_comercios);
                 this.lstComercios.paginator = this.paginatorCom;
-                this.toastr.success('Aprobado!', 'Nuevo comercio aprobado!'); }
+                this.toastr.error('Eiminado!', 'Comercio eliminado!'); }
     )
   }
 

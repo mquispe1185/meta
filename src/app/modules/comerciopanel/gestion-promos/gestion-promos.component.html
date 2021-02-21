@@ -126,7 +126,8 @@
             <div class="form-row mt-3">
               <mat-form-field class="col">
                 <mat-label for="com">Comercio</mat-label>
-                <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id" required>
+                <mat-select id="com" name="com" [(ngModel)]="promocion.comercio_id"
+                (selectionChange)="calcuarPromoOnComercioChange($event)" required>
                   <mat-option *ngFor="let com of mis_comercios" [value]="com.id">{{ com.nombre }}
                   </mat-option>
                 </mat-select>

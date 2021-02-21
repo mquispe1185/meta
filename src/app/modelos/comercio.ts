@@ -18,7 +18,7 @@ export class Comercio {
     web:string;
     facebook:string;
     instagram:string;
-    twitter:string;
+    facebook_id:string;
     latitud:string;
     longitud:string;
     email:string;
@@ -48,7 +48,7 @@ export class Comercio {
     }
 
     getTipoServicio(){
-      switch(this.tipo_servicio_id) {
+      switch(this.tipo_servicio.id) {
         case 0: {
            return 'GRATUITO';
 
