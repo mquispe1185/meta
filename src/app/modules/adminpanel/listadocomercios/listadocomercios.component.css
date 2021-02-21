@@ -85,6 +85,13 @@
   background: #F7B843; 
 }
 
+.card-body {
+  padding: 0px;
+}
+
+.txt-info{
+  word-wrap: break-word;
+}
 @media(max-width: 600px) {
   .tarjeta-info{
     display: none;

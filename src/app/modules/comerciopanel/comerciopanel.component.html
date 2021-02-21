@@ -1,25 +1,4 @@
-
 <div class="container">
-
-<!--   <div class="row pt-2 mb-2">
-    <div class="col-6">
-      <div class="row ">
-        <mat-icon class="icono">list</mat-icon>
-        <h5 class="titulo"> Gestione sus Comercios</h5>
-      </div>
-    </div>
-    <div class="col-6 d-flex justify-content-end">
-      <mat-card class="tarjeta-info">
-        <mat-card-header>
-          <div mat-card-avatar
-            [ngStyle]="{'background-image': 'url('+tokenService.currentUserData?.image+')', 'background-size': 'cover'  }">
-          </div>
-          <mat-card-title>Usuario: {{tokenService.currentUserData?.name}}</mat-card-title>
-          <mat-card-subtitle>{{tokenService.currentUserData?.email}}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </div>
-  </div>  -->
 
   <div *ngIf="tokenService.currentUserData?.habilitado === false;then formalta else panel"></div>
 
@@ -29,11 +8,11 @@
       <div class="titulo">
         <h5 class="modal-title" ngbAutofocus>Solicitar Alta</h5>
       </div>
-      <div class="example-container col-6">
+      <div class="example-container">
         <mat-card class="tarjeta-info">
           <form name="form" (ngSubmit)="f.form.valid && altaUsuario()" #f="ngForm" novalidate>
-            <div class="form-row">
-
+    
+            <div class="col-12 col-md-6">
               <mat-form-field class="example-full-width">
                 <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
                   [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel" />
@@ -41,10 +20,10 @@
                 <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
                 </mat-error>
               </mat-form-field>
-
             </div><!-- Apellido, Nombres-->
+
             <div class="form-row">
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <mat-form-field class="example-full-width">
                   <input matInput type="text" placeholder="telefono" minlength="1" [(ngModel)]="usuario.telefono"
                     name="telefono" #telefono="ngModel" />
@@ -52,7 +31,7 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <mat-form-field class="example-full-width">
                   <input matInput type="text" placeholder="celular" minlength="1" required [(ngModel)]="usuario.celular"
                     name="celular" #celular="ngModel" />
@@ -62,7 +41,7 @@
                 </mat-form-field>
               </div>
             </div><!-- telefono, celular -->
-            <div class="form-row">
+            <div class="col-12 col-md-6">
 
               <mat-form-field class="example-full-width">
                 <input matInput type="text" placeholder="Domicilio" required minlength="2"
@@ -75,7 +54,7 @@
             </div><!-- Domicilio-->
 
             <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="col-12 col-md-6">
                 <mat-form-field class="example-full-width">
                   <mat-label for="prov">Provincia</mat-label>
                   <mat-select id="prov" name="prov" [(ngModel)]="usuario.provincia_id"
@@ -85,7 +64,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="form-group col-md-4" *ngIf="departamentos.length > 0">
+              <div class="col-12 col-md-6" *ngIf="departamentos.length > 0">
                 <mat-form-field class="example-full-width">
                   <mat-label for="dto">Departamento</mat-label>
                   <mat-select id="dto" name="dto" [(ngModel)]="usuario.departamento_id"
@@ -95,7 +74,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="form-group col-md-4" *ngIf="localidades.length > 0">
+              <div class="col-12 col-md-6" *ngIf="localidades.length > 0">
                 <mat-form-field class="example-full-width">
                   <mat-label for="loc">Localidad</mat-label>
                   <mat-select id="loc" name="loc" [(ngModel)]="usuario.localidad_id">
