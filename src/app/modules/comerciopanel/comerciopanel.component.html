@@ -12,14 +12,16 @@
         <mat-card class="tarjeta-info">
           <form name="form" (ngSubmit)="f.form.valid && altaUsuario()" #f="ngForm" novalidate>
     
-            <div class="col-12 col-md-6">
-              <mat-form-field class="example-full-width">
-                <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
-                  [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel" />
-                <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
-                <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
-                </mat-error>
-              </mat-form-field>
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
+                    [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel" />
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
             </div><!-- Apellido, Nombres-->
 
             <div class="form-row">
@@ -41,16 +43,17 @@
                 </mat-form-field>
               </div>
             </div><!-- telefono, celular -->
-            <div class="col-12 col-md-6">
 
-              <mat-form-field class="example-full-width">
-                <input matInput type="text" placeholder="Domicilio" required minlength="2"
-                  [(ngModel)]="usuario.domicilio" name="dom" #dom="ngModel" />
-                <mat-error *ngIf="dom.invalid && dom.errors.required">Domicilio es obligatorio</mat-error>
-                <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
-                </mat-error>
-              </mat-form-field>
-
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Domicilio" required minlength="2"
+                    [(ngModel)]="usuario.domicilio" name="dom" #dom="ngModel" />
+                  <mat-error *ngIf="dom.invalid && dom.errors.required">Domicilio es obligatorio</mat-error>
+                  <mat-error *ngIf="dom.invalid && dom.errors.minlength">Domicilio debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
             </div><!-- Domicilio-->
 
             <div class="form-row">
@@ -103,7 +106,7 @@
 
     <ul ngbNav #nav="ngbNav" [destroyOnHide]="false" class="nav-tabs mt-5">
       <li [ngbNavItem]="1" [destroyOnHide]="false">
-        <a ngbNavLink>Mis comercios</a>
+        <a ngbNavLink class="txt-solapa">Mis comercios</a>
         <ng-template ngbNavContent>
           <app-gestioncomercio></app-gestioncomercio>
         </ng-template>
@@ -111,7 +114,7 @@
       </li>
 
       <li [ngbNavItem]="2" [destroyOnHide]="true">
-        <a ngbNavLink>Mis Promos</a>
+        <a ngbNavLink class="txt-solapa">Mis Promos</a>
         <ng-template ngbNavContent>
           <app-gestion-promos></app-gestion-promos>
         </ng-template>

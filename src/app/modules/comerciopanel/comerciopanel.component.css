@@ -3,6 +3,9 @@
   margin-bottom: 200px;
 }
 
+.a {
+  color: darkgrey;
+}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   color: #f36904;
   background-color: #fff;
@@ -45,4 +48,9 @@ input {
 
   .example-full-width {
     width: 100%;
+  }
+
+  .txt-solapa {
+    font-weight: bold;
+    color: #707070;
   }

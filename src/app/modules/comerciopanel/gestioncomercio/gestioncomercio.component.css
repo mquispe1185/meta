@@ -61,6 +61,7 @@
     color: #f36904;
     border: transparent;
     font: normal normal 36px sans-serif;
+    font-weight: bold;
 }
 
 .cruz:focus {
