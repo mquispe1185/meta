@@ -437,6 +437,7 @@ input::placeholder {
   letter-spacing: 0px;
   color: #7b7b7b;
   opacity: 1;
+  cursor: pointer;
 }
 
 .rubros-icon {
@@ -879,7 +880,7 @@ span.credits12 {
 .parrafopromo-sm {
   font: normal normal 800 24px Century;
 }
- 
+
 .resize_fit_center {
   height: 200px;
 }

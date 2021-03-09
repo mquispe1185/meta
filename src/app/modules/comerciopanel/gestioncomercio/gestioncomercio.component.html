@@ -338,19 +338,6 @@
               </div>
               <div class="form-group col-6">
                 <mat-form-field class="col-12">
-                  <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercio.facebook"
-                    name="face" #face="ngModel" />
-                    <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
-                      <mat-icon>help_outline</mat-icon>
-                      </button>
-                  <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div><!-- web y facebook-->
-            <div class="row">
-              <div class="form-group col-6">
-                <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Instagram" minlength="2" [(ngModel)]="comercio.instagram"
                     name="ins" #ins="ngModel" />
                     <button mat-icon-button matSuffix (click)="helpIg(helpig)" type="button">
@@ -360,15 +347,36 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-              <div class="form-group col-6" hidden>
+            </div><!-- web y instagram-->
+            <div class="row">
+              <div class="form-group col-6">
+
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercio.facebook"
+                    name="face" #face="ngModel" />
+                    <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button>
+                  <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-6 mt-3">
+                <mat-slide-toggle [(ngModel)]="comercio.es_fanpage" name="ef" #ef="ngModel" color="primary"
+                [checked]="comercio.es_fanpage" labelPosition="before">
+                ¿Es una fanpage?
+              </mat-slide-toggle>
+              </div>
+
+            <!-- FACE ID  <div class="form-group col-6" hidden>
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="facebook id" minlength="2" [(ngModel)]="comercio.facebook_id"
                     name="tw" #tw="ngModel" />
                   <mat-error *ngIf="tw.invalid && tw.errors.minlength">facebook id debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
-              </div>
-            </div><!-- instagram facebook id-->
+              </div> -->
+            </div><!-- face y facebook id-->
             <div class="row">
               <div class="form-group col-5 col-md-7">
                 <mat-form-field class="col-12">
@@ -379,7 +387,7 @@
                 </mat-form-field>
               </div>
               <div class="form-group col-7 col-md-5 mt-3">
-                <mat-slide-toggle [(ngModel)]="comercio.envio" name="env" #env="ngModel" v color="primary"
+                <mat-slide-toggle [(ngModel)]="comercio.envio" name="env" #env="ngModel" color="primary"
                   [checked]="comercio.envio" labelPosition="before" (change)="cambiarTextoEnvio($event)">
                   {{msjenvio}}
                 </mat-slide-toggle>
@@ -641,7 +649,7 @@
           </button>
         </div>
         <p>Ingrese la URL de su perfil de Facebook</p>
-        <img class="foto" src="https://i.ibb.co/Z2c2rsm/ayudaface.jpg"
+        <img class="foto" src="https://i.ibb.co/31zLnXS/helpface.jpg"
         alt="">
       </mat-card>
   </div>
@@ -657,7 +665,7 @@
           </button>
         </div>
         <p>Ingrese la URL de su perfil de Instagram</p>
-        <img class="foto" src="https://i.ibb.co/SdDv4Kp/ayuda-IGpsd.jpg"
+        <img class="foto" src="https://i.ibb.co/zfTVp4w/helpig.jpg"
         alt="">
       </mat-card>
   </div>

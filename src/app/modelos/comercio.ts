@@ -42,7 +42,7 @@ export class Comercio {
     tipo_servicio_id:number;
     tipo_servicio:TipoServicio;
     estado:number; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
-
+    es_fanpage:boolean;
     constructor(data?: any) {
       Object.assign(this, data);
     }

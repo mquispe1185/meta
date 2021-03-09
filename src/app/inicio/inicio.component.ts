@@ -160,7 +160,7 @@ export class InicioComponent implements OnInit {
 
   verMasComercios(){
     this.comercioService.getVerMasComercios(this.comercios.length).subscribe(
-      cms =>{ this.comercios.concat(cms);}
+      cms =>{ this.comercios = this.comercios.concat(cms);}
     )
   }
   buscarComercios(){

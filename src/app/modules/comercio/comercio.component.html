@@ -90,12 +90,12 @@
         <div class="col d-flex justify-content-end">
 
           <span class="nick mr-2">Contactar Local:</span>
-          <a *ngIf="comercio.facebook" href="{{comercio.facebook}}"
+          <!-- <a *ngIf="comercio.facebook" href="{{comercio.facebook}}"
+            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
+          <a *ngIf="!deviceService.isMobile()" href="{{comercio.facebook}}"
             target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-        <!--     <a href="{{comercio.facebook}}"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
-       <!--     <a href="fb://100001040626741"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
+           <a *ngIf="deviceService.isMobile()" [href]="faceapp"
+            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
           <a *ngIf="comercio.instagram" href="{{comercio.instagram}}"
             target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
           <!-- <a *ngIf="!deviceService.isMobile()" href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a> -->

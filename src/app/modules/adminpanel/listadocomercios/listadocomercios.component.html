@@ -191,25 +191,25 @@
               </div>
               <div class="col-12 col-md-6">
                 <mat-form-field class="col-12">
-                  <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercioSelected.facebook"
-                    name="face" #face="ngModel" />
-                   <!--  <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
-                      <mat-icon>help_outline</mat-icon>
-                      </button> -->
-                  <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div><!-- web y facebook-->
-            <div class="row">
-              <div class="form-group col-12 col-md-6">
-                <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Instagram" minlength="2" [(ngModel)]="comercioSelected.instagram"
                     name="ins" #ins="ngModel" />
                    <!--  <button mat-icon-button matSuffix (click)="helpIg(helpig)" type="button">
                       <mat-icon>help_outline</mat-icon>
                       </button> -->
                   <mat-error *ngIf="ins.invalid && ins.errors.minlength">instagram debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- web y instagram-->
+            <div class="row">
+              <div class="form-group col-12 col-md-6">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercioSelected.facebook"
+                    name="face" #face="ngModel" />
+                   <!--  <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
+                      <mat-icon>help_outline</mat-icon>
+                      </button> -->
+                  <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -221,8 +221,18 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div><!-- instagram facebook_id-->
+            </div><!-- facebook, facebook_id-->
+            <div class="row">
+              <div class="form-group col-12 col-md-6">
+                <mat-slide-toggle [(ngModel)]="comercioSelected.es_fanpage" name="ef" #ef="ngModel" color="primary"
+                [checked]="comercioSelected.es_fanpage" labelPosition="before">
+                ¿Es una fanpage?
+              </mat-slide-toggle>
+              </div>
+              <div class="form-group col-12 col-md-6">
 
+              </div>
+            </div><!-- es fanpage?-->
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
                 <mat-icon>save</mat-icon>Actualizar
@@ -252,7 +262,7 @@
             </button>
           </div>
           <div class="row justify-content-center">
-            <strong>Principal</strong> 
+            <strong>Principal</strong>
           </div>
           <div class="form-row">
             <mat-list-item class="col-4" role="listitem">Nombre</mat-list-item>
@@ -281,7 +291,7 @@
           </div>
           <br>
           <div class="row justify-content-center">
-            <strong>Contacto</strong> 
+            <strong>Contacto</strong>
           </div>
           <div class="form-row">
             <mat-list-item class="col-4" role="listitem">Tel./Cel</mat-list-item>
@@ -294,17 +304,25 @@
             <mat-list-item class="col-4" role="listitem">Web</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioSelected.web}}</mat-list-item>
           </div>
-          <div class="form-row">
 
-            <mat-list-item class="col-4" role="listitem">Facebook</mat-list-item>
-            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.facebook}}</mat-list-item>
-          </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Instagram</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioSelected.instagram}}</mat-list-item>
           </div>
 
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Facebook</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.facebook}}</mat-list-item>
+          </div>
+
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Facebook ID</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.facebook_id}}</mat-list-item>
+          </div>
+          <div *ngIf="comercioSelected.facebook" class="form-row">
+            <mat-list-item class="col-4" role="listitem">Tipo Face</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.es_fanpage ? 'Fanpage': 'Perfil Personal'}}</mat-list-item>
+          </div>
           <!--  <div class="text-right mt-4">
             <button mat-raised-button type="submit" color="primary">
               <mat-icon>save</mat-icon>Cerrar

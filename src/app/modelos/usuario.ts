@@ -9,6 +9,7 @@ export class Usuario {
   rol:Rol;
   //login: string;
  // nickname: string;
+  name: string;//usado solo para recibir data de gmail
   nombre: string;
   dni: string;
   //sexo: number;

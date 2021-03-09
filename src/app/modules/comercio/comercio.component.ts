@@ -25,8 +25,8 @@ export class ComercioComponent implements OnInit {
   referencia:Referencia;
   referencias:Referencia[];
   restan= 240;
-  wsp:string;
-  public safeURL: SafeResourceUrl;
+  public faceapp:SafeResourceUrl;
+  public safeURL:SafeResourceUrl;
   constructor(private comercioService:ComercioService,
               public tokenService: AngularTokenService,
               private refeService:ReferenciaService,
@@ -40,31 +40,42 @@ export class ComercioComponent implements OnInit {
   ngOnInit(): void {
 
    let comerid = this.route.snapshot.paramMap.get('comercio');
-
+    //console.log('comercio iddd',comerid)
     //if(localStorage.hasOwnProperty("comercio_id")){
     if(comerid != null){
-
+      //console.log('comercio iddd not null',comerid)
       this.comercioService.getComercio(+comerid).subscribe(
         cm =>{this.comercio= cm;
           this.lat = +this.comercio.latitud;
-          this.lon = +this.comercio.longitud;}
+          this.lon = +this.comercio.longitud;
+          this.afterComercio();}
       )
     }else{
     this.comercio = JSON.parse(localStorage.getItem('comercio'));
     this.lat = +this.comercio.latitud;
     this.lon = +this.comercio.longitud;
+    this.afterComercio();
     }
 
+
+  }
+
+  afterComercio(){
     this.zoom = 16;
     if (this.deviceService.isMobile()){
+      //console.log('celularrr',this.comercio.celular);
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+54'+this.comercio.celular);
-     // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
+      if(this.comercio.es_fanpage){
+      this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://page/'+this.comercio.facebook_id);
+      }else{
+        this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://profile/'+this.comercio.facebook_id);
+      }
+      // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
     }else{
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=54'+this.comercio.celular);
     }
     this.getReferencias();
   }
-
   getReferencias(){
     this.refeService.getReferencias(this.comercio.id).subscribe(
       refs =>{
@@ -86,7 +97,7 @@ export class ComercioComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     }else{
-      console.log('entramos a loguearnos');
+      //console.log('entramos a loguearnos');
       localStorage.setItem('redirect',this.router.url);
       this.tokenService.signInOAuth('google');
     }
