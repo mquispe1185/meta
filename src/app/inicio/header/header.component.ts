@@ -73,6 +73,25 @@ export class HeaderComponent implements OnInit {
    }
 
   }
+
+  irAPanel(){
+    if (this.tokenService.currentUserData === null || this.tokenService.currentUserData === undefined){
+      this.login();
+    }else{
+    switch(this.tokenService.currentUserData.rol_id) {
+      case 1: {
+        this.router.navigate(['listacomercios']);
+        break;
+      }
+      case 2: case 3: {
+        this.router.navigate(['comerciopanel']);
+        break;
+      }
+
+   }
+    }
+  }
+
   salir():void{
     this.tokenService.signOut().subscribe(res => {
       localStorage.clear();

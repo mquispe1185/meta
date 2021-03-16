@@ -29,6 +29,7 @@ export class Promocion {
     descuento:number;
     codigo:string;
     url:string;
+    vistas:number;
     constructor(data?: any) {
       Object.assign(this, data);
     }

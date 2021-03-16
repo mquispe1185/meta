@@ -58,6 +58,16 @@ export class ComercioService {
     return this.http.put(url, comercio_id);
   }
 
+  addVisitaLinkComercio(link:number,comercio_id:number): Observable<any>{
+    const url = `${environment.API_URL}/add_visita_links`;
+    return this.http.put(url, {comercio_id: comercio_id,link: link});
+  }
+
+  getEstadisticaLinks(comercio_id:number): Observable<Comercio>{
+    const url = `${environment.API_URL}/estadistica_links?comercio_id=${comercio_id}`;
+    return this.http.get<Comercio>(url);
+  }
+
   createComercio(comercio: Comercio): Observable<any>{
     return this.http.post<Comercio>(this.API_URL, comercio);
   }

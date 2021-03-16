@@ -130,15 +130,10 @@ export class InicioComponent implements OnInit {
     localStorage.removeItem('comercio');
     if(Number.isInteger(comer)){
       localStorage.setItem('comercio_id',comer);
-      this.comercioService.addVisitaComercio(comer).subscribe(
-        res=>{ this.router.navigate(['comercio',comer.id]);}
-      )
     }else{
     localStorage.setItem('comercio',JSON.stringify(comer));
-    this.comercioService.addVisitaComercio(comer.id).subscribe(
-      res=>{ this.router.navigate(['comercio',comer.id]);}
-    )
     }
+    this.router.navigate(['comercio',comer.id]);
   }
 
   salir(){

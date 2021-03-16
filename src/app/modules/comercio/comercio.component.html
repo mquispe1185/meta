@@ -66,7 +66,8 @@
       </div>
       <div class="row mt-3">
         <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a class="textweb"
-            href="{{comercio?.web ? 'https://'+comercio.web : '#'}}" target="_blank">{{comercio?.web ? comercio.web :
+            href="{{comercio?.web ? 'https://'+comercio.web : ''}}" (click)="sumarClick(3)"
+            target="_blank">{{comercio?.web ? comercio.web :
             'sin pagina web'}}</a></span>
       </div>
       <div class="row mt-3">
@@ -92,14 +93,14 @@
           <span class="nick mr-2">Contactar Local:</span>
           <!-- <a *ngIf="comercio.facebook" href="{{comercio.facebook}}"
             target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
-          <a *ngIf="!deviceService.isMobile()" href="{{comercio.facebook}}"
+          <a *ngIf="!deviceService.isMobile() && comercio.facebook" href="{{comercio.facebook}}" (click)="comercio.facebook && sumarClick(1)"
+            target="_blank"><i class="fab fa-facebook fa-2x mr-2" ></i></a>
+           <a *ngIf="deviceService.isMobile() && comercio.facebook" [href]="faceapp" (click)="comercio.facebook && sumarClick(1)"
             target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-           <a *ngIf="deviceService.isMobile()" [href]="faceapp"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-          <a *ngIf="comercio.instagram" href="{{comercio.instagram}}"
+          <a *ngIf="comercio.instagram && comercio.instagram" href="{{comercio.instagram}}" (click)="comercio.instagram && sumarClick(2)"
             target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
           <!-- <a *ngIf="!deviceService.isMobile()" href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a> -->
-          <a *ngIf="comercio.celular" [href]="safeURL" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
+          <a *ngIf="comercio.celular" [href]="safeURL" target="_blank" (click)="comercio.celular && sumarClick(4)"><i class="fab fa-whatsapp fa-2x"></i></a>
 
         </div>
       </div>

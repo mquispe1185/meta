@@ -77,6 +77,8 @@ formapagos: Formapago[];
 selected: TipoServicio;
 
 creando_new =false;
+//para mostrar estadisticas
+comercio_estadistica:Comercio;
 @ViewChild('modaltags') modaltags: TemplateRef<any>;
 @ViewChild('formhorario') formhorario: TemplateRef<any>;
   constructor(  public tokenService: AngularTokenService,
@@ -462,6 +464,21 @@ creando_new =false;
       )
     }
 
+    verEstadisticas(modal,comer){
+      this.comercio = comer;
+      this.comercio_estadistica = new Comercio();
+      this.comercioService.getEstadisticaLinks(this.comercio.id).subscribe(
+        est =>{
+                this.comercio_estadistica = est;
+                console.log("daatos estadistica", est);
+        }
+      )
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
     //ayuda para face
     helpFace(modal){
       this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

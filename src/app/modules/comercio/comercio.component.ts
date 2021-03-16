@@ -61,6 +61,7 @@ export class ComercioComponent implements OnInit {
   }
 
   afterComercio(){
+    this.comercioService.addVisitaComercio(this.comercio.id).subscribe();
     this.zoom = 16;
     if (this.deviceService.isMobile()){
       //console.log('celularrr',this.comercio.celular);
@@ -76,6 +77,7 @@ export class ComercioComponent implements OnInit {
     }
     this.getReferencias();
   }
+
   getReferencias(){
     this.refeService.getReferencias(this.comercio.id).subscribe(
       refs =>{
@@ -117,6 +119,9 @@ export class ComercioComponent implements OnInit {
     this.restan = 240 - event.length ;
   }
 
+  sumarClick(opcion){
+    this.comercioService.addVisitaLinkComercio(opcion, this.comercio.id).subscribe();
+  }
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
