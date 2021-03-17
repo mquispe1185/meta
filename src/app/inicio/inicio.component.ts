@@ -127,13 +127,9 @@ export class InicioComponent implements OnInit {
 
   verComercio(comer){
     localStorage.removeItem('comercio_id');
-    localStorage.removeItem('comercio');
-    if(Number.isInteger(comer)){
-      localStorage.setItem('comercio_id',comer);
-    }else{
-    localStorage.setItem('comercio',JSON.stringify(comer));
-    }
-    this.router.navigate(['comercio',comer.id]);
+  //  localStorage.removeItem('comercio');
+    localStorage.setItem('comercio_id',comer);
+    this.router.navigate(['comercio',comer]);
   }
 
   salir(){

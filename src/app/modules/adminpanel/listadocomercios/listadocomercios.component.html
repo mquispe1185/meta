@@ -323,6 +323,33 @@
             <mat-list-item class="col-4" role="listitem">Tipo Face</mat-list-item>
             <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.es_fanpage ? 'Fanpage': 'Perfil Personal'}}</mat-list-item>
           </div>
+
+          <div class="row justify-content-center">
+            <strong>Estadisticas</strong>
+          </div>
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Visitas MetApp</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.visitas}}</mat-list-item>
+          </div>
+
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Visitas Facebook</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.visitas_face}}</mat-list-item>
+          </div>
+
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Visitas Instagram</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.visitas_ig}}</mat-list-item>
+          </div>
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Visitas Web</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.visitas_web}}</mat-list-item>
+          </div>
+
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Visitas WhatsApp</mat-list-item>
+            <mat-list-item class="col-8 txt-info" role="listitem">{{comercioSelected.visitas_wsp}}</mat-list-item>
+          </div>
           <!--  <div class="text-right mt-4">
             <button mat-raised-button type="submit" color="primary">
               <mat-icon>save</mat-icon>Cerrar

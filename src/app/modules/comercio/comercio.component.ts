@@ -18,6 +18,7 @@ import { Referencia } from '../../modelos/referencia';
 export class ComercioComponent implements OnInit {
 
   comercio:Comercio = new Comercio();
+  comercio_id:number;
   lat: number;
   lon:number;
   zoom:number;
@@ -44,20 +45,17 @@ export class ComercioComponent implements OnInit {
     //if(localStorage.hasOwnProperty("comercio_id")){
     if(comerid != null){
       //console.log('comercio iddd not null',comerid)
-      this.comercioService.getComercio(+comerid).subscribe(
-        cm =>{this.comercio= cm;
-          this.lat = +this.comercio.latitud;
-          this.lon = +this.comercio.longitud;
-          this.afterComercio();}
-      )
+      this.comercio_id = +comerid;
     }else{
-    this.comercio = JSON.parse(localStorage.getItem('comercio'));
-    this.lat = +this.comercio.latitud;
-    this.lon = +this.comercio.longitud;
-    this.afterComercio();
+    this.comercio_id = +localStorage.getItem('comercio_id');
+
     }
-
-
+    this.comercioService.getComercio(this.comercio_id).subscribe(
+      cm =>{this.comercio= cm;
+        this.lat = +this.comercio.latitud;
+        this.lon = +this.comercio.longitud;
+        this.afterComercio();}
+    )
   }
 
   afterComercio(){
