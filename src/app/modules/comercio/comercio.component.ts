@@ -41,10 +41,7 @@ export class ComercioComponent implements OnInit {
   ngOnInit(): void {
 
    let comerid = this.route.snapshot.paramMap.get('comercio');
-    //console.log('comercio iddd',comerid)
-    //if(localStorage.hasOwnProperty("comercio_id")){
     if(comerid != null){
-      //console.log('comercio iddd not null',comerid)
       this.comercio_id = +comerid;
     }else{
     this.comercio_id = +localStorage.getItem('comercio_id');

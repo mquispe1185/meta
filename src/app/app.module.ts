@@ -60,6 +60,8 @@ import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.c
 import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import {apikey} from '../app/modelos/apikey';
+import { SeParteComponent } from './inicio/se-parte/se-parte.component';
+import { ContactateComponent } from './inicio/contactate/contactate.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import {apikey} from '../app/modelos/apikey';
     HeaderVisitantesComponent,
     PolServicioComponent,
     PolPrivacidadComponent,
+    SeParteComponent,
+    ContactateComponent,
   ],
   imports: [
     BrowserModule,

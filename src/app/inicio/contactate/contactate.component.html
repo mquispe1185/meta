@@ -1,0 +1,80 @@
+<div class="cuerpo container">
+  <div *ngIf="enviado === false;then formconsulta else gracias"></div>
+
+  <ng-template #formconsulta>
+    <div class="container mt-3">
+      <div class="titulo">
+        <h5 class="modal-title" ngbAutofocus>Contactate</h5>
+      </div>
+      <div class="example-container">
+        <mat-card class="tarjeta-info">
+          <form name="form" (ngSubmit)="f.form.valid && sendMail()" #f="ngForm" novalidate>
+
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
+                    [(ngModel)]="consulta.nombre" name="nombre" #nombre="ngModel" />
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
+                  <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- Apellido, Nombres-->
+
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="email" placeholder="email@example.com" required minlength="2"
+                    [(ngModel)]="consulta.email" name="email"
+                    [pattern]="emailpattern"
+                    #email="ngModel" />
+                    <mat-error *ngIf="email.invalid && email.errors.pattern">Formato de email incorrecto, falta @</mat-error>
+                  <mat-error *ngIf="email.invalid && email.errors.required">Email es obligatorio</mat-error>
+                  <mat-error *ngIf="email.invalid && email.errors.minlength">Email debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- Email-->
+
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="text" placeholder="telefono" minlength="1" [(ngModel)]="consulta.telefono"
+                    name="telefono" #telefono="ngModel" />
+                  <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div><!-- telefono, celular -->
+
+            <div class="form-row">
+              <div class="col-12 col-md-6">
+                <mat-form-field class="col-12">
+                  <textarea matInput type="text" placeholder="Consulta..." maxlength="256"
+                    [(ngModel)]="consulta.consulta" name="cons" #cons="ngModel">
+              </textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="text-right mt-4">
+              <button mat-raised-button type="submit" color="primary">
+                <mat-icon>save</mat-icon>Enviar
+              </button>
+            </div>
+          </form>
+        </mat-card>
+
+      </div>
+    </div>
+
+  </ng-template>
+
+  <ng-template #gracias>
+    <div class="titulo">
+      <h5 class="modal-title">Gracias, en breve nos contactaremos con Ud.</h5>
+    </div>
+  </ng-template>
+
+</div>

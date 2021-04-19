@@ -19,6 +19,8 @@ import { QuienesComponent } from './modules/comercio/quienes/quienes.component';
 import { ListadocomerciosComponent } from './modules/adminpanel/listadocomercios/listadocomercios.component';
 import { ListadopromosComponent } from './modules/adminpanel/listadopromos/listadopromos.component';
 import { AdminpanelComponent } from './modules/adminpanel/adminpanel.component';
+import { SeParteComponent } from './inicio/se-parte/se-parte.component';
+import { ContactateComponent } from './inicio/contactate/contactate.component';
 
 const routes: Routes = [
 
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'redirect', component: AfterloginComponent},
   { path: 'politica_uso', component: PolServicioComponent},
   { path: 'politica_privacidad', component: PolPrivacidadComponent},
+  { path: 'se_parte', component: SeParteComponent},
+  { path: 'consulta', component: ContactateComponent},
   {
     path:'adminpanel',
     component: AdminpanelComponent,

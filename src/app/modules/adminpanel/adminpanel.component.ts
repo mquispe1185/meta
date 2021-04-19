@@ -36,7 +36,7 @@ export class AdminpanelComponent implements OnInit {
 
   getUsuarios(){
     this.usuarioService.getUsuarios().subscribe(
-      usr => {  console.log('usrs',usr);
+      usr => {
         this.lstUsuarios = new MatTableDataSource(usr);
         this.lstUsuarios.paginator = this.paginatorUsuarios;
       },
