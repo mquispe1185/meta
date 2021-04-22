@@ -1,0 +1,15 @@
+.logoNaranja {
+    width: 75px;
+    height: 75px;
+    align-items: flex-end;
+  }
+
+.titulo {
+    color: #f36904;
+    position: absolute;
+
+    transform: translate(0%,50%);
+}
+.colorete {
+    color: #f36904;
+}

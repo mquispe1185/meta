@@ -2,7 +2,7 @@
   <div *ngIf="enviado === false;then formconsulta else gracias"></div>
 
   <ng-template #formconsulta>
-    <div class="container mt-3">
+    <!--     <div class="container mt-3">
       <div class="titulo">
         <h5 class="modal-title" ngbAutofocus>Contactate</h5>
       </div>
@@ -20,24 +20,25 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div><!-- Apellido, Nombres-->
+            </div> -->
+    <!-- Apellido, Nombres-->
 
-            <div class="form-row">
+    <!--             <div class="form-row">
               <div class="col-12 col-md-6">
                 <mat-form-field class="example-full-width">
                   <input matInput type="email" placeholder="email@example.com" required minlength="2"
-                    [(ngModel)]="consulta.email" name="email"
-                    [pattern]="emailpattern"
-                    #email="ngModel" />
-                    <mat-error *ngIf="email.invalid && email.errors.pattern">Formato de email incorrecto, falta @</mat-error>
+                    [(ngModel)]="consulta.email" name="email" [pattern]="emailpattern" #email="ngModel" />
+                  <mat-error *ngIf="email.invalid && email.errors.pattern">Formato de email incorrecto, falta @
+                  </mat-error>
                   <mat-error *ngIf="email.invalid && email.errors.required">Email es obligatorio</mat-error>
                   <mat-error *ngIf="email.invalid && email.errors.minlength">Email debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div><!-- Email-->
+            </div> -->
+    <!-- Email-->
 
-            <div class="form-row">
+    <!--             <div class="form-row">
               <div class="col-12 col-md-6">
                 <mat-form-field class="example-full-width">
                   <input matInput type="text" placeholder="telefono" minlength="1" [(ngModel)]="consulta.telefono"
@@ -46,14 +47,15 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div><!-- telefono, celular -->
-
+            </div> -->
+    <!-- telefono, celular -->
+    <!-- 
             <div class="form-row">
               <div class="col-12 col-md-6">
                 <mat-form-field class="col-12">
                   <textarea matInput type="text" placeholder="Consulta..." maxlength="256"
                     [(ngModel)]="consulta.consulta" name="cons" #cons="ngModel">
-              </textarea>
+                  </textarea>
                 </mat-form-field>
               </div>
             </div>
@@ -67,14 +69,120 @@
         </mat-card>
 
       </div>
+    </div> -->
+
+
+
+
+
+    <!-- pruebas de dani  -->
+    <div class="offset-md-3 col-md-6 mt-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h3 class="titulo"><b>Contactanos</b></h3>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+              <img class="logoNaranja" src="https://i.ibb.co/T823WWx/logos-08.png" alt="">
+            </div>
+          </div>
+          <hr>
+
+          <form name="form" (ngSubmit)="f.form.valid && sendMail()" #f="ngForm" novalidate>
+            <div class="md-form">
+              <i class="fas fa-user colorete mr-3"></i>
+              <mat-form-field class="col-10">
+                <input matInput type="text" placeholder="Apellido y Nombres" required minlength="2"
+                  [(ngModel)]="consulta.nombre" name="nombre" #nombre="ngModel" />
+                <mat-error *ngIf="nombre.invalid && nombre.errors.required">Nombre es obligatorio</mat-error>
+                <mat-error *ngIf="nombre.invalid && nombre.errors.minlength">Nombre debe tener al menos 2 letras
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="md-form">
+
+              <i class="fas fa-envelope-open colorete mr-3"></i>
+              <mat-form-field class="col-10">
+                <input matInput type="email" placeholder="email@example.com" required minlength="2"
+                  [(ngModel)]="consulta.email" name="email" [pattern]="emailpattern" #email="ngModel" />
+                <mat-error *ngIf="email.invalid && email.errors.pattern">Formato de email incorrecto, falta @
+                </mat-error>
+                <mat-error *ngIf="email.invalid && email.errors.required">Email es obligatorio</mat-error>
+                <mat-error *ngIf="email.invalid && email.errors.minlength">Email debe tener al menos 2 letras
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+
+            <div class="md-form">
+
+              <i class="fas fa-mobile colorete mr-3"></i>
+              <mat-form-field class="col-10">
+                <input matInput type="text" placeholder="Teléfono" minlength="1" [(ngModel)]="consulta.telefono"
+                  name="telefono" #telefono="ngModel" />
+                <mat-error *ngIf="telefono.invalid && telefono.errors.minlength">Tel. debe tener al menos 2 caracteres
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+
+            <div class="md-form">
+              <i class="fas fa-pencil-alt colorete mr-3"></i>
+              <div class="form-row">
+                <div class="col-12">
+                  <mat-form-field class="col-10 ml-4">
+                    <textarea matInput type="text" placeholder="Consulta..." maxlength="256"
+                      [(ngModel)]="consulta.consulta" name="cons" #cons="ngModel">
+                  </textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <button mat-raised-button type="submit" color="primary">
+                Enviar
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
     </div>
 
+
   </ng-template>
+
+
+
 
   <ng-template #gracias>
-    <div class="titulo">
+    <!--     <div class="titulo">
       <h5 class="modal-title">Gracias, en breve nos contactaremos con Ud.</h5>
     </div>
+ -->
+
+    <div class="offset-md-3 col-md-6 mt-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8 d-flex justify-content-start">
+              <h3 class="titulo"><b>Contactanos</b></h3>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+              <img class="logoNaranja" src="https://i.ibb.co/T823WWx/logos-08.png" alt="">
+            </div>
+          </div>
+          <hr>
+            <h5 class="colorete justify-content-center mb-5">Gracias, en breve nos contactaremos con Ud.</h5>
+        </div>
+      </div>
+    </div>
   </ng-template>
+
+
+
 
 </div>
