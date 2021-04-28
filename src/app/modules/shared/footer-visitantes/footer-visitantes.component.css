@@ -16,6 +16,7 @@
   }
   .footer-link {
   color: white;
+  cursor: pointer;
   }
 
   .footer-link:hover {
