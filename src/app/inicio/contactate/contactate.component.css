@@ -7,8 +7,16 @@
 .titulo {
     color: #f36904;
     position: absolute;
-
     transform: translate(0%,50%);
+}
+
+.iconored {
+    color: #ee7222;
+    vertical-align: middle;
+}
+
+i {
+  color: #ee7222;
 }
 .colorete {
     color: #f36904;
