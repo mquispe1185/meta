@@ -72,9 +72,6 @@
     </div> -->
 
 
-
-
-
     <!-- pruebas de dani  -->
     <div class="offset-md-3 col-md-6 mt-5">
       <div class="card">
@@ -84,16 +81,9 @@
               <img class="logoNaranja" src="https://i.ibb.co/T823WWx/logos-08.png" alt="">
             </div>
             <div class="row col-8 d-flex justify-content-end">
-              <!-- <h3 class="titulo"><b>Contactanos</b></h3> -->
-              <a class="iconored" [href]="safeURL" target="_blank"><i class="fab fa-whatsapp fa-2x mr-2"></i></a><br>
-              <!-- <a class="iconored" href="https://www.facebook.com/meta.cerca" target="_blank"><i class="fab fa-facebook fa-2x mr-2" ></i></a>  -->
-
-              <a *ngIf="!deviceService.isMobile()" href="https://www.facebook.com/meta.cerca" 
-              target="_blank"><i class="fab fa-facebook fa-2x mr-2" ></i></a>
-             <a *ngIf="deviceService.isMobile()" href="https://www.facebook.com/meta.cerca" 
-              target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-
-              <a class="iconored" href="https://www.instagram.com/meta.cerca/" target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
+              <a class="iconored" [href]="safeURL" target="_blank"><i class="fab fa-whatsapp fa-2x mr-3"></i></a><br>
+              <a [href]="faceapp" target="_blank"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+              <a class="iconored" href="https://www.instagram.com/meta.cerca/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
             </div>
           </div>
           <hr>
@@ -185,7 +175,7 @@
             </div>
           </div>
           <hr>
-            <h5 class="colorete justify-content-center mb-5">Gracias, en breve nos contactaremos con Ud.</h5>
+          <h5 class="colorete justify-content-center mb-5">Gracias, en breve nos contactaremos con Ud.</h5>
         </div>
       </div>
     </div>

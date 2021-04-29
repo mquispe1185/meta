@@ -60,7 +60,7 @@ import { PolPrivacidadComponent } from './inicio/pol-privacidad/pol-privacidad.c
 import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import {apikey} from '../app/modelos/apikey';
-import { SeParteComponent } from './inicio/se-parte/se-parte.component';
+import { PregFrecuentesComponent } from './inicio/preg-frecuentes/preg-frecuentes.component';
 import { ContactateComponent } from './inicio/contactate/contactate.component';
 
 @NgModule({
@@ -72,7 +72,7 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
     HeaderVisitantesComponent,
     PolServicioComponent,
     PolPrivacidadComponent,
-    SeParteComponent,
+    PregFrecuentesComponent,
     ContactateComponent,
   ],
   imports: [
@@ -171,3 +171,4 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+213

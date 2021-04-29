@@ -1,0 +1,156 @@
+<div class="contenedor">
+
+  <!-- Rectangulo de Imagen Principal Superior -->
+  <div class="contenedorimagen">
+    <div #ini class="rectangulo">
+    </div>
+  </div>
+
+
+  <!-- Menu, Logo, Barra de Busqueda -->
+  <div class="superficial">
+    <!-- Logo Meta -->
+    <div class="row contenedorlogo">
+      <img class="logoblanco" src="https://i.ibb.co/PgXRGWk/logos-06.png" alt="">
+    </div>
+
+    <div class="row contenedorsubtit">
+      <div class="col align-self-start">
+      </div>
+      <div class="col d-flex align-items-center justify-content-center">
+        <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
+      </div>
+      <div class="col align-self-end">
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo Naranja y Contenido de la Pagina -->
+  <div class="fondoinicio offset-sm-1 col-sm-10">
+    <div class="align-items-center justify-content-center">
+      <img class="logoNaranja" src="https://i.ibb.co/Bghqrhf/logos-05.png" alt="">
+      <!-- <img class="logoNaranja" src="/assets/logos/logos-05.png" alt=""> -->
+    </div>
+
+    <div class="row justify-content-start">
+      <h3 class="subtitulos">Preguntas Frecuentes</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <mat-accordion class="mat-elevation-z0">
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Qué requisitos necesito para registrarme?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">1) Muchas ganas de seguir creciendo.</p>
+            <p class="respuestas">2) Una cuenta de Gmail.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Si no estoy inscripto puedo ser parte de Meta!?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Por supuesto! Nuestro propósito es ayudar a los comerciantes, emprendedores,
+              organizaciones, aquella ama de casa, y a cualquier persona que quiera salir
+              adelante; desde el cortador de pasto hasta una persona inscripta.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Puedo agregar más de un comercio con la misma cuenta?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Así es, si tenes más de un comercio u oficio podés agregarlo dentro de la
+              misma cuenta.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Qué pasa si un día no puedo seguir pagando el servicio?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">No te preocupes! En el momento que dejes de abonar, Meta!
+              automáticamente convierte tu plan en un servicio completamente gratuito
+              para que tus vecinos puedan seguir encontrándote. ¿Lo más lindo? No
+              generas saldo deudor en ningún momento.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Qué pasa si algún día no quiero pertenecer más a Meta!?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Es muy simple! Podes dar de baja nuestra suscripción haciendo clic en un solo
+              botón denominado “eliminar comercio”, y en ese mismo momento dejas de
+              ser parte sin esperar autorización de nadie.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Es sólo para comercios de San Lorenzo?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Por el momento si. ¡Esperamos poder expandirnos muy pronto!</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Se encargan de nuestro delivery?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Meta! no se encarga del delivery pero posee la categoría de cadetería dentro
+              de su lista de oficios. Esto ayuda a que puedas elegir a tu cadete de
+              confianza, proponer a uno e incluso relacionarlo directamente como cadete
+              oficial de tu comercio.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Cómo cambiarme de plan?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Dentro de tu Perfil encontrarás la pestaña “Mi Plan” donde podrás hacer todas
+              las modificaciones sobre los mismos.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿Cómo pago?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">A través de Mercado Pago.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="preguntas">
+                ¿A dónde debo dirigirme ante cualquier consulta?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="respuestas">Ante cualquier inquietud podés hacer clic en Contáctanos y mandarnos
+              WhatsApp o e-mail.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div>
+          <br><br><br>
+          <img src="/assets/quienes/group.svg" style="max-width:100%;width:auto;height:auto;">
+        </div>
+        <h4 style="font-weight: bold;">Video Meta!</h4><br>
+      </div>
+    </div><br>
+    <div class="row justify-content-center">
+      <br><h3 class="subtitulos">¡Tu vecino tiene la solución!</h3>
+    </div>
+    <button type="button" class="boton-conoce" [routerLink]="['/inicio']" fragment="seccioncomercio">CONOCER LOCALES
+      CERCANOS
+    </button>
+  </div>
+
+</div>
+
+<app-footer-visitantes></app-footer-visitantes>

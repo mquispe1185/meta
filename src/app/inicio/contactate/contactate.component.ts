@@ -30,7 +30,7 @@ export class ContactateComponent implements OnInit {
     private datosService:DatosService ) { }
 
   ngOnInit(): void {
-    this.setWspLik();
+    this.setLinks();
   }
 
   sendMail(){
@@ -39,17 +39,13 @@ export class ContactateComponent implements OnInit {
     )
   }
 
- 
-  setWspLik(){
+  setLinks(){
     if (this.deviceService.isMobile()){
-      //console.log('celularrr',this.comercio.celular);
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543874522407');
-      // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
+      this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://page/'+105931757928699);
     }else{
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543874522407');
+      this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.facebook.com/meta.cerca');
     }
   }
-
-  
-
 }
