@@ -44,10 +44,11 @@ import { GooglePlacesDirectiveDirective } from '../../directives/google-places-d
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { GestionPromosComponent } from './gestion-promos/gestion-promos.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { GestionMisPlanesComponent } from './gestion-mis-planes/gestion-mis-planes.component';
 
 
 @NgModule({
-  declarations: [ComerciopanelComponent, GestioncomercioComponent, ModalGooglePlacesComponent, GooglePlacesDirectiveDirective, GestionPromosComponent],
+  declarations: [ComerciopanelComponent, GestioncomercioComponent, ModalGooglePlacesComponent, GooglePlacesDirectiveDirective, GestionPromosComponent, GestionMisPlanesComponent],
   entryComponents: [ModalGooglePlacesComponent],
 
   imports: [

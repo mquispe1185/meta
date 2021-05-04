@@ -69,16 +69,17 @@ export class GestioncomercioComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   palabras: Palabras[] = [];
-//actualizar tipo servicios
-comercioplan: Comercioplan = new Comercioplan();
-servicios: TipoServicio[];
-formapagos: Formapago[];
- meses = Semana.meses;
-selected: TipoServicio;
 
-creando_new =false;
-//para mostrar estadisticas
-comercio_estadistica:Comercio;
+  //actualizar tipo servicios
+  comercioplan: Comercioplan = new Comercioplan();
+  servicios: TipoServicio[];
+  formapagos: Formapago[];
+  meses = Semana.meses;
+  selected: TipoServicio;
+
+  creando_new =false;
+  //para mostrar estadisticas
+  comercio_estadistica:Comercio;
 @ViewChild('modaltags') modaltags: TemplateRef<any>;
 @ViewChild('formhorario') formhorario: TemplateRef<any>;
   constructor(  public tokenService: AngularTokenService,
@@ -93,9 +94,7 @@ comercio_estadistica:Comercio;
                 private toastr: ToastrService, ) { }
 
   ngOnInit(): void {
-
     this.getComercios();
-
   }
 
   getComercios(){
@@ -103,7 +102,6 @@ comercio_estadistica:Comercio;
     this.comercioService.getMisComercios().subscribe(
       cms => {this.comercios = cms.map(c => new Comercio(c));
               localStorage.setItem('miscomercios', JSON.stringify(this.comercios));
-
              }
     )
   }

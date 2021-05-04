@@ -120,6 +120,14 @@
         </ng-template>
 
       </li>
+
+      <li [ngbNavItem]="3" [destroyOnHide]="true">
+        <a ngbNavLink class="txt-solapa">Mis Planes</a>
+        <ng-template ngbNavContent>
+          <app-gestion-mis-planes></app-gestion-mis-planes>
+        </ng-template>
+
+      </li>
     </ul>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </ng-template>
