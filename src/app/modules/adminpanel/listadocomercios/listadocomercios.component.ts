@@ -7,6 +7,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogService } from '../../../servicios/confirmation-dialog.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Rubro } from 'src/app/modelos/rubro';
+import { RubroService } from 'src/app/servicios/rubro.service';
+import { Semana } from 'src/app/modelos/semana';
+import { Horario } from 'src/app/modelos/horario';
+import { HorarioService } from 'src/app/servicios/horario.service';
 
 @Component({
   selector: 'app-listadocomercios',
@@ -19,15 +24,22 @@ export class ListadocomerciosComponent implements OnInit {
   aux_comercios:Comercio[];
   dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio','acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
- comercioSelected:Comercio = new Comercio();
-
+  comercioSelected:Comercio = new Comercio();
+  rubros: Rubro[] = [];
+  semana = Semana.semana;
   closeResult: string;
+  horarios: Horario[] = [];
+  nuevos_horarios: Horario[] = [];
+  nuevo_horario: Horario;
+  horario_aux: Horario;
 
 
   constructor(public tokenService: AngularTokenService,
               private modalService: NgbModal,
               private toastr: ToastrService,
               private confirmationDialogService: ConfirmationDialogService,
+              private horarioService: HorarioService,
+              private rubroService: RubroService,
               private comercioService:ComercioService,) { }
 
   ngOnInit(): void {
@@ -79,8 +91,9 @@ export class ListadocomerciosComponent implements OnInit {
 
   openFormEditar(modal,comer){
     this.comercioSelected = new Comercio(comer);
-    console.log('comercio selec',this.comercioSelected);
-    console.log('tipo serv',this.comercioSelected.getTipoServicio());
+    if (this.rubros.length === 0){
+      this.getRubros();
+    }
     this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -127,6 +140,65 @@ export class ListadocomerciosComponent implements OnInit {
     });
   }
 
+  getRubros(){
+    this.rubroService.getRubros().subscribe(
+      rs => {
+            this.rubros = rs; }
+    );
+  }
+
+  //gestion de horarios
+  openFormHorario(modal, comercio){
+    this.comercioSelected = {...comercio};
+    this.semana.forEach(d => {d.check = false});
+    this.nuevo_horario = new Horario();
+      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+    setDia(event, dia){
+
+    }
+    addHorario(){
+      this.nuevos_horarios = [];
+      this.semana.forEach(
+        d => {
+          this.horario_aux = new Horario();
+          if (d.check){
+            this.horario_aux.dia = d.id;
+            this.horario_aux.desde = this.nuevo_horario.desde;
+            this.horario_aux.hasta = this.nuevo_horario.hasta;
+
+            this.horario_aux.comercio_id = this.comercioSelected.id;
+
+            this.nuevos_horarios.push(this.horario_aux);
+          }
+        }
+      );
+
+      this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
+        hs => {this.comercioSelected.horarios = hs;
+          this.modalService.dismissAll();
+          this.toastr.success('bien hecho!', 'Horario/s agregados!'); }
+      )
+    }
+    dialogEliminarHorario(element){
+
+      this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
+        .then(
+          (confirm) => {(confirm) ? this.eliminarHorario(element) : console.log("cancelado");
+                        }
+        ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    }
+    eliminarHorario(horario){
+      this.horarioService.deleteHorario(horario).subscribe(
+        hs => {
+          this.modalService.dismissAll();
+          this.toastr.error('bien hecho!', 'Horario/s eliminado!'); }
+      )
+    }
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

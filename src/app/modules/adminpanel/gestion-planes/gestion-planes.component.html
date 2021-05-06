@@ -38,7 +38,7 @@
       <ng-container matColumnDef="tiposervicio">
         <mat-header-cell *matHeaderCellDef>Actualizacion Servicio</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior.nombre}} a
+          <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior ? element.servicio_anterior.nombre : "Nuevo Comercio"}} a
           {{element.tipo_servicio.nombre}}
         </mat-cell>
       </ng-container>
@@ -63,12 +63,7 @@
       <ng-container matColumnDef="estado">
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <ng-container [ngSwitch]="element.estado">
-            <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
-            <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
-            <span class="boton-vencido" *ngSwitchCase="2">VENCIDO</span>
-            <span class="boton-rechazado" *ngSwitchCase="3">RECHAZADO</span>
-          </ng-container>
+          <span class="mobile-label">Estado:</span> {{element.estado}}
         </mat-cell>
       </ng-container>
 
@@ -174,7 +169,7 @@
           <div class="form-row">
 
             <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
-            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior.nombre}}
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior ? comercioplanSelected.servicio_anterior.nombre : "Nuevo Comercio"}}
             </mat-list-item>
           </div>
           <div class="form-row">
