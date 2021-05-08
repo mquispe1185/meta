@@ -16,12 +16,12 @@ import { Comercioplan } from '../../../modelos/comercioplan';
   styleUrls: ['./gestion-planes.component.css']
 })
 export class GestionPlanesComponent implements OnInit {
-  
+
   lstComerciosplan:any;
   comerciosplan:Comercioplan[];
   dspCol: string[] = ['nombre','usuario','tiposervicio','validez','formapago','estado', 'acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
- comercioplanSelected:Comercioplan = new Comercioplan();
+  comercioplanSelected:Comercioplan = new Comercioplan();
 
   closeResult: string;
 
@@ -36,7 +36,6 @@ estadosplan = Semana.estadosplan;
     this.tokenService.validateToken().subscribe(
       res =>{ this.getComerciosplan(); }
     );
-   
   }
 
   getComerciosplan(){
@@ -69,7 +68,7 @@ estadosplan = Semana.estadosplan;
         this.modalService.dismissAll();
         let index = this.comerciosplan.findIndex( c => c.id === cms.id)
         this.comerciosplan[index] = new Comercioplan(cms);
-        this.toastr.success('bien hecho!', 'Plan correctamente actualizado!'); 
+        this.toastr.success('bien hecho!', 'Plan correctamente actualizado!');
         this.lstComerciosplan = new MatTableDataSource(this.comerciosplan.map(c => new Comercioplan(c)));
               this.lstComerciosplan.paginator = this.paginatorCom;}
     )

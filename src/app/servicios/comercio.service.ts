@@ -32,7 +32,6 @@ export class ComercioService {
     return this.http.get<Comercio[]>(url);
   }
 
-
   buscarComercios(term:string): Observable<Comercio[]>{
     const url = `${environment.API_URL}/buscar?term=${term}`;
     return this.http.get<Comercio[]>(url);
@@ -100,6 +99,11 @@ export class ComercioService {
 
   getComerciosPlanes(): Observable<Comercioplan[]>{
     const url = `${environment.API_URL}/comercioplanes`;
+    return this.http.get<Comercioplan[]>(url);
+  }
+
+  getMisComerciosPlanes(): Observable<Comercioplan[]>{
+    const url = `${environment.API_URL}/mis_comercioplanes`;
     return this.http.get<Comercioplan[]>(url);
   }
 

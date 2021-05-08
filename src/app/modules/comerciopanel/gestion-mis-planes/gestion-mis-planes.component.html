@@ -6,15 +6,78 @@
           <span class="titulo">Mis Planes</span>
         </div>
       </div>
-    </div> <br>
+    </div>
 
-    <div class="mb-1">
+  <div class="mt-3">
+     <!-- Input Agregado para permitir la Busqueda -->
+     <mat-form-field>
+      <input matInput (keyup)="filtrarPlanes($event.target.value)" placeholder="Buscar planes...">
+    </mat-form-field>
+    <mat-table #tablamisplanes [dataSource]="lstComerciosplan" class="mat-elevation-z8">
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Nombre:</span>{{element.comercio.nombre}}
+        </mat-cell>
+      </ng-container>
 
-    
-        <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-        </mat-paginator>
-    
-    
-    
-      </div>
+      <!-- usuario -->
+      <ng-container matColumnDef="tiposervicio">
+        <mat-header-cell *matHeaderCellDef>Actualizacion Servicio</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Act. Servicio:</span>
+          {{element.tipo_servicio.nombre}}
+        </mat-cell>
+      </ng-container>
+      <!-- validez -->
+      <ng-container matColumnDef="desde">
+        <mat-header-cell *matHeaderCellDef>Desde</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Desde:</span>
+          {{element.desde ? (element.desde | date: 'dd/MM/yyyy'): 'sin definir' }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="hasta">
+        <mat-header-cell *matHeaderCellDef>Hasta</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Hasta:</span>
+          {{element.hasta ? (element.hasta | date: 'dd/MM/yyyy'): 'sin definir'}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- FORMAPAGO -->
+      <ng-container matColumnDef="formapago">
+        <mat-header-cell *matHeaderCellDef>Forma de pago</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Forma de pago:</span> {{element.formapago?.descripcion}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- ESTADO -->
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Estado:</span> {{element.estado}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Acciones:</span>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="dspCol"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
+    </mat-table>
+
+
+    <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+
+  </div>
 </div>
