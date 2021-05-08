@@ -1,22 +1,14 @@
 <div class="cuerpo container">
-<!--   <div class="row">
-    <div class="col-6">
-      <h5 class="titulo">PANEL GESTIÓN DE PLANES</h5>
-    </div>
-  </div> -->
-
-    <div class="row ">
-      <mat-icon class="icono">list</mat-icon>
-      <h5 class="titulo">Gestión de Planes</h5>
-    </div>
+  <div class="row ">
+    <mat-icon class="icono">list</mat-icon>
+    <h5 class="titulo">Gestión de Planes</h5>
+  </div>
 
   <div class="mt-3">
-
     <!-- Input Agregado para permitir la Busqueda -->
     <mat-form-field>
       <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
     </mat-form-field>
-
 
     <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
       <!-- Nombre -->
@@ -38,7 +30,8 @@
       <ng-container matColumnDef="tiposervicio">
         <mat-header-cell *matHeaderCellDef>Actualizacion Servicio</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior ? element.servicio_anterior.nombre : "Nuevo Comercio"}} a
+          <span class="mobile-label">Act. Servicio:</span> de {{element.servicio_anterior ?
+          element.servicio_anterior.nombre: "NUEVO"}} a
           {{element.tipo_servicio.nombre}}
         </mat-cell>
       </ng-container>
@@ -46,8 +39,9 @@
       <ng-container matColumnDef="validez">
         <mat-header-cell *matHeaderCellDef>Validez</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Validez:</span> Desde: {{element.desde ? element.desde : 'sin definir'}}<br>
-          Hasta: {{element.hasta ? element.hasta : 'sin definir'}}
+          <span class="mobile-label">Validez:</span> Desde: {{element.desde ? (element.desde | date: 'dd/MM/yyyy'): 'sin
+          definir' }}<br>
+          Hasta: {{element.hasta ? (element.hasta | date: 'dd/MM/yyyy'): 'sin definir'}}
         </mat-cell>
       </ng-container>
 
@@ -87,15 +81,12 @@
       <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
     </mat-table>
 
-
     <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
 
 
-
   </div>
 </div>
-
 
 <!-- Formulario actualizacion de estado-->
 <ng-template #estadoform let-modal>
@@ -112,7 +103,6 @@
             </button>
           </div>
           <form name="form" (ngSubmit)="f.form.valid && actualizarPlan()" #f="ngForm" novalidate>
-
 
             <div class="form-row">
 
@@ -169,7 +159,8 @@
           <div class="form-row">
 
             <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
-            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior ? comercioplanSelected.servicio_anterior.nombre : "Nuevo Comercio"}}
+            <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior ?
+              comercioplanSelected.servicio_anterior.nombre : "Nuevo Comercio"}}
             </mat-list-item>
           </div>
           <div class="form-row">

@@ -50,16 +50,23 @@
     letter-spacing: 1.5px;
     }
 
-.mat-column-estado {
+.mat-column-nombre {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 10% !important;
-  width: 10% !important;
+  flex: 0 0 15% !important;
 }
-
+.mat-column-usuario {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12% !important;
+}
+.mat-column-tiposervicio {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12% !important;
+}
 .mat-column-acciones {
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 10% !important;
-    width: 10% !important;
   }
