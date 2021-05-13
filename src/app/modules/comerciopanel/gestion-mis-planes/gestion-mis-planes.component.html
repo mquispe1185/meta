@@ -74,10 +74,11 @@
       <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
     </mat-table>
 
-
     <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
 
-
+  </div>
+  <div class="col d-flex justify-content-center">
+    <img class="mt-1 mb-5 img-fluid" src="https://i.ibb.co/JB4Zymq/meta-planes.png" alt="planes">
   </div>
 </div>
