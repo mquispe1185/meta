@@ -36,7 +36,7 @@ export class GestionMisPlanesComponent implements OnInit {
   }
 
   getMisComerciosplan(){
-    this.comercioService.getMisComerciosPlanes().subscribe(
+    this.comercioService.getComerciosPlanes().subscribe(
       cms =>{ this.comerciosplan = cms.map(c => new Comercioplan(c));
               this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
               this.lstComerciosplan.paginator = this.paginatorCom;

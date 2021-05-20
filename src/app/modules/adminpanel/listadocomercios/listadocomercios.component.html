@@ -302,8 +302,11 @@
           </div>
           <div class="form-row">
             <mat-list-item class="col-4" role="listitem">Plan</mat-list-item>
-            <mat-list-item class="col-8" role="listitem">{{comercioSelected.tipo_servicio.nombre}},
-              {{comercioSelected.provincia.nombre}}</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioSelected.tipo_servicio.nombre}}</mat-list-item>
+          </div>
+          <div class="form-row">
+            <mat-list-item class="col-4" role="listitem">Registrado</mat-list-item>
+            <mat-list-item class="col-8" role="listitem">{{comercioSelected.created_at | date:'dd/MM/yy hh:mm a'}}</mat-list-item>
           </div>
           <br>
           <div class="row justify-content-center">

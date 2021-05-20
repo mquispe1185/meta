@@ -102,10 +102,10 @@ export class ComercioService {
     return this.http.get<Comercioplan[]>(url);
   }
 
-  getMisComerciosPlanes(): Observable<Comercioplan[]>{
-    const url = `${environment.API_URL}/mis_comercioplanes`;
-    return this.http.get<Comercioplan[]>(url);
-  }
+  // getMisComerciosPlanes(): Observable<Comercioplan[]>{
+  //   const url = `${environment.API_URL}/mis_comercioplanes`;
+  //   return this.http.get<Comercioplan[]>(url);
+  // }
 
   updateComercioPlan(comercioplan:Comercioplan): Observable<any>{
     const url = `${environment.API_URL}/comercioplanes`;

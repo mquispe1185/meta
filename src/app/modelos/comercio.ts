@@ -48,6 +48,7 @@ export class Comercio {
     visitas_web:number;
     visitas_wsp:number;
     visitas:number;
+    created_at:Date;
     constructor(data?: any) {
       Object.assign(this, data);
     }
