@@ -45,7 +45,7 @@
         </mat-cell>
       </ng-container>
 
-      <!-- FORMAPAGO -->
+<!--  FORMAPAGO -->
       <ng-container matColumnDef="formapago">
         <mat-header-cell *matHeaderCellDef>Forma de pago</mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -55,23 +55,32 @@
 
       <!-- ESTADO -->
       <ng-container matColumnDef="estado">
-        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>         
+          <!-- <mat-cell *matCellDef="let element" class="btn-estado" (click)="openFormActualizar(estadoform,element)"
+          [ngClass]="{'boton-pendiente' : element.estado=='pendiente','boton-aprobado' : element.estado=='aprobado', 'boton-vencido' : element.estado=='vencido', 'boton-rechazado' : element.estado=='rechazado'}"> 
+          <span class="mobile-label css-estado">Estado:</span> {{element.estado |uppercase}}
+        </mat-cell> -->
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Estado:</span> {{element.estado}}
+          <span class="mobile-label">Estado:</span>
+          <button placement="right" ngbTooltip="Actualizar Estado" class="btn-estado"
+          [ngClass]="{'boton-pendiente' : element.estado=='pendiente','boton-aprobado' : element.estado=='aprobado', 'boton-vencido' : element.estado=='vencido', 'boton-rechazado' : element.estado=='rechazado'}"
+           (click)="openFormActualizar(estadoform,element)">
+           {{element.estado |uppercase}}
+          </button>
         </mat-cell>
       </ng-container>
 
-      <!-- Acciones Column -->
+      <!-- ACCIONES Column -->
       <ng-container matColumnDef="acciones">
         <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Acciones:</span>
 
-          <button placement="right" ngbTooltip="Actualizar estado" class="mr-2" mat-icon-button
-            style="background-color: transparent" (click)="openFormActualizar(estadoform,element)">
+          <button placement="right" ngbTooltip="Editar Plan" class="mr-2" mat-icon-button
+            style="background-color: transparent" (click)="openFormActualizar(editarplanform,element)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button placement="right" ngbTooltip="Ver info" mat-icon-button style="background-color: transparent"
+          <button placement="right" ngbTooltip="Ver info Plan" mat-icon-button style="background-color: transparent"
             (click)="openFormActualizar(info,element)">
             <mat-icon>visibility</mat-icon>
           </button>
@@ -83,8 +92,6 @@
 
     <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
-
-
   </div>
 </div>
 
@@ -92,7 +99,7 @@
 <ng-template #estadoform let-modal>
   <div class="container">
     <div>
-      <mat-card class="tarjeta-info">
+      <mat-card class="tarjeta-info mt-3">
         <div class="card-body">
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
@@ -129,6 +136,65 @@
   </div>
 </ng-template>
 
+<!-- Formulario EDITAR PLAN-->
+<ng-template #editarplanform let-modal>
+  <div class="container">
+    <div>
+      <mat-card class="tarjeta-info mt-3">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Editar Plan de Servicio</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <form name="form" (ngSubmit)="f.form.valid && actualizarPlan()" #f="ngForm" novalidate>
+            <div class="row mt-5">
+
+              <!-- <div class="form-row">
+                <mat-list-item class="col-6" role="listitem">Plan Solicitado:</mat-list-item>
+                <mat-form-field class="col-6">
+                  <input matInput type="text" placeholder="" required minlength="2"
+                    [(ngModel)]="comercioplanSelected.tipo_servicio.nombre" name="nombre" #nombre="ngModel" />
+                </mat-form-field>
+              </div>
+
+              <div class="form-row">
+                <mat-list-item class="col-8" role="listitem">Meses:</mat-list-item>
+                <input matInput class="col-4" type="text" required minlength="2"
+                [(ngModel)]="comercioplanSelected.meses" name="meses" #nombre="ngModel" />
+              </div> -->
+
+<!--               <div class="col-12">
+                <mat-form-field class="col-12">
+                  <mat-label for="rub">Plan de Servicio:</mat-label>
+                  <mat-select id="rub" name="rub" [(ngModel)]="comercioplanSelected.tipo_servicio_id" #rub="ngModel" required>
+                    <mat-option *ngFor="let plan of planes" [value]="plan.id">{{ plan.descripcion }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="rub.invalid && rub.errors.required">Rubro es obligatorio</mat-error>
+                </mat-form-field>
+              </div> -->
+
+              <!-- <div class="text-right mt-4">
+                <button mat-raised-button type="submit" color="primary">
+                  <mat-icon>save</mat-icon>Actualizar
+                </button>
+              </div> -->
+              
+            </div>
+
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>
+
+
 <!-- Formulario ver info-->
 <ng-template #info let-modal>
   <div class="container">
@@ -143,56 +209,43 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Comercio</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.comercio.nombre}}</mat-list-item>
           </div>
-
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Usuario</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.usuario.nombre}}</mat-list-item>
           </div>
-
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Servicio incial</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.servicio_anterior ?
               comercioplanSelected.servicio_anterior.nombre : "Nuevo Comercio"}}
             </mat-list-item>
           </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Servicio objetivo</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.tipo_servicio.nombre}}</mat-list-item>
           </div>
-
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Forma de pago</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.formapago.descripcion}}</mat-list-item>
           </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Desde</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.desde ? comercioplanSelected.desde :
               'sin definir' }}</mat-list-item>
           </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Hasta</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.hasta ? comercioplanSelected.hasta :
               'sin definir' }}</mat-list-item>
           </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Duracion meses</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.meses }}</mat-list-item>
           </div>
           <div class="form-row">
-
             <mat-list-item class="col-4" role="listitem">Importe</mat-list-item>
             <mat-list-item class="col-8" role="listitem">{{comercioplanSelected.importe }}</mat-list-item>
           </div>

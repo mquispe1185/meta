@@ -9,64 +9,77 @@
     color: #f36904;
   }
 
-  .boton-pendiente {
+  .btn-estado {
     color: white;
-    background: rgb(120, 185, 201);
-    padding: 5px;
-    border-radius: 5%;
-    font-size:x-small;
+    /* max-block-size: fit-content; */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 95%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    border-radius: 2%;
+    border: none;
     font-weight: bold;
     letter-spacing: 1.5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     }
 
+.boton-pendiente {
+  background: #e9ae40;
+}
 .boton-aprobado {
-    color: white;
-    /* background: rgb(61, 167, 70); */
-    background: rgb(73, 194, 78);
-    padding: 5px;
-    border-radius: 5%;
-    font-size:x-small;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    }
-
+  background: rgb(73, 194, 78);
+}
 .boton-vencido {
-    color: white;
-    background: rgb(73, 194, 78);
-    padding: 5px;
-    border-radius: 5%;
-    font-size:x-small;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    }
-
+  /* background:#E040FB; */
+  background:violet;
+}
 .boton-rechazado {
-    color: white;
-    background: rgb(255, 195, 69);
-    padding: 5px;
-    border-radius: 5%;
-    font-size:x-small;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    }
+  /* background: #B00020; */
+  background: red;
+}
 
 .mat-column-nombre {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 15% !important;
+  flex: 0 0 18% !important;
 }
 .mat-column-usuario {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 12% !important;
+  flex: 0 0 16% !important;
 }
 .mat-column-tiposervicio {
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 0 0 12% !important;
 }
+.mat-column-validez {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 15% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-column-formapago {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 15% !important;
+}
+
+.mat-column-estado {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 11% !important;
+  display: flex;
+  justify-content: center;
+}
 .mat-column-acciones {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 10% !important;
+    flex: 0 0 15% !important;
+    display: flex;
+    justify-content: center;
   }

@@ -59,7 +59,7 @@
       <ng-container matColumnDef="estado">
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Estado:</span> {{element.estado}}
+          <span class="mobile-label">Estado:</span> {{element.estado |uppercase}}
         </mat-cell>
       </ng-container>
 

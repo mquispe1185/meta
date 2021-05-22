@@ -88,7 +88,7 @@ export class ListadocomerciosComponent implements OnInit {
                 this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }
     )
   }
-
+ 
   openFormEditar(modal,comer){
     this.comercioSelected = new Comercio(comer);
     if (this.rubros.length === 0){

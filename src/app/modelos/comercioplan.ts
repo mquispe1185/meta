@@ -11,8 +11,8 @@ export class Comercioplan {
     tipo_servicio:TipoServicio;
     servicio_anterior_id:number;
     servicio_anterior:TipoServicio;
-    desde:string;
-    hasta:string;
+    desde:Date;
+    hasta:Date;
     estado:number;// 0: pendiente, 1:aprobado, 2: vencido,3:rechazado
     formapago_id:number;
     formapago:Formapago;

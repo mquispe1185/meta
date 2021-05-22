@@ -1,3 +1,5 @@
+import { TipoServicio } from './../../../modelos/tipo-servicio';
+import { element } from 'protractor';
 import { Semana } from './../../../modelos/semana';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -53,6 +55,9 @@ estadosplan = Semana.estadosplan;
 
  //PROMOCIONES
  openFormActualizar(modal,element){
+//dani
+this.getComerciosplan
+
   this.comercioplanSelected = {...element};
   this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
@@ -89,4 +94,5 @@ estadosplan = Semana.estadosplan;
       return  `with: ${reason}`;
     }
   }
+
 }
