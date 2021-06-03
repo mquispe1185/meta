@@ -120,13 +120,12 @@ export class ListadocomerciosComponent implements OnInit {
 
   eliminarComercio(element){
     element.activo = false;
-
     this.comercioService.deleteComercio(element).subscribe(
-      cms =>{    let index = this.aux_comercios.findIndex( p => p.id === element.id);
-                  this.aux_comercios.splice(index,1);
-               this.lstComercios = new MatTableDataSource(this.aux_comercios);
-                this.lstComercios.paginator = this.paginatorCom;
-                this.toastr.error('Eiminado!', 'Comercio eliminado!'); }
+      cms =>{ let index = this.aux_comercios.findIndex( p => p.id === element.id);
+              this.aux_comercios.splice(index,1);
+              this.lstComercios = new MatTableDataSource(this.aux_comercios);
+              this.lstComercios.paginator = this.paginatorCom;
+              this.toastr.error('Eiminado!', 'Comercio eliminado!'); }
     )
   }
 
@@ -145,7 +144,7 @@ export class ListadocomerciosComponent implements OnInit {
       rs => {
             this.rubros = rs; }
     );
-  }
+  } 
 
   //gestion de horarios
   openFormHorario(modal, comercio){

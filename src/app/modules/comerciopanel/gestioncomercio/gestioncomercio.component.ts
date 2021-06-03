@@ -6,6 +6,7 @@ import { Promocion } from './../../../modelos/promocion';
 import { HorarioService } from './../../../servicios/horario.service';
 import { Semana } from './../../../modelos/semana';
 import { ComercioService } from './../../../servicios/comercio.service';
+import { ComercioplanService } from './../../../servicios/comercioplan.service';
 import { Comercio } from './../../../modelos/comercio';
 import { Component, OnInit, NgZone, ElementRef, ViewChild, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { Provincia } from '../../../modelos/provincia';
@@ -82,11 +83,15 @@ export class GestioncomercioComponent implements OnInit {
   comercio_estadistica: Comercio;
   @ViewChild('modaltags') modaltags: TemplateRef<any>;
   @ViewChild('formhorario') formhorario: TemplateRef<any>;
+
+  //para hide/show btn cambio plan
+  cambio_solicitado=false;
   constructor(public tokenService: AngularTokenService,
     private modalService: NgbModal,
     private ubicacionService: UbicacionService,
     private rubroService: RubroService,
     private comercioService: ComercioService,
+    private comercioplanService: ComercioplanService,
     private horarioService: HorarioService,
     private cdRef: ChangeDetectorRef,
     private confirmationDialogService: ConfirmationDialogService,
@@ -212,7 +217,6 @@ export class GestioncomercioComponent implements OnInit {
     )
   }
 
-
   openFormAgregarUbicacion(element) {
     const modalRefCity = this.modalService.open(ModalGooglePlacesComponent);
     modalRefCity.componentInstance.comercio = element;
@@ -220,12 +224,10 @@ export class GestioncomercioComponent implements OnInit {
     modalRefCity.componentInstance.comercioevent.subscribe(($e) => {
       this.actualizarUbicacion($e);
       this.modalService.dismissAll();
-
     })
   }
 
   actualizarUbicacion(comercio) {
-
     this.comercioService.updateComercio(comercio).subscribe(
       cms => {
         this.comercios = cms.map(c => new Comercio(c));
@@ -234,8 +236,8 @@ export class GestioncomercioComponent implements OnInit {
         this.toastr.success('bien hecho!', 'Ubicación actualizada!');
       }
     )
-
   }
+
   openFormHorario(modal, comercio) {
     this.comercio = comercio;
     this.semana.forEach(d => { d.check = false });
@@ -247,7 +249,6 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
   setDia(event, dia) {
-
   }
   addHorario() {
     this.nuevos_horarios = [];
@@ -258,9 +259,7 @@ export class GestioncomercioComponent implements OnInit {
           this.horario_aux.dia = d.id;
           this.horario_aux.desde = this.nuevo_horario.desde;
           this.horario_aux.hasta = this.nuevo_horario.hasta;
-
           this.horario_aux.comercio_id = this.comercio.id;
-
           this.nuevos_horarios.push(this.horario_aux);
         }
       }
@@ -330,26 +329,21 @@ export class GestioncomercioComponent implements OnInit {
   }
 
   fileChangeEvent(event: any): void {
-
     this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-
     //Usage example:
     var file = this.dataURLtoFile(this.croppedImage, 'image.png');
-
     this.nueva_foto = file;
   }
 
   dataURLtoFile(dataurl, filename) {
-
     let arr = dataurl.split(','),
       mime = arr[0].match(/:(.*?);/)[1],
       bstr = atob(arr[1]),
       n = bstr.length,
       u8arr = new Uint8Array(n);
-
     while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
@@ -369,7 +363,6 @@ export class GestioncomercioComponent implements OnInit {
   }
 
   //funciones de PALABRA CLAVE
-
   openFormTags(modal, comer) {
     this.comercio = comer;
     this.palabras = [];
@@ -420,11 +413,20 @@ export class GestioncomercioComponent implements OnInit {
     this.updateComercio();
   }
 
-  // funciones para actualizar tipo de plan/servicio
 
+
+  getVencimiento (comer) {
+    this.comercio = comer;
+    this.comercioplan.comercio_id = this.comercio.id;
+    this.comercioplan.getFechaVto();
+  }
+
+
+
+  // funciones para actualizar tipo de plan/servicio
   openFormPlan(modal, comer) {
     this.comercio = comer;
-
+    console.log('tipo plan',comer)
     this.comercioplan.comercio_id = this.comercio.id;
     this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
     this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
@@ -438,7 +440,7 @@ export class GestioncomercioComponent implements OnInit {
       }
     )
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+    this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
@@ -446,27 +448,38 @@ export class GestioncomercioComponent implements OnInit {
 
   updateTipoPlan() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
-    this.comercioService.updateComercioPlan(this.comercioplan).subscribe(
-      res => {
+    this.comercioplanService.updateComercioPlan(this.comercioplan).subscribe(
+      res => { console.log("res cambio plan",res['preference_id']);
+        this.cambio_solicitado= true;
         this.modalService.dismissAll();
         let index = this.comercios.findIndex(c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
+        //this.createCheckoutButton(res['preference_id'])
         this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
       }
     )
   }
 
+  createCheckoutButton(preference) {
+    var script = document.createElement("script");
+    
+    // The source domain must be completed according to the site for which you are integrating.
+    // For example: for Argentina ".com.ar" or for Brazil ".com.br".
+    script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+    script.type = "text/javascript";
+    script.dataset.preferenceId = preference;
+    document.getElementById("button-checkout").innerHTML = "";
+    document.querySelector("#button-checkout").appendChild(script);
+  }
+
+
   calcularTotalServicio(servicio) {
-
     this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
-
     this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
-
   }
 
   calcularTotalMes(mes) {
     this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
-
   }
 
   getFormapagos() {

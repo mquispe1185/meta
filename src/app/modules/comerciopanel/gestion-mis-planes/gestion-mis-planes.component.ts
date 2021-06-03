@@ -1,3 +1,4 @@
+import { ComercioplanService } from './../../../servicios/comercioplan.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -26,7 +27,7 @@ export class GestionMisPlanesComponent implements OnInit {
               private modalService: NgbModal,
               private toastr: ToastrService,
               private confirmationDialogService: ConfirmationDialogService,
-              private comercioService:ComercioService){
+              private comercioplanService:ComercioplanService){
   }
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class GestionMisPlanesComponent implements OnInit {
   }
 
   getMisComerciosplan(){
-    this.comercioService.getComerciosPlanes().subscribe(
+    this.comercioplanService.getComerciosPlanes().subscribe(
       cms =>{ this.comerciosplan = cms.map(c => new Comercioplan(c));
               this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
               this.lstComerciosplan.paginator = this.paginatorCom;

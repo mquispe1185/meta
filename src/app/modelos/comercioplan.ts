@@ -68,6 +68,14 @@ export class Comercioplan {
         let diff = Math.abs(new Date(this.hasta).getTime() - new Date().getTime());
         return Math.ceil(diff / (1000 * 3600 * 24)); 
     }
+
+
+    getFechaVto(){
+      return('FECHA DE VENC') 
+  }
+
+
+
   }
 
   //clase que lleva el registro de camio de planes

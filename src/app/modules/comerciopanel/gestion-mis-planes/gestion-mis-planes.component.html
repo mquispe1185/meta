@@ -9,10 +9,11 @@
     </div>
 
   <div class="mt-3">
-     <!-- Input Agregado para permitir la Busqueda -->
+     <!-- Input Busqueda -->
      <mat-form-field>
       <input matInput (keyup)="filtrarPlanes($event.target.value)" placeholder="Buscar planes...">
     </mat-form-field>
+    <!-- TABLA Mis Planes -->
     <mat-table #tablamisplanes [dataSource]="lstComerciosplan" class="mat-elevation-z8">
       <!-- Nombre -->
       <ng-container matColumnDef="nombre">
@@ -82,3 +83,4 @@
     <img class="mt-1 mb-5 img-fluid" src="https://i.ibb.co/JB4Zymq/meta-planes.png" alt="planes">
   </div>
 </div>
+
