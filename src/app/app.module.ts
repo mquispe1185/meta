@@ -87,7 +87,7 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
     SharedModule,
     ToastrModule.forRoot(),
     AngularTokenModule.forRoot({
-      apiBase:                     environment.API_URL,
+      apiBase:                     environment.LOGIN_URL,
          apiPath:                   null,
 
          signInPath:                 'auth/sign_in',
@@ -106,7 +106,7 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
          resetPasswordPath:          'auth/password',
          resetPasswordCallback:      window.location.href,
 
-         oAuthBase:                  environment.API_URL,
+         oAuthBase:                  environment.LOGIN_URL,
          oAuthPaths: {
              github:                 'auth/github',
              google:                'auth/google_oauth2',
@@ -171,4 +171,3 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-213
