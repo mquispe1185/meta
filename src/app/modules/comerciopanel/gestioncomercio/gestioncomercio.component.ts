@@ -415,11 +415,9 @@ export class GestioncomercioComponent implements OnInit {
 
 
 
-  getVencimiento (comer) {
-    this.comercio = comer;
-    this.comercioplan.comercio_id = this.comercio.id;
-    this.comercioplan.getFechaVto();
-  }
+
+
+
 
 
 

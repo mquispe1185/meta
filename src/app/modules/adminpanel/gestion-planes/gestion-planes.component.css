@@ -11,14 +11,14 @@
 
   .btn-estado {
     color: white;
-    /* max-block-size: fit-content; */
+    font-size: smaller;
     margin-top: 1%;
     margin-bottom: 1%;
-    width: 95%;
+    width: 85%;
     height: 20%;
     display: flex;
     justify-content: center;
-    border-radius: 2%;
+    border-radius: 5%;
     border: none;
     font-weight: bold;
     letter-spacing: 1.5px;
@@ -36,7 +36,7 @@
   background:violet;
 }
 .boton-rechazado {
-  /* background: #B00020; */
+  /* background: #dd183c; */
   background: red;
 }
 
