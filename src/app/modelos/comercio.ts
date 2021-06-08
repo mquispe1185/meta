@@ -9,6 +9,9 @@ import { Rubro } from "./rubro";
 
 export class Comercio {
 
+  public static DEFAULT:string = "default";
+  public static PENDIENTE:string = "cambio_pendiente";
+
     id: number;
     nombre:string; //para comerciantes
     name:string; //para usuarios que dejan opiniones
@@ -41,36 +44,16 @@ export class Comercio {
     envio:boolean;
     tipo_servicio_id:number;
     tipo_servicio:TipoServicio;
-    estado:number; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
+    estado:string; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
     es_fanpage:boolean;
     visitas_face:number;
     visitas_ig:number;
     visitas_web:number;
     visitas_wsp:number;
     visitas:number;
-    created_at:Date;
+    created_at:string;
+    plan_hasta:string; //Utilizado para mostrar fecha de Vto en vista Comerciante.
     constructor(data?: any) {
       Object.assign(this, data);
-    }
-
-    getTipoServicio(){
-      switch(this.tipo_servicio.id) {
-        case 0: {
-           return 'GRATUITO';
-
-        }
-        case 1: {
-           return 'BASICO';
-
-        }
-        case 2: {
-          return 'ESTANDAR';
-
-       }
-       case 3: {
-          return 'PREMIUM';
-
-       }
-     }
     }
   }

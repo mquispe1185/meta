@@ -70,9 +70,9 @@ export class Comercioplan {
     }
 
 
-    getFechaVto(){
-      return('FECHA DE VENC') 
-  }
+//     getFechaVto(){
+//       return('FECHA DE VENC') 
+//   }
 
 
 

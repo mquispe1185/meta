@@ -108,7 +108,7 @@ updateTipoPlan() {
       let index = this.comerciosplan.findIndex(c => c.id === this.comercioplanSelected.id)
       this.comerciosplan[index] = new Comercioplan(res);
       this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
-      this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+      this.toastr.success('Bien hecho!', 'Plan Modificado con exito!');
     }
   )
 }
@@ -127,15 +127,14 @@ getFormapagos() {
     fps => { this.formapagos = fps; }
   )
 }
-//Fin  MODAL Editar Plan Servicio -->
-
+//Fin  MODAL Modificar Estado de Plan Solicitado -->
   actualizarPlan(){
     this.comercioplanService.habilitarComercioplan(this.comercioplanSelected).subscribe(
       cms =>{
         this.modalService.dismissAll();
         let index = this.comerciosplan.findIndex( c => c.id === cms.id)
         this.comerciosplan[index] = new Comercioplan(cms);
-        this.toastr.success('bien hecho!', 'Plan correctamente actualizado!');
+        this.toastr.success('Bien hecho!', 'Estado de Plan Modificado!');
         this.lstComerciosplan = new MatTableDataSource(this.comerciosplan.map(c => new Comercioplan(c)));
         this.lstComerciosplan.paginator = this.paginatorCom;}
     )

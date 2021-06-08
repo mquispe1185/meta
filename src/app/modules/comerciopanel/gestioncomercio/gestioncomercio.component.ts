@@ -1,3 +1,4 @@
+import { Estadosplan } from './../../../modelos/estado-planes';
 
 import { Formapago } from './../../../modelos/formapago';
 import { Comercioplan } from './../../../modelos/comercioplan';
@@ -43,6 +44,8 @@ export class GestioncomercioComponent implements OnInit {
 
   closeResult: string;
   comercio: Comercio;
+  default = Comercio.DEFAULT;
+  solicitud_pendiente = Comercio.PENDIENTE;
   provincias: Provincia[] = [];
   departamentos: Departamento[] = [];
   provincia_id: number;
@@ -86,6 +89,10 @@ export class GestioncomercioComponent implements OnInit {
 
   //para hide/show btn cambio plan
   cambio_solicitado=false;
+  estado_plan: Estadosplan;
+
+  plan_hasta:string;
+
   constructor(public tokenService: AngularTokenService,
     private modalService: NgbModal,
     private ubicacionService: UbicacionService,
@@ -139,7 +146,6 @@ export class GestioncomercioComponent implements OnInit {
     } else {
       this.msjenvio = 'Delivery: NO';
     }
-
     if (this.provincias.length === 0) {
       this.getProvincias();
     }
