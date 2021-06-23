@@ -16,7 +16,7 @@
     </div>
   </div> <br>
 
-
+<!-- TABLA DE PROMOCIONES -->
   <div class="mb-1">
 
     <!-- Input Agregado para permitir la Busqueda -->
@@ -54,8 +54,9 @@
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Estado:</span>
           <ng-container [ngSwitch]="element.estado">
-            <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
-            <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
+            <span class="boton-pendiente" *ngSwitchCase="'pendiente'">PENDIENTE</span>
+            <span class="boton-aprobado" *ngSwitchCase="'aprobado'">APROBADO</span>
+            <span class="boton-aprobado" *ngSwitchCase="'gratuito'">GRATUITO</span>
           </ng-container>
         </mat-cell>
       </ng-container>
@@ -124,15 +125,15 @@
             </div>
 
             <div class="form-row">
-
+              <!-- comentado -->
               <!-- <mat-form-field class="col">
                 <mat-label for="fp">Forma de Pago</mat-label>
                 <mat-select id="fp" name="fp" [(ngModel)]="promocion.formapago_id" required>
                   <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                   </mat-option>
                 </mat-select>
-              </mat-form-field> -->
-
+              </mat-form-field>  -->
+              <!-- comentado -->
             </div>
 
 
@@ -161,7 +162,6 @@
 
             </div><!-- desde, hasta-->
             <div class="form-row">
-
               <mat-form-field class="col">
                 <input matInput type="text" placeholder="Titulo" minlength="1" [(ngModel)]="promocion.titulo"
                   name="titulo" #titulo="ngModel" />
@@ -169,8 +169,6 @@
                 <mat-error *ngIf="titulo.invalid && titulo.errors.minlength">Titulo debe tener al menos 2 caracteres
                 </mat-error>
               </mat-form-field>
-
-
             </div><!-- titulo promo -->
 
             <div class="form-row">

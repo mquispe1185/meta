@@ -536,8 +536,8 @@ span.credits9 {
   height: 60px;
   width: 60px;
 }
-span.credits10 {
-  background: url(/assets/carrusel/PNG/Oficios.png) no-repeat top left;
+span.credits10 { 
+  background: url(https://i.ibb.co/hRhrvHs/Oficios.png) no-repeat top left;
   background-size: contain;
   cursor: pointer;
   display: inline-block;

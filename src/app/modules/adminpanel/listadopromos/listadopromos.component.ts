@@ -47,13 +47,13 @@ export class ListadopromosComponent implements OnInit {
     this.promocion = {...element};
     var msj = '';
     var tit = '';
-    if (this.promocion.estado === 1){
-      this.promocion.estado = 0;
+    if (this.promocion.estado === "aprobado"){
+      this.promocion.estado = "pendiente";
       tit = 'Deshablitar';
       msj = `Deshabilitar promoción ${this.promocion.titulo} ?`;
     }else{
-      this.promocion.estado = 1;
-     tit = 'Habilitar';
+      this.promocion.estado = "aprobado";
+      tit = 'Habilitar';
       msj = `Aprobar promoción ${this.promocion.titulo} ?`;
     }
 

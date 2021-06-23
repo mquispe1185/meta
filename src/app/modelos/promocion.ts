@@ -3,12 +3,13 @@ import { Comercio } from './comercio';
 import { Formapago } from './formapago';
 export class Promocion {
 
-  static GRATUITO:number = 80;
-  static BASICO:number = 70;
-  static ESTANDAR:number = 60;
-  static PREMIUM:number = 50;
+  //PRECIOS PARA LAS PROMO SEGUN PLAN
+  static GRATUITO:number = 0;
+  static BASICO:number = 0;
+  static ESTANDAR:number = 0;
+  static PREMIUM:number = 0;
 
-  //estado: 0:default/pendiente, 1:habilitado, 2:nohabilitado, 3:procesada y terminada
+  //estado: 0:pendiente, 1:aprobado, 2:gratuito
     id: number;
     comercio_id:number;
     comercio:Comercio;
@@ -21,7 +22,7 @@ export class Promocion {
     duracion:number;
     vencido:boolean;
     prioridad:number;
-    estado:number;
+    estado:string;
     formapago_id:number;
     formapago:Formapago;
     importe:number;

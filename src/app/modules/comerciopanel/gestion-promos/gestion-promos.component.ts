@@ -164,7 +164,7 @@ export class GestionPromosComponent implements OnInit {
 
               this.lstPromos = new MatTableDataSource(this.mis_promociones);
               this.lstPromos.paginator = this.paginatorPromos;
-              this.toastr.warning('Promoción creada!', 'Pendiente de aprobación!');
+              this.toastr.success('Promoción creada!', 'MODO GRATUITO!');
               this.modalService.dismissAll();}
     )
 
@@ -252,7 +252,7 @@ export class GestionPromosComponent implements OnInit {
     this.promoService.uploadLogo(this.nueva_foto, this.promocion.id).subscribe(
       cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
               this.modalService.dismissAll();
-              this.toastr.warning('Imagen cargada!', 'imagen de promo cargada correctamente!');
+              this.toastr.success('Imagen cargada!', 'Imagen de promo cargada correctamente!');
               }
     )
   }

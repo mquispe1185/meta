@@ -55,11 +55,9 @@
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Estado:</span>
           <ng-container [ngSwitch]="element.estado">
-<!--        <span class="bg-primary text-white p-1" *ngSwitchCase="0">PENDIENTE</span>
-            <span class="bg-success text-white p-1" *ngSwitchCase="1">APROBADO / EN CURSO</span> -->
-
-            <span class="boton-pendiente" *ngSwitchCase="0">PENDIENTE</span>
-            <span class="boton-aprobado" *ngSwitchCase="1">APROBADO</span>
+            <span class="boton-pendiente" *ngSwitchCase="'pendiente'">PENDIENTE</span>
+            <span class="boton-aprobado" *ngSwitchCase="'aprobado'">APROBADO</span>
+            <span class="boton-aprobado" *ngSwitchCase="'gratuito'">GRATUITO</span>
           </ng-container>
         </mat-cell>
       </ng-container>
@@ -69,8 +67,8 @@
         <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Acciones:</span>
-          <button *ngIf="element.vencido === false" placement="right"
-            ngbTooltip="{{element.estado === 0 ? 'Habilitar' : 'deshabilitar'}}" class="mr-2" mat-icon-button
+          <button *ngIf="element.vencido === false && element.estado != 'gratuito'" placement="right"
+            ngbTooltip="{{element.estado === 'pendiente' ? 'Habilitar' : 'deshabilitar'}}" class="mr-2" mat-icon-button
             style="background-color: transparent" (click)="dialogAprobarPromo(element)">
             <mat-icon>{{element.estado === 1 ? 'unpublished' : 'check_circle'}}</mat-icon>
           </button>
