@@ -77,12 +77,11 @@
       <div class="row mt-3">
         <i class="far fa-clock fa-2x"></i>
         <table class="ml-3" cellspacing="0" cellpadding="5">
-          <tr *ngFor="let hor of comercio.horarios">
-            <td>{{hor.dia_nombre}}</td>
+          <tr *ngFor="let hor of comercio.horarios; index as i">
+            <td>{{(i!=0 && hor.dia != comercio.horarios[i-1].dia) || i===0 ? hor.dia_nombre : ""}}</td>
             <td>{{hor.desde}} a {{hor.hasta}}</td>
           </tr>
         </table>
-
       </div>
       <div class="row mt-3">
         <div class="col px-0">

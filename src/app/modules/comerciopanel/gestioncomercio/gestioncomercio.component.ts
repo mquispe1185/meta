@@ -124,9 +124,13 @@ export class GestioncomercioComponent implements OnInit {
     this.comercio = new Comercio();
     this.creando_new = true;
     this.comercio.envio = false;
+    this.comercio.provincia_id = Provincia.SALTA;
 
     if (this.provincias.length === 0) {
       this.getProvincias();
+    }
+    if (this.departamentos.length ===0){
+      this.buscarDtos(Provincia.SALTA)
     }
     if (this.rubros.length === 0) {
       this.getRubros();
@@ -174,8 +178,8 @@ export class GestioncomercioComponent implements OnInit {
     )
   }
 
-  buscarDtos(event) {
-    this.provincia_id = event.value;
+  buscarDtos(prov_id) {
+    this.provincia_id = prov_id;
     this.ubicacionService.getDptos(this.provincia_id).subscribe(
       dtos => { this.departamentos = dtos; console.log('deptos', dtos); }
     )

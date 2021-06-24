@@ -293,7 +293,7 @@
                 <mat-form-field class="col">
                   <mat-label for="prov">Provincia</mat-label>
                   <mat-select id="prov" name="prov" [(ngModel)]="comercio.provincia_id" required
-                    (selectionChange)="buscarDtos($event)" #prov="ngModel">
+                    (selectionChange)="buscarDtos($event.value)" #prov="ngModel">
                     <mat-option *ngFor="let pr of provincias" [value]="pr.id">{{ pr.nombre }}
                     </mat-option>
                   </mat-select>
