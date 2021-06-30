@@ -40,7 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuienesComponent } from './quienes/quienes.component';
-
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -88,6 +88,7 @@ import { QuienesComponent } from './quienes/quienes.component';
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
+    YouTubePlayerModule
 
   ]
 })

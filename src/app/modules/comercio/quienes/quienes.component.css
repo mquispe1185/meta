@@ -1,6 +1,7 @@
 .contenedor {
   margin-top: -45px;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .fondoinicio{
@@ -170,6 +171,9 @@ span.credits1 {
 @media (max-width: 900px) {
   .contenedor {
     margin-bottom: 80px;
+    display: inline;
+    width: 98%;
+
   }
   .contenedorimagen {
     height: 380px;
@@ -215,7 +219,10 @@ span.credits1 {
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
-
+.somos{
+  position: relative;
+  top: -30px;
+}
 .subtitulos {
   font: normal normal bold 20px roboto;
 }

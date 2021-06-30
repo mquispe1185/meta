@@ -37,7 +37,7 @@
     </div>
 
     <div class="row">
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-6 mb-3">
         <mat-accordion class="mat-elevation-z0">
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
@@ -130,25 +130,30 @@
                 ¿A dónde debo dirigirme ante cualquier consulta?
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p class="respuestas">Ante cualquier inquietud podés hacer clic en <a class="link" [routerLink]="['/consulta']"><strong>Contactate</strong></a> y mandarnos
+            <p class="respuestas">Ante cualquier inquietud podés hacer clic en <a class="link"
+                [routerLink]="['/consulta']"><strong>Contactate</strong></a> y mandarnos
               WhatsApp o e-mail. </p>
           </mat-expansion-panel>
         </mat-accordion>
       </div>
-      <div class="col-12 col-sm-6">
-        <div>
+      <div #demoYouTubePlayer class="col-12 col-sm-6 demo-youtube-player">
+        <!--         <div>
           <br><br><br>
           <img src="/assets/quienes/group.svg" style="max-width:100%;width:auto;height:auto;">
         </div>
-        <h4 style="font-weight: bold;">Video Meta!</h4><br>
+        <h4 style="font-weight: bold;">Video Meta!</h4><br> -->
+        <!-- Video Youtube META CERCA -->
+          <youtube-player videoId="u4-2rGYC1FI" [width]="videoWidth" [height]="videoHeight"></youtube-player>
+          <div class="row justify-content-center mt-5">
+            <br>
+            <h3 class="subtitulos">¡Tu vecino tiene la solución!</h3>
+          </div>
+          <button type="button" class="boton-conoce" [routerLink]="['/inicio']" fragment="seccioncomercio">CONOCER LOCALES
+            CERCANOS
+          </button>
       </div>
     </div><br>
-    <div class="row justify-content-center">
-      <br><h3 class="subtitulos">¡Tu vecino tiene la solución!</h3>
-    </div>
-    <button type="button" class="boton-conoce" [routerLink]="['/inicio']" fragment="seccioncomercio">CONOCER LOCALES
-      CERCANOS
-    </button>
+
   </div>
 
 </div>

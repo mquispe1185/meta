@@ -12,9 +12,12 @@
         <ng-template #menuwork>
                 <app-header></app-header>
         </ng-template>
-
-
 </ng-template>
 <ng-http-loader [spinner]="spinkit.skWave"
 [backgroundColor]="'#EE7222'"></ng-http-loader>
-<router-outlet></router-outlet>
+<router-outlet>
+        <!-- Boton Whatsapp -->
+        <a [href]="safeURL" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+        </a>
+</router-outlet>

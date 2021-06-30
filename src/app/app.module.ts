@@ -62,6 +62,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import {apikey} from '../app/modelos/apikey';
 import { PregFrecuentesComponent } from './inicio/preg-frecuentes/preg-frecuentes.component';
 import { ContactateComponent } from './inicio/contactate/contactate.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,6 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
-
     SharedModule,
     ToastrModule.forRoot(),
     AngularTokenModule.forRoot({
@@ -160,10 +160,9 @@ import { ContactateComponent } from './inicio/contactate/contactate.component';
 
 
     MatNativeDateModule,
-
     CarouselModule,
-    ImageCropperModule
-
+    ImageCropperModule,
+    YouTubePlayerModule
   ],
 
   providers: [GuardService,AdminGuardService,

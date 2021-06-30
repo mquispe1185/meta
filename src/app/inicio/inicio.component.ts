@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Comercio } from '../modelos/comercio';
 import { ComercioService } from '../servicios/comercio.service';
 import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-inicio',
@@ -61,8 +62,8 @@ export class InicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-    console.log('user data en inicio',this.tokenService.currentUserData);
+    /*  console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
+    console.log('user data en inicio',this.tokenService.currentUserData); */
     this.listen();
    this.tokenService.validateToken().subscribe(
      res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
@@ -177,6 +178,4 @@ export class InicioComponent implements OnInit {
       prs =>{this.promociones = prs;}
     )
   }
-
-
 }

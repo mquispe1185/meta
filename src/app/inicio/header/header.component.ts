@@ -21,13 +21,13 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
 
-      console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-      console.log('user data en inicio',this.tokenService.currentUserData);
+      // console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
+      // console.log('user data en inicio',this.tokenService.currentUserData);
      // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
       this.tokenService.validateToken().subscribe(
        res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
      );
-        console.log('es inicio',this.esInicio)
+        // console.log('es inicio',this.esInicio)
     }
 
 
