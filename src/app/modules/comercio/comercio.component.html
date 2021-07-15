@@ -16,7 +16,7 @@
     </div>
   </div>
 
-<!-- Seccion Imagen -->
+  <!-- Seccion Imagen -->
   <div class="imagen">
     <div class="row">
       <!-- <div class="col d-flex justify-content-center"></div> -->
@@ -27,14 +27,14 @@
     </div>
   </div>
 
-  <div class="">
+  <div class="descripcion">
     <div class="row px-4 pt-2">
       <span class="subtitulo">
         ¿Que ofrecemos?
       </span>
     </div>
     <div class="row px-4 pt-2">
-      <p class="descripcion">
+      <p>
         {{comercio?.descripcion}}
       </p>
     </div>
@@ -48,27 +48,32 @@
       </span> <br>
       <span class="descripcion">
         {{comercio?.domicilio}} - {{comercio?.localidad?.nombre | titlecase }}
-       </span>
+      </span>
     </div>
     <div *ngIf="comercio.latitud && comercio.longitud">
       <a href="https://www.google.com/maps/search/?api=1&query={{lat}},{{lon}}">
-      <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lon">
-        <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
-      </agm-map>
-    </a>
+        <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lon">
+          <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
+        </agm-map>
+      </a>
     </div>
   </div>
 
+  <!-- Sección Info Contacto -->
   <div class="contacto">
     <div class="in-flex offset-sm-2 col-sm-10 mt-3">
       <div class="row mt-3">
-        <i class="fas fa-map-marker-alt fa-2x"></i><span class="info ml-3">{{comercio?.domicilio}}</span>
+        <i class="fas fa-map-marker-alt fa-2x ml-1"></i><span class="info ml-3">
+          {{comercio?.domicilio}}</span>
       </div>
       <div class="row mt-3">
-        <i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a class="textweb"
+        <!--<i class="fab fa-chrome fa-2x"></i><span class="info ml-3"><a class="textweb"
             href="{{comercio?.web ? 'https://'+comercio.web : ''}}" (click)="sumarClick(3)"
             target="_blank">{{comercio?.web ? comercio.web :
-            'sin pagina web'}}</a></span>
+            'sin pagina web'}}</a></span> -->
+        <i class="fab fa-chrome fa-2x"></i><span><a class="info ml-3"
+            href="{{comercio?.web ? 'https://'+comercio.web : ''}}" (click)="sumarClick(3)"
+            target="_blank">{{comercio?.web ? comercio.web :'Sin página web'}}</a></span>
       </div>
       <div class="row mt-3">
         <i class="fas fa-phone fa-2x"></i><span class="info ml-3">{{comercio?.telefono}} /
@@ -90,32 +95,31 @@
         <div class="col d-flex justify-content-end">
 
           <span class="nick mr-2">Contactar Local:</span>
-          <!-- <a *ngIf="comercio.facebook" href="{{comercio.facebook}}"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a> -->
-          <a *ngIf="!deviceService.isMobile() && comercio.facebook" href="{{comercio.facebook}}" (click)="comercio.facebook && sumarClick(1)"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2" ></i></a>
-           <a *ngIf="deviceService.isMobile() && comercio.facebook" [href]="faceapp" (click)="comercio.facebook && sumarClick(1)"
-            target="_blank"><i class="fab fa-facebook fa-2x mr-2"></i></a>
-          <a *ngIf="comercio.instagram && comercio.instagram" href="{{comercio.instagram}}" (click)="comercio.instagram && sumarClick(2)"
-            target="_blank"><i class="fab fa-instagram fa-2x mr-2"></i></a>
-          <!-- <a *ngIf="!deviceService.isMobile()" href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a> -->
-          <a *ngIf="comercio.celular" [href]="safeURL" target="_blank" (click)="comercio.celular && sumarClick(4)"><i class="fab fa-whatsapp fa-2x"></i></a>
+          <a *ngIf="!deviceService.isMobile() && comercio.facebook" href="{{comercio.facebook}}"
+            (click)="comercio.facebook && sumarClick(1)" target="_blank"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+          <a *ngIf="deviceService.isMobile() && comercio.facebook" [href]="faceapp"
+            (click)="comercio.facebook && sumarClick(1)" target="_blank"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+          <a *ngIf="comercio.instagram && comercio.instagram" href="https://www.instagram.com/{{comercio.instagram}}/"
+            (click)="comercio.instagram && sumarClick(2)" target="_blank"><i
+              class="fab fa-instagram fa-2x mr-3"></i></a>
+          <a *ngIf="comercio.celular" [href]="safeURL" target="_blank" (click)="comercio.celular && sumarClick(4)">
+            <i class="fab fa-whatsapp fa-2x"></i></a>
 
         </div>
       </div>
     </div>
   </div>
-
+  <!-- Sección Referencias -->
   <div class="referencias">
-
-    <div class="row px-4 pt-2 mb-2">
+    <div class="row px-4 mt-3 mb-2">
       <div class="col-6 col-md-8">
         <span class="subtitulo">
           Referencias de clientes
         </span>
       </div>
       <div class="col-6 col-md-4 d-flex justify-content-end">
-        <button mat-raised-button class="botoncomentar" type="button" (click)="crearReferencia(modalref)" color="primary">Comentar
+        <button mat-raised-button class="botoncomentar" type="button" (click)="crearReferencia(modalref)"
+          color="primary">Comentar
         </button>
       </div>
     </div>
@@ -135,7 +139,6 @@
         </div>
       </ng-container>
     </div>
-
   </div>
 
 </div>
@@ -143,6 +146,7 @@
 
 <app-footer-visitantes></app-footer-visitantes>
 
+<!-- Modal Ingreso de Referencias -->
 <ng-template #modalref let-modal>
   <div class="container">
     <div>
@@ -161,7 +165,6 @@
             <form name="form" (ngSubmit)="f.form.valid && guardarReferencia()" #f="ngForm" novalidate>
 
               <div class="form-row">
-
                 <mat-form-field class="col">
                   <textarea matInput type="text" placeholder="tu opinión" maxlength="240"
                     (ngModelChange)="contadorChar($event)" [(ngModel)]="referencia.cuerpo" name="cu" #cu="ngModel"
@@ -187,9 +190,7 @@
                 <pre>Valoración: <b>{{referencia.puntaje}}</b></pre>
               </div>
 
-
               <div class="form-row mt-3">
-
                 <div class="col-12 text-right">
                   <button mat-raised-button type="submit" color="primary">
                     <mat-icon>save</mat-icon>Guardar
@@ -199,11 +200,8 @@
 
             </form>
           </div>
-
         </div>
       </mat-card>
     </div>
   </div>
-
-
 </ng-template>

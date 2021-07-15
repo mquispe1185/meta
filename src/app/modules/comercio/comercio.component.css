@@ -30,7 +30,7 @@
 
 .contenedor .descripcion {
   grid-area: descripcion;
-
+  margin-top: 15pt;
 }
 
 .contenedor .ubicacion {
@@ -38,6 +38,7 @@
   /* justify-self: stretch; */
   padding-right: 15px;
   padding-left: 15px;
+  margin-top: 35pt;
 }
 
 .contenedor .contacto {
@@ -47,11 +48,11 @@
 .contenedor .referencias {
   grid-area: referencias;
   height: 400px;
+  margin-top: 35pt;
   margin-bottom: 50px;
   overflow-x: hidden;
   overflow-y: auto;
 }
-
 
 .principal {
   margin-top: 10px;
@@ -68,7 +69,7 @@ agm-map {
 }
 .nombrecomercio {
   text-align: center;
-  /* font: normal normal 800 54px/65px Wavehaus; */
+  /* font: normal normal bold 36px Wavehaus;  */
   font: normal normal bold 36px sans-serif;
   letter-spacing: 0px;
   color: #3c3c3c;
@@ -152,7 +153,6 @@ i {
 }
 .estrellas {
   float: right;
-
 }
 
 .textweb {
@@ -219,5 +219,8 @@ i {
   .recuadrocomentarios {
     width: 100%;
     height: 170px;
+  }
+  .info {
+    font: normal normal normal 16px Wavehaus;
   }
 }

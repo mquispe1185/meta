@@ -1,52 +1,52 @@
 <div id='ini' class="contenedor">
 
-    <div class="cuadro">
-      <div #ini class="rectangulo">
+  <div class="cuadro">
+    <div #ini class="rectangulo">
+    </div>
+  </div>
+
+  <!-- Menu, Logo, Barra de Busqueda -->
+  <div class="superficial">
+
+    <!-- Logo Meta Blanco -->
+    <div class="row contenedorlogo">
+      <div class="col d-flex justify-content-center">
+        <img class="logoblanco" src="https://i.ibb.co/PgXRGWk/logos-06.png" alt="">
       </div>
     </div>
 
-    <!-- Menu, Logo, Barra de Busqueda -->
-    <div class="superficial">
-
-      <!-- Logo Meta Blanco -->
-      <div class="row contenedorlogo">
-        <div class="col d-flex justify-content-center">
-          <img class="logoblanco" src="https://i.ibb.co/PgXRGWk/logos-06.png" alt="">
-        </div>
+    <!-- Slogan Lo que quieras Cerca -->
+    <div class="row contenedorsubtit">
+      <div class="col d-flex align-items-center justify-content-center ">
+        <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
       </div>
+    </div>
 
-      <!-- Slogan Lo que quieras Cerca -->
-      <div class="row contenedorsubtit">
-        <div class="col d-flex align-items-center justify-content-center ">
-          <span #busca id='loque' class="slogan">Lo que quieras</span><span class="txtcerca ml-2"> CERCA</span>
-        </div>
-      </div>
-
-      <!-- Barra Principal Busqueda-->
-      <div class="row contenedorbusqueda align-items-center justify-content-center">
-        <form class="busqueda form-inline">
-          <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text d-flex justify-content-center">
-                <i class="fas fa-map-marker-alt mr-2 colorprimario"></i> <span class="ciudad">San Lorenzo</span>
-              </div>
+    <!-- Barra Principal Busqueda-->
+    <div class="row contenedorbusqueda align-items-center justify-content-center">
+      <form class="busqueda form-inline">
+        <div class="busqueda input-group input-group-lg mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text d-flex justify-content-center">
+              <i class="fas fa-map-marker-alt mr-2 colorprimario"></i> <span class="ciudad">San Lorenzo</span>
             </div>
-            <input type="text" class="form-control" [(ngModel)]="buscado" name="buscar" #buscar="ngModel"
-              id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
-            <span class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
-                <i class="fa fa-search"></i>
-              </button>
-            </span>
           </div>
-        </form>
-        <div class="ParrafoConoce mt-5">
-          CONOCÉ LAS PROMOCIONES Y OFERTAS <br>
-          DE LOS COMERCIOS CERCANOS A TU CASA.
+          <input type="text" class="form-control" [(ngModel)]="buscado" name="buscar" #buscar="ngModel"
+            id="inlineFormInputGroupUsername2" placeholder="¿Qué estás buscando?">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="buscarComercios()" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
         </div>
+      </form>
+      <div class="ParrafoConoce mt-5">
+        CONOCÉ LAS PROMOCIONES Y OFERTAS <br>
+        DE LOS COMERCIOS CERCANOS A TU CASA.
       </div>
     </div>
-    <!-- Fin Menu, Logo, Barra de Busqueda -->
+  </div>
+  <!-- Fin Menu, Logo, Barra de Busqueda -->
 
 </div>
 <!-- Fin Menu, Logo, Barra de Busqueda -->
@@ -72,112 +72,133 @@
       <span #serv id='cerca' class="subtitulos">¿Qué estás buscando?</span>
     </div>
 
-       <!-- Carrusel de Iconos Rubros -->
-       <div class="my-5">
-        <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Automotor')">
-              <button class="icono"><span class="credits1"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Automotor</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Gastronomia')">
-              <button class="icono"><span class="credits2"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Gastronomia</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Despensa')">
-              <button class="icono"><span class="credits3"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Despensa</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Boutique')">
-              <button class="icono"><span class="credits4"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Boutique</span>
-            </div>
-          </ng-template>
+    <!-- Carrusel de Iconos Rubros -->
+    <div>
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Articulos en Gral.')">
+            <button class="icono"><span class="credits13"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Articulos en Gral.</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Automotor')">
+            <button class="icono"><span class="credits1"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Automotor</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Gastronomia')">
+            <button class="icono"><span class="credits2"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Gastronomia</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Despensa')">
+            <button class="icono"><span class="credits3"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Despensa</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Boutique')">
+            <button class="icono"><span class="credits4"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Boutique</span>
+          </div>
+        </ng-template>
 
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Educacion')">
-              <button class="icono"><span class="credits5"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Educacion</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Hospedaje')">
-              <button class="icono"><span class="credits6"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Hospedaje</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Hogar')">
-              <button class="icono"><span class="credits7"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Hogar</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Libreria')">
-              <button class="icono"><span class="credits8"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Libreria</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Limpieza')">
-              <button class="icono"><span class="credits9"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Limpieza</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Oficio')">
-              <button class="icono"><span class="credits10"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Oficio</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Recracion-Gym')">
-              <button class="icono"><span class="credits11"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Recración-Gym</span>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div (click)="buscarPorRubro('Sanidad')">
-              <button class="icono"><span class="credits12"></span></button> <br>
-              <span
-                style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
-                Sanidad</span>
-            </div>
-          </ng-template>
-        </owl-carousel-o>
-      </div>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Educacion')">
+            <button class="icono"><span class="credits5"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Educacion</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Hospedaje')">
+            <button class="icono"><span class="credits6"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Hospedaje</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Hogar')">
+            <button class="icono"><span class="credits7"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Hogar</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Libreria')">
+            <button class="icono"><span class="credits8"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Libreria</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Limpieza')">
+            <button class="icono"><span class="credits9"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Limpieza</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Oficio')">
+            <button class="icono"><span class="credits10"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Oficio</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Organización Pública')">
+            <button class="icono"><span class="credits14"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Organización Pública</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Recracion-Gym')">
+            <button class="icono"><span class="credits11"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Recración-Gym</span>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div (click)="buscarPorRubro('Sanidad')">
+            <button class="icono"><span class="credits12"></span></button> <br>
+            <span
+              style="text-align: center;font: normal normal normal 14px Wavehaus;letter-spacing: 0px;color: #3C3C3C;opacity: 1;">
+              Sanidad</span>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <div #ben id='promo'>
+      <!-- <div>h</div>
+      <div>h</div> -->
+      <br><br>
+    </div>
 
     <!-- PROMOCIONES -->
-    <div #ben id='promo' class="fondocomercios">
-      <br> <br>
+    <div class="fondocomercios">
       <div class="row">
         <span class="subtitulos ml-3">Promociones</span>
       </div><br>
@@ -190,17 +211,16 @@
               <div id="li">
                 <h5 class="titulopromo">{{promo.titulo}}</h5>
                 <span class="parrafopromo"
-                [class.parrafopromo-bg]="(promo.descripcion.length > 6  && promo.descripcion.length < 9)"
-                [class.parrafopromo-md]="(promo.descripcion.length > 8  && promo.descripcion.length < 21)"
-                [class.parrafopromo-sm]="promo.descripcion.length > 20"
-                >{{promo.descripcion}}</span> <br>
+                  [class.parrafopromo-bg]="(promo.descripcion.length > 6  && promo.descripcion.length < 9)"
+                  [class.parrafopromo-md]="(promo.descripcion.length > 8  && promo.descripcion.length < 21)"
+                  [class.parrafopromo-sm]="promo.descripcion.length > 20">{{promo.descripcion}}</span> <br>
 
                 <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
                 </button> <br> <br>
               </div>
               <div id="round-image">
                 <img src="https://i.ibb.co/7WSq9vq/logo-07c.png" class="redimg">
-                </div>
+              </div>
               <div id="ld">
                 <img id="imgder"
                   [attr.src]="[promo.url != null ? promo.url : 'https://i.ibb.co/whcJdfh/defaultpromo.jpg']"
@@ -234,9 +254,8 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <p class="nombre-comer mt-4"
-                  [class.marquee]="comer.nombre.length > 24">
-                      <span>{{comer.nombre}}</span>
+                  <p class="nombre-comer mt-4" [class.marquee]="comer.nombre.length > 24">
+                    <span>{{comer.nombre}}</span>
                   </p>
                 </div>
               </div>
@@ -260,12 +279,12 @@
         </ng-container>
       </div>
 
-        <div>
-          <span *ngIf="comercios.length > 8" class="carga" (click)="verMasComercios()">Más Comercios</span>
-        </div>
-        <div>
-        </div>
-      </div> <!-- FIN SUGERENCIAS PARA VOS -->
+      <div>
+        <span *ngIf="comercios.length > 8" class="carga" (click)="verMasComercios()">Más Comercios</span>
+      </div>
+      <div>
+      </div>
+    </div> <!-- FIN SUGERENCIAS PARA VOS -->
 
   </div>
 </div>

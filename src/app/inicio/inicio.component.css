@@ -560,6 +560,22 @@ span.credits12 {
   height: 60px;
   width: 60px;
 }
+span.credits13 {
+  background: url(https://i.ibb.co/ZYJ1yRy/Articulos.png) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+span.credits14 {
+  background: url(https://i.ibb.co/zn1JBhG/Org-publica.png) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
 
 .logomanito {
   top: 50px;
@@ -729,12 +745,6 @@ span.credits12 {
   .logoNaranja {
     margin-top: -80px;
   }
-
- /*  .cuadropromo {
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 350px;
-  } */
 
   .cuadrocomercio{
     height: 340px;
