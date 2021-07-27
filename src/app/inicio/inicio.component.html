@@ -247,7 +247,6 @@
           <div class="col-12 col-md-4">
             <div class="cuadrocomercio">
               <div (click)="verComercio(comer.id)">
-                <!-- <img class="resize_fit_center" src={{comer.url_foto}} alt="foto comercio"> -->
                 <img class="resize_fit_center"
                   [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
                   alt="foto comercio">
@@ -259,14 +258,14 @@
                   </p>
                 </div>
               </div>
-
               <div class="desc-comer mt-2">
                 {{comer.descripcion}}
               </div>
               <div class="direccion-comer mt-2">
                 <div class="row pr-1">
                   <div class="col-8 col-md-7 coldomicilio">
-                    {{comer.domicilio}}
+                    <!-- {{comer.domicilio}} -->
+                    {{comer?.domicilio ? comer.domicilio :'San Lorenzo'}}
                   </div>
                   <div class="col-4 col-md-5 colboton">
                     <button type="button" (click)="verComercio(comer.id)" class="boton-comercio">Ver comercio

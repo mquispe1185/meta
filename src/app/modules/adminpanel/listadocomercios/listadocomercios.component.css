@@ -9,8 +9,6 @@
   color: #f36904;
 }
 
-
-
 .img-circle {
     border-radius: 50%;
 }
@@ -52,7 +50,12 @@
   white-space: unset !important;
   flex: 0 0 22% !important;
   width: 22% !important;
-
+}
+.mat-column-rubro {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
 }
 
 .mat-column-tiposervicio {
@@ -60,15 +63,14 @@
   white-space: unset !important;
   flex: 0 0 10% !important;
   width: 10% !important;
-  /* overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto; */
 }
 
+.mat-column-acciones {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 23% !important;
+  width: 23% !important;
+}
 .detalle {
   color: #ffffff;
   font-weight: bold;

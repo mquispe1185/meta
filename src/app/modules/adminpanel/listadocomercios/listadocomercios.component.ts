@@ -1,5 +1,5 @@
 import { ComercioService } from './../../../servicios/comercio.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Comercio } from '../../../modelos/comercio';
 import { AngularTokenService } from 'angular-token';
@@ -12,6 +12,7 @@ import { RubroService } from 'src/app/servicios/rubro.service';
 import { Semana } from 'src/app/modelos/semana';
 import { Horario } from 'src/app/modelos/horario';
 import { HorarioService } from 'src/app/servicios/horario.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-listadocomercios',
@@ -33,6 +34,12 @@ export class ListadocomerciosComponent implements OnInit {
   nuevo_horario: Horario;
   horario_aux: Horario;
 
+  comercio: Comercio;
+  comercios: Comercio[] = [];
+  nueva_foto: File;
+  file;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
 
   constructor(public tokenService: AngularTokenService,
               private modalService: NgbModal,
@@ -40,7 +47,8 @@ export class ListadocomerciosComponent implements OnInit {
               private confirmationDialogService: ConfirmationDialogService,
               private horarioService: HorarioService,
               private rubroService: RubroService,
-              private comercioService:ComercioService,) { }
+              private comercioService:ComercioService,
+              private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
@@ -146,7 +154,7 @@ export class ListadocomerciosComponent implements OnInit {
     );
   } 
 
-  //gestion de horarios
+  //Gestion de horarios
   openFormHorario(modal, comercio){
     this.comercioSelected = {...comercio};
     this.semana.forEach(d => {d.check = false});
@@ -184,7 +192,6 @@ export class ListadocomerciosComponent implements OnInit {
       )
     }
     dialogEliminarHorario(element){
-
       this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
         .then(
           (confirm) => {(confirm) ? this.eliminarHorario(element) : console.log("cancelado");
@@ -198,6 +205,77 @@ export class ListadocomerciosComponent implements OnInit {
           this.toastr.error('bien hecho!', 'Horario/s eliminado!'); }
       )
     }
+
+  //Gestion de Imagen
+    openFormImagen(modal, comer) {
+      this.comercio = comer;
+      this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+  
+    selectFile(event) {
+      this.nueva_foto = event.target.files.item(0);
+    }
+    guardarLogo() {
+      console.log("comerciooo",this.comercio)
+      this.comercioService.uploadLogo(this.nueva_foto, this.comercio.id).subscribe(
+        cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
+          this.modalService.dismissAll();
+          this.comercios = cms.map(c => new Comercio(c));
+          this.cdRef.detectChanges();
+          this.toastr.success('bien hecho!', 'Foto actualizada!');
+        }
+      )
+    }
+  
+    onFileChange(event) {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.file = file;
+      }
+    }
+  
+    fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+    }
+    imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+      //Usage example:
+      var file = this.dataURLtoFile(this.croppedImage, 'image.png');
+      this.nueva_foto = file;
+    }
+  
+    dataURLtoFile(dataurl, filename) {
+      let arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+  
+      return new File([u8arr], filename, { type: mime });
+    }
+  
+    imageLoaded() {
+      // show cropper
+    }
+    cropperReady() {
+      // cropper ready
+    }
+    loadImageFailed() {
+      // show message
+    }    
+
+
+
+
+
+
    //Método para cerrar Modal con Tecla Escape.
    private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

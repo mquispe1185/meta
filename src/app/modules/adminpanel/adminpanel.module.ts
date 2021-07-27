@@ -43,7 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListadocomerciosComponent } from './listadocomercios/listadocomercios.component';
 import { ListadopromosComponent } from './listadopromos/listadopromos.component';
 import { GestionPlanesComponent } from './gestion-planes/gestion-planes.component';
-
+import { ImageCropperModule } from 'ngx-image-cropper'
 
 @NgModule({
   declarations: [AdminpanelComponent, ListadocomerciosComponent, ListadopromosComponent, GestionPlanesComponent],
@@ -87,7 +87,7 @@ import { GestionPlanesComponent } from './gestion-planes/gestion-planes.componen
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
-    
+    ImageCropperModule,
   ],
   entryComponents: [ConfirmationDialogComponent],
 })
