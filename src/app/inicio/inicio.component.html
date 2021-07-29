@@ -192,8 +192,6 @@
     </div>
 
     <div #ben id='promo'>
-      <!-- <div>h</div>
-      <div>h</div> -->
       <br><br>
     </div>
 
@@ -244,35 +242,39 @@
 
       <div class="row mb-3">
         <ng-container *ngFor="let comer of comercios">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-sm-6 col-md-4">
             <div class="cuadrocomercio">
               <div (click)="verComercio(comer.id)">
                 <img class="resize_fit_center"
                   [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
                   alt="foto comercio">
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <p class="nombre-comer mt-4" [class.marquee]="comer.nombre.length > 24">
-                    <span>{{comer.nombre}}</span>
-                  </p>
-                </div>
-              </div>
-              <div class="desc-comer mt-2">
-                {{comer.descripcion}}
-              </div>
-              <div class="direccion-comer mt-2">
-                <div class="row pr-1">
-                  <div class="col-8 col-md-7 coldomicilio">
-                    <!-- {{comer.domicilio}} -->
-                    {{comer?.domicilio ? comer.domicilio :'San Lorenzo'}}
-                  </div>
-                  <div class="col-4 col-md-5 colboton">
-                    <button type="button" (click)="verComercio(comer.id)" class="boton-comercio">Ver comercio
-                    </button>
+              <div class="cuadroinferior">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="nombre-comer mt-4" [class.marquee]="comer.nombre.length > 24">
+                      <span>{{comer.nombre}}</span>
+                    </p>
                   </div>
                 </div>
+                <div class="desc-comer mt-1 px-2">
+                  <!-- {{comer.descripcion}} -->
+                  {{comer?.descripcion ? comer.descripcion : comer.nombre}}
+                </div>
+                <div class="direccion-comer mt-3 px-2">
+                  <div class="row pr-1">
+                    <div class="col-9 coldomicilio">
+                      <!-- {{comer.domicilio}} -->
+                      {{comer?.domicilio ? comer.domicilio :'San Lorenzo'}}
+                    </div>
+                    <div class="col-3 colboton">
+                      <button type="button" (click)="verComercio(comer.id)" class="boton-comercio">Ir
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </ng-container>

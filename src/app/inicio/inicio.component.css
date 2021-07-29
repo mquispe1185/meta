@@ -1,114 +1,194 @@
-.contenedor {
-  margin-top: -45px;
-  margin-bottom: 50px;
-  width: 100%;
-}
+/* CSS MOBILE FIRST */
+  .cont {
+    display: none;
+  } 
+  .contcel {
+    display: inline;
+    position: fixed;
+    z-index: -999;
+  } 
+  .contenedor {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cuadro {
+    position: relative;
+    width: 100%;
+    background: url('https://i.ibb.co/tYz8M1M/barrio1.png') no-repeat top left;
+    z-index: -9999;
+    height: 750px;
+  }
 
-.superficial {
-  position: absolute;
-  top: 0px;
-  align-items: center;
-  width: 100%;
-}
+  .cuadro:before {
+    box-shadow: 0 0 0 150px white;
+    border-radius: 100%;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    content: '';
+    top: 100%;
+    z-index: -999;
+  }
 
-.cuadro {
+  .rectangulo {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background: #f36904 0% 0% no-repeat padding-box;
+    opacity: 0.69;
+    z-index: -1000;
+    height: 720px;
+  }
+
+  .rectangulo:before {
+    box-shadow: 0 0 0 150px white;
+    border-radius: 100%;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    content: '';
+    top: 100%;
+    z-index: -1000;
+  }
+
+  .superficial {
+    position: absolute;
+    top: 0px;
+    align-items: center;
+    width: 100%;
+    height: 720px;
+  }
+
+  /*Seccion logo y subtitulo*/
+  .contenedorlogo {
+    top: 100px;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoblanco {
+    width: 90px;
+    height: 66px;
+  }
+
+  .contenedorsubtit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    top: 175px;
+  }
+
+  .slogan {
+    text-align: left;
+    font: normal normal normal 17px/25px Wavehaus;
+    letter-spacing: 0px;
+    color: #ffffff;
+    white-space: nowrap;
+
+  }
+  .txtcerca {
+    text-align: left;
+    font: normal normal bold 17px/25px Wavehaus;
+    letter-spacing: 0px;
+    color: #ffffff;
+  }
+
+  /*Seccion barra de busqueda*/
+  .contenedorbusqueda {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font: normal normal 600 12px Wavehaus;
+    width: 95%;
+    height: 5%;
+  }
+
+  .menudesplegado {
+    background: #ee7222;
+    opacity: 0.9;
+  }
+
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    clear: both;
+    text-align: inherit;
+    white-space: normal;
+    background-color: transparent;
+    border: 3;
+  }
+
+  .gps {
+    display: none;
+  }
+  .ciudad {
+    font: normal normal 600 12px Wavehaus;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+  }
+
+.btn-buscar {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 8px;
+  }
+
+.ParrafoConoce {
+  text-align: center;
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 1;
   position: relative;
-  width: 100%;
-  height: 1200px;
-  background: url('https://i.ibb.co/tYz8M1M/barrio1.png') no-repeat top left;
-  z-index: -9999;
+  top: 50px;
+  font: normal normal normal 15px Century;
+  }
+
+  .fondototal {
+    background: #ffffff;
+    text-align: center;
+    scroll-margin-bottom: 20px;
+  }
+  .fondoinicio {
+    background: #ffffff;
+    text-align: center;
+  }
+
+.logoNaranja {
+  top: 750px;
+  width: 120px;
+  height: 120px;
+  margin-top: -50px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
-.cuadro:before {
-  box-shadow: 0 0 0 150px white;
-  border-radius: 100%;
-  position: absolute;
-  width: 100%;
-  height: 300px;
-  content: '';
-  top: 100%;
-  z-index: -999;
-}
-
-.rectangulo {
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 1200px;
-  background: #f36904 0% 0% no-repeat padding-box;
-  opacity: 0.69;
-  z-index: -1000;
-}
-
-.rectangulo:before {
-  box-shadow: 0 0 0 150px white;
-  border-radius: 100%;
-  position: absolute;
-  width: 100%;
-  height: 300px;
-  content: '';
-  top: 100%;
-  z-index: -1000;
-}
-
-
-/*Menu cambia de color al superar los 365px*/
-.menunar {
-  background: #f36904;
-  opacity: 0.9;
-  height: 35px;
-}
-
-/*Seccion Logo y Slogan*/
-.contenedorlogo {
-  top: 200px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 100%;
-}
-
-.logoblanco {
-  width: 271px;
-  height: 169px;
-}
-
-.contenedorsubtit {
-  top: 400px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 100%;
-}
-
-.slogan {
-  text-align: left;
-  font: normal normal normal 37px/45px Wavehaus;
+.ParrafoMeta {
+  text-align: center;
   letter-spacing: 0px;
-  color: #ffffff;
-  white-space: nowrap;
+  color: #3c3c3c;
+  opacity: 1;
+  font: normal normal normal 15px Century;
 }
 
-.txtcerca {
-  text-align: left;
-  font: normal normal bold 37px/45px Wavehaus;
+.parrafoini {
+  font: normal normal normal 14px Century;
+}
+
+.subtitulos {
+  text-align: center;
+  font: normal normal bold 24px sans-serif;
   letter-spacing: 0px;
-  color: #ffffff;
+  color: #000000;
+  opacity: 1;
 }
-
-/*Seccion barra de busqueda*/
-.contenedorbusqueda {
-  top: 470px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 50%;
-  height: 5%;
-}
-
 .input-group > .input-group-prepend > .input-group-text {
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
@@ -130,27 +210,6 @@ input::placeholder {
   font-size: 16px;
 }
 
-.gps {
-  display: inline;
-  position: relative;
-  color: #ee7222;
-  font-size: 28px;
-}
-.ciudad {
-  font: normal normal 600 20px/24px Wavehaus;
-  letter-spacing: 0px;
-  color: #707070;
-  opacity: 1;
-}
-.busqueda {
-  width: 100%;
-}
-
-.btn-buscar {
-  font-size: 36px;
-  color: #fff;
-  margin-top: 8px;
-}
 .input1 {
   width: 100%;
   height: 100%;
@@ -164,37 +223,6 @@ input::placeholder {
   background: transparent;
 }
 /* Fin Seccion barra de busqueda*/
-
-.ParrafoConoce {
-  text-align: center;
-  font: normal normal normal 20px/27px Century;
-  font-weight: bold;
-  color: #ffffff;
-  opacity: 1;
-}
-
-.fondototal {
-  background: #ffffff;
-  text-align: center;
-  scroll-margin-bottom: 20px;
-}
-.fondoinicio {
-  background: #ffffff;
-  text-align: center;
-}
-.logoNaranja {
-  width: 120px;
-  height: 120px;
-  margin-top: -75px;
-}
-
-.ParrafoMeta {
-  text-align: center;
-  font: normal normal normal 20px/27px Century;
-  letter-spacing: 0px;
-  color: #3c3c3c;
-  opacity: 1;
-}
 
 .boton-conoce {
   width: 140px;
@@ -223,14 +251,6 @@ input::placeholder {
   transform: translateY(-3px);
 }
 
-.subtitulos {
-  text-align: center;
-  font: normal normal bold 24px sans-serif;
-  letter-spacing: 0px;
-  color: #000000;
-  opacity: 1;
-}
-
 .carrusel-iconos {
   top: 933px;
   left: 199px;
@@ -239,24 +259,57 @@ input::placeholder {
   opacity: 1;
 }
 
+.cuadrocomercio{
+  position: relative;
+  background: white;
+  color: #545454;
+  width: 100%;
+  height: 345px;
+  margin-bottom: 20pt;
+  border: 0px;
+  background: #fff;
+  word-wrap: break-word;
+}
+
+.cuadrocomercio:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
+}
+
+.coldomicilio{
+  vertical-align: center;
+}
+
+.boton-comercio {
+  display: inline;
+  width: 100%;
+    height: 25px;
+    margin-top: -5px;
+    margin-right: 5px;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #f36904;
+    border: none;
+    border-radius: 45px;
+    outline: none;
+}
+
 .fondocomercios {
   width: 100%;
   text-align: center;
 }
 
-.cuadrocomercio{
-  background: white;
-  color: #545454;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  /* padding: 5px; */
-  width: 100%;
-  height: 450px;
-  transition: box-shadow 0.3s;
-  border-bottom: 2px solid #ccc;
+.cuadroinferior{
+  position: absolute;
+  padding-bottom: 10pt;
+width: 99.7%;
+  height: auto;
   border-right: 1px solid #ccc;
-  background: #fff;
-  word-wrap: break-word;
+  border-bottom: 2px solid #ccc;
 }
 
 .nombre-comer {
@@ -301,13 +354,12 @@ input::placeholder {
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
-
 }
 
 .direccion-comer {
   text-align: left;
   margin-left: 5px;
-  font: normal normal 800 18px Wavehaus;
+  font: normal normal 800 14px Wavehaus;
   letter-spacing: 0px;
   color: #3c3c3c;
   opacity: 1;
@@ -320,11 +372,6 @@ input::placeholder {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-}
-
-.cuadrocomercio:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
 }
 
 .promociones {
@@ -378,7 +425,6 @@ input::placeholder {
   font: normal normal 800 31px Century;
 }
 
-
 .promo-img {
   display: inline-block;
   width: 200px;
@@ -407,25 +453,6 @@ input::placeholder {
   background-color: #f36904;
   border: none;
   border-radius: 45px;
-  outline: none;
-  }
-
-.boton-comercio {
-  width: 100%;
-  height: 25px;
-  margin-top: -5px;
-  margin-right: 5px;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
-  /* font: normal normal normal 10px "Roboto"; */
-  font-size: 16px;
-  font-style: italic;
-  color: #ffffff;
-  background-color: #f36904;
-  border: none;
-  border-radius: 45px;
-  /* box-shadow: 0px 1px 1px rgba(247, 241, 241, 0.815);
-  transition: all 0.1s ease 0s; */
   outline: none;
   }
 
@@ -586,31 +613,48 @@ span.credits14 {
   z-index: 999;
   }
 
-.cuadropromo {
-  margin-right: 50px;
-  margin-left: 20px;
-  width: 400px;
-  max-width: 400px;
-  min-width: 400px;
-  height: 150px;
-  background: #3c3c3c;
-  color: #ffffff;
-  font: normal normal normal 10px Century;
-  font-size: 13px;
-  transition: box-shadow 0.3s;
-  border-right: royalblue;
-}
+  .cuadropromo {
+    max-width: 330px;
+    min-width: 330px;
+    height: 120px;
+    margin-right: 50px;
+    margin-left: 20px;
+    width: 400px;
+    background: #3c3c3c;
+    color: #ffffff;
+    font: normal normal normal 10px Century;
+    font-size: 13px;
+    transition: box-shadow 0.3s;
+    border-right: royalblue;
+  }
+  .parrafopromo {
+    position: relative;
+    font-weight: bolder;
+    font: normal normal 800 42px Century;
+  }
+  
+  .parrafopromo-bg {
+    font: normal normal 800 42px Century;
+  }
+  
+  .parrafopromo-md {
+    font: normal normal 800 24px Century;
+  }
+  
+  .parrafopromo-sm {
+    font: normal normal 800 24px Century;
+  }
+  
+  .resize_fit_center {
+    height: 200px;
+    width: 99.5%; /* you can use % */
+    max-width: 100%;
+    max-height: 80%;
+    vertical-align: middle;
+  }
 
 .cuadropromo:hover {
   box-shadow: 0 0 15px rgba(0, 33, 33, 0.2);
-}
-
-.resize_fit_center {
-  width: 99.5%; /* you can use % */
-  height: auto;
-  max-width: 100%;
-  max-height: 80%;
-  vertical-align: middle;
 }
 
 .resize_promo {
@@ -645,7 +689,6 @@ span.credits14 {
   border-bottom-left-radius: 50%;
 }
 
-
 #imgder{
   position: absolute;
   top: 0;
@@ -664,7 +707,6 @@ span.credits14 {
   z-index: 20;
   width: 45px;
   height: 45px;
-  /* margin-left: 9px; */
   margin-top: -15px;
   border-radius: 50%;
 }
@@ -685,7 +727,6 @@ span.credits14 {
   position: absolute;
   width: 55%;
   height: inherit;
-
 }
 
 #ld{
@@ -697,226 +738,170 @@ span.credits14 {
 .text-vertodos {
   color: #f36904;
   font-weight: bold;
-
 }
 .text-vertodos:hover {
   text-decoration-line: underline;
   cursor: pointer;
   }
 
-@media(max-width: 1440px) {
+
+/* CSS PARA ESCRITORIO 901-1280*/
+@media (min-width: 900px) {
+  .contenedor {
+    margin-top: -45px;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .superficial {
+    position: absolute;
+  }
+  
+  .cuadro {
+    height: 1200px;
+  }
+
+  .rectangulo {
+    height: 1200px;
+  }
+
+/*Menu cambia de color al superar los 365px*/
+.menunar {
+  background: #f36904;
+  opacity: 0.9;
+  height: 35px;
+}
+
+/*Seccion Logo y Slogan*/
+.contenedorlogo {
+  top: 200px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.logoblanco {
+  width: 271px;
+  height: 169px;
+}
+
+.contenedorsubtit {
+  top: 400px;
+}
+
+.slogan {
+  font: normal normal normal 37px/45px Wavehaus;
+}
+
+.txtcerca {
+  font: normal normal bold 37px/45px Wavehaus;
+}
+
+/*Seccion barra de busqueda*/
+.contenedorbusqueda {
+  top: 470px;
+  position: absolute;
+  margin: auto;
+  width: 50%;
+  height: 5%;
+}
+
+.gps {
+  display: inline;
+  position: relative;
+  color: #ee7222;
+  font-size: 28px;
+}
+.ciudad {
+  font: normal normal 600 20px/24px Wavehaus;
+}
+.busqueda {
+  width: 100%;
+}
+
+.btn-buscar {
+  font-size: 36px;
+}
+
+.ParrafoConoce {
+  font: normal normal normal 20px/27px Century;
+}
+.logoNaranja {
+  width: 120px;
+  height: 120px;
+  margin-top: -75px;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+.ParrafoMeta {
+  font: normal normal normal 20px/27px Century;
+}
+.cuadrocomercio{
+  height: 290pt;
+  transition: box-shadow 0.3s;
+}
+
+.cuadropromo {
+  margin-right: 50px;
+  margin-left: 20px;
+  width: 400px;
+  max-width: 400px;
+  min-width: 400px;
+  height: 150px;
+
+}
+.resize_fit_center {
+  height: auto;
+}
+
+.boton-comercio {
+  font-size: 14px;
+  }
+
+} /* FIN CSS  901-1280*/
+
+/* CSS  WIDTH 1366*/
+@media(min-width: 1281px) {
   .boton-comercio {
     width: 100%;
     height: 22px;
     margin-top: -5px;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 45px;
     }
 
   .cuadrocomercio {
-    height: 415px;
+    height: 300pt;
+  }
+
+  .cuadroinferior{
+    height: 108pt;
+  }
+  .direccion-comer {
+    font: normal normal 800 16px Wavehaus;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1024px){
-  .contenedorbusqueda {
-    width: 80%;
-  }
-  .cuadro {
-    height: 950px;
+/* CSS  WIDTH 1440*/
+@media(min-width: 1370px) {
+  .cuadrocomercio {
+    height: 320pt;
   }
 
-  .rectangulo {
-    height: 950px;
-  }
-
-  .contenedorlogo {
-    top: 150px;
-  }
-
-  .contenedorsubtit {
-    top: 320px;
-  }
-
-  .contenedorbusqueda {
-    top: 400px;
-  }
-
-  .logoNaranja {
-    margin-top: -80px;
-  }
-
-  .cuadrocomercio{
-    height: 340px;
-  }
-  .nombre-comer {
-    font: normal normal 800 18px Century;
-  }
-
-  .boton-comercio {
-    width: 100%;
-    height: 35px;
-    font-size: 12px;
-    border-radius: 45px;
-    }
-
-}
-
-/* CSS PARA MOBILE */
-@media (max-width: 900px) {
-  .cont {
-    display: none;
-  }
-  .contcel {
-    display: inline;
-    position: fixed;
-    z-index: -999;
-  }
-  .contenedor {
-    margin: 0px;
-    padding: 0px;
-  }
-  .cuadro {
-    height: 750px;
-    z-index: -9999;
-  }
-  .rectangulo {
-    height: 720px;
-  }
-  .superficial {
-    height: 720px;
-  }
-  /*Seccion logo y subtitulo*/
-  .contenedorlogo {
-    top: 100px;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logoblanco {
-    width: 90px;
-    height: 66px;
-  }
-
-  .contenedorsubtit {
-    top: 175px;
-  }
-
-  .slogan {
-    font: normal normal normal 17px/25px Wavehaus;
-  }
-  .txtcerca {
-    font: normal normal bold 17px/25px Wavehaus;
-  }
-
-  /*Seccion barra de busqueda*/
-  .contenedorbusqueda {
-    top: 250px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    font: normal normal 600 12px Wavehaus;
-    width: 95%;
-    height: 5%;
-  }
-
-  .menudesplegado {
-    background: #ee7222;
-    opacity: 0.9;
-  }
-
-  .dropdown-item {
-    display: block;
-    width: 100%;
-    clear: both;
-    text-align: inherit;
-    white-space: normal;
-    background-color: transparent;
-    border: 3;
-  }
-
-  .gps {
-    display: none;
-  }
-.ciudad {
-    font: normal normal 600 12px Wavehaus;
-    letter-spacing: 0px;
-    color: #707070;
-    opacity: 1;
-  }
-.btn-buscar {
-  font-size: 20px;
-  }
-
-.ParrafoConoce {
-  position: relative;
-  top: 50px;
-  font: normal normal normal 15px Century;
-  }
-
-.logoNaranja {
-  top: 750px;
-  width: 120px;
-  height: 120px;
-  margin-top: -50px;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-}
-
-.ParrafoMeta {
-  font: normal normal normal 15px Century;
-}
-
-.parrafoini {
-  font: normal normal normal 14px Century;
-}
-
-.cuadropromo {
-  max-width: 330px;
-  min-width: 330px;
-  height: 120px;
-}
-.parrafopromo {
-  position: relative;
-  font-weight: bolder;
-  font: normal normal 800 42px Century;
-}
-
-.parrafopromo-bg {
-  font: normal normal 800 42px Century;
-}
-
-.parrafopromo-md {
-  font: normal normal 800 24px Century;
-}
-
-.parrafopromo-sm {
-  font: normal normal 800 24px Century;
-}
-
-.resize_fit_center {
-  height: 200px;
-}
-
-.cuadrocomercio{
-  width: 100%;
-  height: 365px;
-  margin-bottom: 7px;
-  border: 0px;
-  border-bottom: 1px solid #ccc;
-  background: #fff;
-  word-wrap: break-word;
-}
-
-.coldomicilio{
-  vertical-align: center;
-}
-
-.boton-comercio {
-  display: none;
+  .cuadroinferior{
+    height: 117pt;
   }
 }
-/* Fin CSS PARA MOBILE */
+
+/* CSS  WIDTH 1920*/
+@media(min-width: 1441px) {
+  .cuadrocomercio {
+    height: 395pt;
+  }
+
+  .cuadroinferior{
+    height: 117pt;
+  }
+}
+
