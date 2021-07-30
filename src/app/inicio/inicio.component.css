@@ -405,25 +405,7 @@ width: 99.7%;
   100%{ transform: translateX(0px); }
 }
 
-.parrafopromo {
-  word-wrap: break-word;
-  font: normal normal 800 65px Century;
-  font-style: italic;
-  margin: 0px;
-  padding: 0px;
-}
 
-.parrafopromo-bg {
-  font: normal normal 800 44px Century;
-}
-
-.parrafopromo-md {
-  font: normal normal 800 34px Century;
-}
-
-.parrafopromo-sm {
-  font: normal normal 800 31px Century;
-}
 
 .promo-img {
   display: inline-block;
@@ -442,9 +424,12 @@ width: 99.7%;
   vertical-align: center;
 }
 .boton-promo {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  margin-bottom: 5pt;
   width: 140px;
   height: 25px;
-  bottom: 5px;
   align-items: center;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -627,24 +612,41 @@ span.credits14 {
     transition: box-shadow 0.3s;
     border-right: royalblue;
   }
-  .parrafopromo {
-    position: relative;
+
+  .parrafopromo { /* DE 1 A 6 LETRAS */
+    position: absolute;
+    top: 30%;
+    left: 7%;
     font-weight: bolder;
-    font: normal normal 800 42px Century;
+    font: normal normal 800 20px Century;
+    font-style: italic;
+    color: greenyellow;
+    margin: 0px;
+    padding: 0px;
+    word-wrap: break-word;
   }
   
-  .parrafopromo-bg {
-    font: normal normal 800 42px Century;
+  .parrafopromo-bg { /* DE 7 A 8 LETRAS */
+    left: 11%;
+    font: normal normal 800 32px Century;
   }
   
-  .parrafopromo-md {
+  .parrafopromo-m { /* DE 9 A 14 LETRAS */
+    left: 13%;
     font: normal normal 800 24px Century;
   }
   
-  .parrafopromo-sm {
+  .parrafopromo-md { /* DE 15 A 21 LETRAS */
+    top: 20%;
+    left: 3%;
     font: normal normal 800 24px Century;
   }
+
+  .parrafopromo-sm { /* MAS DE 21 LETRAS */
+    font: normal normal 800 16px Century;
+  }
   
+  /* Recursso para imagen de Comercio */
   .resize_fit_center {
     height: 200px;
     width: 99.5%; /* you can use % */
@@ -851,6 +853,30 @@ span.credits14 {
   height: 150px;
 
 }
+.boton-promo {
+  margin-left: 26pt;
+  margin-bottom: 12pt;
+  align-items: center;
+  }
+
+  .parrafopromo-bg { /* DE 7 A 8 LETRAS */
+    left: 20%;
+  }
+  
+  .parrafopromo-m { /* DE 9 A 14 LETRAS */
+    left: 22%;
+  }
+  
+  .parrafopromo-md { /* DE 15 A 21 LETRAS */
+    top: 20%;
+    left: 8%;
+  }
+
+  .parrafopromo-sm { /* MAS DE 21 LETRAS */
+    left: 15%;
+    font: normal normal 800 16px Century;
+  }
+
 .resize_fit_center {
   height: auto;
 }
@@ -904,4 +930,3 @@ span.credits14 {
     height: 117pt;
   }
 }
-

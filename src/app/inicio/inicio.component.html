@@ -201,20 +201,21 @@
         <span class="subtitulos ml-3">Promociones</span>
       </div><br>
 
-      <div class="row">
+      <div class="row offset-sm-1">
         <ng-container *ngFor="let promo of promociones">
-          <div class="cuadropromo mt-2">
+          <div class="cuadropromo  mt-2">
 
             <div class="conten">
               <div id="li">
                 <h5 class="titulopromo">{{promo.titulo}}</h5>
                 <span class="parrafopromo"
                   [class.parrafopromo-bg]="(promo.descripcion.length > 6  && promo.descripcion.length < 9)"
-                  [class.parrafopromo-md]="(promo.descripcion.length > 8  && promo.descripcion.length < 21)"
+                  [class.parrafopromo-m]="(promo.descripcion.length > 8  && promo.descripcion.length < 15)"
+                  [class.parrafopromo-md]="(promo.descripcion.length > 14  && promo.descripcion.length < 21)"
                   [class.parrafopromo-sm]="promo.descripcion.length > 20">{{promo.descripcion}}</span> <br>
 
                 <button type="button" (click)="verComercio(promo.comercio_id)" class="boton-promo">Ver comercio
-                </button> <br> <br>
+                </button> 
               </div>
               <div id="round-image">
                 <img src="https://i.ibb.co/7WSq9vq/logo-07c.png" class="redimg">
