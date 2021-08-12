@@ -121,7 +121,20 @@
     .mat-column-nombre {
       width: 100% !important;
     }
+    .mat-column-rubro {
+      width: 100% !important;
+    }
+    .mat-column-domicilio {
+      width: 100% !important;
+    }
     .mat-column-tiposervicio {
       width: 100% !important;
+    }
+    .mat-column-acciones {
+      width: 100% !important;
+      overflow: visible;
+      line-height: initial;
+      word-wrap: break-word;
+      white-space: pre-wrap;
     }
   }

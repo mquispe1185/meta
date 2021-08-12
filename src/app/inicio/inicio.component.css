@@ -62,13 +62,16 @@
   /*Seccion logo y subtitulo*/
   .contenedorlogo {
     top: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
     position: absolute;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
+ 
   .logoblanco {
     width: 90px;
     height: 66px;
@@ -573,7 +576,7 @@ span.credits12 {
   width: 60px;
 }
 span.credits13 {
-  background: url(https://i.ibb.co/ZYJ1yRy/Articulos.png) no-repeat top left;
+  background: url(https://i.ibb.co/PjP0FBb/Articulos-2.png) no-repeat top left;
   background-size: contain;
   cursor: pointer;
   display: inline-block;
@@ -581,7 +584,7 @@ span.credits13 {
   width: 60px;
 }
 span.credits14 {
-  background: url(https://i.ibb.co/zn1JBhG/Org-publica.png) no-repeat top left;
+  background: url(https://i.ibb.co/xJXPhwZ/Org-publica.png) no-repeat top left;
   background-size: contain;
   cursor: pointer;
   display: inline-block;
