@@ -1,3 +1,4 @@
+import { apikey } from './../../../modelos/apikey';
 import { Estadosplan } from './../../../modelos/estado-planes';
 
 import { Formapago } from './../../../modelos/formapago';
@@ -29,6 +30,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DatosService } from '../../../servicios/datos.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute } from '@angular/router';
 
 export interface Palabras {
   //utilizado para las palabras claves
@@ -103,10 +105,44 @@ export class GestioncomercioComponent implements OnInit {
     private cdRef: ChangeDetectorRef,
     private confirmationDialogService: ConfirmationDialogService,
     private datosService: DatosService,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let param1 = this.route.snapshot.queryParams["status"];
+    let param2 = this.route.snapshot.queryParams["payment_id"];
+    let param3 = this.route.snapshot.queryParams["preference_id"];
+    console.log("STATUS",param1);
+    console.log("PAYMENT ID",param2);
+    console.log("PREFERENCE ID",param3);
+    console.log("LOCAL STORAGE",localStorage.getItem('preference_id'));
     this.getComercios();
+    this.checkPayment();
+  }
+
+  checkPayment(){
+    let status = this.route.snapshot.queryParams["status"];
+    let preference_id = this.route.snapshot.queryParams["preference_id"];
+    // chequear si existe en local storage un key llamada prefe id
+    // chequear si let prefe es igual al que esta en local localStorage
+    //   si payment id no es undefined entonces, hacemos solicitud a la api
+    //   le enviamos el payment id
+
+    if (localStorage.hasOwnProperty('preference_id')) {
+      console.log("LOCAL STORAGE EXISTE!",localStorage.getItem('preference_id'));
+
+      if ((localStorage.getItem('preference_id') === preference_id) && (status==='approved')){
+        console.log("LOCAL STORAGE ES IGUAL A PREFERENCE ID");
+        // this.comercioplan.actualizarPlan();
+      }
+
+      if (localStorage.getItem('preference_id') === preference_id) {
+        console.log("LOCAL STORAGE ES IGUAL A PREFERENCE ID");
+      }
+      localStorage.removeItem('preference_id');
+      console.log("NUEVA LOCAL STORAGE",localStorage.getItem('preference_id'));
+
+    }
   }
 
   getComercios() {
@@ -361,7 +397,6 @@ export class GestioncomercioComponent implements OnInit {
     return new File([u8arr], filename, { type: mime });
   }
 
-
   imageLoaded() {
     // show cropper
   }
@@ -431,7 +466,7 @@ export class GestioncomercioComponent implements OnInit {
 
 
 
-  // funciones para actualizar tipo de plan/servicio
+  // Funciones para actualizar tipo de plan/servicio
   openFormPlan(modal, comer) {
     this.comercio = comer;
     console.log('tipo plan',comer)
@@ -454,16 +489,29 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
 
+  //FORMA DE PAGOS: GRATUITO, COBRADOR, TRANSFERENCIA BANCARIA.
   updateTipoPlan() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
     this.comercioplanService.updateComercioPlan(this.comercioplan).subscribe(
-      res => { console.log("res cambio plan",res['preference_id']);
-        this.cambio_solicitado= true;
+      res => {
+        this.cambio_solicitado= false;
         this.modalService.dismissAll();
         let index = this.comercios.findIndex(c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
-        //this.createCheckoutButton(res['preference_id'])
         this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+      }
+    )
+  }
+
+  //FORMA DE PAGO: MERCADO PAGO. CREACION DE BOTON PAGAR.
+  pagarMercadoPago() {
+    this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
+    this.comercioplanService.solicitudMercadoPago(this.comercioplan).subscribe(
+      res => { console.log("res cambio plan",res['preference_id']);
+      this.cambio_solicitado= true;
+      localStorage.setItem('preference_id', res['preference_id']);
+      this.createCheckoutButton(res['preference_id']);
+      this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
       }
     )
   }
