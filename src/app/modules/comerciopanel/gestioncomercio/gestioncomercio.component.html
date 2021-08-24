@@ -592,7 +592,8 @@
               <div class="form-row">
                 <mat-form-field class="col">
                   <mat-label for="fp">Formapago</mat-label>
-                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id">
+                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
+                  (selectionChange)="checkFormapago($event.value)">
                     <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                     </mat-option>
                   </mat-select>
@@ -610,8 +611,8 @@
 
               <div class="form-row mt-3">
                 <div class="col-12 text-right">
-                  <div id="button-checkout">
-                  </div> 
+                  <div [hidden]="!cambio_solicitado" id="button-checkout">
+                  </div>
                   <button [hidden]="cambio_solicitado" mat-raised-button type="submit" color="primary">
                     <mat-icon>save</mat-icon>Cambiar Plan
                   </button>

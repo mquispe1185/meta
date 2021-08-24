@@ -489,6 +489,11 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
 
+  checkFormapago(e){
+    console.log("fp change",e)
+    this.cambio_solicitado = (e === 4) ? true : false;
+    this.pagarMercadoPago();
+  }
   //FORMA DE PAGOS: GRATUITO, COBRADOR, TRANSFERENCIA BANCARIA.
   updateTipoPlan() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
@@ -508,17 +513,17 @@ export class GestioncomercioComponent implements OnInit {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
     this.comercioplanService.solicitudMercadoPago(this.comercioplan).subscribe(
       res => { console.log("res cambio plan",res['preference_id']);
-      this.cambio_solicitado= true;
+      //this.cambio_solicitado= true;
       localStorage.setItem('preference_id', res['preference_id']);
       this.createCheckoutButton(res['preference_id']);
-      this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+      //this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
       }
     )
   }
 
   createCheckoutButton(preference) {
     var script = document.createElement("script");
-    
+
     // The source domain must be completed according to the site for which you are integrating.
     // For example: for Argentina ".com.ar" or for Brazil ".com.br".
     script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
