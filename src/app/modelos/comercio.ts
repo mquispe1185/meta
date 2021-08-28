@@ -52,6 +52,7 @@ export class Comercio {
     visitas_wsp:number;
     visitas:number;
     created_at:string;
+    plan_pendiente:string;
     plan_hasta:string; //Utilizado para mostrar fecha de Vto en vista Comerciante.
     constructor(data?: any) {
       Object.assign(this, data);

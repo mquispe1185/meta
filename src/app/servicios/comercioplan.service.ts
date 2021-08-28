@@ -26,6 +26,7 @@ solicitudMercadoPago(comercioplan:Comercioplan): Observable<any>{
   const url = `${this.API_URL}/solicitud_mp`;
   return this.http.post<Comercio>(url, comercioplan);
 }
+//Dirige a Metodo Update de COMERCIOPLANES, es solo utilizado por admin.
 habilitarComercioplan(comercioplan: Comercioplan): Observable<any>{
   const url = `${this.API_URL}/${comercioplan.id}`;
   return this.http.put(url, comercioplan);
@@ -36,8 +37,10 @@ const url = `${this.API_URL}/${comercioplan.id}/admin_update`
 return this.http.put(url, comercioplan);
 }
 
+//request que se ejecuta luego de realizar pago por MP
 updatePayment(payment_id: number): Observable<any>{
-  const url = `${this.API_URL}`;
-  return this.http.post<Number>(url, payment_id);
+  const url = `${environment.API_URL}/alta_plan_mp?payment_id=${payment_id}`;
+  return this.http.get<any>(url);
   }
+
 }

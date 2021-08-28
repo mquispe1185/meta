@@ -30,7 +30,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DatosService } from '../../../servicios/datos.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Palabras {
   //utilizado para las palabras claves
@@ -90,7 +90,7 @@ export class GestioncomercioComponent implements OnInit {
   @ViewChild('formhorario') formhorario: TemplateRef<any>;
 
   //para hide/show btn cambio plan
-  cambio_solicitado=false;
+  es_pago_mp=false;
   estado_plan: Estadosplan;
 
   plan_hasta:string;
@@ -106,43 +106,37 @@ export class GestioncomercioComponent implements OnInit {
     private confirmationDialogService: ConfirmationDialogService,
     private datosService: DatosService,
     private toastr: ToastrService,
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let param1 = this.route.snapshot.queryParams["status"];
-    let param2 = this.route.snapshot.queryParams["payment_id"];
-    let param3 = this.route.snapshot.queryParams["preference_id"];
-    console.log("STATUS",param1);
-    console.log("PAYMENT ID",param2);
-    console.log("PREFERENCE ID",param3);
-    console.log("LOCAL STORAGE",localStorage.getItem('preference_id'));
-    this.getComercios();
+   // this.getComercios();
     this.checkPayment();
   }
 
   checkPayment(){
     let status = this.route.snapshot.queryParams["status"];
     let preference_id = this.route.snapshot.queryParams["preference_id"];
-    // chequear si existe en local storage un key llamada prefe id
-    // chequear si let prefe es igual al que esta en local localStorage
-    //   si payment id no es undefined entonces, hacemos solicitud a la api
-    //   le enviamos el payment id
+    let payment_id = this.route.snapshot.queryParams["payment_id"];
 
-    if (localStorage.hasOwnProperty('preference_id')) {
-      console.log("LOCAL STORAGE EXISTE!",localStorage.getItem('preference_id'));
-
-      if ((localStorage.getItem('preference_id') === preference_id) && (status==='approved')){
-        console.log("LOCAL STORAGE ES IGUAL A PREFERENCE ID");
-        // this.comercioplan.actualizarPlan();
+    if (preference_id) {
+      if (localStorage.hasOwnProperty('preference_id')) {
+        if ((localStorage.getItem('preference_id') === preference_id) && (status==='approved')){
+          this.comercioplanService.updatePayment(payment_id).subscribe(
+            res => {  if (res.status === 'created'){
+                        this.toastr.warning('Bien hecho!', 'El cambio esta pendiente, gracias!');
+                      }
+            }
+          )
+        }else {
+          this.toastr.error('El pago aun NO esta aprobado');
+        }
+        this.router.navigate([], { queryParams: {}});
       }
-
-      if (localStorage.getItem('preference_id') === preference_id) {
-        console.log("LOCAL STORAGE ES IGUAL A PREFERENCE ID");
-      }
-      localStorage.removeItem('preference_id');
-      console.log("NUEVA LOCAL STORAGE",localStorage.getItem('preference_id'));
-
     }
+
+    localStorage.removeItem('preference_id');
+    this.getComercios();
   }
 
   getComercios() {
@@ -217,7 +211,7 @@ export class GestioncomercioComponent implements OnInit {
   buscarDtos(prov_id) {
     this.provincia_id = prov_id;
     this.ubicacionService.getDptos(this.provincia_id).subscribe(
-      dtos => { this.departamentos = dtos; console.log('deptos', dtos); }
+      dtos => { this.departamentos = dtos; }
     )
   }
 
@@ -255,7 +249,6 @@ export class GestioncomercioComponent implements OnInit {
         this.comercios = cms.map(c => new Comercio(c));
         this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Datos actualizados!');
-        console.log('crean new en update', this.creando_new);
         if (this.creando_new) {
           this.openFormHorario(this.formhorario, this.comercio)
         }
@@ -458,18 +451,11 @@ export class GestioncomercioComponent implements OnInit {
     this.updateComercio();
   }
 
-
-
-
-
-
-
-
-
   // Funciones para actualizar tipo de plan/servicio
   openFormPlan(modal, comer) {
     this.comercio = comer;
-    console.log('tipo plan',comer)
+    this.comercioplan = new Comercioplan();
+    this.es_pago_mp = false;
     this.comercioplan.comercio_id = this.comercio.id;
     this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
     this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
@@ -490,20 +476,21 @@ export class GestioncomercioComponent implements OnInit {
   }
 
   checkFormapago(e){
-    console.log("fp change",e)
-    this.cambio_solicitado = (e === 4) ? true : false;
-    this.pagarMercadoPago();
+    this.es_pago_mp = (e === 4) ? true : false;
+    if (e === 4){
+      this.pagarMercadoPago();
+    }
   }
   //FORMA DE PAGOS: GRATUITO, COBRADOR, TRANSFERENCIA BANCARIA.
   updateTipoPlan() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
     this.comercioplanService.updateComercioPlan(this.comercioplan).subscribe(
       res => {
-        this.cambio_solicitado= false;
+        this.es_pago_mp= false;
         this.modalService.dismissAll();
         let index = this.comercios.findIndex(c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
-        this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+        this.toastr.success('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
       }
     )
   }
@@ -512,18 +499,14 @@ export class GestioncomercioComponent implements OnInit {
   pagarMercadoPago() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
     this.comercioplanService.solicitudMercadoPago(this.comercioplan).subscribe(
-      res => { console.log("res cambio plan",res['preference_id']);
-      //this.cambio_solicitado= true;
-      localStorage.setItem('preference_id', res['preference_id']);
-      this.createCheckoutButton(res['preference_id']);
-      //this.toastr.warning('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+      res => {  this.createCheckoutButton(res['preference_id']);
       }
     )
   }
 
   createCheckoutButton(preference) {
     var script = document.createElement("script");
-
+    localStorage.setItem('preference_id', preference);
     // The source domain must be completed according to the site for which you are integrating.
     // For example: for Argentina ".com.ar" or for Brazil ".com.br".
     script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
@@ -555,7 +538,6 @@ export class GestioncomercioComponent implements OnInit {
     this.comercioService.getEstadisticaLinks(this.comercio.id).subscribe(
       est => {
         this.comercio_estadistica = est;
-        console.log("daatos estadistica", est);
       }
     )
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

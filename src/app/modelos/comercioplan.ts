@@ -11,6 +11,7 @@ export class Comercioplan {
     tipo_servicio:TipoServicio;
     servicio_anterior_id:number;
     servicio_anterior:TipoServicio;
+    created_at: Date;
     desde:Date;
     hasta:Date;
     estado:number;// 0: pendiente, 1:aprobado, 2: vencido,3:rechazado
@@ -69,13 +70,4 @@ export class Comercioplan {
         return Math.ceil(diff / (1000 * 3600 * 24)); 
     }
 
-
-//     getFechaVto(){
-//       return('FECHA DE VENC') 
-//   }
-
-
-
   }
-
-  //clase que lleva el registro de camio de planes

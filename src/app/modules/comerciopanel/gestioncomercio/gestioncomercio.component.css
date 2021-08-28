@@ -29,6 +29,10 @@
     padding-right: 3px;
   }
 
+.oculto {
+    display: none;
+  }
+
 .info-item {
     font-weight: bold;
     word-wrap: break-word;

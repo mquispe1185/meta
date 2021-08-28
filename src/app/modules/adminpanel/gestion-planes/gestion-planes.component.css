@@ -39,7 +39,11 @@
   /* background: #dd183c; */
   background: red;
 }
-
+.boton-cerrar {
+  background: #f36904;
+  font-weight: bold;
+  font-size: small;
+}
 .mat-column-nombre {
   word-wrap: break-word !important;
   white-space: unset !important;

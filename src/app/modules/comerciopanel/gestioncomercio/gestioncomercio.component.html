@@ -122,9 +122,16 @@
             <span class="font-weight-bold">{{comer.descripcion}}</span>
           </div>
 
+          <div class="col-5 col-md-2">
+            <span class="titulo-item"> Plan de Servicio Actual: </span>
+          </div>
+          <div class="col-7 col-md-4">
+            <br><span class="font-weight-bold"> {{comer.tipo_servicio.nombre}}</span>
+            <span> (Vto: {{comer.plan_hasta |date: "dd/MM/yy"}})</span>
+          </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-5 col-md-2">
             <span class="titulo-item"> Palabras clave: </span>
           </div>
@@ -133,12 +140,16 @@
           </div>
 
           <div class="col-5 col-md-2">
-            <span class="titulo-item"> Tipo servicio: </span>
+            <span class="titulo-item" [ngClass]="{'oculto': comer.estado === default}"> Plan de Servicio Solicitado: </span>
           </div>
-          <div class="col-7 col-md-4">
+<!--      <div class="col-7 col-md-4">
             <span class="font-weight-bold" [ngClass]="{'text-danger': comer.estado === solicitud_pendiente}">{{comer.estado === solicitud_pendiente?
               comer.tipo_servicio.nombre+' Pendiente de Aprobación': comer.tipo_servicio.nombre}}</span>
-              <span> (Vto: {{comer.plan_hasta |date: "dd/MM/yy"}})</span>
+            <span> (Vto: {{comer.plan_hasta |date: "dd/MM/yy"}})</span>
+          </div> -->
+          <div class="col-7 col-md-4">
+            <br><span class="text-danger font-weight-bold" [ngClass]="{'oculto': comer.estado === default}">
+              {{comer.plan_pendiente}} <p>Pendiente de Aprobacion</p> </span>
           </div>
         </div>
         <br>
@@ -188,7 +199,7 @@
             <mat-icon>alarm</mat-icon>Horario
           </button>
           <button mat-raised-button type="submit" class="boton-config" color="primary"
-            (click)="openFormPlan(modalplan,comer)">
+            (click)="openFormPlan(modalplan,comer)" [disabled]="comer.estado===solicitud_pendiente">
             <mat-icon>verified</mat-icon>Tipo Servicio
           </button>
           <button mat-raised-button type="submit" class="boton-config" (click)="verEstadisticas(estmodal,comer)">
@@ -568,11 +579,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <form name="form" (ngSubmit)="f.form.valid && updateTipoPlan()" #f="ngForm" novalidate>
+            <form name="form" (ngSubmit)="f.form.valid && !es_pago_mp && updateTipoPlan()" #f="ngForm" novalidate>
               <div class="form-row">
                 <mat-form-field class="col-md-9">
                   <mat-label for="ts">Tipo de servicio</mat-label>
-                  <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id"
+                  <mat-select id="ts" name="ts" [(ngModel)]="comercioplan.tipo_servicio_id" [disabled]="es_pago_mp"
                     (selectionChange)="calcularTotalServicio($event.value)" #ts="ngModel">
                     <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}
                     </mat-option>
@@ -581,7 +592,7 @@
 
                 <mat-form-field class="col-md-3">
                   <mat-label for="ms">Cant. meses</mat-label>
-                  <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses"
+                  <mat-select id="ms" name="ms" [(ngModel)]="comercioplan.meses" [disabled]="es_pago_mp"
                     (selectionChange)="calcularTotalMes($event.value)">
                     <mat-option *ngFor="let cant of meses" [value]="cant">{{ cant }}
                     </mat-option>
@@ -610,10 +621,10 @@
               </div>
 
               <div class="form-row mt-3">
-                <div class="col-12 text-right">
-                  <div [hidden]="!cambio_solicitado" id="button-checkout">
+                <div class="col-12 text-right" *ngIf="comercioplan.formapago_id">
+                  <div [hidden]="!es_pago_mp" id="button-checkout">
                   </div>
-                  <button [hidden]="cambio_solicitado" mat-raised-button type="submit" color="primary">
+                  <button [hidden]="es_pago_mp" mat-raised-button type="submit" color="primary">
                     <mat-icon>save</mat-icon>Cambiar Plan
                   </button>
                 </div>
