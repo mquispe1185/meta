@@ -91,6 +91,7 @@ export class GestioncomercioComponent implements OnInit {
 
   //para hide/show btn cambio plan
   es_pago_mp=false;
+  es_servicio_gratuito=true;
   estado_plan: Estadosplan;
 
   plan_hasta:string;
@@ -460,7 +461,7 @@ export class GestioncomercioComponent implements OnInit {
     this.comercioplan.tipo_servicio_id = this.comercio.tipo_servicio.id;
     this.comercioplan.tipo_servicio = this.comercio.tipo_servicio;
     this.comercioplan.meses = 1;
-
+    this.es_servicio_gratuito = (this.comercioplan.tipo_servicio_id === 1) ? true : false;
     this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
     this.datosService.getTipoServicios().subscribe(
       res => {
@@ -475,12 +476,18 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
 
+  // checkTipoServicio(e){
+  //   this.es_servicio_gratuito = (e === 3) ? true : false;
+  //   console.log('banderaaa', this.es_servicio_gratuito);
+  // }
+
   checkFormapago(e){
     this.es_pago_mp = (e === 4) ? true : false;
     if (e === 4){
       this.pagarMercadoPago();
     }
   }
+
   //FORMA DE PAGOS: GRATUITO, COBRADOR, TRANSFERENCIA BANCARIA.
   updateTipoPlan() {
     this.comercioplan.tipo_servicio_id = this.comercioplan.tipo_servicio.id;
@@ -518,6 +525,11 @@ export class GestioncomercioComponent implements OnInit {
 
 
   calcularTotalServicio(servicio) {
+    this.es_servicio_gratuito = (servicio === 1) ? true : false;
+    if (this.es_servicio_gratuito) {
+      this.comercioplan.formapago_id=3;
+    }
+
     this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
     this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
   }
@@ -528,7 +540,10 @@ export class GestioncomercioComponent implements OnInit {
 
   getFormapagos() {
     this.datosService.getFormapagos().subscribe(
-      fps => { this.formapagos = fps; }
+      fps => { this.formapagos = fps;
+               this.formapagos = this.formapagos.filter(
+               formapago => formapago.descripcion !== 'GRATUITO');
+              }     
     )
   }
 
