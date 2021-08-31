@@ -70,7 +70,10 @@ export class ComercioComponent implements OnInit {
     }else{
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=54'+this.comercio.celular);
     }
-    this.getReferencias();
+    if (this.comercio.tipo_servicio_id == 3 || this.comercio.tipo_servicio_id == 4){
+      this.getReferencias();
+    }
+
   }
 
   getReferencias(){

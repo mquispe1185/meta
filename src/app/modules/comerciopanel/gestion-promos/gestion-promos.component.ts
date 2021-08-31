@@ -1,6 +1,6 @@
 import { Formapago } from './../../../modelos/formapago';
 import { PromocionesService } from './../../../servicios/promociones.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Comercio } from '../../../modelos/comercio';
 import { Promocion } from '../../../modelos/promocion';
 import { AngularTokenService } from 'angular-token';
@@ -16,6 +16,7 @@ import { TipoServicio } from '../../../modelos/tipo-servicio';
 import { DatosService } from '../../../servicios/datos.service';
 import { ConfirmationDialogService } from 'src/app/servicios/confirmation-dialog.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Usuario } from 'src/app/modelos/usuario';
 
 @Component({
   selector: 'app-gestion-promos',
@@ -23,6 +24,8 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   styleUrls: ['./gestion-promos.component.css']
 })
 export class GestionPromosComponent implements OnInit {
+
+  @Input() usuario: Usuario;
 
   closeResult: string;
   mensaje_error:string;
@@ -56,6 +59,7 @@ export class GestionPromosComponent implements OnInit {
                 private modalService: NgbModal,) { }
 
   ngOnInit(): void {
+    this.mis_comercios = this.mis_comercios.filter(c => c.tipo_servicio.id === 3 || c.tipo_servicio.id === 4);
     this.getPromos();
   }
 
@@ -97,7 +101,6 @@ export class GestionPromosComponent implements OnInit {
   calcularDias(event: MatDatepickerInputEvent<Date>,opcion:number){
     let dife;let des:any;let has:any;
     if(opcion ===1){
-      console.log('click desde');
       des = new Date(event.value);
       des.setHours(0,0,0,0);
       has = new Date(this.hasta.value);
@@ -265,15 +268,12 @@ export class GestionPromosComponent implements OnInit {
   }
 
   fileChangeEvent(event: any): void {
-    console.log(event);
     this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-
     //Usage example:
     var file = this.dataURLtoFile(this.croppedImage, 'image.png');
-    console.log(file);
     this.nueva_foto = file;
   }
 

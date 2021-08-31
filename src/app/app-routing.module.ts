@@ -62,11 +62,11 @@ const routes: Routes = [
     component: ListadocomerciosComponent,
     loadChildren: () => AdminpanelModule
   },
-  {
-    path:'mispromos',
-    component: GestionPromosComponent,
-    loadChildren: () => ComerciopanelModule
-  },
+  // {
+  //   path:'mispromos',
+  //   component: GestionPromosComponent,
+  //   loadChildren: () => ComerciopanelModule
+  // },
   {
     path:'listapromos',
     component: ListadopromosComponent,

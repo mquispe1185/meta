@@ -142,11 +142,6 @@
           <div class="col-5 col-md-2">
             <span class="titulo-item" [ngClass]="{'oculto': comer.estado === default}"> Plan de Servicio Solicitado: </span>
           </div>
-<!--      <div class="col-7 col-md-4">
-            <span class="font-weight-bold" [ngClass]="{'text-danger': comer.estado === solicitud_pendiente}">{{comer.estado === solicitud_pendiente?
-              comer.tipo_servicio.nombre+' Pendiente de Aprobación': comer.tipo_servicio.nombre}}</span>
-            <span> (Vto: {{comer.plan_hasta |date: "dd/MM/yy"}})</span>
-          </div> -->
           <div class="col-7 col-md-4">
             <br><span class="text-danger font-weight-bold" [ngClass]="{'oculto': comer.estado === default}">
               {{comer.plan_pendiente}} <p>Pendiente de Aprobacion</p> </span>
@@ -202,7 +197,7 @@
             (click)="openFormPlan(modalplan,comer)" [disabled]="comer.estado===solicitud_pendiente">
             <mat-icon>verified</mat-icon>Tipo Servicio
           </button>
-          <button mat-raised-button type="submit" class="boton-config" (click)="verEstadisticas(estmodal,comer)">
+          <button *ngIf="!comer.es_gratuito" mat-raised-button type="submit" class="boton-config" (click)="verEstadisticas(estmodal,comer)">
             <mat-icon>leaderboard</mat-icon>Estadísticas
           </button>
           <!-- <div class="col-12 col-md-2 mt-2"> -->

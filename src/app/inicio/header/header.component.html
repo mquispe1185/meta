@@ -21,8 +21,8 @@
         <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
           <button type="button" class="menu-boton btn btn-link" (click)="irAMiComercio()">
             Mis Comercios</button>
-          <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
-            Mis Promos</button>
+<!--           <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+            Mis Promos</button> -->
         </ng-container>
 
         <button *ngIf="tokenService.currentUserData" type="button" class="menu-boton btn btn-link">
@@ -69,8 +69,8 @@
           <ng-container *ngIf="tokenService.currentUserData?.rol_id ===2">
             <button type="button" class="menu-boton btn btn-link" (click)="irAMiComercio()">
               Mis Comercios</button>
-            <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
-              Mis Promos</button>
+<!--             <button type="button" class="menu-boton btn btn-link" (click)="irPromos()">
+              Mis Promos</button> -->
           </ng-container>
 
           <button *ngIf="tokenService.currentUserData" (click)="tokenService.currentUserData && irAPanel()" type="button" class="menu-boton btn btn-link">

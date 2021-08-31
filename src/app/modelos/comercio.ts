@@ -32,11 +32,13 @@ export class Comercio {
     departamento:Departamento;
     localidad:Localidad;
     descripcion:string;
+    direccion_string:string;
     usuario:Usuario;
     usuario_id:number;
     entrega:boolean;
     rubro:Rubro;
     rubro_id:number;
+    rubro_string:string;
     horarios:any[];
     url_foto:string;
     tags:string;
@@ -46,6 +48,12 @@ export class Comercio {
     tipo_servicio:TipoServicio;
     estado:string; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
     es_fanpage:boolean;
+    active_links:boolean;
+    show_referencias:boolean;
+    es_gratuito:boolean;
+    es_basico:boolean;
+    es_estandar:boolean;
+    es_premium:boolean;
     visitas_face:number;
     visitas_ig:number;
     visitas_web:number;

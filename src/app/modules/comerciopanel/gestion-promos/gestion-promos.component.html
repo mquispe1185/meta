@@ -6,9 +6,9 @@
         <span class="titulo">Mis Promociones</span>
       </div>
     </div>
-    <div class="col-4 d-flex justify-content-end">
+    <div class="col-4 d-flex justify-content-end" *ngIf="usuario.acceso_promos">
       <button class="boton-nuevo" (click)="openFormPromo(promoform)">
-        <mat-icon>note_add</mat-icon> Nueva Promocion
+        <mat-icon>note_add</mat-icon> Nueva Promoción
       </button>
       <button class="boton-nuevo-m" (click)="openFormPromo(promoform)">
         Sumar Promoción
