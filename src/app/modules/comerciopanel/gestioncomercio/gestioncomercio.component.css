@@ -43,7 +43,6 @@
     z-index: 99999 !important;
 }
 
-
 .modal{
     z-index: 20;
 }
@@ -78,8 +77,8 @@
     max-height:80%;
     vertical-align: middle;
     border-radius: 1em;
-
   }
+
 .foto:hover {
     cursor: pointer;
 }
@@ -128,15 +127,17 @@
 
 .cuadro {
     border-left: 1px solid #ee7222;
-/*     border-bottom: 1px solid #ee7222; */
 }
 
 .mat-slide-toggle-content {
     vertical-align: top;
-display: inline-block;
-line-height: 24px; 
+    display: inline-block;
+    line-height: 24px; 
 }
 
+.subtitulo{
+    color: #808080;
+}
 
 /* CSS PARA MOBILE */
 @media (max-width: 900px) {

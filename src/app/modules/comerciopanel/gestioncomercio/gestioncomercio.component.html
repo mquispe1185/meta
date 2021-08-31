@@ -603,7 +603,7 @@
               <div class="form-row">
                 <mat-form-field class="col">
                   <mat-label for="fp">Formapago</mat-label>
-                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
+                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id" [disabled]="es_servicio_gratuito"
                   (selectionChange)="checkFormapago($event.value)">
                     <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                     </mat-option>
@@ -611,20 +611,24 @@
                 </mat-form-field>
               </div>
 
-              <p>
-                {{comercioplan.tipo_servicio.descripcion}}
-              </p>
-              <div class="form-row text-right">
-                <span class="col-5">Costo Plan: ${{comercioplan.tipo_servicio.importe}}</span>
-                <span class="col-4">Cant. meses: {{comercioplan.meses}}</span>
-                <span class="col-3"><strong>Total: ${{comercioplan.importe}}</strong> </span>
+              <div class="my-2">
+                <span class="subtitulo mb-1">Características del Servicio:</span>
+                <p class="text-align-justify">
+                  {{comercioplan.tipo_servicio.descripcion}}
+                </p>
+              </div>
+
+              <div class="form-row text-center">
+                <span class="col-4"><p class="subtitulo" >Costo Plan: </p><strong>{{comercioplan.tipo_servicio.importe | currency}}</strong> </span>
+                <span class="col-4"> <p class="subtitulo">Cant. meses:</p><strong>{{comercioplan.meses}}</strong> </span>
+                <span class="col-3"><p class="subtitulo">Total:</p> <strong>{{comercioplan.importe | currency}}</strong> </span>
               </div>
 
               <div class="form-row mt-3">
                 <div class="col-12 text-right" *ngIf="comercioplan.formapago_id">
                   <div [hidden]="!es_pago_mp" id="button-checkout">
                   </div>
-                  <button [hidden]="es_pago_mp" mat-raised-button type="submit" color="primary">
+                  <button [hidden]="es_pago_mp"  mat-raised-button type="submit" color="primary">
                     <mat-icon>save</mat-icon>Cambiar Plan
                   </button>
                 </div>
