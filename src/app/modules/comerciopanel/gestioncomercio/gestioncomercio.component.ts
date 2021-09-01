@@ -111,7 +111,6 @@ export class GestioncomercioComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-   // this.getComercios();
     this.checkPayment();
   }
 
@@ -122,14 +121,20 @@ export class GestioncomercioComponent implements OnInit {
 
     if (preference_id) {
       if (localStorage.hasOwnProperty('preference_id')) {
-        if ((localStorage.getItem('preference_id') === preference_id) && (status==='approved')){
+        if ((localStorage.getItem('preference_id') === preference_id) && (status==='approved' || status ==='pending')){
           this.comercioplanService.updatePayment(payment_id).subscribe(
             res => {  if (res.status === 'created'){
-                        this.toastr.warning('Bien hecho!', 'El cambio esta pendiente, gracias!');
+                        if (status==='approved'){
+                          this.toastr.warning('Bien hecho!', 'El cambio esta pendiente, gracias!');
+                        }else if (status ==='pending'){
+                          this.toastr.warning('Bien hecho!', 'El cambio esta pendiente a que realize el pago, gracias!');
+                        }
+
                       }
             }
           )
-        }else {
+        }
+        else {
           this.toastr.error('El pago aun NO esta aprobado');
         }
         this.router.navigate([], { queryParams: {}});
@@ -543,7 +548,7 @@ export class GestioncomercioComponent implements OnInit {
       fps => { this.formapagos = fps;
                this.formapagos = this.formapagos.filter(
                formapago => formapago.descripcion !== 'GRATUITO');
-              }     
+              }
     )
   }
 
