@@ -24,7 +24,7 @@ export class ComercioComponent implements OnInit {
   zoom:number;
   closeResult: string;
   referencia:Referencia;
-  referencias:Referencia[];
+  referencias:Referencia[]=[];
   restan= 240;
   public faceapp:SafeResourceUrl;
   public safeURL:SafeResourceUrl;
@@ -59,35 +59,32 @@ export class ComercioComponent implements OnInit {
     this.comercioService.addVisitaComercio(this.comercio.id).subscribe();
     this.zoom = 16;
     if (this.deviceService.isMobile()){
-      //console.log('celularrr',this.comercio.celular);
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+54'+this.comercio.celular);
       if(this.comercio.es_fanpage){
       this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://page/'+this.comercio.facebook_id);
       }else{
         this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://profile/'+this.comercio.facebook_id);
       }
-      // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
     }else{
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=54'+this.comercio.celular);
     }
-    if (this.comercio.tipo_servicio_id == 3 || this.comercio.tipo_servicio_id == 4){
+    // Si el Comercio es ESTANDAR o PREMIUN traer Referencias.
+    if (this.comercio.show_estandar){
       this.getReferencias();
     }
-
   }
 
   getReferencias(){
     this.refeService.getReferencias(this.comercio.id).subscribe(
       refs =>{
                 this.referencias = refs;
+                console.log('LLAMANDO REFERENCIAS GET')
       }
     )
   }
 
   crearReferencia(modal){
-
     if (this.tokenService.currentUserData){
-
     this.referencia = new Referencia();
     this.referencia.puntaje = 0;
     this.restan = 240;
