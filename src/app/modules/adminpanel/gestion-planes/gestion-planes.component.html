@@ -70,10 +70,10 @@
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Acciones:</span>
 
-          <button placement="right" ngbTooltip="Editar Plan" class="mr-2" mat-icon-button
+          <!-- <button placement="right" ngbTooltip="Editar Plan" class="mr-2" mat-icon-button
             style="background-color: transparent" (click)="openFormActualizar(editarplanform,element)">
             <mat-icon>edit</mat-icon>
-          </button>
+          </button> -->
           <button placement="right" ngbTooltip="Ver info Plan" mat-icon-button style="background-color: transparent"
             (click)="openFormActualizar(info,element)">
             <mat-icon>visibility</mat-icon>
@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<!-- Formulario actualizacion de estado-->
+<!-- MODAL Actualizacion de estado-->
 <ng-template #estadoform let-modal>
   <div class="container">
     <div>
@@ -126,7 +126,7 @@
 </ng-template>
 
 <!-- MODAL Editar Plan Servicio -->
-<ng-template #editarplanform let-modal>
+<!-- <ng-template #editarplanform let-modal>
   <div class="container">
     <div>
       <mat-card class="tarjeta-info">
@@ -197,9 +197,9 @@
       </mat-card>
     </div>
   </div>
-</ng-template>
+</ng-template> -->
 
-<!-- Formulario ver info-->
+<!-- MODAL ver info-->
 <ng-template #info let-modal>
   <div class="container">
     <div>

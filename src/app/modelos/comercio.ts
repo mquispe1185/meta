@@ -49,7 +49,8 @@ export class Comercio {
     estado:string; //0:DEFAULT 1:CON CAMBIO DE PLAN PENDIENTE
     es_fanpage:boolean;
     active_links:boolean;
-    show_referencias:boolean;
+    show_economico:boolean; //Si es al menos Economico
+    show_estandar:boolean; //Si es al menos Estandar
     es_gratuito:boolean;
     es_basico:boolean;
     es_estandar:boolean;
