@@ -37,6 +37,7 @@ export class ListadocomerciosComponent implements OnInit {
   comercio: Comercio;
   comercios: Comercio[] = [];
   nueva_foto: File;
+  nuevas_fotos: File[]=[];
   file;
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -96,7 +97,7 @@ export class ListadocomerciosComponent implements OnInit {
                 this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }
     )
   }
- 
+
   openFormEditar(modal,comer){
     this.comercioSelected = new Comercio(comer);
     if (this.rubros.length === 0){
@@ -152,7 +153,7 @@ export class ListadocomerciosComponent implements OnInit {
       rs => {
             this.rubros = rs; }
     );
-  } 
+  }
 
   //Gestion de horarios
   openFormHorario(modal, comercio){
@@ -215,13 +216,13 @@ export class ListadocomerciosComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
-  
+
     selectFile(event) {
       this.nueva_foto = event.target.files.item(0);
     }
     guardarLogo() {
       console.log("comerciooo",this.comercio)
-      this.comercioService.uploadLogo(this.nueva_foto, this.comercio.id).subscribe(
+      this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
         cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
           this.modalService.dismissAll();
           this.comercios = cms.map(c => new Comercio(c));
@@ -230,14 +231,14 @@ export class ListadocomerciosComponent implements OnInit {
         }
       )
     }
-  
+
     onFileChange(event) {
       if (event.target.files.length > 0) {
         const file = event.target.files[0];
         this.file = file;
       }
     }
-  
+
     fileChangeEvent(event: any): void {
       this.imageChangedEvent = event;
     }
@@ -247,7 +248,7 @@ export class ListadocomerciosComponent implements OnInit {
       var file = this.dataURLtoFile(this.croppedImage, 'image.png');
       this.nueva_foto = file;
     }
-  
+
     dataURLtoFile(dataurl, filename) {
       let arr = dataurl.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
@@ -257,10 +258,10 @@ export class ListadocomerciosComponent implements OnInit {
       while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
       }
-  
+
       return new File([u8arr], filename, { type: mime });
     }
-  
+
     imageLoaded() {
       // show cropper
     }
@@ -269,7 +270,7 @@ export class ListadocomerciosComponent implements OnInit {
     }
     loadImageFailed() {
       // show message
-    }    
+    }
 
 
 

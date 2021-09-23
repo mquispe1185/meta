@@ -166,10 +166,16 @@
             </table>
           </div>
           <div class="text-center col-12 col-md-6">
-            <span class="titulo-item">Foto: </span> <br> <br>
+            <span class="titulo-item">Fotos: </span> <br> <br>
             <img class="foto" (click)="openFormFoto(modalfoto,comer)"
-              [attr.src]="[comer.url_foto != null ? comer.url_foto : 'https://i.ibb.co/6vkssW8/defaultlogo.jpg']"
+            [src]="comer.selectedFoto"
               alt="">
+              <div class="row">
+                <div class="img-wrap" *ngFor='let foto of comer.fotos; index as i'>
+                  <span class="close" (click)="removeFotoFromServer(foto,comer)">&times;</span>
+                  <img [src]="foto.toString().split(',')[1]" height="80" (click)="comer.selectedFoto = foto.toString().split(',')[1]">
+                </div>
+              </div>
           </div>
         </div>
 
@@ -490,26 +496,35 @@
             </button>
           </div>
           <div class="modal-body">
-            <!--    <div class="form-group">
-                            <div class="input-group">
-                            <input type="file" (change)="selectFile($event)">
-                            </div>
-                        </div> -->
+            <div class="row" *ngIf="(croppedImages.length + comercio.fotos.length) < 3">
+              <div class="col-sm-9">
+                <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)"/>
+              </div>
+              <div class="col-sm-3">
+                <button *ngIf="!agregarFoto" mat-mini-fab color="primary" (click)="addFoto()">
+                  <mat-icon>plus_one</mat-icon>
+                </button>
+              </div>
+            </div>
 
-            <input type="file" (change)="fileChangeEvent($event)" />
-
-            <!-- <button (click)="save()">Guardar cambios</button> -->
             <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
               [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
               (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
             </image-cropper>
-
+            <div class="row">
+              <span class="colorprimario">Fotos seleccionadas: ({{croppedImages.length}})</span>
+            </div>
+            <div class="img-wrap" *ngFor='let imc of croppedImages; index as i'>
+              <span class="close" (click)="removeFoto(i)">&times;</span>
+              <img [src]="imc" height="100">
+            </div>
 
             <!-- <img [src]="croppedImage" /> -->
           </div>
-          <div class="modal-footer">
-            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="guardarLogo()">Subir
-              foto</button>
+          <div class="modal-footer" *ngIf="croppedImages.length > 0">
+            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="guardarFoto()">
+              Guardar fotos ({{croppedImages.length}})
+            </button>
           </div>
         </div>
       </mat-card>
