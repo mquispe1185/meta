@@ -63,7 +63,15 @@ export class Comercio {
     created_at:string;
     plan_pendiente:string;
     plan_hasta:string; //Utilizado para mostrar fecha de Vto en vista Comerciante.
+    selectedFoto:string;
     constructor(data?: any) {
       Object.assign(this, data);
+      if (Boolean(data.fotos)){
+        if (data.fotos.length > 0) {
+          this.selectedFoto = data.fotos[0][1];
+        }else{
+          this.selectedFoto = 'https://i.ibb.co/6vkssW8/defaultlogo.jpg';
+        }
+      }
     }
   }

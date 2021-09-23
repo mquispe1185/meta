@@ -61,11 +61,14 @@ export class GestioncomercioComponent implements OnInit {
   nuevo_horario: Horario;
   horario_aux: Horario;
 
-  nueva_foto: File;
+  nuevas_fotos: File[]=[];
 
   file;
+  selectedFoto:string;
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  croppedImages: any[] = [];
+  agregarFoto= true;
   msjenvio;
 
   //variables para el manejo de palabras claves
@@ -345,6 +348,9 @@ export class GestioncomercioComponent implements OnInit {
 
   openFormFoto(modal, comer) {
     this.comercio = comer;
+    this.croppedImages = [];
+    this.imageChangedEvent = '';
+    this.agregarFoto = true;
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -352,35 +358,61 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
 
-  selectFile(event) {
-    this.nueva_foto = event.target.files.item(0);
-  }
-  guardarLogo() {
-    this.comercioService.uploadLogo(this.nueva_foto, this.comercio.id).subscribe(
-      cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
+  guardarFoto() {
+    this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
+      cm => {
         this.modalService.dismissAll();
-        this.comercios = cms.map(c => new Comercio(c));
+        let index = this.comercios.findIndex(c => c.id === this.comercio.id)
+        this.comercios[index] = new Comercio(cm);
         this.cdRef.detectChanges();
         this.toastr.success('bien hecho!', 'Foto actualizada!');
       }
     )
   }
 
-  onFileChange(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.file = file;
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    if (Boolean(this.imageChangedEvent)){
+      this.agregarFoto = false;
     }
   }
 
-  fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
+  addFoto(){
+    this.agregarFoto= true;
+    this.croppedImages.push(this.croppedImage);
+    this.imageChangedEvent='';
+    var file = this.dataURLtoFile(this.croppedImage, 'image.png');
+    this.nuevas_fotos.push(file);
   }
+  removeFoto(i){
+    this.croppedImages.splice(i,1);
+    this.imageChangedEvent='';
+  }
+
+  removeFotoFromServer(foto,comer){
+    console.log("foto a remover",foto[0])
+    this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este foto ?`)
+      .then(
+        (confirm) => {
+          (confirm) ? this.eliminarFoto(foto,comer) : console.log("cancelado");
+        }
+      ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+  //método que elimina la foto del servidor
+  eliminarFoto(foto,comer){
+    this.comercioService.deleteFoto(foto[0],comer).subscribe(
+      comercio => { this.modalService.dismissAll();
+                    let index = this.comercios.findIndex(c => c.id === comer.id)
+                    this.comercios[index] = new Comercio(comercio);
+                    this.toastr.error('Foto eliminada!', 'Foto removida!');
+      }
+    )
+  }
+
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     //Usage example:
-    var file = this.dataURLtoFile(this.croppedImage, 'image.png');
-    this.nueva_foto = file;
+
   }
 
   dataURLtoFile(dataurl, filename) {

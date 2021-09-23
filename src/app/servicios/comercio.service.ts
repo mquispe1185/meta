@@ -87,11 +87,18 @@ export class ComercioService {
     return this.http.delete(url);
   }
 
-  uploadLogo(perfil:File,comercio_id:number):Observable<any> {
+  uploadFotos(fotos:File[],comercio_id:number):Observable<any> {
     const formdata: FormData = new FormData();
-    const url = `${environment.API_URL}/set_foto`;
-    formdata.append('foto', perfil);
+    const url = `${environment.API_URL}/set_fotos`;
+    fotos.forEach(
+      foto => formdata.append('fotos[]', foto)
+    )
     formdata.append('id', comercio_id.toString());
     return this.http.put(url, formdata);
+  }
+
+  deleteFoto(foto_id:number,comercio: Comercio): Observable<any>{
+    const url = `${this.API_URL}/${comercio.id}/delete_foto?foto_id=${foto_id}`;
+    return this.http.delete(url);
   }
 }
