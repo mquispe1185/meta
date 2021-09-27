@@ -66,9 +66,9 @@ export class Comercio {
     selectedFoto:string;
     constructor(data?: any) {
       Object.assign(this, data);
-      if (Boolean(data.fotos)){
-        if (data.fotos.length > 0) {
-          this.selectedFoto = data.fotos[0][1];
+      if (Boolean(data?.fotos)){
+        if (data?.fotos.length > 0) {
+          this.selectedFoto = data?.fotos[0][1];
         }else{
           this.selectedFoto = 'https://i.ibb.co/6vkssW8/defaultlogo.jpg';
         }

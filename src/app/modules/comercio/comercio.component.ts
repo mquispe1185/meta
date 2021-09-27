@@ -17,7 +17,7 @@ import { Referencia } from '../../modelos/referencia';
 })
 export class ComercioComponent implements OnInit {
 
-  comercio:Comercio = new Comercio();
+  comercio:Comercio;
   comercio_id:number;
   lat: number;
   lon:number;
@@ -48,7 +48,7 @@ export class ComercioComponent implements OnInit {
 
     }
     this.comercioService.getComercio(this.comercio_id).subscribe(
-      cm =>{this.comercio= cm;
+      cm =>{this.comercio= new Comercio(cm);
         this.lat = +this.comercio.latitud;
         this.lon = +this.comercio.longitud;
         this.afterComercio();}
