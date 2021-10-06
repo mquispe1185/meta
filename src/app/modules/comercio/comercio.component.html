@@ -9,32 +9,34 @@
       </h1>
     </div>
     <div class="row d-flex justify-content-center mt-1">
-      <span class="subtitulocomercio mr-2">
+      <span class="rubro">
         {{comercio?.rubro_string}}
       </span>
-
     </div>
   </div>
 
   <!-- Seccion Imagen -->
   <div class="imagen" *ngIf="comercio?.show_economico">
-    <ngb-carousel #carousel [interval]="1500">
+    <!-- <ngb-carousel #carousel [interval]="5000">
       <ng-template ngbSlide *ngFor="let foto of comercio.fotos">
           <div class="recuadroimagen">
             <img [src]="foto">
           </div>
       </ng-template>
-    </ngb-carousel>
+    </ngb-carousel> -->
+    <div class="row">
+      <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+    </div>
   </div>
 
   <!-- Seccion Descripción -->
   <div class="descripcion" *ngIf="comercio?.show_economico">
-    <div class="row px-4 pt-2">
+    <div class="row px-3 pt-2">
       <span class="subtitulo">
         ¿Que ofrecemos?
       </span>
     </div>
-    <div class="row px-4 pt-2">
+    <div class="row px-3 pt-2">
       <p>
         {{comercio?.descripcion}}
       </p>
@@ -43,7 +45,7 @@
 
   <!-- Sección Ubicación -->
   <div class="ubicacion">
-    <div class="titulo mb-2">
+    <div class="titulo mb-1">
       <span class="subtitulo">
         Ubicación
       </span> <br>
@@ -62,12 +64,12 @@
 
   <!-- Sección Info Contacto -->
   <div class="contacto">
-    <div class="in-flex offset-sm-2 col-sm-10 mt-3">
+    <div class="in-flex offset-md-1 col-md-10 mt-3">
       <div class="row mt-3">
-        <i class="fas fa-map-marker-alt fa-2x ml-1"></i><span class="info ml-3">
-          {{comercio?.direccion_string}}</span>
+        <p><i class="fas fa-map-marker-alt fa-2x ml-1"></i><span class="info ml-3">
+          {{comercio?.direccion_string | titlecase }}</span></p> 
       </div>
-      <div class="row mt-3">
+      <div class="row mt-2">
         <i class="fab fa-chrome fa-2x"></i><span><a class="info ml-3"
             href="{{comercio?.web ? 'https://'+comercio.web : ''}}" (click)="sumarClick(3)"
             target="_blank">{{comercio?.web ? comercio.web :'Sin página web'}}</a></span>
@@ -114,7 +116,7 @@
 
   <!-- Sección Referencias -->
   <div class="referencias" *ngIf="comercio?.show_estandar">
-    <div class="row px-4 mt-3 mb-2">
+    <div class="row mb-2">
       <div class="col-6 col-md-8">
         <span class="subtitulo">
           Referencias de clientes

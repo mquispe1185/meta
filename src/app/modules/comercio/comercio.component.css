@@ -14,7 +14,6 @@
                         "ubicacion contacto"
                         "referencias contacto";
   align-items:flex-start;
-
 }
 
 .contenedor .titulo {
@@ -35,10 +34,9 @@
 
 .contenedor .ubicacion {
   grid-area: ubicacion;
-  /* justify-self: stretch; */
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-top: 35pt;
+  /* padding-right: 15px;
+  padding-left: 15px; */
+  margin-top: 10pt;
 }
 
 .contenedor .contacto {
@@ -48,7 +46,7 @@
 .contenedor .referencias {
   grid-area: referencias;
   height: 400px;
-  margin-top: 35pt;
+  margin-top: 5pt;
   margin-bottom: 50px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -110,6 +108,10 @@ agm-map {
   box-shadow: 0px 3px 6px #00000029;
 }
 
+.rubro {
+  font: normal normal 20px;
+  color: #3c3c3c;
+}
 .subtitulo {
   text-align: left;
   font: normal normal bold 24px sans-serif;
@@ -127,15 +129,25 @@ agm-map {
 }
 
 .recuadroimagen {
-  /* height: 200%; */
-  /* height: 100%; */
   max-width: 100%
+}
+.ngx-gallery { 
+  display: grid; 
+  margin-bottom: 20px;
+}
+
+.dani .dani-active {
+  border: green;
 }
 
 i {
   color: #ee7222;
 }
 
+.p{
+  width: 100%;
+  overflow-wrap: break-word;
+}
 .info {
   font: normal normal normal 21px/27px Wavehaus;
   letter-spacing: 0px;
@@ -162,9 +174,6 @@ i {
 .textarea-wrapper {
   position:relative;
 }
-.remaning {
-
-}
 
 /* estrellas de puntuacion*/
 .star {
@@ -185,10 +194,10 @@ i {
   color: goldenrod;
 }
 
-
 @media (max-width: 768px){
   .contenedor {
     margin-top: 0px;
+    gap: 2px;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(7, auto);
     grid-template-areas: "imagen"
@@ -199,6 +208,20 @@ i {
                           "referencias"
   }
 
+  .contenedor .titulo {
+    margin-top: -20px;
+  }
+
+  .contenedor .descripcion {
+    margin-top: 0pt;
+  }
+  .contenedor .ubicacion {
+    margin-top: 15pt;
+  }
+  .contenedor .referencias {
+    margin-top: 15pt;
+  }
+
   .nombrecomercio {
     font: normal normal 800 24px Wavehaus;
   }
@@ -207,8 +230,14 @@ i {
     font: normal normal bold 20px Wavehaus;
   }
 
+  .rubro {
+    margin-top: -10px;
+    font-size: 13px;
+    color: #3c3c3c;
+  }
   .subtitulo {
-    font: normal normal bold 20px sans-serif;
+    font: normal normal bold 14px sans-serif;
+    color: #3c3c3c;
   }
 
   .recuadroimagen {
