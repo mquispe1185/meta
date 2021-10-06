@@ -52,7 +52,7 @@ export class Comercio {
     show_economico:boolean; //Si es al menos Economico
     show_estandar:boolean; //Si es al menos Estandar
     es_gratuito:boolean;
-    es_basico:boolean;
+    es_economico:boolean;
     es_estandar:boolean;
     es_premium:boolean;
     visitas_face:number;
@@ -63,6 +63,7 @@ export class Comercio {
     created_at:string;
     plan_pendiente:string;
     plan_hasta:string; //Utilizado para mostrar fecha de Vto en vista Comerciante.
+    fotos:string[];
     selectedFoto:string;
     constructor(data?: any) {
       Object.assign(this, data);

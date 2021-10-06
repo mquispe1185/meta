@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularTokenService } from 'angular-token';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -9,6 +10,7 @@ import { ComercioService } from 'src/app/servicios/comercio.service';
 import { ReferenciaService } from 'src/app/servicios/referencia.service';
 import { Comercio } from '../../modelos/comercio';
 import { Referencia } from '../../modelos/referencia';
+
 
 @Component({
   selector: 'app-comercio',
@@ -38,9 +40,13 @@ export class ComercioComponent implements OnInit {
               private sanitizer:DomSanitizer,
               private toastr: ToastrService,) { }
 
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[]; 
+  galeria: NgxGalleryImage[];
+
   ngOnInit(): void {
 
-   let comerid = this.route.snapshot.paramMap.get('comercio');
+    let comerid = this.route.snapshot.paramMap.get('comercio');
     if(comerid != null){
       this.comercio_id = +comerid;
     }else{
@@ -53,6 +59,12 @@ export class ComercioComponent implements OnInit {
         this.lon = +this.comercio.longitud;
         this.afterComercio();}
     )
+
+
+
+
+
+    
   }
 
   afterComercio(){
@@ -72,13 +84,44 @@ export class ComercioComponent implements OnInit {
     if (this.comercio.show_estandar){
       this.getReferencias();
     }
+
+    this.galleryOptions = [
+      {
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide,
+
+      },
+      // max-width 1280
+      {
+        breakpoint: 1280,
+        width: '500px',
+        height: '400px',
+      },
+      // max-width 900
+      {
+        breakpoint: 900,
+        width: '355px',
+        height: '300px',
+      },
+      // max-width 300
+      {
+        breakpoint: 300,
+        preview: false
+      },
+
+      { "imageAutoPlay": true, "imageAutoPlayPauseOnHover": true, "previewAutoPlay": false, 
+      "previewAutoPlayPauseOnHover": false, "thumbnailsAutoHide": true, thumbnailClasses: ['dani'] }
+    ];
+
+    this.galeria = [];
+    this.comercio.fotos.forEach(f => { this.galeria.push({ small: f, medium: f, big: f}) });
+    this.galleryImages = this.galeria;
   }
 
   getReferencias(){
     this.refeService.getReferencias(this.comercio.id).subscribe(
       refs =>{
                 this.referencias = refs;
-                console.log('LLAMANDO REFERENCIAS GET')
       }
     )
   }

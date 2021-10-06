@@ -73,8 +73,6 @@
 }
 
 .foto {
-    max-width:95%;
-    max-height:50%;
     vertical-align: middle;
     border-radius: 1em;
   }
@@ -139,31 +137,34 @@
     color: #808080;
 }
 
-/* para remover imagen preseleccinada */
+/* para remover imagen preselecionada */
 .img-wrap {
   position: relative;
   display: inline-block;
-  border: 1px red solid;
   font-size: 0;
+  border-radius: 1em;
 }
 .img-wrap .close {
   position: absolute;
-  top: 2px;
+  top: 3px;
   right: 2px;
   z-index: 100;
-  background-color: #FFF;
-  padding: 5px 2px 2px;
-  color: #000;
+  background-color: #f36904;
+  padding-block: 1px;
+  color: white;
   font-weight: bold;
   cursor: pointer;
-  opacity: .2;
+  opacity: .3;
   text-align: center;
-  font-size: 22px;
-  line-height: 10px;
-  border-radius: 50%;
+  font-size: 20px;
+
+  border-radius: 5%;
 }
 .img-wrap:hover .close {
   opacity: 1;
+}
+.btn-check{
+  color: white;
 }
 
 /* CSS PARA MOBILE */

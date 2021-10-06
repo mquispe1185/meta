@@ -16,11 +16,17 @@
   margin-left: 20px;
   margin-right: 10px;
 }
-.titulo {
-  font: normal normal 24px sans-serif;
+.modal-title {
+  margin-top: 100px;
+  font: normal bold larger sans-serif;
   color: #f36904;
+  margin-bottom: 30pt;
 }
 
+.btn-registro{
+  font-weight: bold;
+  margin-left: 10px;
+} 
 .img-circle {
     border-radius: 50%;
 }

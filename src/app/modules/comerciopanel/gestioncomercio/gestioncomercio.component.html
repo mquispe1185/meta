@@ -167,11 +167,11 @@
           </div>
           <div class="text-center col-12 col-md-6">
             <span class="titulo-item">Fotos: </span> <br> <br>
-            <img class="foto" (click)="openFormFoto(modalfoto,comer)"
-            [src]="comer.selectedFoto"
-              alt="">
-              <div class="row">
-                <div class="img-wrap" *ngFor='let foto of comer.fotos; index as i'>
+            <img class="foto img-fluid" (click)="openFormFoto(modalfoto,comer)"
+                [src]="comer.selectedFoto"
+                alt="">
+              <div class="row justify-content-center mt-2">
+                <div class="img-wrap mr-2" *ngFor="let foto of comer.fotos; index as i">
                   <span class="close" (click)="removeFotoFromServer(foto,comer)">&times;</span>
                   <img [src]="foto.toString().split(',')[1]" height="80" (click)="comer.selectedFoto = foto.toString().split(',')[1]">
                 </div>
@@ -377,16 +377,8 @@
                   ¿Es una fanpage?
                 </mat-slide-toggle>
               </div>
-
-              <!-- FACE ID  <div class="form-group col-6" hidden>
-                <mat-form-field class="col-12">
-                  <input matInput type="text" placeholder="facebook id" minlength="2" [(ngModel)]="comercio.facebook_id"
-                    name="tw" #tw="ngModel" />
-                  <mat-error *ngIf="tw.invalid && tw.errors.minlength">facebook id debe tener al menos 2 letras
-                  </mat-error>
-                </mat-form-field>
-              </div> -->
             </div><!-- face y facebook id-->
+
             <div class="row">
               <div class="form-group col-5 col-md-7">
                 <mat-form-field class="col-12">
@@ -483,47 +475,57 @@
 
 <!-- CARGA DE FOTO -->
 <ng-template #modalfoto let-modal>
-  <div class="container mt-5">
+  <div class="container mt-1">
     <div>
       <mat-card class="tarjeta-info">
         <div class="card-body">
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
-              <strong>Foto o logo</strong>
+              <strong>Fotos</strong>
             </h5>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <div class="row" *ngIf="(croppedImages.length + comercio.fotos.length) < 3">
+
+            <!-- Si es Economico o Estandar puede cargar 1 Foto. Si es Premium puede cargar 3 Fotos. -->
+            <div class="row" *ngIf="(((comercio?.es_economico) || (comercio?.es_estandar))
+            && ((croppedImages.length + comercio.fotos.length) < 1))
+            || ((comercio?.es_premium) && ((croppedImages.length + comercio.fotos.length) < 3))">
               <div class="col-sm-9">
                 <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)"/>
               </div>
-              <div class="col-sm-3">
-                <button *ngIf="!agregarFoto" mat-mini-fab color="primary" (click)="addFoto()">
-                  <mat-icon>plus_one</mat-icon>
-                </button>
-              </div>
             </div>
 
+            <div class="row mt-2 justify-content-center">
+              <span class="colorprimario">Fotos Actuales: {{comercio.fotos.length}}. &nbsp; &nbsp;
+              Fotos seleccionadas: {{croppedImages.length}}.</span>
+            </div>
+
+            <!-- Cropper para cargar nueva foto. -->
             <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
               [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
               (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
             </image-cropper>
-            <div class="row">
-              <span class="colorprimario">Fotos seleccionadas: ({{croppedImages.length}})</span>
-            </div>
-            <div class="img-wrap" *ngFor='let imc of croppedImages; index as i'>
-              <span class="close" (click)="removeFoto(i)">&times;</span>
-              <img [src]="imc" height="100">
+            <div class="row justify-content-center">
+              <div class="img-wrap mr-2 mb-2 shadow-lg" *ngFor="let imc of croppedImages; index as i">
+                <span class="close mr-1" (click)="removeFoto(i)">&times;</span>
+                <img [src]="imc" height="100">
+              </div>
             </div>
 
-            <!-- <img [src]="croppedImage" /> -->
+
+            <div class="row justify-content-end">
+              <button *ngIf="!agregarFoto" mat-mini-fab color="primary" (click)="addFoto()">
+                <mat-icon class="btn-check">check</mat-icon>
+              </button>
+            </div>
           </div>
+          
           <div class="modal-footer" *ngIf="croppedImages.length > 0">
-            <button mat-raised-button type="submit" class="mr-3" color="primary" (click)="guardarFoto()">
-              Guardar fotos ({{croppedImages.length}})
+            <button mat-raised-button type="submit" class="" color="primary" (click)="guardarFoto()">
+              Guardar Fotos ({{croppedImages.length}})
             </button>
           </div>
         </div>
@@ -710,7 +712,6 @@
     </mat-card>
   </div>
 </ng-template>
-
 
 <ng-template #estmodal let-modal>
   <div class="container">

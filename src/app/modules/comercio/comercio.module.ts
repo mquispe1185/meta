@@ -41,7 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuienesComponent } from './quienes/quienes.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 @NgModule({
@@ -88,8 +88,8 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     MatToolbarModule,
     MatTooltipModule,
     NgbModule,
-    YouTubePlayerModule
-
+    YouTubePlayerModule,
+    NgxGalleryModule 
   ]
 })
 export class ComercioModule { }
