@@ -64,7 +64,7 @@
 
   <!-- Sección Info Contacto -->
   <div class="contacto">
-    <div class="in-flex offset-md-1 col-md-10 mt-3">
+    <div class="offset-md-2 col-md-10 mt-3">
       <div class="row mt-3">
         <p><i class="fas fa-map-marker-alt fa-2x ml-1"></i><span class="info ml-3">
           {{comercio?.direccion_string | titlecase }}</span></p> 
@@ -88,12 +88,13 @@
         </table>
       </div>
       <div class="row mt-3">
-        <div class="col px-0">
+        <!-- <div class="col-sm-12 col-md-3 px-0">
           <i class="fas fa-motorcycle fa-2x"></i><span class="info ml-3">{{comercio?.envio ? 'SI' : 'NO'}}</span>
-        </div>
-
+        </div> -->
+        <i class="fas fa-motorcycle fa-2x"></i><span class="info ml-3">{{comercio?.envio ? 'SI' : 'NO'}}</span>
+      </div>
         <div *ngIf="comercio?.active_links;then activelinks else inactive">here is ignored</div>
-        <div class="col d-flex justify-content-end">
+        <div class="row mt-3" style="background-color: green;">
           <ng-template #activelinks>
           <span class="nick mr-2">Contactar Local:</span>
             <a *ngIf="!deviceService.isMobile() && comercio.facebook" href="{{comercio.facebook}}"
@@ -111,7 +112,7 @@
           <ng-template #inactive></ng-template>
         </div>
       </div>
-    </div>
+   
   </div>
 
   <!-- Sección Referencias -->
