@@ -26,10 +26,10 @@ import { DatosService } from 'src/app/servicios/datos.service';
 })
 export class GestionPlanesComponent implements OnInit {
 
-  lstComerciosplan:any;
+  lstComerciosplan:MatTableDataSource<any>;
   comerciosplan:Comercioplan[];
   dspCol: string[] = ['nombre','usuario','tiposervicio','validez','formapago','estado', 'acciones'];
-  @ViewChild(MatPaginator) paginatorCom: MatPaginator;
+  @ViewChild(MatPaginator) paginatorComplan: MatPaginator;
   comercioplanSelected:Comercioplan = new Comercioplan();
 
   closeResult: string;
@@ -59,14 +59,18 @@ export class GestionPlanesComponent implements OnInit {
 
   getComerciosplan(){
     this.comercioplanService.getComerciosPlanes().subscribe(
-      cms =>{ this.comerciosplan = cms;
-              this.lstComerciosplan = new MatTableDataSource(cms.map(c => new Comercioplan(c)));
-              this.lstComerciosplan.paginator = this.paginatorCom;
+      cms =>{ this.comerciosplan = cms.map(c => new Comercioplan(c));
+              this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
+              this.lstComerciosplan.paginator = this.paginatorComplan;
+
              }
     )
   }
 
-  filtrarComercios(term){
+  filtrarComerciosplan(term){
+    this.lstComerciosplan.filterPredicate = function(data, filter: string): boolean {
+      return data.comercio.nombre.toLowerCase().includes(filter) || data.usuario.nombre.toLowerCase().includes(filter);
+    };
     this.lstComerciosplan.filter = term.trim().toLowerCase();
   }
 
@@ -136,7 +140,7 @@ getFormapagos() {
         this.comerciosplan[index] = new Comercioplan(cms);
         this.toastr.success('Bien hecho!', 'Estado de Plan Modificado!');
         this.lstComerciosplan = new MatTableDataSource(this.comerciosplan.map(c => new Comercioplan(c)));
-        this.lstComerciosplan.paginator = this.paginatorCom;}
+        this.lstComerciosplan.paginator = this.paginatorComplan;}
     )
   }
 

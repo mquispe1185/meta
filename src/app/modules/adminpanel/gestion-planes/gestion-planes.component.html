@@ -7,10 +7,10 @@
   <div class="mt-3">
     <!-- Input Busqueda -->
     <mat-form-field>
-      <input matInput (keyup)="filtrarComercios($event.target.value)" placeholder="Buscar comercio...">
+      <input matInput (keyup)="filtrarComerciosplan($event.target.value)" placeholder="Buscar comercio...">
     </mat-form-field>
     <!-- TABLA PLANES -->
-    <mat-table #tablacomercios [dataSource]="lstComerciosplan" class="mat-elevation-z8">
+    <mat-table #tablacomerciosplan [dataSource]="lstComerciosplan" class="mat-elevation-z8">
       <!-- Nombre -->
       <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
@@ -69,11 +69,6 @@
         <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Acciones:</span>
-
-          <!-- <button placement="right" ngbTooltip="Editar Plan" class="mr-2" mat-icon-button
-            style="background-color: transparent" (click)="openFormActualizar(editarplanform,element)">
-            <mat-icon>edit</mat-icon>
-          </button> -->
           <button placement="right" ngbTooltip="Ver info Plan" mat-icon-button style="background-color: transparent"
             (click)="openFormActualizar(info,element)">
             <mat-icon>visibility</mat-icon>
