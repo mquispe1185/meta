@@ -58,7 +58,7 @@
           <span class="mobile-label">Estado:</span>
           <button placement="right" ngbTooltip="Actualizar Estado" class="btn-estado"
           [ngClass]="{'boton-pendiente' : element.estado=='pendiente','boton-aprobado' : element.estado=='aprobado', 'boton-vencido' : element.estado=='vencido', 'boton-rechazado' : element.estado=='rechazado'}"
-           (click)="openFormActualizar(estadoform,element)">
+           (click)="(element.estado != 'vencido') && openFormActualizar(estadoform,element)">
            {{element.estado |uppercase}}
           </button>
         </mat-cell>
@@ -92,7 +92,7 @@
         <div class="card-body">
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
-              <strong>Actualizar servicio</strong>
+              <strong>Actualizar Estado de Plan</strong>
             </h5>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>

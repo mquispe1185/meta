@@ -504,6 +504,7 @@ export class GestioncomercioComponent implements OnInit {
       res => {
         this.getFormapagos();
         this.servicios = res.map(s => new TipoServicio(s));
+        this.servicios = this.servicios.filter(plan => plan.nombre !== 'GRATUITO')
       }
     )
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

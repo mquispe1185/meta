@@ -3,7 +3,6 @@ import { ComercioplanService } from './../../../servicios/comercioplan.service';
 import { Comercio } from './../../../modelos/comercio';
 import { RubroService } from './../../../servicios/rubro.service';
 import { TipoServicio } from './../../../modelos/tipo-servicio';
-import { element } from 'protractor';
 import { Semana } from './../../../modelos/semana';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,13 +10,9 @@ import { AngularTokenService } from 'angular-token';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogService } from '../../../servicios/confirmation-dialog.service';
-import { ComercioService } from '../../../servicios/comercio.service';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { Rubro } from 'src/app/modelos/rubro';
 import { Formapago } from 'src/app/modelos/formapago';
 import { DatosService } from 'src/app/servicios/datos.service';
-
 
 @Component({
   selector: 'app-gestion-planes',
@@ -31,11 +26,8 @@ export class GestionPlanesComponent implements OnInit {
   dspCol: string[] = ['nombre','usuario','tiposervicio','validez','formapago','estado', 'acciones'];
   @ViewChild(MatPaginator) paginatorComplan: MatPaginator;
   comercioplanSelected:Comercioplan = new Comercioplan();
-
   closeResult: string;
   estadosplan = Semana.estadosplan;
-
- 
   comercioSelected:Comercio = new Comercio();
   servicios: TipoServicio[]=[];
   formapagos: Formapago[];
@@ -46,9 +38,7 @@ export class GestionPlanesComponent implements OnInit {
   constructor(public tokenService: AngularTokenService,
               private modalService: NgbModal,
               private toastr: ToastrService,
-              private confirmationDialogService: ConfirmationDialogService,
               private comercioplanService:ComercioplanService,
-              private rubroService: RubroService,
               private datosService: DatosService,) { }
 
   ngOnInit(): void {
@@ -62,7 +52,6 @@ export class GestionPlanesComponent implements OnInit {
       cms =>{ this.comerciosplan = cms.map(c => new Comercioplan(c));
               this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
               this.lstComerciosplan.paginator = this.paginatorComplan;
-
              }
     )
   }
@@ -84,15 +73,13 @@ export class GestionPlanesComponent implements OnInit {
 
  //Funcion para Acciones Estado, Editar y VerInfo
  openFormActualizar(modal,element){
-  //this.comercio = element.comercio //*** */
+   this.estadosplan = this.estadosplan.filter(e => e.descripcion !='VENCIDO')
   if (this.servicios.length == 0){
     this.getServicios()
   }
-  console.log('Ver Comercio plan:',element)
   this.comercioplanSelected = {...element};
   this.comercioplanSelected.tipo_servicio_id = this.comercioplanSelected.tipo_servicio.id;
   this.comercioplanSelected.formapago_id = this.comercioplanSelected.formapago.id;
-
   this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
   this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
@@ -100,11 +87,9 @@ export class GestionPlanesComponent implements OnInit {
   });
 }
 
-
 // MODAL Editar Plan Servicio -->
 updateTipoPlan() {
   this.comercioplanSelected.tipo_servicio_id = this.comercioplanSelected.tipo_servicio.id;
-    console.log('VER COMERCIOPLAN', this.comercioplanSelected)
     this.comercioplanService.editComercioPlanByAdmin(this.comercioplanSelected).subscribe(
     res => {
       console.log('respuesta update',res)
@@ -131,6 +116,7 @@ getFormapagos() {
     fps => { this.formapagos = fps; }
   )
 }
+
 //Fin  MODAL Modificar Estado de Plan Solicitado -->
   actualizarPlan(){
     this.comercioplanService.habilitarComercioplan(this.comercioplanSelected).subscribe(
@@ -143,7 +129,6 @@ getFormapagos() {
         this.lstComerciosplan.paginator = this.paginatorComplan;}
     )
   }
-
   verInfo(element){
   }
 
@@ -157,5 +142,4 @@ getFormapagos() {
       return  `with: ${reason}`;
     }
   }
-
 }
