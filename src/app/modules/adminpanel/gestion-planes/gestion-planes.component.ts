@@ -87,12 +87,11 @@ export class GestionPlanesComponent implements OnInit {
   });
 }
 
-// MODAL Editar Plan Servicio -->
+// MODAL Editar Plan Servicio NO ESTADO -->
 updateTipoPlan() {
   this.comercioplanSelected.tipo_servicio_id = this.comercioplanSelected.tipo_servicio.id;
     this.comercioplanService.editComercioPlanByAdmin(this.comercioplanSelected).subscribe(
     res => {
-      console.log('respuesta update',res)
       this.modalService.dismissAll();
       let index = this.comerciosplan.findIndex(c => c.id === this.comercioplanSelected.id)
       this.comerciosplan[index] = new Comercioplan(res);
@@ -122,8 +121,10 @@ getFormapagos() {
     this.comercioplanService.habilitarComercioplan(this.comercioplanSelected).subscribe(
       cms =>{
         this.modalService.dismissAll();
-        let index = this.comerciosplan.findIndex( c => c.id === cms.id)
-        this.comerciosplan[index] = new Comercioplan(cms);
+        cms.forEach(e => { 
+          let index = this.comerciosplan.findIndex(c => c.id === e.id)
+          this.comerciosplan[index] = new Comercioplan(e);
+        });
         this.toastr.success('Bien hecho!', 'Estado de Plan Modificado!');
         this.lstComerciosplan = new MatTableDataSource(this.comerciosplan.map(c => new Comercioplan(c)));
         this.lstComerciosplan.paginator = this.paginatorComplan;}
