@@ -20,17 +20,11 @@ export class HeaderComponent implements OnInit {
 
 
     ngOnInit(): void {
-
-      // console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-      // console.log('user data en inicio',this.tokenService.currentUserData);
-     // this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bR1dUUjOk28");
       this.tokenService.validateToken().subscribe(
-       res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
+       res =>{ //console.log('datos despues de validate',this.tokenService.currentUserData);
+      }
      );
-        // console.log('es inicio',this.esInicio)
     }
-
-
 
     irAMiComercio(){
       this.tokenService.validateToken().subscribe(
@@ -44,11 +38,8 @@ export class HeaderComponent implements OnInit {
       let element = document.querySelector('.menub');
       if (window.pageYOffset > 65) {
         element.classList.add('menunar');
-
-       // console.log('supera los 365');
       } else {
         element.classList.remove('menunar');
-
       }
     }
 
@@ -71,7 +62,6 @@ export class HeaderComponent implements OnInit {
          break;
       }
    }
-
   }
 
   irAPanel(){
@@ -95,8 +85,6 @@ export class HeaderComponent implements OnInit {
   salir():void{
     this.tokenService.signOut().subscribe(res => {
       localStorage.clear();
-
-      //this.toastr.warning('Sesión finalizada', 'Adiós '+this.tokenService.currentUserData.nombre+'!');
       this.router.navigate(['inicio']);
     },error => {
       console.log('test error',error);

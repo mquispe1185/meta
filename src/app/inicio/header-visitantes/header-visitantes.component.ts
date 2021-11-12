@@ -19,17 +19,13 @@ verLogo = false;
               public router: Router,
               private comercioService: ComercioService,
               private toastr: ToastrService,
-    ) {
-
-     }
-
+    ) {}
 
   ngOnInit(): void {
-
     this.tokenService.validateToken().subscribe(
-     res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
+     res =>{ //console.log('datos despues de validate',this.tokenService.currentUserData);
+    }
    );
-
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -89,19 +85,12 @@ verLogo = false;
       this.router.navigate(['inicio']);
     }
   }
-  // verComercio(comer){
-  //   localStorage.setItem('comercio',JSON.stringify(comer));
-  //   this.router.navigate(['comercio']);
-  // }
-
 
   salir(){
-
     this.tokenService.signOut().subscribe(
       res => {  localStorage.clear();
         this.router.navigate(['inicio']);},
       error => {this.router.navigate(['inicio']);}
     );
   }
-
 }

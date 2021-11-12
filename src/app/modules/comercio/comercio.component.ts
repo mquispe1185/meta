@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbCarousel, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularTokenService } from 'angular-token';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ToastrService } from 'ngx-toastr';
@@ -30,6 +31,16 @@ export class ComercioComponent implements OnInit {
   restan= 240;
   public faceapp:SafeResourceUrl;
   public safeURL:SafeResourceUrl;
+  public safeVideoUrl:SafeResourceUrl;
+  imageUrls = [];
+  videoUrls = [];
+  miniaturas = [];
+  @ViewChild('myCarousel') myCarousel: NgbCarousel;
+
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[]; 
+  galeria: NgxGalleryImage[];
+
   constructor(private comercioService:ComercioService,
               public tokenService: AngularTokenService,
               private refeService:ReferenciaService,
@@ -38,11 +49,10 @@ export class ComercioComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private sanitizer:DomSanitizer,
-              private toastr: ToastrService,) { }
+              private toastr: ToastrService,
+              private cdr: ChangeDetectorRef,) { }
 
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[]; 
-  galeria: NgxGalleryImage[];
+
 
   ngOnInit(): void {
 
@@ -51,7 +61,6 @@ export class ComercioComponent implements OnInit {
       this.comercio_id = +comerid;
     }else{
     this.comercio_id = +localStorage.getItem('comercio_id');
-
     }
     this.comercioService.getComercio(this.comercio_id).subscribe(
       cm =>{this.comercio= new Comercio(cm);
@@ -59,12 +68,6 @@ export class ComercioComponent implements OnInit {
         this.lon = +this.comercio.longitud;
         this.afterComercio();}
     )
-
-
-
-
-
-    
   }
 
   afterComercio(){
@@ -113,9 +116,24 @@ export class ComercioComponent implements OnInit {
       "previewAutoPlayPauseOnHover": false, "thumbnailsAutoHide": true, thumbnailClasses: ['dani'] }
     ];
 
-    this.galeria = [];
-    this.comercio.fotos.forEach(f => { this.galeria.push({ small: f, medium: f, big: f}) });
-    this.galleryImages = this.galeria;
+    // this.galeria = [];
+    // this.comercio.fotos.forEach(f => { this.galeria.push({ small: f, medium: f, big: f}) });
+    // this.galleryImages = this.galeria;
+
+    this.safeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.comercio.url_video}`);
+    console.log('safe video url',this.safeVideoUrl)
+    //this.imageUrls = this.comercio.fotos;
+    
+    this.comercio.fotos.forEach(f => this.miniaturas.push(f));
+    this.miniaturas.push(`https://img.youtube.com/vi/${this.comercio.url_video}/0.jpg`);
+    
+    console.log('IMAGEN URL', this.comercio.fotos);
+    console.log('MINIATURAS', this.miniaturas);
+  }
+
+  changeFoto(activeId){
+    console.log('CHANGE FOTO',activeId.toString());
+    this.myCarousel.select(`img${activeId}`);
   }
 
   getReferencias(){
@@ -169,6 +187,26 @@ export class ComercioComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+  // onSelectFile(event) {
+  //   const files = event.target.files;
+  //   if (files) {
+  //     for (const file of files) {
+  //       const reader = new FileReader();
+  //       reader.onload = (e: any) => {
+  //         if (file.type.indexOf("image") > -1) {
+  //           this.imageUrls.push(e.target.result);
+  //         } else if (file.type.indexOf("video") > -1) {
+  //           this.videoUrls.push(e.target.result);
+  //         }
+  //       };
+  //       reader.readAsDataURL(file);
+  //     }
+  //   }
+  // }
+
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
   }
 
 }
