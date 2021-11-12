@@ -37,10 +37,6 @@ export class ComercioComponent implements OnInit {
   miniaturas = [];
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
 
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[]; 
-  galeria: NgxGalleryImage[];
-
   constructor(private comercioService:ComercioService,
               public tokenService: AngularTokenService,
               private refeService:ReferenciaService,
@@ -52,10 +48,7 @@ export class ComercioComponent implements OnInit {
               private toastr: ToastrService,
               private cdr: ChangeDetectorRef,) { }
 
-
-
   ngOnInit(): void {
-
     let comerid = this.route.snapshot.paramMap.get('comercio');
     if(comerid != null){
       this.comercio_id = +comerid;
@@ -88,47 +81,11 @@ export class ComercioComponent implements OnInit {
       this.getReferencias();
     }
 
-    this.galleryOptions = [
-      {
-        thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide,
-
-      },
-      // max-width 1280
-      {
-        breakpoint: 1280,
-        width: '500px',
-        height: '400px',
-      },
-      // max-width 900
-      {
-        breakpoint: 900,
-        width: '355px',
-        height: '300px',
-      },
-      // max-width 300
-      {
-        breakpoint: 300,
-        preview: false
-      },
-
-      { "imageAutoPlay": true, "imageAutoPlayPauseOnHover": true, "previewAutoPlay": false, 
-      "previewAutoPlayPauseOnHover": false, "thumbnailsAutoHide": true, thumbnailClasses: ['dani'] }
-    ];
-
-    // this.galeria = [];
-    // this.comercio.fotos.forEach(f => { this.galeria.push({ small: f, medium: f, big: f}) });
-    // this.galleryImages = this.galeria;
-
     this.safeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.comercio.url_video}`);
     console.log('safe video url',this.safeVideoUrl)
-    //this.imageUrls = this.comercio.fotos;
     
     this.comercio.fotos.forEach(f => this.miniaturas.push(f));
     this.miniaturas.push(`https://img.youtube.com/vi/${this.comercio.url_video}/0.jpg`);
-
-    console.log('IMAGEN URL', this.comercio.fotos);
-    console.log('MINIATURAS', this.miniaturas);
   }
 
   changeFoto(activeId){

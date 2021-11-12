@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center">
       <h1>
         <span class="nombrecomercio">
-          {{comercio?.nombre}}
+          {{comercio?.nombre |titlecase}}
         </span>
       </h1>
     </div>
@@ -19,7 +19,7 @@
   <div class="imagen" *ngIf="comercio?.show_economico">
     <div >
       <ngb-carousel #myCarousel [showNavigationArrows]="imageUrls.length > 0"
-        [showNavigationIndicators]="true" interval="5000">
+        [showNavigationIndicators]="true" interval="0">
         <!-- VISTA DE FOTOS -->
         <ng-template ngbSlide *ngFor="let url of comercio.fotos; let i = index" id="img{{i}}" >
           <div class="recuadroimagen">

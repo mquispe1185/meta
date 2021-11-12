@@ -1,29 +1,27 @@
 .footerrectangulo {
+  padding-left:27px;
   width: 100%;
   height: 250px;
   background-color: #3c3c3c;
   }
-
-/*   .footertriangulo {
-    width: 100%;
-  border-right: 49.5rem solid #3c3c3c;
-  border-left: 49.5rem solid #3c3c3c;
-  border-top: 100px solid white;
-  } */
-  .logoblanco {
+.footer-info{
+  color: white; 
+  text-align: center;
+  width: 100%;
+}
+.logoblanco {
   width: 181px;
   height: 113px;
   }
-  .footer-link {
+.footer-link {
   color: white;
   cursor: pointer;
   }
-
-  .footer-link:hover {
+.footer-link:hover {
   text-decoration-line: underline;
   }
 
-  nav{
+nav{
     content: "";
     top: 100%;
     left: 0;
@@ -46,7 +44,6 @@
   }
 }
 
-
 @media (max-width: 900px) {
 nav{
     border-top: 10vw solid #ffffff;
@@ -60,17 +57,17 @@ nav{
   }
 
 @media (max-width: 760px) {
-  .footerrectangulo {
+.footerrectangulo {
   width: 100%;
-  height: 360px;
+  height: 370px;
   background-color: #3c3c3c;
   }
-  nav{
-    border-top: 10vw solid #ffffff;
-    border-left: 49.5vw solid #3c3c3c;
-    border-right: 48.1vw solid #3c3c3c;
-}
-  .logoblanco {
+nav{
+  border-top: 10vw solid #ffffff;
+  border-left: 49.5vw solid #3c3c3c;
+  border-right: 48.1vw solid #3c3c3c;
+  }
+.logoblanco {
   width: 90px;
   height: 66px;
   }
