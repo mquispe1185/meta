@@ -83,7 +83,7 @@ export class ComercioComponent implements OnInit {
     }else{
       this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=54'+this.comercio.celular);
     }
-    // Si el Comercio es ESTANDAR o PREMIUN traer Referencias.
+    // Si el Comercio es ESTANDAR o PREMIUM traer Referencias.
     if (this.comercio.show_estandar){
       this.getReferencias();
     }
@@ -126,7 +126,7 @@ export class ComercioComponent implements OnInit {
     
     this.comercio.fotos.forEach(f => this.miniaturas.push(f));
     this.miniaturas.push(`https://img.youtube.com/vi/${this.comercio.url_video}/0.jpg`);
-    
+
     console.log('IMAGEN URL', this.comercio.fotos);
     console.log('MINIATURAS', this.miniaturas);
   }

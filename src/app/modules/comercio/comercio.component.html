@@ -27,14 +27,14 @@
           </div>
         </ng-template>
         <!-- VISTA DEL VIDEO -->
-        <ng-template ngbSlide id="img{{comercio.fotos.length}}">
+        <ng-template *ngIf="comercio?.es_premium" ngbSlide id="img{{comercio.fotos.length}}">
           <div class="recuadroimagen">
             <iframe class="recuadroimagen" [src]="safeVideoUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </ng-template>
       </ngb-carousel>
       <!-- Galeria de Miniaturas -->
-      <div class="row justify-content-center mt-2">
+      <div class="row justify-content-center mt-2" *ngIf="comercio?.es_premium">
         <div class="img-thumbnail mx-1" *ngFor="let foto of miniaturas; let i= index">
           <img [src]="foto" (click)="changeFoto(i)" style="max-width:100%; max-height:100%;">
         </div>
