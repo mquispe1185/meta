@@ -140,7 +140,8 @@
           </div>
 
           <div class="col-5 col-md-2">
-            <span class="titulo-item" [ngClass]="{'oculto': comer.estado === default}"> Plan de Servicio Solicitado: </span>
+            <span class="titulo-item" [ngClass]="{'oculto': comer.estado === default}"> Plan de Servicio Solicitado:
+            </span>
           </div>
           <div class="col-7 col-md-4">
             <br><span class="text-danger font-weight-bold" [ngClass]="{'oculto': comer.estado === default}">
@@ -167,15 +168,14 @@
           </div>
           <div class="text-center col-12 col-md-6">
             <span class="titulo-item">Fotos: </span> <br> <br>
-            <img class="foto img-fluid" (click)="openFormFoto(modalfoto,comer)"
-                [src]="comer.selectedFoto"
-                alt="">
-              <div class="row justify-content-center mt-2">
-                <div class="img-wrap mr-2" *ngFor="let foto of comer.fotos; index as i">
-                  <span class="close" (click)="removeFotoFromServer(foto,comer)">&times;</span>
-                  <img [src]="foto.toString().split(',')[1]" height="80" (click)="comer.selectedFoto = foto.toString().split(',')[1]">
-                </div>
+            <img class="foto img-fluid" (click)="openFormFoto(modalfoto,comer)" [src]="comer.selectedFoto" alt="">
+            <div class="row justify-content-center mt-2">
+              <div class="img-wrap mr-2" *ngFor="let foto of comer.fotos; index as i">
+                <span class="close" (click)="removeFotoFromServer(foto,comer)">&times;</span>
+                <img [src]="foto.toString().split(',')[1]" height="80"
+                  (click)="comer.selectedFoto = foto.toString().split(',')[1]">
               </div>
+            </div>
           </div>
         </div>
 
@@ -187,6 +187,10 @@
           <button mat-raised-button type="submit" class="boton-config" color="primary"
             (click)="openFormFoto(modalfoto,comer)">
             <mat-icon>insert_photo</mat-icon>Foto
+          </button>
+          <button *ngIf="comer.es_premium" mat-raised-button type="submit" class="boton-config" color="primary"
+            (click)="openFormFoto(modalvideo,comer)">
+            <mat-icon>video_library</mat-icon>Video
           </button>
           <button mat-raised-button type="submit" color="primary" class="boton-config"
             (click)="openFormAgregarUbicacion(comer)">
@@ -203,7 +207,8 @@
             (click)="openFormPlan(modalplan,comer)" [disabled]="comer.estado===solicitud_pendiente">
             <mat-icon>verified</mat-icon>Tipo Servicio
           </button>
-          <button *ngIf="!comer.es_gratuito" mat-raised-button type="submit" class="boton-config" (click)="verEstadisticas(estmodal,comer)">
+          <button *ngIf="!comer.es_gratuito" mat-raised-button type="submit" class="boton-config"
+            (click)="verEstadisticas(estmodal,comer)">
             <mat-icon>leaderboard</mat-icon>Estadísticas
           </button>
           <!-- <div class="col-12 col-md-2 mt-2"> -->
@@ -494,13 +499,13 @@
             && ((croppedImages.length + comercio.fotos.length) < 1))
             || ((comercio?.es_premium) && ((croppedImages.length + comercio.fotos.length) < 3))">
               <div class="col-sm-9">
-                <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)"/>
+                <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)" />
               </div>
             </div>
 
             <div class="row mt-2 justify-content-center">
               <span class="colorprimario">Fotos Actuales: {{comercio.fotos.length}}. &nbsp; &nbsp;
-              Fotos seleccionadas: {{croppedImages.length}}.</span>
+                Fotos seleccionadas: {{croppedImages.length}}.</span>
             </div>
 
             <!-- Cropper para cargar nueva foto. -->
@@ -522,7 +527,7 @@
               </button>
             </div>
           </div>
-          
+
           <div class="modal-footer" *ngIf="croppedImages.length > 0">
             <button mat-raised-button type="submit" class="" color="primary" (click)="guardarFoto()">
               Guardar Fotos ({{croppedImages.length}})
@@ -533,6 +538,44 @@
     </div>
   </div>
 
+</ng-template>
+
+<!-- CARGA DE VIDEO-URL -->
+<ng-template #modalvideo let-modal>
+  <div class="container mt-1">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Url de Video</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="form" (ngSubmit)="f.form.valid && updateComercio()" #f="ngForm" novalidate>
+
+              <div class="form-group">
+                <mat-form-field class="col-12">
+                  <input matInput type="text" placeholder="Inserte URL" required minlength="2"
+                    [(ngModel)]="comercio.url_video" name="url_video" #url_video="ngModel" />
+                  <mat-error *ngIf="url_video.invalid && url_video.errors.required">Url es obligatoria</mat-error>
+                  <mat-error *ngIf="url_video.invalid && url_video.errors.minlength">la Url debe tener al menos 2 letras
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="text-right mt-4">
+                <button mat-raised-button type="submit" color="primary">
+                  <mat-icon>save</mat-icon>Guardar
+                </button>
+              </div>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </ng-template>
 
 <!-- FORM PALABRAS CLAVES / TAGS /> -->
@@ -615,8 +658,8 @@
               <div class="form-row">
                 <mat-form-field class="col">
                   <mat-label for="fp">Formapago</mat-label>
-                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id" [disabled]="es_servicio_gratuito"
-                  (selectionChange)="checkFormapago($event.value)">
+                  <mat-select id="fp" name="fp" [(ngModel)]="comercioplan.formapago_id"
+                    [disabled]="es_servicio_gratuito" (selectionChange)="checkFormapago($event.value)">
                     <mat-option *ngFor="let fp of formapagos" [value]="fp.id">{{ fp.descripcion }}
                     </mat-option>
                   </mat-select>
@@ -631,16 +674,23 @@
               </div>
 
               <div class="form-row text-center">
-                <span class="col-4"><p class="subtitulo" >Costo Plan: </p><strong>{{comercioplan.tipo_servicio.importe | currency}}</strong> </span>
-                <span class="col-4"> <p class="subtitulo">Cant. meses:</p><strong>{{comercioplan.meses}}</strong> </span>
-                <span class="col-3"><p class="subtitulo">Total:</p> <strong>{{comercioplan.importe | currency}}</strong> </span>
+                <span class="col-4">
+                  <p class="subtitulo">Costo Plan: </p>
+                  <strong>{{comercioplan.tipo_servicio.importe | currency}}</strong>
+                </span>
+                <span class="col-4">
+                  <p class="subtitulo">Cant. meses:</p><strong>{{comercioplan.meses}}</strong>
+                </span>
+                <span class="col-3">
+                  <p class="subtitulo">Total:</p> <strong>{{comercioplan.importe | currency}}</strong>
+                </span>
               </div>
 
               <div class="form-row mt-3">
                 <div class="col-12 text-right" *ngIf="comercioplan.formapago_id">
                   <div [hidden]="!es_pago_mp" id="button-checkout">
                   </div>
-                  <button [hidden]="es_pago_mp"  mat-raised-button type="submit" color="primary">
+                  <button [hidden]="es_pago_mp" mat-raised-button type="submit" color="primary">
                     <mat-icon>save</mat-icon>Cambiar Plan
                   </button>
                 </div>

@@ -62,16 +62,13 @@ export class InicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    /*  console.log('user log true? en inicio::::',this.tokenService.userSignedIn());
-    console.log('user data en inicio',this.tokenService.currentUserData); */
     this.listen();
-   this.tokenService.validateToken().subscribe(
-     res =>{ console.log('datos despues de validate',this.tokenService.currentUserData);}
-   );
-   this.getComercios();
-   this.getPromos();
+    this.tokenService.validateToken().subscribe(
+    res =>{ //console.log('datos despues de validate',this.tokenService.currentUserData);
+    });
+    this.getComercios();
+    this.getPromos();
   }
-
 
   listen() {
     this.router.events.subscribe(val => {

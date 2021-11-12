@@ -110,11 +110,15 @@ export class ListadocomerciosComponent implements OnInit {
     });
   }
 
-  updateComercio(){
+  updateComercio(){ 
     this.comercioService.updateComercio(this.comercioSelected).subscribe(
-      cms =>{this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
-          this.modalService.dismissAll();
-        this.toastr.success('bien hecho!', 'Datos actualizados!');}
+      comer =>{
+             let index = this.aux_comercios.findIndex(c => c.id === this.comercioSelected.id)
+             this.aux_comercios[index] = new Comercio(comer);
+             this.lstComercios = new MatTableDataSource(this.aux_comercios);
+             this.cdRef.detectChanges();
+             this.modalService.dismissAll();
+             this.toastr.success('Bien Hecho!', 'Datos actualizados!');}
     )
   }
 

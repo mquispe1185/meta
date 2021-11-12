@@ -65,6 +65,7 @@ export class Comercio {
     plan_hasta:string; //Utilizado para mostrar fecha de Vto en vista Comerciante.
     fotos:string[];
     selectedFoto:string;
+    url_video:string;
     constructor(data?: any) {
       Object.assign(this, data);
       if (Boolean(data?.fotos)){

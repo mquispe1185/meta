@@ -91,12 +91,11 @@ export class GestioncomercioComponent implements OnInit {
   comercio_estadistica: Comercio;
   @ViewChild('modaltags') modaltags: TemplateRef<any>;
   @ViewChild('formhorario') formhorario: TemplateRef<any>;
-
+  
   //para hide/show btn cambio plan
   es_pago_mp=false;
   es_servicio_gratuito=true;
   estado_plan: Estadosplan;
-
   plan_hasta:string;
 
   constructor(public tokenService: AngularTokenService,
@@ -254,8 +253,10 @@ export class GestioncomercioComponent implements OnInit {
 
   updateComercio() {
     this.comercioService.updateComercio(this.comercio).subscribe(
-      cms => {
-        this.comercios = cms.map(c => new Comercio(c));
+      comer => {
+        let index = this.comercios.findIndex(c => c.id === this.comercio.id)
+        this.comercios[index] = new Comercio(comer);
+        this.cdRef.detectChanges();
         this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Datos actualizados!');
         if (this.creando_new) {
@@ -438,6 +439,10 @@ export class GestioncomercioComponent implements OnInit {
     // show message
   }
 
+  //funciones para URL VIDEO
+  loadUrlVideo(){
+
+}
   //funciones de PALABRA CLAVE
   openFormTags(modal, comer) {
     this.comercio = comer;
