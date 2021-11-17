@@ -89,7 +89,7 @@ export class ComercioComponent implements OnInit {
   }
 
   changeFoto(activeId){
-    console.log('CHANGE FOTO',activeId.toString());
+    //console.log('CHANGE FOTO',activeId.toString());
     this.myCarousel.select(`img${activeId}`);
   }
 

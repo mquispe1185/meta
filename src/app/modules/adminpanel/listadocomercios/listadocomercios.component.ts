@@ -21,11 +21,11 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class ListadocomerciosComponent implements OnInit {
 
-  lstComercios:any;
-  aux_comercios:Comercio[];
-  dspCol: string[] = ['nombre','rubro','usuario','domicilio','tiposervicio','acciones'];
+  lstComercios: any;
+  aux_comercios: Comercio[];
+  dspCol: string[] = ['nombre', 'rubro', 'usuario', 'domicilio', 'tiposervicio', 'acciones'];
   @ViewChild(MatPaginator) paginatorCom: MatPaginator;
-  comercioSelected:Comercio = new Comercio();
+  comercioSelected: Comercio = new Comercio();
   rubros: Rubro[] = [];
   semana = Semana.semana;
   closeResult: string;
@@ -37,258 +37,350 @@ export class ListadocomerciosComponent implements OnInit {
   comercio: Comercio;
   comercios: Comercio[] = [];
   nueva_foto: File;
-  nuevas_fotos: File[]=[];
+  nuevas_fotos: File[] = [];
   file;
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  croppedImages: any[] = [];
+  agregarFoto= true;
 
   constructor(public tokenService: AngularTokenService,
-              private modalService: NgbModal,
-              private toastr: ToastrService,
-              private confirmationDialogService: ConfirmationDialogService,
-              private horarioService: HorarioService,
-              private rubroService: RubroService,
-              private comercioService:ComercioService,
-              private cdRef: ChangeDetectorRef) { }
+    private modalService: NgbModal,
+    private toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService,
+    private horarioService: HorarioService,
+    private rubroService: RubroService,
+    private comercioService: ComercioService,
+    private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
-      res =>{ this.getComercios(); }
+      res => { this.getComercios(); }
     );
 
   }
 
-  getComercios(){
+  getComercios() {
     this.comercioService.getComercios().subscribe(
-      cms =>{ this.aux_comercios = cms.map(c => new Comercio(c));
-              this.lstComercios = new MatTableDataSource(this.aux_comercios);
-              this.lstComercios.paginator = this.paginatorCom;
-             }
+      cms => {
+        this.aux_comercios = cms.map(c => new Comercio(c));
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.lstComercios.paginator = this.paginatorCom;
+      }
     )
   }
 
-  filtrarComercios(term){
+  filtrarComercios(term) {
     this.lstComercios.filter = term.trim().toLowerCase();
   }
 
-  dialogAprobarComercio(element){
+  dialogAprobarComercio(element) {
     var msj = '';
     var tit = '';
-    if (element.habilitado){
+    if (element.habilitado) {
       tit = 'Deshablitar';
       msj = `Deshabilitar al comercio ${element.nombre} ?`;
-    }else{
-     tit = 'Habilitar';
+    } else {
+      tit = 'Habilitar';
       msj = `Aprobar al comercio ${element.nombre} ?`;
     }
     this.confirmationDialogService.confirm(tit, msj)
       .then(
-        (confirm) => {(confirm) ? this.aprobarComercio(element) : console.log("cancelado");
-                      }
+        (confirm) => {
+          (confirm) ? this.aprobarComercio(element) : console.log("cancelado");
+        }
       ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-  aprobarComercio(element){
+  aprobarComercio(element) {
     //element.habilitado = !element.habilitado;
     this.comercioService.habilitarComercio(element.id).subscribe(
-      cms =>{ this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
+      cms => {
+        this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
 
         this.lstComercios.paginator = this.paginatorCom;
-                this.toastr.success('Estado actualizado correctamente!', 'Actualizado!'); }
+        this.toastr.success('Estado actualizado correctamente!', 'Actualizado!');
+      }
     )
   }
 
-  openFormEditar(modal,comer){
+  openFormEditar(modal, comer) {
     this.comercioSelected = new Comercio(comer);
-    if (this.rubros.length === 0){
+    if (this.rubros.length === 0) {
       this.getRubros();
     }
-    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  updateComercio(){ 
+  updateComercio() {
     this.comercioService.updateComercio(this.comercioSelected).subscribe(
-      comer =>{
-             let index = this.aux_comercios.findIndex(c => c.id === this.comercioSelected.id)
-             this.aux_comercios[index] = new Comercio(comer);
-             this.lstComercios = new MatTableDataSource(this.aux_comercios);
-             this.cdRef.detectChanges();
-             this.modalService.dismissAll();
-             this.toastr.success('Bien Hecho!', 'Datos actualizados!');}
+      comer => {
+        let index = this.aux_comercios.findIndex(c => c.id === this.comercioSelected.id)
+        this.aux_comercios[index] = new Comercio(comer);
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.cdRef.detectChanges();
+        this.modalService.dismissAll();
+        this.toastr.success('Bien Hecho!', 'Datos actualizados!');
+      }
     )
   }
 
 
-  dialogEliminarComercio(element){
+  dialogEliminarComercio(element) {
     this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar al comercio ${element.nombre} ?`)
       .then(
-        (confirm) => {(confirm) ? this.eliminarComercio(element) : console.log("cancelado");
-                      }
+        (confirm) => {
+          (confirm) ? this.eliminarComercio(element) : console.log("cancelado");
+        }
       ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-  eliminarComercio(element){
+  eliminarComercio(element) {
     element.activo = false;
     this.comercioService.deleteComercio(element).subscribe(
-      cms =>{ let index = this.aux_comercios.findIndex( p => p.id === element.id);
-              this.aux_comercios.splice(index,1);
-              this.lstComercios = new MatTableDataSource(this.aux_comercios);
-              this.lstComercios.paginator = this.paginatorCom;
-              this.toastr.error('Eiminado!', 'Comercio eliminado!'); }
+      cms => {
+        let index = this.aux_comercios.findIndex(p => p.id === element.id);
+        this.aux_comercios.splice(index, 1);
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.lstComercios.paginator = this.paginatorCom;
+        this.toastr.error('Eiminado!', 'Comercio eliminado!');
+      }
     )
   }
 
 
-  openFormInfo(modal,element){
-    this.comercioSelected = {...element};
-    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  openFormInfo(modal, element) {
+    this.comercioSelected = { ...element };
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  getRubros(){
+  getRubros() {
     this.rubroService.getRubros().subscribe(
       rs => {
-            this.rubros = rs; }
+        this.rubros = rs;
+      }
     );
   }
 
   //Gestion de horarios
-  openFormHorario(modal, comercio){
-    this.comercioSelected = {...comercio};
-    this.semana.forEach(d => {d.check = false});
+  openFormHorario(modal, comercio) {
+    this.comercioSelected = { ...comercio };
+    this.semana.forEach(d => { d.check = false });
     this.nuevo_horario = new Horario();
-      this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-    setDia(event, dia){
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  setDia(event, dia) {
 
-    }
-    addHorario(){
-      this.nuevos_horarios = [];
-      this.semana.forEach(
-        d => {
-          this.horario_aux = new Horario();
-          if (d.check){
-            this.horario_aux.dia = d.id;
-            this.horario_aux.desde = this.nuevo_horario.desde;
-            this.horario_aux.hasta = this.nuevo_horario.hasta;
+  }
+  addHorario() {
+    this.nuevos_horarios = [];
+    this.semana.forEach(
+      d => {
+        this.horario_aux = new Horario();
+        if (d.check) {
+          this.horario_aux.dia = d.id;
+          this.horario_aux.desde = this.nuevo_horario.desde;
+          this.horario_aux.hasta = this.nuevo_horario.hasta;
 
-            this.horario_aux.comercio_id = this.comercioSelected.id;
+          this.horario_aux.comercio_id = this.comercioSelected.id;
 
-            this.nuevos_horarios.push(this.horario_aux);
-          }
+          this.nuevos_horarios.push(this.horario_aux);
         }
-      );
+      }
+    );
 
-      this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
-        hs => {this.comercioSelected.horarios = hs;
-          this.modalService.dismissAll();
-          this.toastr.success('bien hecho!', 'Horario/s agregados!'); }
-      )
-    }
-    dialogEliminarHorario(element){
-      this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
-        .then(
-          (confirm) => {(confirm) ? this.eliminarHorario(element) : console.log("cancelado");
-                        }
-        ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-    }
-    eliminarHorario(horario){
-      this.horarioService.deleteHorario(horario).subscribe(
-        hs => {
-          this.modalService.dismissAll();
-          this.toastr.error('bien hecho!', 'Horario/s eliminado!'); }
-      )
-    }
+    this.horarioService.saveHorarios(this.nuevos_horarios).subscribe(
+      hs => {
+        this.comercioSelected.horarios = hs;
+        this.modalService.dismissAll();
+        this.toastr.success('bien hecho!', 'Horario/s agregados!');
+      }
+    )
+  }
+  dialogEliminarHorario(element) {
+    this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este horario del dia ${element.dia_nombre} ?`)
+      .then(
+        (confirm) => {
+          (confirm) ? this.eliminarHorario(element) : console.log("cancelado");
+        }
+      ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+  eliminarHorario(horario) {
+    this.horarioService.deleteHorario(horario).subscribe(
+      hs => {
+        this.modalService.dismissAll();
+        this.toastr.error('bien hecho!', 'Horario/s eliminado!');
+      }
+    )
+  }
 
   //Gestion de Imagen
-    openFormImagen(modal, comer) {
-      this.comercio = comer;
-      this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-
-    selectFile(event) {
-      this.nueva_foto = event.target.files.item(0);
-    }
-    guardarLogo() {
-      console.log("comerciooo",this.comercio)
-      this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
-        cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
-          this.modalService.dismissAll();
-          this.comercios = cms.map(c => new Comercio(c));
-          this.cdRef.detectChanges();
-          this.toastr.success('bien hecho!', 'Foto actualizada!');
+  /*     openFormImagen(modal, comer) {
+        this.comercio = comer;
+        this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+      }
+  
+      selectFile(event) {
+        this.nueva_foto = event.target.files.item(0);
+      }
+      guardarLogo() {
+        console.log("comerciooo",this.comercio)
+        this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
+          cms => { //this.tokenService.currentUserData.url_logo= res.url_logo;
+            this.modalService.dismissAll();
+            this.comercios = cms.map(c => new Comercio(c));
+            this.cdRef.detectChanges();
+            this.toastr.success('bien hecho!', 'Foto actualizada!');
+          }
+        )
+      }
+  
+      onFileChange(event) {
+        if (event.target.files.length > 0) {
+          const file = event.target.files[0];
+          this.file = file;
         }
-      )
-    }
-
-    onFileChange(event) {
-      if (event.target.files.length > 0) {
-        const file = event.target.files[0];
-        this.file = file;
       }
-    }
-
-    fileChangeEvent(event: any): void {
-      this.imageChangedEvent = event;
-    }
-    imageCropped(event: ImageCroppedEvent) {
-      this.croppedImage = event.base64;
-      //Usage example:
-      var file = this.dataURLtoFile(this.croppedImage, 'image.png');
-      this.nueva_foto = file;
-    }
-
-    dataURLtoFile(dataurl, filename) {
-      let arr = dataurl.split(','),
-        mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]),
-        n = bstr.length,
-        u8arr = new Uint8Array(n);
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
+  
+      fileChangeEvent(event: any): void {
+        this.imageChangedEvent = event;
       }
+      imageCropped(event: ImageCroppedEvent) {
+        this.croppedImage = event.base64;
+        //Usage example:
+        var file = this.dataURLtoFile(this.croppedImage, 'image.png');
+        this.nueva_foto = file;
+      }
+  
+      dataURLtoFile(dataurl, filename) {
+        let arr = dataurl.split(','),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]),
+          n = bstr.length,
+          u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+  
+        return new File([u8arr], filename, { type: mime });
+      } */
 
-      return new File([u8arr], filename, { type: mime });
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
+  }
+
+  openFormFoto(modal, comer) {
+    this.comercio = comer;
+    this.croppedImages = [];
+    this.imageChangedEvent = '';
+    this.agregarFoto = true;
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    if (Boolean(this.imageChangedEvent)) {
+      this.agregarFoto = false;
     }
+  }
 
-    imageLoaded() {
-      // show cropper
+  addFoto() {
+    this.agregarFoto = true;
+    this.croppedImages.push(this.croppedImage);
+    this.imageChangedEvent = '';
+    var file = this.dataURLtoFile(this.croppedImage, 'image.png');
+    this.nuevas_fotos.push(file);
+  }
+  removeFoto(i) {
+    this.croppedImages.splice(i, 1);
+    this.imageChangedEvent = '';
+  }
+
+  guardarFoto() {
+    this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
+      cm => {
+        this.modalService.dismissAll();
+        let index = this.aux_comercios.findIndex(c => c.id === this.comercio.id)
+        this.aux_comercios[index] = new Comercio(cm);
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.cdRef.detectChanges();
+        this.toastr.success('bien hecho!', 'Foto actualizada!');
+      }
+    )
+  }
+
+  removeFotoFromServer(foto, comer) {
+    console.log("foto a remover", foto[0])
+    this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este foto ?`)
+      .then(
+        (confirm) => {
+          (confirm) ? this.eliminarFoto(foto, comer) : console.log("cancelado");
+        }
+      ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+  //Método que elimina la foto del servidor
+  eliminarFoto(foto, comer) {
+    this.comercioService.deleteFoto(foto[0], comer).subscribe(
+      cm => {
+        this.modalService.dismissAll();
+        let index = this.aux_comercios.findIndex(c => c.id === comer.id)
+        this.aux_comercios[index] = new Comercio(cm);
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.toastr.error('Foto eliminada!', 'Foto removida!');
+      }
+    )
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+
+  dataURLtoFile(dataurl, filename) {
+    let arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
     }
-    cropperReady() {
-      // cropper ready
-    }
-    loadImageFailed() {
-      // show message
-    }
+    return new File([u8arr], filename, { type: mime });
+  }
 
-
-
-
-
-
-   //Método para cerrar Modal con Tecla Escape.
-   private getDismissReason(reason: any): string {
+  //Método para cerrar Modal con Tecla Escape.
+  private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 }

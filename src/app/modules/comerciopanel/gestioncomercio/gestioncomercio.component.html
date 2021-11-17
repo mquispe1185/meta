@@ -493,7 +493,6 @@
             </button>
           </div>
           <div class="modal-body">
-
             <!-- Si es Economico o Estandar puede cargar 1 Foto. Si es Premium puede cargar 3 Fotos. -->
             <div class="row" *ngIf="(((comercio?.es_economico) || (comercio?.es_estandar))
             && ((croppedImages.length + comercio.fotos.length) < 1))
@@ -502,12 +501,6 @@
                 <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)" />
               </div>
             </div>
-
-            <div class="row mt-2 justify-content-center">
-              <span class="colorprimario">Fotos Actuales: {{comercio.fotos.length}}. &nbsp; &nbsp;
-                Fotos seleccionadas: {{croppedImages.length}}.</span>
-            </div>
-
             <!-- Cropper para cargar nueva foto. -->
             <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
               [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
@@ -519,12 +512,24 @@
                 <img [src]="imc" height="100">
               </div>
             </div>
-
-
+            <!-- Boton para aprobar el recorte y foto elegida.-->
             <div class="row justify-content-end">
               <button *ngIf="!agregarFoto" mat-mini-fab color="primary" (click)="addFoto()">
                 <mat-icon class="btn-check">check</mat-icon>
               </button>
+            </div>            
+            <!-- Miniaturas para poder eliminar fotos. -->
+            <div class="row justify-content-center mt-2">
+              <div class="img-wrap mr-2" *ngFor="let foto of comercio.fotos; index as i">
+                <span class="close" (click)="removeFotoFromServer(foto,comercio)">&times;</span>
+                <img [src]="foto.toString().split(',')[1]" height="80"
+                  (click)="comercio.selectedFoto = foto.toString().split(',')[1]">
+              </div>
+            </div>
+            <!-- Informacion sobre cantidad de Fotos. -->
+            <div class="row mt-2 justify-content-center">
+              <span class="colorprimario">Fotos Anteriores: {{comercio.fotos.length}}. &nbsp; &nbsp;
+                Fotos Nuevas: {{croppedImages.length}}.</span>
             </div>
           </div>
 

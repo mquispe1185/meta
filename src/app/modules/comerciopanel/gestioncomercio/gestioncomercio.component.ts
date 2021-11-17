@@ -359,18 +359,6 @@ export class GestioncomercioComponent implements OnInit {
     });
   }
 
-  guardarFoto() {
-    this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
-      cm => {
-        this.modalService.dismissAll();
-        let index = this.comercios.findIndex(c => c.id === this.comercio.id)
-        this.comercios[index] = new Comercio(cm);
-        this.cdRef.detectChanges();
-        this.toastr.success('bien hecho!', 'Foto actualizada!');
-      }
-    )
-  }
-
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     if (Boolean(this.imageChangedEvent)){
@@ -390,6 +378,18 @@ export class GestioncomercioComponent implements OnInit {
     this.imageChangedEvent='';
   }
 
+  guardarFoto() {
+    this.comercioService.uploadFotos(this.nuevas_fotos, this.comercio.id).subscribe(
+      cm => {
+        this.modalService.dismissAll();
+        let index = this.comercios.findIndex(c => c.id === this.comercio.id)
+        this.comercios[index] = new Comercio(cm);
+        this.cdRef.detectChanges();
+        this.toastr.success('bien hecho!', 'Foto actualizada!');
+      }
+    )
+  }
+
   removeFotoFromServer(foto,comer){
     console.log("foto a remover",foto[0])
     this.confirmationDialogService.confirm('Eliminar?', `Esta seguro de eliminar este foto ?`)
@@ -399,7 +399,7 @@ export class GestioncomercioComponent implements OnInit {
         }
       ).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
-  //método que elimina la foto del servidor
+  //Método que elimina la foto del servidor
   eliminarFoto(foto,comer){
     this.comercioService.deleteFoto(foto[0],comer).subscribe(
       comercio => { this.modalService.dismissAll();
@@ -412,8 +412,6 @@ export class GestioncomercioComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    //Usage example:
-
   }
 
   dataURLtoFile(dataurl, filename) {
