@@ -32,11 +32,9 @@
   background: rgb(73, 194, 78);
 }
 .boton-vencido {
-  /* background:#E040FB; */
   background:violet;
 }
 .boton-rechazado {
-  /* background: #dd183c; */
   background: red;
 }
 .boton-cerrar {
@@ -52,7 +50,7 @@
 .mat-column-usuario {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 16% !important;
+  flex: 0 0 19% !important;
 }
 .mat-column-tiposervicio {
   word-wrap: break-word !important;
@@ -62,17 +60,15 @@
 .mat-column-validez {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 15% !important;
+  flex: 0 0 19% !important;
   display: flex;
   justify-content: center;
 }
-
 .mat-column-formapago {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 15% !important;
+  flex: 0 0 13% !important;
 }
-
 .mat-column-estado {
   word-wrap: break-word !important;
   white-space: unset !important;
@@ -83,7 +79,7 @@
 .mat-column-acciones {
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 15% !important;
+    flex: 0 0 10% !important;
     display: flex;
     justify-content: center;
-  }
+}

@@ -45,7 +45,7 @@
           <span class="detalle">{{element.nombre}}</span>
         </mat-cell>
       </ng-container>
-
+      <!-- Rubro -->
       <ng-container matColumnDef="rubro">
         <mat-header-cell *matHeaderCellDef>Rubro</mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -53,8 +53,7 @@
           <span class="detalle">{{element.rubro.descripcion}}</span>
         </mat-cell>
       </ng-container>
-
-      <!-- Email -->
+      <!-- Usuario -->
       <ng-container matColumnDef="usuario">
         <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -62,7 +61,7 @@
           <span class="detalle">{{element.usuario.nombre}}</span>
         </mat-cell>
       </ng-container>
-      <!-- Rol -->
+      <!-- Direccion -->
       <ng-container matColumnDef="domicilio">
         <mat-header-cell *matHeaderCellDef>Direccion</mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -70,7 +69,7 @@
           <span class="detalle">{{element.domicilio}}</span>
         </mat-cell>
       </ng-container>
-
+      <!-- Servicio -->
       <ng-container matColumnDef="tiposervicio">
         <mat-header-cell *matHeaderCellDef>Servicio</mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -92,8 +91,8 @@
           (click)="openFormHorario(formhorario,element)">
             <mat-icon>alarm</mat-icon>
           </button>
-          <button placement="right" ngbTooltip="Imagen" mat-icon-button style="color: white"
-          (click)="openFormImagen(formimagen,element)">
+          <button placement="right" ngbTooltip="Fotos" mat-icon-button style="color: white"
+          (click)="openFormFoto(modalfoto,element)">
             <mat-icon>image</mat-icon>
           </button>
           <button placement="right" ngbTooltip="{{element.habilitado ? 'Deshabilitar':'Habilitar'}}" class="mr-2"
@@ -114,12 +113,8 @@
       <mat-row *matRowDef="let row; columns: dspCol;" [ngClass]="row?.habilitado ? 'aprob' : 'pend' "></mat-row>
     </mat-table>
 
-
     <mat-paginator class="mat-elevation-z8" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
-
-
-
   </div>
 </div>
 
@@ -191,9 +186,6 @@
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Página web" minlength="2" [(ngModel)]="comercioSelected.web"
                     name="web" #web="ngModel" />
-                 <!--    <button mat-icon-button matSuffix (click)="helpFace(helpweb)" type="button">
-                      <mat-icon>help_outline</mat-icon>
-                      </button> -->
                   <mat-error *ngIf="web.invalid && web.errors.minlength">pagina web debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
@@ -202,9 +194,6 @@
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Instagram" minlength="2" [(ngModel)]="comercioSelected.instagram"
                     name="ins" #ins="ngModel" />
-                   <!--  <button mat-icon-button matSuffix (click)="helpIg(helpig)" type="button">
-                      <mat-icon>help_outline</mat-icon>
-                      </button> -->
                   <mat-error *ngIf="ins.invalid && ins.errors.minlength">instagram debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
@@ -215,9 +204,6 @@
                 <mat-form-field class="col-12">
                   <input matInput type="text" placeholder="Facebook" minlength="2" [(ngModel)]="comercioSelected.facebook"
                     name="face" #face="ngModel" />
-                   <!--  <button mat-icon-button matSuffix (click)="helpFace(helpface)" type="button">
-                      <mat-icon>help_outline</mat-icon>
-                      </button> -->
                   <mat-error *ngIf="face.invalid && face.errors.minlength">facebook debe tener al menos 2 letras
                   </mat-error>
                 </mat-form-field>
@@ -242,6 +228,7 @@
 
               </div>
             </div><!-- es fanpage?-->
+            <!-- Descripcion-->
             <div class="row">
               <div class="col-12">
                 <mat-form-field class="col-12">
@@ -251,6 +238,16 @@
                 </mat-form-field>
               </div>
             </div>
+            <!-- Url Video-->
+            <div class="form-group">
+              <mat-form-field class="col-12">
+                <input matInput type="text" placeholder="URL Youtube" required minlength="2"
+                  [(ngModel)]="comercioSelected.url_video" name="url_video" #url_video="ngModel" />
+                <mat-error *ngIf="url_video.invalid && url_video.errors.required">Url es obligatoria</mat-error>
+                <mat-error *ngIf="url_video.invalid && url_video.errors.minlength">la Url debe tener al menos 2 letras
+                </mat-error>
+              </mat-form-field>
+            </div>            
             <div class="text-right mt-4">
               <button mat-raised-button type="submit" color="primary">
                 <mat-icon>save</mat-icon>Actualizar
@@ -264,8 +261,7 @@
   </div>
 </ng-template>
 
-
-<!-- Formulario Ver info-->
+<!-- Formulario VER INFO-->
 <ng-template #info let-modal>
   <div class="container">
     <div>
@@ -446,7 +442,7 @@
 </ng-template>
 
 <!-- Formulario IMAGEN-->
-<ng-template #formimagen let-modal>
+<!-- <ng-template #formimagen let-modal>
   <div class="container mt-5">
     <div>
       <mat-card class="tarjeta-info">
@@ -476,4 +472,71 @@
       </mat-card>
     </div>
   </div>
+</ng-template> -->
+
+<!-- CARGA DE FOTO -->
+<ng-template #modalfoto let-modal>
+  <div class="container mt-1">
+    <div>
+      <mat-card class="tarjeta-info">
+        <div class="card-body">
+          <div class="modal-header modal-encabezado">
+            <h5 class="modal-title titulo" id="modal-basic-title">
+              <strong>Fotos "{{comercio.nombre}}"</strong>
+            </h5>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Si es Economico o Estandar puede cargar 1 Foto. Si es Premium puede cargar 3 Fotos. -->
+            <div class="row" *ngIf="(((comercio?.es_economico) || (comercio?.es_estandar))
+            && ((croppedImages.length + comercio.fotos.length) < 1))
+            || ((comercio?.es_premium) && ((croppedImages.length + comercio.fotos.length) < 3))">
+              <div class="col-sm-9">
+                <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)" />
+              </div>
+            </div>
+            <!-- Cropper para cargar nueva foto. -->
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+              [resizeToWidth]="400" [imageQuality]="100" format="png" (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+            <div class="row justify-content-center">
+              <div class="img-wrap mr-2 mb-2 shadow-lg" *ngFor="let imc of croppedImages; index as i">
+                <span class="close mr-1" (click)="removeFoto(i)">&times;</span>
+                <img [src]="imc" height="100">
+              </div>
+            </div>
+            <!-- Boton para aprobar el recorte y foto elegida.-->
+            <div class="row justify-content-end">
+              <button *ngIf="!agregarFoto" mat-mini-fab color="primary" (click)="addFoto()">
+                <mat-icon class="btn-check">check</mat-icon>
+              </button>
+            </div>            
+            <!-- Miniaturas para poder eliminar fotos. -->
+            <div class="row justify-content-center mt-2">
+              <div class="img-wrap mr-2" *ngFor="let foto of comercio.fotos; index as i">
+                <span class="close" (click)="removeFotoFromServer(foto,comercio)">&times;</span>
+                <img [src]="foto.toString().split(',')[1]" height="80"
+                  (click)="comercio.selectedFoto = foto.toString().split(',')[1]">
+              </div>
+            </div>
+            <!-- Informacion sobre cantidad de Fotos. -->
+            <div class="row mt-2 justify-content-center">
+              <span class="colorprimario">Fotos Actuales: {{comercio.fotos.length}}. &nbsp; &nbsp;
+                Fotos Nuevas: {{croppedImages.length}}.</span>
+            </div>            
+          </div>
+
+          <div class="modal-footer" *ngIf="croppedImages.length > 0">
+            <button mat-raised-button type="submit" class="" color="primary" (click)="guardarFoto()">
+              Guardar Fotos ({{croppedImages.length}})
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
 </ng-template>
