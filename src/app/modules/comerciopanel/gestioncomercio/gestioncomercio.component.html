@@ -197,7 +197,6 @@
             <mat-icon>room</mat-icon>Ubicación
           </button>
 
-
           <!-- <div class="col-12 col-md-4 mt-2"> -->
           <button mat-raised-button type="submit" class="boton-config" color="primary"
             (click)="openFormHorario(formhorario,comer)">
@@ -236,7 +235,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>{{comercio.id ? 'Editar Comercio' : 'Alta de Comercio'}}</strong>
-            </h5> <span *ngIf="creando_new" class="textopaso">(Paso 1 de 4)</span>
+            </h5> <span *ngIf="creando_new" class="textopaso">(Paso 1 de 5)</span>
             <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -429,7 +428,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Horarios </strong>
-            </h5> <span *ngIf="creando_new" class="textopaso">(PASO 3 DE 4)</span>
+            </h5> <span *ngIf="creando_new" class="textopaso">(PASO 4 DE 5)</span>
             <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -592,7 +591,7 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Tags</strong> <br>
-            </h5><span *ngIf="creando_new" class="textopaso">(PASO 2 DE 4)</span>
+            </h5><span *ngIf="creando_new" class="textopaso">(PASO 3 DE 5)</span>
             <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -623,7 +622,6 @@
 
 </ng-template>
 
-
 <!-- MODAL Tipo Servicio -->
 <ng-template #modalplan let-modal>
   <div class="container">
@@ -633,8 +631,8 @@
           <div class="modal-header modal-encabezado">
             <h5 class="modal-title titulo" id="modal-basic-title">
               <strong>Tipo de Plan</strong>
-            </h5>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            </h5><span *ngIf="creando_new" class="textopaso">(PASO 2 DE 5)</span> 
+            <button type="button" class="cruz" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -696,7 +694,7 @@
                   <div [hidden]="!es_pago_mp" id="button-checkout">
                   </div>
                   <button [hidden]="es_pago_mp" mat-raised-button type="submit" color="primary">
-                    <mat-icon>save</mat-icon>Cambiar Plan
+                    <mat-icon>save</mat-icon>Solicitar Plan
                   </button>
                 </div>
               </div>

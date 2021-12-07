@@ -89,6 +89,7 @@ export class GestioncomercioComponent implements OnInit {
   creando_new = false;
   //para mostrar estadisticas
   comercio_estadistica: Comercio;
+  @ViewChild('modalplan') modalplan: TemplateRef<any>;
   @ViewChild('modaltags') modaltags: TemplateRef<any>;
   @ViewChild('formhorario') formhorario: TemplateRef<any>;
   
@@ -246,7 +247,8 @@ export class GestioncomercioComponent implements OnInit {
         this.comercios.push(this.comercio);
         this.modalService.dismissAll();
         this.toastr.success('bien hecho!', 'Nuevo comercio creado!');
-        this.openFormTags(this.modaltags, this.comercios[this.comercios.length - 1])
+        //this.openFormTags(this.modaltags, this.comercios[this.comercios.length - 1])
+        this.openFormPlan(this.modalplan , this.comercio);
       }
     )
   }
@@ -279,7 +281,8 @@ export class GestioncomercioComponent implements OnInit {
   actualizarUbicacion(comercio) {
     this.comercioService.updateComercio(comercio).subscribe(
       cms => {
-        this.comercios = cms.map(c => new Comercio(c));
+        let index = this.comercios.findIndex(c => c.id === this.comercio.id)
+        this.comercios[index] = new Comercio(cms);
         //this.modalService.dismissAll();
         this.creando_new = false;
         this.toastr.success('bien hecho!', 'Ubicación actualizada!');
@@ -507,7 +510,10 @@ export class GestioncomercioComponent implements OnInit {
       res => {
         this.getFormapagos();
         this.servicios = res.map(s => new TipoServicio(s));
-        this.servicios = this.servicios.filter(plan => plan.nombre !== 'GRATUITO')
+        this.servicios = this.servicios.filter(plan => plan.nombre !== 'NUEVO')
+        if (!this.creando_new) {
+          this.servicios = this.servicios.filter(plan => plan.nombre !== 'GRATUITO')
+        }
       }
     )
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -516,11 +522,6 @@ export class GestioncomercioComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
-  // checkTipoServicio(e){
-  //   this.es_servicio_gratuito = (e === 3) ? true : false;
-  //   console.log('banderaaa', this.es_servicio_gratuito);
-  // }
 
   checkFormapago(e){
     this.es_pago_mp = (e === 4) ? true : false;
@@ -539,6 +540,9 @@ export class GestioncomercioComponent implements OnInit {
         let index = this.comercios.findIndex(c => c.id === this.comercio.id)
         this.comercios[index] = new Comercio(res);
         this.toastr.success('Bien hecho!', 'El cambio esta pendiente hasta que se confirme el pago!');
+        if (this.creando_new) {
+          this.openFormTags(this.modaltags, this.comercios[this.comercios.length - 1])
+        }
       }
     )
   }
@@ -569,8 +573,10 @@ export class GestioncomercioComponent implements OnInit {
     this.es_servicio_gratuito = (servicio === 1) ? true : false;
     if (this.es_servicio_gratuito) {
       this.comercioplan.formapago_id=3;
+    }else {
+      this.comercioplan.formapago_id = undefined;
+      this.es_servicio_gratuito = false;
     }
-
     this.comercioplan.tipo_servicio = this.servicios.find(s => s.id === servicio);
     this.comercioplan.importe = this.comercioplan.meses * this.comercioplan.tipo_servicio.importe;
   }

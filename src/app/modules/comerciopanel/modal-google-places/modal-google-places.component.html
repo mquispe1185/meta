@@ -1,45 +1,30 @@
 <div class="modal-header mt-5">
-    <h6>Seleccion ubicación</h6> <span *ngIf="creando_new" class="textopaso">(Paso 4 de 4)</span>
-     <button type="button" class="cruz" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-       <span aria-hidden="true">&times;</span>
-     </button>
-   </div>
+  <h6>Seleccion ubicación</h6> <span *ngIf="creando_new" class="textopaso">(Paso 5 de 5)</span>
+  <button type="button" class="cruz" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <div class="modal-body">
-    <div class="card card-block mat-elevation-z8">
-       <div class="card-body">
-        <form name="form"
-        (ngSubmit)="f.form.valid && updateUbicacion()"
-         #f="ngForm" novalidate>
+  <div class="card card-block mat-elevation-z8">
+    <div class="card-body">
+      <form name="form" (ngSubmit)="f.form.valid && updateUbicacion()" #f="ngForm" novalidate>
         <div class="form-group">
-        <!--    <input  google-place type="text" class="form-control" (onSelect)="setAddress($event)"
-            placeholder="Buscar ubicacion" autocorrect="off" autocapitalize="off" spellcheck="off" #search> -->
+          <input type="text" google-place class="form-control" placeholder="ingrese dirección" required
+            (onSelect)="setAddress($event)" (keydown.enter)="$event.preventDefault()">
+        </div>
 
-         <!--    <input placeholder="search for location" autocorrect="off" autocapitalize="off"
-            spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"> -->
-
-            <input type="text"
-            google-place
-           class="form-control"
-           placeholder="ingrese dirección"
-           required
-           (onSelect)="setAddress($event)"
-           (keydown.enter)="$event.preventDefault()"
-         >
-
-          </div>
-          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-              (dragEnd)="markerDragEnd($event)"></agm-marker>
-          </agm-map>
-          <div class="text-right mt-4">
-            <button mat-raised-button type="submit" color="primary">
-              Enviar</button>
-          </div>
-        </form>
-          <h5>Dirección: {{comercio.domicilio}}</h5>
-          <div>Latitud: {{comercio.latitud}}</div>
-          <div>Longitud: {{comercio.longitud}}</div>
-
-       </div>
-   </div>
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+          <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </agm-map>
+        <div class="text-right mt-4">
+          <button mat-raised-button type="submit" color="primary">
+            Enviar</button>
+        </div>
+      </form>
+      <h5>Dirección: {{comercio.domicilio}}</h5>
+      <div>Latitud: {{comercio.latitud}}</div>
+      <div>Longitud: {{comercio.longitud}}</div>
+    </div>
+  </div>
 </div>
