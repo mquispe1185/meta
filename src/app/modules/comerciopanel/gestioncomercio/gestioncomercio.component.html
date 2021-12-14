@@ -493,8 +493,7 @@
           </div>
           <div class="modal-body">
             <!-- Si es Economico o Estandar puede cargar 1 Foto. Si es Premium puede cargar 3 Fotos. -->
-            <div class="row" *ngIf="(((comercio?.es_economico) || (comercio?.es_estandar))
-            && ((croppedImages.length + comercio.fotos.length) < 1))
+            <div class="row" *ngIf="((!comercio?.es_premium ) && ((croppedImages.length + comercio.fotos.length) < 1))
             || ((comercio?.es_premium) && ((croppedImages.length + comercio.fotos.length) < 3))">
               <div class="col-sm-9">
                 <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)" />

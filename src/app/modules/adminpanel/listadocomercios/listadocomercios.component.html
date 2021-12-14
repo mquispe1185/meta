@@ -34,15 +34,13 @@
       </div>
     </div>
 
-
-
     <mat-table #tablacomercios [dataSource]="lstComercios" class="mat-elevation-z8">
       <!-- Nombre -->
       <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef>Nombre Comercio</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Nombre:</span>
-          <span class="detalle">{{element.nombre}}</span>
+          <span class="mobile-label" (click)="verComercio(element.id)">Nombre:</span>
+          <span class="nombre-com" (click)="verComercio(element.id)">{{element.nombre}}</span>
         </mat-cell>
       </ng-container>
       <!-- Rubro -->
@@ -486,8 +484,7 @@
           </div>
           <div class="modal-body">
             <!-- Si es Economico o Estandar puede cargar 1 Foto. Si es Premium puede cargar 3 Fotos. -->
-            <div class="row" *ngIf="(((comercio?.es_economico) || (comercio?.es_estandar))
-            && ((croppedImages.length + comercio.fotos.length) < 1))
+            <div class="row" *ngIf="((!comercio?.es_premium ) && ((croppedImages.length + comercio.fotos.length) < 1))
             || ((comercio?.es_premium) && ((croppedImages.length + comercio.fotos.length) < 3))">
               <div class="col-sm-9">
                 <input *ngIf="agregarFoto" type="file" (change)="fileChangeEvent($event)" />

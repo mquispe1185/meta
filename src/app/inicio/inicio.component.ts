@@ -1,29 +1,22 @@
 import { Promocion } from './../modelos/promocion';
 import { PromocionesService } from './../servicios/promociones.service';
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { AngularTokenService } from 'angular-token';
-import { MapsAPILoader} from '@agm/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comercio } from '../modelos/comercio';
 import { ComercioService } from '../servicios/comercio.service';
-import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
-import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
-
 })
 export class InicioComponent implements OnInit {
 
   @ViewChild ('ben')ben;
-
   comercios:Comercio[]=[];
   buscado:string='';
   promociones:Promocion[]=[];
@@ -125,25 +118,21 @@ export class InicioComponent implements OnInit {
 
   verComercio(comer){
     localStorage.removeItem('comercio_id');
-  //  localStorage.removeItem('comercio');
     localStorage.setItem('comercio_id',comer);
     this.router.navigate(['comercio',comer]);
   }
 
   salir(){
-
     this.tokenService.signOut().subscribe(
       res => console.log('adios!!',res),
       error => console.log('adios!!',error)
     );
   }
 
-
   getComercios(){
     this.comercioService.getComerciosInicio().subscribe(
       cms =>{this.comercios = cms;
-
-             }
+      }
     )
   }
 
@@ -161,7 +150,6 @@ export class InicioComponent implements OnInit {
   }
 
   buscarPorRubro(buscado){
-
    this.comercioService.buscarComerciosRubro(buscado).subscribe(
       cms =>{this.comercios = cms;
         document.getElementById("promo").scrollIntoView();

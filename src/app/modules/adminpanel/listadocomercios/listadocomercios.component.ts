@@ -13,6 +13,7 @@ import { Semana } from 'src/app/modelos/semana';
 import { Horario } from 'src/app/modelos/horario';
 import { HorarioService } from 'src/app/servicios/horario.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-listadocomercios',
@@ -51,7 +52,8 @@ export class ListadocomerciosComponent implements OnInit {
     private horarioService: HorarioService,
     private rubroService: RubroService,
     private comercioService: ComercioService,
-    private cdRef: ChangeDetectorRef) { }
+    private cdRef: ChangeDetectorRef,
+    public router: Router) { }
 
   ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
@@ -72,6 +74,12 @@ export class ListadocomerciosComponent implements OnInit {
 
   filtrarComercios(term) {
     this.lstComercios.filter = term.trim().toLowerCase();
+  }
+
+  verComercio(comer){
+    localStorage.removeItem('comercio_id');
+    localStorage.setItem('comercio_id',comer);
+    this.router.navigate(['comercio',comer]);
   }
 
   dialogAprobarComercio(element) {
