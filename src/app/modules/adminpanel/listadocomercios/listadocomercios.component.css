@@ -9,10 +9,6 @@
   color: #f36904;
 }
 
-.img-circle {
-    border-radius: 50%;
-}
-
 .tarjeta-info{
   padding: 0px;
   border-color: transparent;
@@ -39,8 +35,8 @@
   border-color: #49c24e;
 }
 .btn-deshabilitado {
-  background-color: #F7B843;
-  border-color: #F7B843;
+  background-color: #e9ae40;
+  border-color: #e9ae40;
   width: 20px;
   height: 20px;
 }
@@ -71,20 +67,25 @@
   flex: 0 0 23% !important;
   width: 23% !important;
 }
+.nombre-com {
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .detalle {
   color: #ffffff;
   font-weight: bold;
 }
 
 .aprob{
- /*  background: #D5F5E3;  */
   background: #49c24e;
   color: #ffffff;
 }
 
 .pend{
   /* background: #FAD7A0; */
-  background: #F7B843; 
+  background: #e9ae40; 
 }
 
 .card-body {

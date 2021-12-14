@@ -266,7 +266,7 @@
                   <div class="row pr-1">
                     <div class="col-9 coldomicilio">
                       <!-- {{comer.domicilio}} -->
-                      {{comer?.domicilio ? comer.domicilio :'San Lorenzo'}}
+                      {{comer?.domicilio ? (comer.domicilio+", "+comer.localidad_nombre |titlecase) : comer.localidad_nombre |titlecase}}
                     </div>
                     <div class="col-3 colboton">
                       <button type="button" (click)="verComercio(comer.id)" class="boton-comercio">Ir

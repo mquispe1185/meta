@@ -66,6 +66,7 @@ export class Comercio {
     fotos:string[];
     selectedFoto:string;
     url_video:string;
+    localidad_nombre:string;
     constructor(data?: any) {
       Object.assign(this, data);
       if (Boolean(data?.fotos)){
