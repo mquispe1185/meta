@@ -41,10 +41,10 @@ export class ContactateComponent implements OnInit {
 
   setLinks(){
     if (this.deviceService.isMobile()){
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543875835004');
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543874522407');
       this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('fb://page/'+105931757928699);
     }else{
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543875835004');
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543874522407');
       this.faceapp = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.facebook.com/meta.cerca');
     }
   }

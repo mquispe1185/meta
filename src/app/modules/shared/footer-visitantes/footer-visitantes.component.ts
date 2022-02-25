@@ -25,9 +25,9 @@ export class FooterVisitantesComponent implements OnInit {
 
   setWspLik(){
     if (this.deviceService.isMobile()){
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543875835004');
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543874522407');
     }else{
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543875835004');
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543874522407');
     }
   }
 

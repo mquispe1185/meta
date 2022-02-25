@@ -46,10 +46,10 @@ export class AppComponent implements OnInit{
       btnWsp(){
         if (this.deviceService.isMobile()){
           //SI ESTA UTILIZANDO MOBILE ABRE LA APLICACION WSP
-          this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543875835004');
+          this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543874522407');
         }else{
           //SI ESTA UTILIZANDO DESKTOP ABRE LA WEB WSP
-          this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543875835004');
+          this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543874522407');
         }
       }
 }
