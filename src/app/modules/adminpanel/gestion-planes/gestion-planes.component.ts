@@ -34,6 +34,7 @@ export class GestionPlanesComponent implements OnInit {
   meses = Semana.meses;
   comercios: Comercio[] = [];
   comercio: Comercio;
+
   
   constructor(public tokenService: AngularTokenService,
               private modalService: NgbModal,
@@ -43,7 +44,7 @@ export class GestionPlanesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tokenService.validateToken().subscribe(
-      res =>{ this.getComerciosplan(); }
+      res =>{ this.getComerciosplan();}
     );
   }
 
@@ -52,7 +53,7 @@ export class GestionPlanesComponent implements OnInit {
       cms =>{ this.comerciosplan = cms.map(c => new Comercioplan(c));
               this.lstComerciosplan = new MatTableDataSource(this.comerciosplan);
               this.lstComerciosplan.paginator = this.paginatorComplan;
-             }
+            }
     )
   }
 

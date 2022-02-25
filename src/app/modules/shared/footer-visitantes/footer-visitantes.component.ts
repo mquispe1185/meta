@@ -25,11 +25,9 @@ export class FooterVisitantesComponent implements OnInit {
 
   setWspLik(){
     if (this.deviceService.isMobile()){
-      //console.log('celularrr',this.comercio.celular);
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543874522407');
-      // this.wsp = 'whatsapp://send?phone=+54'+this.comercio.celular;
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('whatsapp://send?phone=+543875835004');
     }else{
-      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543874522407');
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://web.whatsapp.com/send?phone=543875835004');
     }
   }
 

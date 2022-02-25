@@ -103,9 +103,12 @@ export class ListadocomerciosComponent implements OnInit {
   aprobarComercio(element) {
     //element.habilitado = !element.habilitado;
     this.comercioService.habilitarComercio(element.id).subscribe(
-      cms => {
-        this.lstComercios = new MatTableDataSource(cms.map(c => new Comercio(c)));
-
+      com => {
+        let index = this.aux_comercios.findIndex(c => c.id === com.id)
+        this.aux_comercios[index] = new Comercio(com);
+        this.lstComercios = new MatTableDataSource(this.aux_comercios);
+        this.cdRef.detectChanges();
+        this.modalService.dismissAll();
         this.lstComercios.paginator = this.paginatorCom;
         this.toastr.success('Estado actualizado correctamente!', 'Actualizado!');
       }

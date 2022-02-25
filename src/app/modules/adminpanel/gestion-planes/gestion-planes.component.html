@@ -56,8 +56,8 @@
         <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>         
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Estado:</span>
-          <button placement="right" ngbTooltip="Actualizar Estado" class="btn-estado"
-          [ngClass]="{'boton-pendiente' : element.estado=='pendiente','boton-aprobado' : element.estado=='aprobado', 'boton-vencido' : element.estado=='vencido', 'boton-rechazado' : element.estado=='rechazado'}"
+          <button *ngIf="element.tipo_servicio.id != 9" placement="right" ngbTooltip="Actualizar Estado" class="btn-estado"
+          [ngClass]="{'boton-pendiente' : element.estado =='pendiente','boton-aprobado' : element.estado=='aprobado', 'boton-vencido' : element.estado=='vencido', 'boton-rechazado' : element.estado=='rechazado'}"
            (click)="(element.estado != 'vencido') && openFormActualizar(estadoform,element)">
            {{element.estado |uppercase}}
           </button>
